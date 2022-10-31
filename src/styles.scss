@@ -1,0 +1,23 @@
+// Required
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+$theme-colors: (
+  "primary": $indigo,
+);
+
+// Create your own map
+$custom-colors: (
+  "custom-color": #900,
+  "greyAAAAAA": #aaaaaa,
+  "greyEEEEEE": #eeeeee,
+  "read": #f44336,
+  "listen": #2196f3,
+  "speak": #ff9800,
+  "write": #4caf50,
+);
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "../node_modules/bootstrap/scss/bootstrap";
