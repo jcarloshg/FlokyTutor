@@ -1,0 +1,37 @@
+<div class="container my-5 d-flex justify-content-center">
+    <div class="shadow col-xxl-4 p-5 my-5 bg-body rounded">
+
+        <form [formGroup]="loginForm">
+
+            <h1 class="h3 my-4">Floky</h1>
+
+            <div class="my-2">
+                <label for="ForEmailInput" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" id="ForEmailInput" placeholder="tutor@email.com"
+                    formControlName="email">
+                <pre class="text-danger">{{this.loginForm.get('email')?.errors| json}}</pre>
+            </div>
+
+            <div class="my-2">
+                <label for="ForPassInput" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="ForPassInput" placeholder="***" formControlName="pass">
+            </div>
+
+            <button type="button" class="btn btn-primary mt-4 w-100">
+                Iniciar sesión
+            </button>
+            <button type="button" class="btn btn-link w-100">
+                ¿Olvidaste tu contraseña?
+            </button>
+
+
+        </form>
+
+    </div>
+</div>
+
+
+<pre>{{loginForm.value | json}}</pre>
+<pre>{{loginForm.status | json}}</pre>
+<pre>{{loginForm.valid | json}}</pre>
+<pre>{{loginForm.errors | json}}</pre>
