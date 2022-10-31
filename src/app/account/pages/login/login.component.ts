@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -17,9 +17,8 @@ export class LoginComponent {
     private formBuilder: FormBuilder
   ) { }
 
-
-  public emailFormControl(nameFormControl: string) {
-    return this.loginForm.get(nameFormControl)?.value;
+  getErrorFromFormControl(nameFormControl: string) {
+    return this.loginForm.get(nameFormControl)?.errors;
   }
 
   logIn() {
@@ -28,7 +27,7 @@ export class LoginComponent {
     // console.log(loginFormControl);
 
 
-    const loginValue = this.loginForm.value;
+    const loginValue = this.loginForm.get('email')
     console.log(loginValue);
 
   }

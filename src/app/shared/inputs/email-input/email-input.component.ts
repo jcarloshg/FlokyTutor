@@ -1,5 +1,5 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, forwardRef, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, FormArray, AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-email-input',
@@ -13,17 +13,20 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class EmailInputComponent implements OnInit, ControlValueAccessor {
+export class EmailInputComponent implements ControlValueAccessor, OnChanges {
 
-
+  @Input() formControlEmail: ValidationErrors | null = null;
   public email: string = '';
 
   constructor() { }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+  }
+
+
   onChange = (_: any) => { };
   onTouched = (_: any) => { };
-
-  ngOnInit(): void { }
 
   writeValue(obj: any): void {
     if (obj !== undefined) return;
@@ -31,13 +34,9 @@ export class EmailInputComponent implements OnInit, ControlValueAccessor {
     this.onChange(this.email);
   }
 
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-  }
+  registerOnChange(fn: any): void { this.onChange = fn; }
 
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
-  }
+  registerOnTouched(fn: any): void { this.onTouched = fn; }
 
   setDisabledState?(isDisabled: boolean): void { }
 

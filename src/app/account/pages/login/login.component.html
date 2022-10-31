@@ -5,7 +5,8 @@
 
             <h1 class="h3 my-4">Floky</h1>
 
-            <app-email-input formControlName="email"></app-email-input>
+            <app-email-input formControlName="email" [formControlEmail]="this.loginForm">
+            </app-email-input>
 
             <div class="my-2">
                 <label for="ForPassInput" class="form-label">Contraseña</label>
