@@ -6,8 +6,9 @@
             <h1 class="h3 my-4">Floky</h1>
 
             <app-email-input formControlName="email" [showError]="this.showMessageFromFormControl('email')"
-                [messageError]="this.validatorsService.emailValidator.getMessageError(this.loginForm.get('email')?.errors) ">
+                [messageError]="getErrorMessageByNameFormControl('email')">
             </app-email-input>
+            <!-- [messageError]="this.validatorsService.emailValidator.getMessageError(this.loginForm.get('email')?.errors) " -->
 
 
             <div class="my-2">

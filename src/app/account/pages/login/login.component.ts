@@ -25,8 +25,11 @@ export class LoginComponent {
     public validatorsService: ValidatorsService,
   ) { }
 
-  getErrorFromFormControl(nameFormControl: string) {
-    return this.loginForm.get(nameFormControl)?.errors;
+  getErrorMessageByNameFormControl(nameFormControl: string): string | null {
+    const errors = this.loginForm.get(nameFormControl)?.errors;
+    if (errors == null || errors == undefined) return null;
+    const errorMessage = this.validatorsService.emailValidator.getMessageError(errors);
+    return errorMessage;
   }
 
   showMessageFromFormControl(nameFormControl: string): boolean {
@@ -41,8 +44,6 @@ export class LoginComponent {
 
     return true;
   }
-
-
 
   logIn() {
     // // console.log(this.loginForm.get('email')?.errors);

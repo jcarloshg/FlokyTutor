@@ -12,20 +12,17 @@ export class EmailValidator {
     private messageErros: MessageErro[] = [
         {
             error: "required",
-            message: "El correo electronico es requerido.",
+            message: "Correo electrónico es requerido.",
         },
         {
             error: "pattern",
-            message: "El correo electronico no es valido.",
+            message: "Correo electrónico no es valido.",
         },
     ]
 
     constructor() { }
 
-    public getMessageError(objErrors: object | undefined | null): string | null {
-
-        if (objErrors === undefined) return null;
-        if (objErrors === null) return null;
+    public getMessageError(objErrors: object): string | null {
 
         // example -> ["required","pattern"]
         const typesErrors = Object.keys(objErrors);
@@ -35,7 +32,7 @@ export class EmailValidator {
             .find(messageErro => messageErro.error === typeError);
 
         const messageErrorString = (messageErrorObj == undefined)
-            ? null
+            ? '[ERROR_NOT_FOUND]'
             : messageErrorObj.message;
 
         return messageErrorString;
