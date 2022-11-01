@@ -1,5 +1,5 @@
-import { Component, forwardRef, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, ValidationErrors } from '@angular/forms';
+import { Component, forwardRef, Input } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-email-input',
@@ -13,7 +13,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, ValidationErrors } from '@angu
     }
   ]
 })
-export class EmailInputComponent implements ControlValueAccessor, OnChanges {
+export class EmailInputComponent implements ControlValueAccessor {
 
   @Input() messageError: string | null = null;
   @Input() showError: boolean = false;
@@ -21,10 +21,6 @@ export class EmailInputComponent implements ControlValueAccessor, OnChanges {
   public email: string = '';
 
   constructor() { }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(`[EmailInputComponent - ngOnChanges] -> `, changes);
-  }
 
   onChange = (_: any) => { };
   onTouched = (_: any) => { };

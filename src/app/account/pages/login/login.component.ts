@@ -17,19 +17,20 @@ export class LoginComponent {
         Validators.pattern(this.validatorsService.emailValidator.emailPattern)
       ]
     ],
-    pass: ['', Validators.required],
+    pass: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern(this.validatorsService.passwordValidator.passwordPattern)
+      ]
+    ],
   });
 
   constructor(
     private formBuilder: FormBuilder,
     public validatorsService: ValidatorsService,
-  ) { }
-
-  getErrorMessageByNameFormControl(nameFormControl: string): string | null {
-    const errors = this.loginForm.get(nameFormControl)?.errors;
-    if (errors == null || errors == undefined) return null;
-    const errorMessage = this.validatorsService.emailValidator.getMessageError(errors);
-    return errorMessage;
+  ) {
+    
   }
 
   showMessageFromFormControl(nameFormControl: string): boolean {
@@ -43,6 +44,13 @@ export class LoginComponent {
     if (isValidField === false) return true;
 
     return true;
+  }
+
+  getErrorMsgFromFormControl(nameFormControl: string): string | null {
+    const errors = this.loginForm.get(nameFormControl)?.errors;
+    if (errors == null || errors == undefined) return null;
+    const errorMessage = this.validatorsService.emailValidator.getMessageError(errors);
+    return errorMessage;
   }
 
   logIn() {

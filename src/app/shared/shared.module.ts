@@ -17,7 +17,8 @@ import { PasswordInputComponent } from './inputs/password-input/password-input.c
     ReactiveFormsModule,
   ],
   exports: [
-    EmailInputComponent
+    EmailInputComponent,
+    PasswordInputComponent
   ]
 })
 export class SharedModule { }

@@ -4,17 +4,17 @@ interface MessageErro {
     message: string,
 }
 
-export class EmailValidator {
+export class PasswordValidator {
 
-    public emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
+    public passwordPattern: string = "^[a-z0-9._%+-]{3,}$";
     private messageErros: MessageErro[] = [
         {
             error: "required",
-            message: "Correo electrónico es requerido.",
+            message: "Contraseña es requerido.",
         },
         {
             error: "pattern",
-            message: "Correo electrónico no es valido.",
+            message: "Contraseña no es valido.",
         },
     ]
 
@@ -35,9 +35,4 @@ export class EmailValidator {
 
         return messageErrorString;
     }
-
-    // validUsername(usernameControl: FormControl): ValidationErrors | null {
-    //     return { isValid: true };
-    // }
-
 }
