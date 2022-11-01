@@ -5,8 +5,11 @@
 
             <h1 class="h3 my-4">Floky</h1>
 
-            <app-email-input formControlName="email" [formControlEmail]="this.loginForm">
+            <app-email-input formControlName="email" [showError]="this.showMessageFromFormControl('email')">
             </app-email-input>
+            <p class="form-text text-danger">
+                {{this.validatorsService.emailValidator.getMessageError(this.loginForm.get('email')?.errors) }}
+            </p>
 
             <div class="my-2">
                 <label for="ForPassInput" class="form-label">Contraseña</label>
@@ -20,6 +23,13 @@
 
     </div>
 </div>
+
+
+<p class="h6">Errors email</p>
+<pre>{{ this.loginForm.get('email')?.errors | json }}</pre>
+
+<p class="h6">Errors touched</p>
+<pre>{{ this.loginForm.get('email')?.touched| json }}</pre>
 
 <p class="h6"> valid</p>
 <pre>{{ loginForm.valid }}</pre>

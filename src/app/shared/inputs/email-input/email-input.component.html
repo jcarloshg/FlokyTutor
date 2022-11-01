@@ -1,7 +1,6 @@
-<div class="my-2" style='border: 1px solid;'>
+<div class="my-2">
     <label for="ForEmailInput" class="form-label">Correo electrónico</label>
-
     <input type="email" class="form-control" id="ForEmailInput" placeholder="tutor@email.com" [value]="email"
         [(ngModel)]="email" (ngModelChange)="onChange(email)" (blur)="onTouched(true)" />
-    <!-- <p class="form-text text-danger">Correo electrónico es requerido</p> -->
+    <p class="form-text text-danger" *ngIf="showError">{{ messageError }}</p>
 </div>

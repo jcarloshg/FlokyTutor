@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
+import { ValidatorsService } from '../../../shared/inputs/validators.service';
 
 @Component({
   selector: 'app-login',
@@ -9,26 +10,56 @@ import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@ang
 export class LoginComponent {
 
   loginForm: FormGroup = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.minLength(2), Validators.email]],
+    email: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern(this.validatorsService.emailValidator.emailPattern)
+      ]
+    ],
     pass: ['', Validators.required],
   });
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public validatorsService: ValidatorsService,
   ) { }
 
   getErrorFromFormControl(nameFormControl: string) {
     return this.loginForm.get(nameFormControl)?.errors;
   }
 
+  showMessageFromFormControl(nameFormControl: string) {
+    const validFieldInvalid = this.loginForm.get(nameFormControl)?.invalid;
+    const validFieldTouched = this.loginForm.get(nameFormControl)?.touched;
+
+    const isValidField = validFieldInvalid ? true : false;
+    const isTouchedField = validFieldTouched ? true : false;
+
+    console.log({
+      nameFormControl,
+      validFieldInvalid,
+      validFieldTouched,
+      isValidField,
+      isTouchedField
+    });
+
+    if (isValidField == true && isTouchedField == true) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+
+
   logIn() {
     // // console.log(this.loginForm.get('email')?.errors);
     // const loginFormControl = this.loginForm.get('email');
     // console.log(loginFormControl);
 
-
-    const loginValue = this.loginForm.get('email')
-    console.log(loginValue);
+    // const loginValue = this.loginForm.get('email')
+    // console.log(loginValue);
 
   }
 
