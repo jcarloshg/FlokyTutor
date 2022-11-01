@@ -29,26 +29,17 @@ export class LoginComponent {
     return this.loginForm.get(nameFormControl)?.errors;
   }
 
-  showMessageFromFormControl(nameFormControl: string) {
-    const validFieldInvalid = this.loginForm.get(nameFormControl)?.invalid;
+  showMessageFromFormControl(nameFormControl: string): boolean {
     const validFieldTouched = this.loginForm.get(nameFormControl)?.touched;
+    const validFieldValid = this.loginForm.get(nameFormControl)?.valid;
 
-    const isValidField = validFieldInvalid ? true : false;
     const isTouchedField = validFieldTouched ? true : false;
+    const isValidField = validFieldValid ? true : false;
 
-    console.log({
-      nameFormControl,
-      validFieldInvalid,
-      validFieldTouched,
-      isValidField,
-      isTouchedField
-    });
+    if (isTouchedField === false) return false;
+    if (isValidField === false) return true;
 
-    if (isValidField == true && isTouchedField == true) {
-      return false;
-    } else {
-      return true;
-    }
+    return true;
   }
 
 

@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, forwardRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, ValidationErrors } from '@angular/forms';
 
 @Component({
@@ -13,7 +13,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, ValidationErrors } from '@angu
     }
   ]
 })
-export class EmailInputComponent implements ControlValueAccessor {
+export class EmailInputComponent implements ControlValueAccessor, OnChanges {
 
   @Input() messageError: string | null = null;
   @Input() showError: boolean = false;
@@ -21,6 +21,10 @@ export class EmailInputComponent implements ControlValueAccessor {
   public email: string = '';
 
   constructor() { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(`[EmailInputComponent - ngOnChanges] -> `, changes);
+  }
 
   onChange = (_: any) => { };
   onTouched = (_: any) => { };
@@ -30,6 +34,7 @@ export class EmailInputComponent implements ControlValueAccessor {
     this.email = obj;
     this.onChange(this.email);
   }
+
   registerOnChange(fn: any): void { this.onChange = fn; }
   registerOnTouched(fn: any): void { this.onTouched = fn; }
   setDisabledState?(isDisabled: boolean): void { }
