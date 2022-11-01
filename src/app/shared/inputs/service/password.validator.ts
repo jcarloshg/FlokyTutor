@@ -1,10 +1,6 @@
+import { MessageErro, CustomValidator } from "./interfcaes";
 
-interface MessageErro {
-    error: string,
-    message: string,
-}
-
-export class PasswordValidator {
+export class PasswordValidator implements CustomValidator {
 
     public passwordPattern: string = "^[a-z0-9._%+-]{3,}$";
     private messageErros: MessageErro[] = [
@@ -19,6 +15,19 @@ export class PasswordValidator {
     ]
 
     constructor() { }
+
+    pattern: string = "^[a-z0-9._%+-]{3,}$";;
+    messagesError: MessageErro[] = [
+        {
+            error: "required",
+            message: "Contraseña es requerido.",
+        },
+        {
+            error: "pattern",
+            message: "Contraseña no es valido.",
+        },
+    ];
+
 
     public getMessageError(objErrors: object): string | null {
 

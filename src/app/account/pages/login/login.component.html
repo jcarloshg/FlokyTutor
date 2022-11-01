@@ -9,15 +9,9 @@
                 [messageError]="getErrorMsgFromFormControl('email')">
             </app-email-input>
 
-            <app-password-input formControlName="pass">
+            <app-password-input formControlName="pass" [showError]="this.showMessageFromFormControl('pass')"
+                [messageError]="getErrorMsgFromFormControl('pass')">
             </app-password-input>
-
-
-            <!-- <div class="my-2">
-                <label for="ForPassInput" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="ForPassInput" placeholder="***"
-                    formControlName="pass" />
-            </div> -->
 
             <button type="button" class="btn btn-primary mt-4 w-100" (click)="logIn()"> Iniciar sesión </button>
             <button type="button" class="btn btn-link w-100"> ¿Olvidaste tu contraseña? </button>
@@ -26,7 +20,7 @@
     </div>
 </div>
 
-
+<!--
 <p class="h6">pass email</p>
 <pre>{{ this.loginForm.get('pass')?.errors | json }}</pre>
 
@@ -37,4 +31,4 @@
 <pre>{{ loginForm.valid }}</pre>
 
 <p class="h6"> pristine</p>
-<pre>{{ loginForm.pristine }}</pre>
+<pre>{{ loginForm.pristine }}</pre> -->

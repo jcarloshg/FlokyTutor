@@ -1,10 +1,6 @@
+import { MessageErro, CustomValidator } from './interfcaes';
 
-interface MessageErro {
-    error: string,
-    message: string,
-}
-
-export class EmailValidator {
+export class EmailValidator implements CustomValidator {
 
     public emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
     private messageErros: MessageErro[] = [
@@ -19,6 +15,18 @@ export class EmailValidator {
     ]
 
     constructor() { }
+
+    pattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";;
+    messagesError: MessageErro[] = [
+        {
+            error: "required",
+            message: "Correo electrónico es requerido.",
+        },
+        {
+            error: "pattern",
+            message: "Correo electrónico no es valido.",
+        },
+    ];
 
     public getMessageError(objErrors: object): string | null {
 

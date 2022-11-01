@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
-import { ValidatorsService } from '../../../shared/inputs/validators.service';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ValidatorsService } from '../../../shared/inputs/service/validators.service';
+import { CustomItemForm } from '../../interfaces/custom-item-form';
 
 @Component({
   selector: 'app-login',
@@ -9,28 +10,32 @@ import { ValidatorsService } from '../../../shared/inputs/validators.service';
 })
 export class LoginComponent {
 
-  loginForm: FormGroup = this.formBuilder.group({
-    email: [
-      '',
-      [
-        Validators.required,
-        Validators.pattern(this.validatorsService.emailValidator.emailPattern)
-      ]
-    ],
-    pass: [
-      '',
-      [
-        Validators.required,
-        Validators.pattern(this.validatorsService.passwordValidator.passwordPattern)
-      ]
-    ],
-  });
+  private customItemsForm: Map<string, CustomItemForm> = new Map<string, CustomItemForm>();
+  loginForm: FormGroup = this.formBuilder.group({});
 
   constructor(
     private formBuilder: FormBuilder,
     public validatorsService: ValidatorsService,
   ) {
-    
+
+    const emailItemForm: CustomItemForm = {
+      name: 'email',
+      customValidator: this.validatorsService.emailValidator,
+      formControl: this.formBuilder.control('', [Validators.required, Validators.pattern(this.validatorsService.emailValidator.pattern)])
+    }
+
+    const passItemForm: CustomItemForm = {
+      name: 'pass',
+      customValidator: this.validatorsService.passwordValidator,
+      formControl: this.formBuilder.control('', [Validators.required, Validators.pattern(this.validatorsService.passwordValidator.pattern)])
+    }
+
+    this.customItemsForm.set(emailItemForm.name, emailItemForm);
+    this.customItemsForm.set(passItemForm.name, passItemForm);
+
+    this.loginForm.addControl(emailItemForm.name, emailItemForm.formControl);
+    this.loginForm.addControl(passItemForm.name, passItemForm.formControl);
+
   }
 
   showMessageFromFormControl(nameFormControl: string): boolean {
@@ -47,9 +52,12 @@ export class LoginComponent {
   }
 
   getErrorMsgFromFormControl(nameFormControl: string): string | null {
+
     const errors = this.loginForm.get(nameFormControl)?.errors;
     if (errors == null || errors == undefined) return null;
-    const errorMessage = this.validatorsService.emailValidator.getMessageError(errors);
+
+    const customValidator = this.customItemsForm.get(nameFormControl)?.customValidator;
+    const errorMessage = customValidator!.getMessageError(errors);
     return errorMessage;
   }
 

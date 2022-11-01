@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { EmailValidator } from './email-input/email.validator';
-import { PasswordValidator } from './password-input/password.validator';
+import { CustomValidator } from './interfcaes';
+import { EmailValidator } from './email.validator';
+import { PasswordValidator } from './password.validator';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ValidatorsService {
 
-  public emailValidator: EmailValidator;
-  public passwordValidator: PasswordValidator;
+  public emailValidator: CustomValidator;
+  public passwordValidator: CustomValidator;
 
   constructor() {
     this.emailValidator = new EmailValidator();
