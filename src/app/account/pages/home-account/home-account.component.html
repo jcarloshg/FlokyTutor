@@ -1,12 +1,13 @@
 <header class="p-3 text-bg-dark">
-    <div class="container">
-        <span class="text-white">Floky Tutor</span>
+    <div class="container d-flex align-items-center justify-content-between">
+        <span class="h5 text-white">Floky Tutor</span>
+        <button class="btn btn-primary align-items-end" routerLink="/cuenta/registro_nueva_cuenta">
+            Registrate aquí
+        </button>
     </div>
 </header>
 
-<div class="container">
-    <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>
 
 <!-- <footer class="text-bg-dark d-flex flex-wrap justify-content-between align-items-center py-3">
     <div class="col-md-4 d-flex align-items-center">
