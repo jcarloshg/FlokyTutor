@@ -1,0 +1,63 @@
+enum ActivityLevel {
+  A1
+  A2
+  B1
+  B2
+  C1
+  C2
+}
+
+enum Role {
+  STUDENT
+  TEACHER
+  ADMIN
+}
+
+type ActivitiesProgress @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  correctReading: Int
+  wrongReading: Int
+  correctWriting: Int
+  wrongWriting: Int
+  correctSpeaking: Int
+  wrongSpeaking: Int
+  correctListening: Int
+  wrongListening: Int
+}
+
+type Account @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  fullName: String!
+  email: String!
+  collegeEnrollment: String!
+  collegeName: String!
+  activitiesProgress: ActivitiesProgress @hasOne
+  role: Role
+  activities: [Activitie] @manyToMany(relationName: "AccountActivitie")
+}
+
+type Activitie @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  activityLevel: ActivityLevel
+  typeActivity: ActivityType
+  question: String!
+  questionBody: String
+  answers: AWSJSON
+  topicID: ID! @index(name: "byTopic")
+  accounts: [Account] @manyToMany(relationName: "AccountActivitie")
+}
+
+enum ActivityType {
+  WRITING
+  READING
+  TALKING
+  LISTENING
+}
+
+type Topic @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  activities: [Activitie] @hasMany(indexName: "byTopic", fields: ["id"])
+}
+ 
