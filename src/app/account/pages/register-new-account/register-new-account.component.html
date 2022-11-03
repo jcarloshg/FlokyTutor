@@ -1,11 +1,9 @@
 <div class="m-5">
   <div class="row d-flex justify-content-center">
-    <div class="col-lg-4 col-md-8">
+    <div class="col-lg-5 col-md-8">
       <form [formGroup]="registerAccountForm" autocomplete="off">
         <p class="h4">Crea tu cuenta de tutor</p>
         <p>Ingresa tus datos</p>
-
-        <div class="mt-4"></div>
 
         <app-name-input
           [formControlName]="fullNameValidator.name"
@@ -13,24 +11,19 @@
           [messageError]="fullNameValidator.getErrorMessage()"
         ></app-name-input>
 
-        <div class="row">
-          <div class="col-lg-6">
-            <app-college-enrollment-input
-              [formControlName]="collegeEnrollmentValidator.name"
-              [showError]="collegeEnrollmentValidator.showMessage()"
-              [messageError]="collegeEnrollmentValidator.getErrorMessage()"
-            ></app-college-enrollment-input>
-          </div>
-          <div class="col-lg-6">
-            <app-college-name-input
-              [formControlName]="collegeNameValidator.name"
-              [showError]="collegeNameValidator.showMessage()"
-              [messageError]="collegeNameValidator.getErrorMessage()"
-            ></app-college-name-input>
-          </div>
-        </div>
+        <app-college-enrollment-input
+          [formControlName]="collegeEnrollmentValidator.name"
+          [showError]="collegeEnrollmentValidator.showMessage()"
+          [messageError]="collegeEnrollmentValidator.getErrorMessage()"
+        ></app-college-enrollment-input>
 
-        <div class="mt-4"></div>
+        <app-college-name-input
+          [formControlName]="collegeNameValidator.name"
+          [showError]="collegeNameValidator.showMessage()"
+          [messageError]="collegeNameValidator.getErrorMessage()"
+        ></app-college-name-input>
+
+        <div class="my-5"></div>
 
         <app-email-input
           [formControlName]="emailValidator.name"
@@ -55,13 +48,10 @@
           </div>
         </div>
 
-        <button type="button" class="btn btn-primary mt-4 w-100">
+        <button type="button" class="btn btn-primary my-4 w-100">
           Registrarse
         </button>
       </form>
     </div>
   </div>
-
-  <!-- <pre>{{ this.registerAccountForm.get("fullName")?.errors | json }}</pre>
-  <pre>{{ this.registerAccountForm.value | json }}</pre> -->
 </div>

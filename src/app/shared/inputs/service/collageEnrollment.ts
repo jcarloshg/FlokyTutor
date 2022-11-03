@@ -16,7 +16,7 @@ export class CollageEnrollment implements CustomValidator {
             '',
             [
                 Validators.required,
-                Validators.pattern('[a-zA-Z]{3,}'),
+                Validators.pattern('[a-zA-Z0-9]{4,}$'),
             ]
         );
         this.messagesError = new Map<string, string>()
