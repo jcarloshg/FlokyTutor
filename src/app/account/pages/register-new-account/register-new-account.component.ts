@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomItemForm } from '../../interfaces/custom-item-form';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { CustomValidator } from 'src/app/shared/inputs/service/customValidator.interface';
 import { ValidatorsService } from '../../../shared/inputs/service/validators.service';
-
-// TODO - valid emial
-// TODO - valid pass
-// TODO - valid confi pass
-
 
 @Component({
   selector: 'app-register-new-account',
@@ -15,76 +10,35 @@ import { ValidatorsService } from '../../../shared/inputs/service/validators.ser
 })
 export class RegisterNewAccountComponent implements OnInit {
 
-  private customItemsForm: Map<string, CustomItemForm> = new Map<string, CustomItemForm>();
+  public fullNameValidator: CustomValidator;
+  public collegeEnrollmentValidator: CustomValidator;
+  public collegeNameValidator: CustomValidator;
+  public emailValidator: CustomValidator;
+  public passValidator: CustomValidator;
+  public ConfiPassValidator: CustomValidator;
+
   registerAccountForm: FormGroup = this.formBuilder.group({});
 
   constructor(
     private formBuilder: FormBuilder,
     public validatorsService: ValidatorsService,
   ) {
+    this.fullNameValidator = this.validatorsService.getNameValidator('name', this.formBuilder);
+    this.collegeEnrollmentValidator = this.validatorsService.getCollageEnrollment('collegeEnrollment', this.formBuilder);
+    this.collegeNameValidator = this.validatorsService.getCollegeName('collegeName', this.formBuilder);
+    this.emailValidator = this.validatorsService.getEmailValidator('email', this.formBuilder);
+    this.passValidator = this.validatorsService.getPasswordValidator('pass', this.formBuilder);
+    this.ConfiPassValidator = this.validatorsService.getPasswordValidator('ConfiPass', this.formBuilder);
 
-    const fullNameItemForm: CustomItemForm = {
-      name: 'fullName',
-      customValidator: this.validatorsService.nameValidator,
-      formControl: this.formBuilder.control('', this.validatorsService.nameValidator.getValidators())
-    }
-
-    const collageEnrollmentItemForm: CustomItemForm = {
-      name: 'collageEnrollment',
-      customValidator: this.validatorsService.collageEnrollment,
-      formControl: this.formBuilder.control('', this.validatorsService.collageEnrollment.getValidators())
-    }
-
-    const collageNameItemForm: CustomItemForm = {
-      name: 'collageName',
-      customValidator: this.validatorsService.collegeNameValidator,
-      formControl: this.formBuilder.control('', this.validatorsService.collegeNameValidator.getValidators())
-    }
-
-    const emailItemForm: CustomItemForm = {
-      name: 'email',
-      customValidator: this.validatorsService.emailValidator,
-      formControl: this.formBuilder.control('', this.validatorsService.emailValidator.getValidators())
-    }
-
-    this.customItemsForm.set(fullNameItemForm.name, fullNameItemForm);
-    this.customItemsForm.set(collageEnrollmentItemForm.name, collageEnrollmentItemForm);
-    this.customItemsForm.set(collageNameItemForm.name, collageNameItemForm);
-    this.customItemsForm.set(emailItemForm.name, emailItemForm);
-
-    this.registerAccountForm.addControl(fullNameItemForm.name, fullNameItemForm.formControl);
-    this.registerAccountForm.addControl(collageEnrollmentItemForm.name, collageEnrollmentItemForm.formControl);
-    this.registerAccountForm.addControl(collageNameItemForm.name, collageNameItemForm.formControl);
-    this.registerAccountForm.addControl(emailItemForm.name, emailItemForm.formControl);
-
+    this.registerAccountForm.addControl(this.fullNameValidator.name, this.fullNameValidator.formControl);
+    this.registerAccountForm.addControl(this.collegeEnrollmentValidator.name, this.collegeEnrollmentValidator.formControl);
+    this.registerAccountForm.addControl(this.collegeNameValidator.name, this.collegeNameValidator.formControl);
+    this.registerAccountForm.addControl(this.emailValidator.name, this.emailValidator.formControl);
+    this.registerAccountForm.addControl(this.passValidator.name, this.passValidator.formControl);
+    this.registerAccountForm.addControl(this.ConfiPassValidator.name, this.ConfiPassValidator.formControl);
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
-
-  showMessageFromFormControl(nameFormControl: string): boolean {
-    const validFieldTouched = this.registerAccountForm.get(nameFormControl)?.touched;
-    const validFieldValid = this.registerAccountForm.get(nameFormControl)?.valid;
-
-    const isTouchedField = validFieldTouched ? true : false;
-    const isValidField = validFieldValid ? true : false;
-
-    if (isTouchedField === false) return false;
-    if (isValidField === false) return true;
-
-    return true;
-  }
-
-  getErrorMsgFromFormControl(nameFormControl: string): string | null {
-
-    const errors = this.registerAccountForm.get(nameFormControl)?.errors;
-    if (errors == null || errors == undefined) return null;
-
-    const customValidator = this.customItemsForm.get(nameFormControl)?.customValidator;
-    const errorMessage = customValidator!.getMessageError(errors);
-
-    return errorMessage;
-  }
 
 }

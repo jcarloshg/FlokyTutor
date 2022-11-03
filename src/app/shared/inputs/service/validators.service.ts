@@ -40,5 +40,4 @@ export class ValidatorsService {
     return new CollegeName(name, formBuilder);
   }
 
-
 }

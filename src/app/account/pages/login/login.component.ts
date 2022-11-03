@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CustomValidator } from 'src/app/shared/inputs/service/CustomValidator';
+import { CustomValidator } from 'src/app/shared/inputs/service/customValidator.interface';
 import { ValidatorsService } from '../../../shared/inputs/service/validators.service';
 
 @Component({
@@ -12,6 +12,7 @@ export class LoginComponent {
 
   public emailValidator: CustomValidator;
   public passValidator: CustomValidator;
+
   loginForm: FormGroup = this.formBuilder.group({});
 
   constructor(
