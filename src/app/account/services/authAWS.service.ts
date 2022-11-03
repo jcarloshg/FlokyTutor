@@ -15,7 +15,8 @@ export class AuthAWS implements AuthService {
       const user = await Auth.signIn(username, password);
       console.log("🚀 ~ file: authAWS.service.ts ~ line 16 ~ AuthAWS ~ signIn ~ user", user)
     } catch (error) {
-      console.log('error signing in', error);
+      console.log({ error });
+
     }
   }
 
