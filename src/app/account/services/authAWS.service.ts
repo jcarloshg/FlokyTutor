@@ -53,9 +53,10 @@ export class AuthAWS implements AuthService {
           enabled: true, // optional - enables auto sign in after user is confirmed
         }
       });
-      console.log("🚀 ~ file: authAWS.service.ts ~ line 39 ~ AuthAWS ~ signUp ~ user", user)
+      return user;
     } catch (error) {
       console.log('error signing up:', error);
+      return null;
     }
   }
 

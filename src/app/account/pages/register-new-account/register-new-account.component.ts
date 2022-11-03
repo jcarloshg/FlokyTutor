@@ -49,7 +49,7 @@ export class RegisterNewAccountComponent {
       'collegeEnrollment': '201738087',
       'collegeName': 'Benemérita Universidad Autónoma de Puebla',
       'email': 'jcarloshg9898@gmail.com',
-      // 'pass': 'Qazwsx123',
+      'pass': 'Qazwsx123',
       'confiPass': 'Qazwsx123',
     })
   }
@@ -73,8 +73,10 @@ export class RegisterNewAccountComponent {
       }
     }
 
-    const rest = await this.authService.signUp(accountSignUp);
-    console.log("🚀 ~ file: register-new-account.component.ts ~ line 67 ~ RegisterNewAccountComponent ~ registerNewAccount ~ rest", rest)
+    this.isLoading = true;
+    const resSignUp = await this.authService.signUp(accountSignUp);
+    this.isLoading = false;
+
   }
 
 }
