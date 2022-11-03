@@ -1,34 +1,44 @@
 import { Injectable } from '@angular/core';
-import { CustomValidator } from './interfcaes';
-import { EmailValidator } from './email.validator';
-import { PasswordValidator } from './password.validator';
-import { NameValidator } from './name.validator';
-import { CollageEnrollmenValidator } from './collageEnrollment.validator';
-import { CollegeNameValidator } from './collegeName.validator';
-import { ConfiPassValidator } from './confirmPass.validator';
 import { FormBuilder } from '@angular/forms';
+
+
+import { Password } from './password';
+import { Email } from './email';
+import { Name } from './name';
+import { CollageEnrollment } from './collageEnrollment';
+import { CollegeName } from './collegeName';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ValidatorsService {
 
-  public emailValidator: CustomValidator;
-  public passwordValidator: CustomValidator;
-  public nameValidator: CustomValidator;
-  public collageEnrollment: CustomValidator;
-  public collegeNameValidator: CustomValidator;
+  constructor() { }
 
-  constructor() {
-    this.emailValidator = new EmailValidator();
-    this.passwordValidator = new PasswordValidator();
-    this.nameValidator = new NameValidator();
-    this.collageEnrollment = new CollageEnrollmenValidator();
-    this.collegeNameValidator = new CollegeNameValidator();
+  public getPasswordValidator(name: string, formBuilder: FormBuilder): Password {
+    return new Password(name, formBuilder);
   }
 
-  public getConfiPassValidator(name: string, formBuilder: FormBuilder): ConfiPassValidator {
-    return new ConfiPassValidator(name, formBuilder);
+  public getEmailValidator(name: string, formBuilder: FormBuilder): Email {
+    return new Email(name, formBuilder);
   }
+
+  public getNameValidator(name: string, formBuilder: FormBuilder): Name {
+    return new Name(name, formBuilder);
+  }
+
+  public getCollegeEnrollment(name: string, formBuilder: FormBuilder): Name {
+    return new Name(name, formBuilder);
+  }
+
+  public getCollageEnrollment(name: string, formBuilder: FormBuilder): CollageEnrollment {
+    return new CollageEnrollment(name, formBuilder);
+  }
+
+  public getCollegeName(name: string, formBuilder: FormBuilder): CollegeName {
+    return new CollegeName(name, formBuilder);
+  }
+
 
 }

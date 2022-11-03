@@ -1,8 +1,7 @@
 import { FormControl, FormBuilder, Validators } from '@angular/forms';
-import { CustomValidator } from './CustomValidator';
-import { ConfiPassValidator } from './confirmPass.validator';
+import { CustomValidator } from './customValidator.interface';
 
-export class ConfiEmailValidator implements CustomValidator {
+export class Email implements CustomValidator {
 
     public name: string;
     public formControl: FormControl<string | null>;
@@ -26,10 +25,19 @@ export class ConfiEmailValidator implements CustomValidator {
     }
 
     showMessage(): boolean {
-        throw new Error('Method not implemented.');
+        const isTouchedField = this.formControl.touched ? true : false;
+        const isValidField = this.formControl.valid ? true : false;
+        if (isTouchedField === false) return false;
+        if (isValidField === false) return true;
+        return true;
     }
     getErrorMessage(): string | null {
-        throw new Error('Method not implemented.');
+        const objErrors = this.formControl.errors;
+        if (objErrors == null || objErrors == undefined) return null;
+        const typesErrors = Object.keys(objErrors); // example -> ["required","pattern"]
+        const typeError = typesErrors[0];
+        const messageError = this.messagesError.get(typeError);
+        return messageError ?? null;
     }
 
 }

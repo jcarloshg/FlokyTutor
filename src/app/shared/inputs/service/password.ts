@@ -1,7 +1,7 @@
 import { FormControl, FormBuilder, Validators } from '@angular/forms';
-import { CustomValidator } from './CustomValidator';
+import { CustomValidator } from './customValidator.interface';
 
-export class ConfiPassValidator implements CustomValidator {
+export class Password implements CustomValidator {
 
     formControl: FormControl<string | null>;
     messagesError: Map<string, string> = new Map()
@@ -22,27 +22,19 @@ export class ConfiPassValidator implements CustomValidator {
     }
 
     showMessage(): boolean {
-
         const isTouchedField = this.formControl.touched ? true : false;
         const isValidField = this.formControl.valid ? true : false;
-
         if (isTouchedField === false) return false;
         if (isValidField === false) return true;
-
         return true;
     }
 
     getErrorMessage(): string | null {
-
         const objErrors = this.formControl.errors;
         if (objErrors == null || objErrors == undefined) return null;
-
         const typesErrors = Object.keys(objErrors); // example -> ["required","pattern"]
         const typeError = typesErrors[0];
-
         const messageError = this.messagesError.get(typeError);
-
         return messageError ?? null;
-
     }
 }

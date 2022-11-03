@@ -4,16 +4,16 @@
       <h1 class="h3 my-4">Floky</h1>
 
       <app-email-input
-        formControlName="email"
-        [showError]="this.showMessageFromFormControl('email')"
-        [messageError]="getErrorMsgFromFormControl('email')"
+        [formControlName]="this.emailValidator.name"
+        [showError]="this.emailValidator.showMessage()"
+        [messageError]="this.emailValidator.getErrorMessage()"
       >
       </app-email-input>
 
       <app-password-input
-        formControlName="pass"
-        [showError]="this.showMessageFromFormControl('pass')"
-        [messageError]="getErrorMsgFromFormControl('pass')"
+        [formControlName]="passValidator.name"
+        [showError]="passValidator.showMessage()"
+        [messageError]="passValidator.getErrorMessage()"
       >
       </app-password-input>
 
@@ -30,6 +30,8 @@
     </form>
   </div>
 </div>
+
+<pre>{{ this.loginForm.value | json }}</pre>
 
 <!--
 <p class="h6">pass email</p>
