@@ -9,16 +9,24 @@
 
         <app-name-input
           formControlName="fullName"
-          [showError]="this.showMessageFromFormControl('fullName')"
+          [showError]="showMessageFromFormControl('fullName')"
           [messageError]="getErrorMsgFromFormControl('fullName')"
         ></app-name-input>
 
         <div class="row">
           <div class="col-lg-6">
-            <app-college-enrollment-input></app-college-enrollment-input>
+            <app-college-enrollment-input
+              formControlName="collageEnrollment"
+              [showError]="showMessageFromFormControl('collageEnrollment')"
+              [messageError]="getErrorMsgFromFormControl('collageEnrollment')"
+            ></app-college-enrollment-input>
           </div>
           <div class="col-lg-6">
-            <app-college-name-input></app-college-name-input>
+            <app-college-name-input
+              formControlName="collageName"
+              [showError]="showMessageFromFormControl('collageName')"
+              [messageError]="getErrorMsgFromFormControl('collageName')"
+            ></app-college-name-input>
           </div>
         </div>
 

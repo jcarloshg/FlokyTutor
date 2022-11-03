@@ -2,18 +2,16 @@ import { CustomValidator } from './interfcaes';
 import { Validators, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 
-export class NameValidator implements CustomValidator {
+export class CollegeNameValidator implements CustomValidator {
 
     validators = {
         required: Validators.required,
-        pattern: Validators.pattern('^[a-zA-Z]{3,}( {1,2}[a-zA-Z]{3,}){2,}$'),
-        short_name: this.validShortName
+        pattern: Validators.pattern('^[a-zA-Z]{2,}( {1,2}[a-zA-Z]{2,}){2,}$'),
     }
 
     messagesError: Map<string, string> = new Map()
         .set('required', "Nombre es requerido.")
-        .set('pattern', "Debe ser el nombre con apellidos.")
-        .set('short_name', "Nombre no es valido.")
+        .set('pattern', "El nombre debe ser valido.")
 
     constructor() { }
 
@@ -21,7 +19,6 @@ export class NameValidator implements CustomValidator {
         return Object.values([
             this.validators.required,
             this.validators.pattern,
-            this.validators.short_name,
         ])
     }
 
@@ -34,19 +31,6 @@ export class NameValidator implements CustomValidator {
         const messageError = this.messagesError.get(typeError);
 
         return messageError ?? null;
-    }
-
-
-    private validShortName(shortNameFormControl: FormControl): ValidationErrors | null {
-        const shortNameValue: string = shortNameFormControl.value?.trim();
-        const regExp = new RegExp('^[a-zA-Z]{3,}( {1,2}[a-zA-Z]{3,}){1,}$')
-        const isValid = regExp.test(shortNameValue);
-
-        if (isValid == true) return null;
-
-        return {
-            short_name: 'is not valid',
-        }
     }
 
 }

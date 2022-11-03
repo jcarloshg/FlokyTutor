@@ -1,7 +1,16 @@
 <div class="my-2">
-
-    <label for="ForCollageEnrollment" class="form-label">Nombre de la institución</label>
-    <input type="text" class="form-control" id="ForCollageName" placeholder="ej. BUAP">
-    <!-- <p class="form-text text-danger">Registro escolar requerido</p> -->
-
+  <label for="ForCollageEnrollment" class="form-label"
+    >Nombre de la institución</label
+  >
+  <input
+    type="text"
+    class="form-control"
+    id="ForCollageName"
+    placeholder="ej. BUAP"
+    [value]="collegeName"
+    [(ngModel)]="collegeName"
+    (ngModelChange)="onChange(collegeName)"
+    (blur)="onTouched(true)"
+  />
+  <p class="form-text text-danger" *ngIf="showError">{{ messageError }}</p>
 </div>

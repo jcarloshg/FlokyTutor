@@ -31,8 +31,26 @@ export class RegisterNewAccountComponent implements OnInit {
       formControl: this.formBuilder.control('', this.validatorsService.nameValidator.getValidators())
     }
 
-    this.customItemsForm.set('fullName', fullNameItemForm);
-    this.registerAccountForm.addControl('fullName', fullNameItemForm.formControl);
+    const collageEnrollmentItemForm: CustomItemForm = {
+      name: 'collageEnrollment',
+      customValidator: this.validatorsService.collageEnrollment,
+      formControl: this.formBuilder.control('', this.validatorsService.collageEnrollment.getValidators())
+    }
+
+    const collageNameItemForm: CustomItemForm = {
+      name: 'collageName',
+      customValidator: this.validatorsService.collegeNameValidator,
+      formControl: this.formBuilder.control('', this.validatorsService.collegeNameValidator.getValidators())
+    }
+
+    this.customItemsForm.set(fullNameItemForm.name, fullNameItemForm);
+    this.customItemsForm.set(collageEnrollmentItemForm.name, collageEnrollmentItemForm);
+    this.customItemsForm.set(collageNameItemForm.name, collageNameItemForm);
+
+    this.registerAccountForm.addControl(fullNameItemForm.name, fullNameItemForm.formControl);
+    this.registerAccountForm.addControl(collageEnrollmentItemForm.name, collageEnrollmentItemForm.formControl);
+    this.registerAccountForm.addControl(collageNameItemForm.name, collageNameItemForm.formControl);
+
   }
 
   ngOnInit(): void {

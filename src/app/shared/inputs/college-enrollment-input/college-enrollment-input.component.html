@@ -1,7 +1,18 @@
 <div class="my-2">
-    <label for="ForCollageEnrollment" class="form-label">Registro escolar</label>
-    <input type="text" class="form-control" id="ForCollageEnrollment" placeholder="ej. 201738ABC"
-        aria-describedby="collageEnrollmentHelp">
-    <div id="collageEnrollmentHelp" class="form-text">Sigue las indicaciones de tu institución</div>
-    <!-- <p class="form-text text-danger">Registro escolar requerido</p> -->
+  <label for="ForCollageEnrollment" class="form-label">Registro escolar</label>
+  <input
+    type="text"
+    class="form-control"
+    id="ForCollageEnrollment"
+    placeholder="ej. 201738ABC"
+    aria-describedby="collageEnrollmentHelp"
+    [value]="collegeEnrollment"
+    [(ngModel)]="collegeEnrollment"
+    (ngModelChange)="onChange(collegeEnrollment)"
+    (blur)="onTouched(true)"
+  />
+  <div id="collageEnrollmentHelp" class="form-text">
+    Sigue las indicaciones de tu institución
+  </div>
+  <p class="form-text text-danger" *ngIf="showError">{{ messageError }}</p>
 </div>
