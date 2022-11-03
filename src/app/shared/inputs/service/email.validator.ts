@@ -1,51 +1,31 @@
-import { MessageErro, CustomValidator } from './interfcaes';
+import { CustomValidator } from './interfcaes';
+import { ValidatorFn, Validators } from '@angular/forms';
 
 export class EmailValidator implements CustomValidator {
 
-    public emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
-    private messageErros: MessageErro[] = [
-        {
-            error: "required",
-            message: "Correo electrónico es requerido.",
-        },
-        {
-            error: "pattern",
-            message: "Correo electrónico no es valido.",
-        },
-    ]
+    validators = {
+        required: Validators.required,
+        pattern: Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),
+    }
+
+    messagesError: Map<string, string> = new Map()
+        .set('required', "Correo electrónico es requerido.")
+        .set('pattern', "Correo electrónico no es valido.");
 
     constructor() { }
 
-    pattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";;
-    messagesError: MessageErro[] = [
-        {
-            error: "required",
-            message: "Correo electrónico es requerido.",
-        },
-        {
-            error: "pattern",
-            message: "Correo electrónico no es valido.",
-        },
-    ];
+    getValidators(): ValidatorFn[] {
+        return Object.values(this.validators);
+    }
 
-    public getMessageError(objErrors: object): string | null {
+    getMessageError(objErrors: object): string | null {
 
         // example -> ["required","pattern"]
         const typesErrors = Object.keys(objErrors);
         const typeError = typesErrors[0];
 
-        const messageErrorObj: MessageErro | undefined = this.messageErros
-            .find(messageErro => messageErro.error === typeError);
+        const messageError = this.messagesError.get(typeError);
 
-        const messageErrorString = (messageErrorObj == undefined)
-            ? '[ERROR_NOT_FOUND]'
-            : messageErrorObj.message;
-
-        return messageErrorString;
+        return messageError ?? null;
     }
-
-    // validUsername(usernameControl: FormControl): ValidationErrors | null {
-    //     return { isValid: true };
-    // }
-
 }

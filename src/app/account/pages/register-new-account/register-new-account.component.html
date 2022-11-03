@@ -1,45 +1,47 @@
 <div class="m-5">
-    <div class="row d-flex justify-content-center">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-4 col-md-8">
+      <form [formGroup]="registerAccountForm" autocomplete="off">
+        <p class="h4">Crea tu cuenta de tutor</p>
+        <p>Ingresa tus datos</p>
 
-        <div class="col-lg-4 col-md-8">
+        <div class="mt-4"></div>
 
-            <p class="h4">Crea tu cuenta de tutor</p>
-            <p>Ingresa tus datos</p>
+        <app-name-input
+          formControlName="fullName"
+          [showError]="this.showMessageFromFormControl('fullName')"
+          [messageError]="getErrorMsgFromFormControl('fullName')"
+        ></app-name-input>
 
-            <div class="mt-4"></div>
-
-            <app-name-input></app-name-input>
-
-            <div class="row">
-                <div class="col-lg-6">
-                    <app-college-enrollment-input></app-college-enrollment-input>
-                </div>
-                <div class="col-lg-6">
-                    <app-college-name-input></app-college-name-input>
-                </div>
-            </div>
-
-            <div class="mt-4"></div>
-
-            <app-email-input></app-email-input>
-
-            <div class="row">
-                <div class="col-lg-6">
-                    <app-password-input></app-password-input>
-                </div>
-                <div class="col-lg-6">
-                    <app-password-input></app-password-input>
-                </div>
-            </div>
-
-            <button type="button" class="btn btn-primary mt-4 w-100">Registrarse</button>
-
+        <div class="row">
+          <div class="col-lg-6">
+            <app-college-enrollment-input></app-college-enrollment-input>
+          </div>
+          <div class="col-lg-6">
+            <app-college-name-input></app-college-name-input>
+          </div>
         </div>
+
+        <div class="mt-4"></div>
+
+        <app-email-input></app-email-input>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <app-password-input></app-password-input>
+          </div>
+          <div class="col-lg-6">
+            <app-password-input></app-password-input>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary mt-4 w-100">
+          Registrarse
+        </button>
+      </form>
     </div>
+  </div>
+
+  <pre>{{ this.registerAccountForm.get("fullName")?.errors | json }}</pre>
+  <pre>{{ this.registerAccountForm.value | json }}</pre>
 </div>
-
-
-
-<!-- <div class="col-lg-6">
-    <img src="/assets/logo.png" class="img-fluid" alt="">
-</div> -->

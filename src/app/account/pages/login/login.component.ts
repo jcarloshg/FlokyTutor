@@ -21,13 +21,19 @@ export class LoginComponent {
     const emailItemForm: CustomItemForm = {
       name: 'email',
       customValidator: this.validatorsService.emailValidator,
-      formControl: this.formBuilder.control('', [Validators.required, Validators.pattern(this.validatorsService.emailValidator.pattern)])
+      formControl: this.formBuilder.control(
+        '',
+        this.validatorsService.emailValidator.getValidators()
+      )
     }
 
     const passItemForm: CustomItemForm = {
       name: 'pass',
       customValidator: this.validatorsService.passwordValidator,
-      formControl: this.formBuilder.control('', [Validators.required, Validators.pattern(this.validatorsService.passwordValidator.pattern)])
+      formControl: this.formBuilder.control(
+        '',
+        this.validatorsService.passwordValidator.getValidators()
+      )
     }
 
     this.customItemsForm.set(emailItemForm.name, emailItemForm);
@@ -58,6 +64,7 @@ export class LoginComponent {
 
     const customValidator = this.customItemsForm.get(nameFormControl)?.customValidator;
     const errorMessage = customValidator!.getMessageError(errors);
+
     return errorMessage;
   }
 
