@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// mine
 import { CustomValidator } from 'src/app/shared/inputs/service/customValidator.interface';
 import { ValidatorsService } from '../../../shared/inputs/service/validators.service';
+import { Login } from '../../interfaces/auth-service.interface';
+import { AuthAWS } from '../../services/authAWS.service';
+
 
 @Component({
   selector: 'app-login',
@@ -17,7 +21,8 @@ export class LoginComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    public validatorsService: ValidatorsService,
+    private validatorsService: ValidatorsService,
+    private authService: AuthAWS,
   ) {
 
     this.emailValidator = this.validatorsService.getEmailValidator('email', this.formBuilder);
@@ -28,7 +33,11 @@ export class LoginComponent {
   }
 
   logIn() {
-    console.log("🚀 ~ file: login.component.ts ~ line 54 ~ LoginComponent ~ logIn ~ this.loginForm.value", this.loginForm.value)
+    const login: Login = {
+      username: this.loginForm.get(this.emailValidator.name)?.value,
+      password: this.loginForm.get(this.passValidator.name)?.value
+    }
+    this.authService.signIn(login);
   }
 
 }
