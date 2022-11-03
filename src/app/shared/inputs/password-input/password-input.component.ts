@@ -17,6 +17,8 @@ export class PasswordInputComponent implements ControlValueAccessor {
 
   @Input() messageError: string | null = null;
   @Input() showError: boolean = false;
+  @Input() isToConfirmPass: boolean = false;
+
   public password: string = '';
 
   constructor() { }

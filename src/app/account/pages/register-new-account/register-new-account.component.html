@@ -39,6 +39,7 @@
           </div>
           <div class="col-lg-6">
             <app-password-input
+              [isToConfirmPass]="true"
               [formControlName]="ConfiPassValidator.name"
               [showError]="ConfiPassValidator.showMessage()"
               [messageError]="ConfiPassValidator.getErrorMessage()"
