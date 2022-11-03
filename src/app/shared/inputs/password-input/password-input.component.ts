@@ -24,13 +24,12 @@ export class PasswordInputComponent implements ControlValueAccessor {
   onChange = (_: any) => { };
   onTouched = (_: any) => { };
 
+  registerOnChange(fn: any): void { this.onChange = fn; }
+  registerOnTouched(fn: any): void { this.onTouched = fn; }
   writeValue(obj: any): void {
-    if (obj !== undefined) return;
     this.password = obj;
     this.onChange(this.password);
   }
-  registerOnChange(fn: any): void { this.onChange = fn; }
-  registerOnTouched(fn: any): void { this.onTouched = fn; }
   setDisabledState?(isDisabled: boolean): void { }
 
 }

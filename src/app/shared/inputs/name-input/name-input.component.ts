@@ -26,13 +26,13 @@ export class NameInputComponent implements OnInit, ControlValueAccessor {
 
   onChange = (_: any) => { };
   onTouched = (_: any) => { };
+
+  registerOnChange(fn: any): void { this.onChange = fn; }
+  registerOnTouched(fn: any): void { this.onTouched = fn; }
   writeValue(obj: any): void {
-    if (obj !== undefined) return;
     this.name = obj;
     this.onChange(this.name);
   }
-  registerOnChange(fn: any): void { this.onChange = fn; }
-  registerOnTouched(fn: any): void { this.onTouched = fn; }
   setDisabledState?(isDisabled: boolean): void { }
 
 }

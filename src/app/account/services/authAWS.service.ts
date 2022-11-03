@@ -1,13 +1,63 @@
 import { Injectable } from '@angular/core';
 import { Auth } from 'aws-amplify';
-import { AuthService, Login } from '../interfaces/auth-service.interface';
+import { AccountSignUp, AuthService, Login } from '../interfaces/auth-service.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthAWS implements AuthService {
 
-  constructor() { }
+  public accountSignUp: AccountSignUp;
+  public login: Login;
+
+  constructor() {
+
+    this.login = {
+      username: '',
+      password: ''
+    };
+
+    this.accountSignUp = {
+      name: '',
+      username: '',
+      password: '',
+      attributes: {
+        email: '',
+        name: ''
+      }
+    };
+  }
+
+  confirmSignUp() {
+    throw new Error('Method not implemented.');
+  }
+
+  resendConfirmationCode() {
+    throw new Error('Method not implemented.');
+  }
+
+  signOut() {
+    throw new Error('Method not implemented.');
+  }
+
+  async signUp(accountSignUp: AccountSignUp) {
+    try {
+      const { user } = await Auth.signUp({
+        username: accountSignUp.username,
+        password: accountSignUp.password,
+        attributes: {
+          name: accountSignUp.name,
+          email: accountSignUp.username,
+        },
+        autoSignIn: {
+          enabled: true, // optional - enables auto sign in after user is confirmed
+        }
+      });
+      console.log("🚀 ~ file: authAWS.service.ts ~ line 39 ~ AuthAWS ~ signUp ~ user", user)
+    } catch (error) {
+      console.log('error signing up:', error);
+    }
+  }
 
   async signIn(login: Login) {
     const { username, password } = login;
@@ -18,18 +68,5 @@ export class AuthAWS implements AuthService {
       console.log({ error });
 
     }
-  }
-
-  signOut() {
-    throw new Error('Method not implemented.');
-  }
-  signUp() {
-    throw new Error('Method not implemented.');
-  }
-  confirmSignUp() {
-    throw new Error('Method not implemented.');
-  }
-  resendConfirmationCode() {
-    throw new Error('Method not implemented.');
   }
 }

@@ -31,10 +31,6 @@ export class LoginComponent {
     this.loginForm.addControl(this.emailValidator.name, this.emailValidator.formControl);
     this.loginForm.addControl(this.passValidator.name, this.passValidator.formControl);
 
-    this.loginForm.reset({
-      email: "carlosj12336@gmail.com",
-      pass: "Qaz123"
-    });
   }
 
   logIn() {

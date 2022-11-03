@@ -17,7 +17,7 @@ export class Name implements CustomValidator {
             '',
             [
                 Validators.required,
-                Validators.pattern("^[a-zA-Z]{3,}( {1,2}[a-zA-Z]{3,}){2,}$"),
+                Validators.pattern("^[a-zA-ZÀ-ÿ]{3,}( {1,2}[a-zA-ZÀ-ÿ]{3,}){2,}$"),
                 this.validShortName
             ]
         );

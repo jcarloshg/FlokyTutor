@@ -16,7 +16,7 @@ export class Password implements CustomValidator {
             '',
             [
                 Validators.required,
-                Validators.pattern("^[a-z0-9._%+-]{3,}$"),
+                Validators.pattern("^[a-zA-Z0-9._%+-]{3,}$"),
             ]
         );
     }

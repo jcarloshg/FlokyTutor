@@ -16,7 +16,7 @@ export class CollegeName implements CustomValidator {
             '',
             [
                 Validators.required,
-                Validators.pattern('^[a-zA-Z]{2,}( {1,2}[a-zA-Z]{2,}){2,}$'),
+                Validators.pattern('^[a-zA-ZÀ-ÿ]{2,}( {1,2}[a-zA-ZÀ-ÿ]{2,}){2,}$'),
             ]
         );
         this.messagesError = new Map()

@@ -23,8 +23,6 @@
           [messageError]="collegeNameValidator.getErrorMessage()"
         ></app-college-name-input>
 
-        <div class="my-5"></div>
-
         <app-email-input
           [formControlName]="emailValidator.name"
           [showError]="emailValidator.showMessage()"
@@ -48,10 +46,24 @@
           </div>
         </div>
 
-        <button type="button" class="btn btn-primary my-4 w-100">
-          Registrarse
-        </button>
+        <div class="d-flex justify-content-center w-100 my-4">
+          <div
+            class="spinner-border text-primary"
+            *ngIf="isLoading; else isLoadingTemplate"
+          ></div>
+          <ng-template #isLoadingTemplate>
+            <button
+              type="button"
+              class="btn btn-primary w-50"
+              (click)="registerNewAccount()"
+            >
+              Registrarse
+            </button>
+          </ng-template>
+        </div>
       </form>
     </div>
   </div>
+
+  <pre>{{ registerAccountForm.value | json }}</pre>
 </div>

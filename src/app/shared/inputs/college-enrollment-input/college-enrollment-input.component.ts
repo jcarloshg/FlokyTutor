@@ -1,6 +1,5 @@
 import { Component, OnInit, forwardRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { NameInputComponent } from '../name-input/name-input.component';
 
 @Component({
   selector: 'app-college-enrollment-input',
@@ -14,7 +13,7 @@ import { NameInputComponent } from '../name-input/name-input.component';
     }
   ]
 })
-export class CollegeEnrollmentInputComponent implements OnInit, ControlValueAccessor {
+export class CollegeEnrollmentInputComponent implements ControlValueAccessor {
 
   @Input() messageError: string | null = null;
   @Input() showError: boolean = false;
@@ -23,17 +22,15 @@ export class CollegeEnrollmentInputComponent implements OnInit, ControlValueAcce
 
   constructor() { }
 
-  ngOnInit(): void { }
-
   onChange = (_: any) => { };
   onTouched = (_: any) => { };
+
+  registerOnChange(fn: any): void { this.onChange = fn; }
+  registerOnTouched(fn: any): void { this.onTouched = fn; }
   writeValue(obj: any): void {
-    if (obj !== undefined) return;
     this.collegeEnrollment = obj;
     this.onChange(this.collegeEnrollment);
   }
-  registerOnChange(fn: any): void { this.onChange = fn; }
-  registerOnTouched(fn: any): void { this.onTouched = fn; }
   setDisabledState?(isDisabled: boolean): void { }
 
 }

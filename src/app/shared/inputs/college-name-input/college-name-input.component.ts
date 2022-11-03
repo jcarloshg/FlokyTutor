@@ -13,7 +13,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
     }
   ]
 })
-export class CollegeNameInputComponent implements OnInit, ControlValueAccessor {
+export class CollegeNameInputComponent implements ControlValueAccessor {
 
   @Input() messageError: string | null = null;
   @Input() showError: boolean = false;
@@ -22,17 +22,15 @@ export class CollegeNameInputComponent implements OnInit, ControlValueAccessor {
 
   constructor() { }
 
-  ngOnInit(): void { }
-
   onChange = (_: any) => { };
   onTouched = (_: any) => { };
-  writeValue(obj: any): void {
-    if (obj !== undefined) return;
-    this.collegeName = obj;
-    this.onChange(this.collegeName);
-  }
+
   registerOnChange(fn: any): void { this.onChange = fn; }
   registerOnTouched(fn: any): void { this.onTouched = fn; }
   setDisabledState?(isDisabled: boolean): void { }
+  writeValue(obj: any): void {
+    this.collegeName = obj;
+    this.onChange(this.collegeName);
+  }
 
 }
