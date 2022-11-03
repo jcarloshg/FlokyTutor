@@ -3,8 +3,6 @@ import { CustomItemForm } from '../../interfaces/custom-item-form';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidatorsService } from '../../../shared/inputs/service/validators.service';
 
-// TODO - valid collage name
-// TODO - valid collage enrollment
 // TODO - valid emial
 // TODO - valid pass
 // TODO - valid confi pass
@@ -43,13 +41,21 @@ export class RegisterNewAccountComponent implements OnInit {
       formControl: this.formBuilder.control('', this.validatorsService.collegeNameValidator.getValidators())
     }
 
+    const emailItemForm: CustomItemForm = {
+      name: 'email',
+      customValidator: this.validatorsService.emailValidator,
+      formControl: this.formBuilder.control('', this.validatorsService.emailValidator.getValidators())
+    }
+
     this.customItemsForm.set(fullNameItemForm.name, fullNameItemForm);
     this.customItemsForm.set(collageEnrollmentItemForm.name, collageEnrollmentItemForm);
     this.customItemsForm.set(collageNameItemForm.name, collageNameItemForm);
+    this.customItemsForm.set(emailItemForm.name, emailItemForm);
 
     this.registerAccountForm.addControl(fullNameItemForm.name, fullNameItemForm.formControl);
     this.registerAccountForm.addControl(collageEnrollmentItemForm.name, collageEnrollmentItemForm.formControl);
     this.registerAccountForm.addControl(collageNameItemForm.name, collageNameItemForm.formControl);
+    this.registerAccountForm.addControl(emailItemForm.name, emailItemForm.formControl);
 
   }
 

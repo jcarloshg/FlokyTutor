@@ -32,7 +32,11 @@
 
         <div class="mt-4"></div>
 
-        <app-email-input></app-email-input>
+        <app-email-input
+          formControlName="email"
+          [showError]="showMessageFromFormControl('email')"
+          [messageError]="getErrorMsgFromFormControl('email')"
+        ></app-email-input>
 
         <div class="row">
           <div class="col-lg-6">
