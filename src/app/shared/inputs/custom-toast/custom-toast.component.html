@@ -1,4 +1,8 @@
-<div class="position-absolute top-0 end-0 m-5" style="z-index: 11" *ngIf="showToast">
+<div
+  class="position-absolute top-0 end-0 m-5"
+  style="z-index: 11"
+  *ngIf="showToast"
+>
   <div
     id="liveToast"
     [class]="getStyle(customToast.typeToast)"
@@ -13,6 +17,7 @@
           class="btn-close"
           data-bs-dismiss="toast"
           aria-label="Close"
+          (click)="closeToast()"
         ></button>
       </div>
       <div class="fw-bold">

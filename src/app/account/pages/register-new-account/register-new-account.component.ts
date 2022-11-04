@@ -6,6 +6,7 @@ import { ValidatorsService } from '../../../shared/inputs/service/validators.ser
 import { AuthAWS } from '../../services/authAWS.service';
 import { AccountSignUp } from '../../interfaces/auth-service.interface';
 import { CustomToast } from 'src/app/shared/inputs/custom-toast/custom-toast.inteferface';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -28,8 +29,9 @@ export class RegisterNewAccountComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    public validatorsService: ValidatorsService,
+    private router: Router,
     public authService: AuthAWS,
+    public validatorsService: ValidatorsService,
   ) {
 
     this.messageToast = {
@@ -80,15 +82,16 @@ export class RegisterNewAccountComponent {
       }
     }
 
-    this.messageToast = {
-      typeToast: 'error',
-      message: 'NO HAY NADA PA',
-    }
-
+    this.authService.accountSignUp = accountSignUp;
     const resSignUp = await this.authService.signUp(accountSignUp);
 
+    if (resSignUp.isOk === false) {
+      this.messageToast = { typeToast: 'error', message: resSignUp.message ?? '[NOT_MESSAGE]' };
+      return;
+    }
+
+    this.messageToast = { typeToast: 'success', message: resSignUp.message ?? '[NOT_MESSAGE]' };
+
   }
-
-
 
 }

@@ -1,4 +1,8 @@
-
+export interface AuthResponse {
+    isOk: boolean,
+    message?: string,
+    data?: any
+}
 export interface Login {
     username: string,
     password: string,
@@ -16,9 +20,9 @@ export interface AccountSignUp {
 export interface AuthService {
     login: Login,
     accountSignUp: AccountSignUp,
-    confirmSignUp(): any;
-    resendConfirmationCode(): any;
-    signIn(login: Login): any;
-    signOut(): any;
-    signUp(accountSignUp: AccountSignUp): any;
+    confirmSignUp(): Promise<AuthResponse>;
+    resendConfirmationCode(): Promise<AuthResponse>;
+    signIn(login: Login): Promise<AuthResponse>;
+    signOut(): Promise<AuthResponse>;
+    signUp(accountSignUp: AccountSignUp): Promise<AuthResponse>;
 }

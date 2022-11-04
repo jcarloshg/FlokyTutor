@@ -41,4 +41,8 @@ export class CustomToastComponent implements OnChanges {
     return this.typeToastStyle.get(typeToast)!;
   }
 
+  closeToast() {
+    this.showToast = false;
+  }
+
 }
