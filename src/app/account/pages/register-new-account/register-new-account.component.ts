@@ -5,6 +5,7 @@ import { CustomValidator } from 'src/app/shared/inputs/service/customValidator.i
 import { ValidatorsService } from '../../../shared/inputs/service/validators.service';
 import { AuthAWS } from '../../services/authAWS.service';
 import { AccountSignUp } from '../../interfaces/auth-service.interface';
+import { CustomToast } from 'src/app/shared/inputs/custom-toast/custom-toast.inteferface';
 
 
 @Component({
@@ -14,8 +15,6 @@ import { AccountSignUp } from '../../interfaces/auth-service.interface';
 })
 export class RegisterNewAccountComponent {
 
-  public isLoading: boolean = false;
-
   public fullNameValidator: CustomValidator;
   public collegeEnrollmentValidator: CustomValidator;
   public collegeNameValidator: CustomValidator;
@@ -23,13 +22,21 @@ export class RegisterNewAccountComponent {
   public passValidator: CustomValidator;
   public ConfiPassValidator: CustomValidator;
 
+  public messageToast: CustomToast;
+
   registerAccountForm: FormGroup = this.formBuilder.group({});
 
   constructor(
     private formBuilder: FormBuilder,
     public validatorsService: ValidatorsService,
-    private authService: AuthAWS,
+    public authService: AuthAWS,
   ) {
+
+    this.messageToast = {
+      typeToast: 'success',
+      message: '',
+    }
+
     this.fullNameValidator = this.validatorsService.getNameValidator('name', this.formBuilder);
     this.collegeEnrollmentValidator = this.validatorsService.getCollageEnrollment('collegeEnrollment', this.formBuilder);
     this.collegeNameValidator = this.validatorsService.getCollegeName('collegeName', this.formBuilder);
@@ -73,10 +80,15 @@ export class RegisterNewAccountComponent {
       }
     }
 
-    this.isLoading = true;
+    this.messageToast = {
+      typeToast: 'error',
+      message: 'NO HAY NADA PA',
+    }
+
     const resSignUp = await this.authService.signUp(accountSignUp);
-    this.isLoading = false;
 
   }
+
+
 
 }

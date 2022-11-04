@@ -1,5 +1,5 @@
 <div class="m-5">
-  <app-custom-toast message="Hola_error" [type]="1"> </app-custom-toast>
+  <app-custom-toast [customToast]="messageToast"> </app-custom-toast>
 
   <div class="row d-flex justify-content-center">
     <div class="col-lg-5 col-md-8">
@@ -61,7 +61,7 @@
         <div class="d-flex justify-content-center w-100 my-4">
           <div
             class="spinner-border text-primary"
-            *ngIf="isLoading; else isLoadingTemplate"
+            *ngIf="this.authService.isLoading; else isLoadingTemplate"
           ></div>
           <ng-template #isLoadingTemplate>
             <button

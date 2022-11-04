@@ -9,6 +9,7 @@ export class AuthAWS implements AuthService {
 
   public accountSignUp: AccountSignUp;
   public login: Login;
+  private _isLoading: boolean = false;
 
   constructor() {
 
@@ -28,6 +29,8 @@ export class AuthAWS implements AuthService {
     };
   }
 
+  public get isLoading(): boolean { return this._isLoading; }
+
   confirmSignUp() {
     throw new Error('Method not implemented.');
   }
@@ -41,7 +44,9 @@ export class AuthAWS implements AuthService {
   }
 
   async signUp(accountSignUp: AccountSignUp) {
+    this._isLoading = true;
     try {
+
       const { user } = await Auth.signUp({
         username: accountSignUp.username,
         password: accountSignUp.password,
@@ -53,9 +58,11 @@ export class AuthAWS implements AuthService {
           enabled: true, // optional - enables auto sign in after user is confirmed
         }
       });
+      this._isLoading = false;
       return user;
     } catch (error) {
       console.log('error signing up:', error);
+      this._isLoading = false;
       return null;
     }
   }
