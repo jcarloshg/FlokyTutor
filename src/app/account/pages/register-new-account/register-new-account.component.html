@@ -1,4 +1,6 @@
 <div class="m-5">
+  <app-custom-toast message="Hola_error" [type]="1"> </app-custom-toast>
+
   <div class="row d-flex justify-content-center">
     <div class="col-lg-5 col-md-8">
       <form [formGroup]="registerAccountForm" autocomplete="off">
@@ -38,7 +40,7 @@
             ></app-email-input>
           </div>
 
-          <div class="col-lg-6">
+          <div class="col-sm-6">
             <app-password-input
               [formControlName]="passValidator.name"
               [showError]="passValidator.showMessage()"
@@ -46,7 +48,7 @@
             ></app-password-input>
           </div>
 
-          <div class="col-md-6">
+          <div class="col-sm-6">
             <app-password-input
               [isToConfirmPass]="true"
               [formControlName]="ConfiPassValidator.name"
@@ -54,11 +56,6 @@
               [messageError]="ConfiPassValidator.getErrorMessage()"
             ></app-password-input>
           </div>
-          <div class="col-md-6"></div>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-6"></div>
         </div>
 
         <div class="d-flex justify-content-center w-100 my-4">
@@ -77,36 +74,6 @@
           </ng-template>
         </div>
       </form>
-    </div>
-  </div>
-
-  <pre>{{ registerAccountForm.value | json }}</pre>
-
-  <button type="button" class="btn btn-primary" id="liveToastBtn">
-    Show live toast
-  </button>
-
-  <div class="position-absolute top-0 end-0 p-3" style="z-index: 11">
-    <div
-      id="liveToast"
-      class="toast show bg-danger text-white"
-      role="alert"
-      aria-live="assertive"
-      aria-atomic="true"
-    >
-      <div class="toast-body">
-        <div class="w-100 d-flex justify-content-end">
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="toast"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="fw-bold">
-          Ya esta en uso el correoen uso el correoen uso el correo electrónico
-        </div>
-      </div>
     </div>
   </div>
 </div>

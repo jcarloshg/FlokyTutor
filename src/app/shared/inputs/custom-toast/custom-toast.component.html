@@ -1,0 +1,23 @@
+<div class="position-absolute top-0 end-0 m-5" style="z-index: 11">
+  <div
+    id="liveToast"
+    class="toast show bg-danger text-white"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="toast-body">
+      <div class="w-100 d-flex justify-content-end">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="fw-bold">
+        {{ message }}
+      </div>
+    </div>
+  </div>
+</div>
