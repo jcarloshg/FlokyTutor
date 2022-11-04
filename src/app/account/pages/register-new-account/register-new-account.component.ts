@@ -85,12 +85,13 @@ export class RegisterNewAccountComponent {
     this.authService.accountSignUp = accountSignUp;
     const resSignUp = await this.authService.signUp(accountSignUp);
 
-    if (resSignUp.isOk === false) {
+    if (resSignUp.isOk === true) {
       this.messageToast = { typeToast: 'error', message: resSignUp.message ?? '[NOT_MESSAGE]' };
       return;
     }
 
     this.messageToast = { typeToast: 'success', message: resSignUp.message ?? '[NOT_MESSAGE]' };
+    this.router.navigate(['./cuenta/confirmar_cuenta']);
 
   }
 

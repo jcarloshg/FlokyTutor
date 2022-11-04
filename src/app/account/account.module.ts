@@ -7,13 +7,15 @@ import { HomeAccountComponent } from './pages/home-account/home-account.componen
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { RegisterNewAccountComponent } from './pages/register-new-account/register-new-account.component';
+import { ConfirmAccountComponent } from './pages/confirm-account/confirm-account.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     HomeAccountComponent,
-    RegisterNewAccountComponent
+    RegisterNewAccountComponent,
+    ConfirmAccountComponent
   ],
   imports: [
     CommonModule,
