@@ -5,31 +5,39 @@
         <p class="h4">Crea tu cuenta de tutor</p>
         <p>Ingresa tus datos</p>
 
-        <app-name-input
-          [formControlName]="fullNameValidator.name"
-          [showError]="fullNameValidator.showMessage()"
-          [messageError]="fullNameValidator.getErrorMessage()"
-        ></app-name-input>
+        <div class="row g-3">
+          <div class="col-12">
+            <app-name-input
+              [formControlName]="fullNameValidator.name"
+              [showError]="fullNameValidator.showMessage()"
+              [messageError]="fullNameValidator.getErrorMessage()"
+            ></app-name-input>
+          </div>
 
-        <app-college-enrollment-input
-          [formControlName]="collegeEnrollmentValidator.name"
-          [showError]="collegeEnrollmentValidator.showMessage()"
-          [messageError]="collegeEnrollmentValidator.getErrorMessage()"
-        ></app-college-enrollment-input>
+          <div class="col-sm-8">
+            <app-college-enrollment-input
+              [formControlName]="collegeEnrollmentValidator.name"
+              [showError]="collegeEnrollmentValidator.showMessage()"
+              [messageError]="collegeEnrollmentValidator.getErrorMessage()"
+            ></app-college-enrollment-input>
+          </div>
 
-        <app-college-name-input
-          [formControlName]="collegeNameValidator.name"
-          [showError]="collegeNameValidator.showMessage()"
-          [messageError]="collegeNameValidator.getErrorMessage()"
-        ></app-college-name-input>
+          <div class="col-12">
+            <app-college-name-input
+              [formControlName]="collegeNameValidator.name"
+              [showError]="collegeNameValidator.showMessage()"
+              [messageError]="collegeNameValidator.getErrorMessage()"
+            ></app-college-name-input>
+          </div>
 
-        <app-email-input
-          [formControlName]="emailValidator.name"
-          [showError]="emailValidator.showMessage()"
-          [messageError]="emailValidator.getErrorMessage()"
-        ></app-email-input>
+          <div class="col-12">
+            <app-email-input
+              [formControlName]="emailValidator.name"
+              [showError]="emailValidator.showMessage()"
+              [messageError]="emailValidator.getErrorMessage()"
+            ></app-email-input>
+          </div>
 
-        <div class="row">
           <div class="col-lg-6">
             <app-password-input
               [formControlName]="passValidator.name"
@@ -37,7 +45,8 @@
               [messageError]="passValidator.getErrorMessage()"
             ></app-password-input>
           </div>
-          <div class="col-lg-6">
+
+          <div class="col-md-6">
             <app-password-input
               [isToConfirmPass]="true"
               [formControlName]="ConfiPassValidator.name"
@@ -45,6 +54,11 @@
               [messageError]="ConfiPassValidator.getErrorMessage()"
             ></app-password-input>
           </div>
+          <div class="col-md-6"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6"></div>
         </div>
 
         <div class="d-flex justify-content-center w-100 my-4">
