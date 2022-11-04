@@ -9,6 +9,11 @@ const routes: Routes = [
     loadChildren: () => import('./account/account.module').then(m => m.AccountModule),
   },
   {
+    path: 'activities',
+    // component: ErrPageComponent,
+    loadChildren: () => import('./activities/activities.module').then(m => m.ActivitiesModule),
+  },
+  {
     path: '**',
     redirectTo: 'cuenta',
   }
