@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
-// name             |
-// activitieLevel   |   ActivityLevel
-// typeActivity     |   ActivityType
-// question
-// questionBody
-// answers
-// topicID
+// name             |                   | nombre actividad
+// activitieLevel   |   ActivityLevel   |
+// typeActivity     |   ActivityType    |
+// question         |                   |
+// questionBody     |                   |
+// answers          |   AWSJSON         |
+// topicID          |   topicID         |
+
+// topic
+// id
+// name
 
 // enum ActivityLevel {
 //   A1
@@ -33,7 +37,6 @@ export class CreateActivitieComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

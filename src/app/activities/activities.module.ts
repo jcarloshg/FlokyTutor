@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ActivitiesRoutingModule } from './activities-routing.module';
 import { CreateActivitieComponent } from './pages/create-activitie/create-activitie.component';
 import { HomeActivitiesComponent } from './pages/home-activities/home-activities.component';
+import { SharedModule } from '../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +15,10 @@ import { HomeActivitiesComponent } from './pages/home-activities/home-activities
   ],
   imports: [
     CommonModule,
-    ActivitiesRoutingModule
+    ActivitiesRoutingModule,
+    ReactiveFormsModule,
+    // mine
+    SharedModule,
   ]
 })
 export class ActivitiesModule { }

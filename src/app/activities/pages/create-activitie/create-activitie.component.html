@@ -2,18 +2,64 @@
 
     <div class="row d-flex justify-content-center">
         <div class="col-8">
-            <p class="h4">Crea tu cuenta de tutor</p>
-            <p>Ingresa tus datos</p>
+            <p class="h4">Crea un actividad</p>
+            <p>Ingresa los datos de la nueva actividad</p>
 
 
             <div class="row g-3">
-                <div class="col-12" style='border: 1px solid;'></div>
-                <div class="col-12" style='border: 1px solid;'></div>
+                <div class="col-12">
+                    <label for="ForNameInput" class="form-label">Nombre de la actividad</label>
+                    <input type="text" class="form-control" id="ForNameInput" />
+                </div>
 
-                <div class="col-md-6" style='border: 1px solid;'>
+                <div class="col-md-6">
+                    <label for="ForNameInput" class="form-label">Nivel</label>
+                    <select class="form-select" id="ForNameInput" aria-label="Default select example">
+                        <option value="A1">A1</option>
+                        <option value="A2">A2</option>
+                        <option value="B1">B1</option>
+                        <option value="B2">B2</option>
+                        <option value="C1">C1</option>
+                        <option value="C2">C2</option>
+                    </select>
+                    <!-- <input type="text" class="form-control" id="ForNameInput" /> -->
+                </div>
+
+                <div class="col-md-6">
+                    <label for="ForNameInput" class="form-label">Tipo actividad</label>
+                    <select class="form-select" id="ForNameInput" aria-label="Default select example">
+                        <option value="WRITING">{{ "WRITING" | titlecase}}</option>
+                        <option value="READING">{{ "READING" | titlecase}}</option>
+                        <option value="TALKING">{{ "TALKING" | titlecase}}</option>
+                        <option value="LISTENING">{{ "LISTENING" | titlecase}}</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="ForNameInput" class="form-label">Tema</label>
+                    <input type="text" class="form-control" id="ForNameInput" />
+                </div>
+
+                <div class="col-12">
+                    <label for="ForNameInput" class="form-label">Pregunta</label>
+                    <input type="text" class="form-control" id="ForNameInput" />
+                </div>
+
+                <div class="col-12">
+                    <label for="ForNameInput" class="form-label">Cuerpo de la pregunta</label>
+                    <input type="text" class="form-control" id="ForNameInput" />
+                </div>
+
+                <div class="col-12">
+                    <label for="ForNameInput" class="form-label">Repuestas</label>
+                    <input type="text" class="form-control" id="ForNameInput" />
+                </div>
+
+                <div class="col-md-6">
                     asdfs
                 </div>
-                <div class="col-md-6" style='border: 1px solid;'>
+
+                <div class="col-md-6">
                     lkj
                 </div>
 
