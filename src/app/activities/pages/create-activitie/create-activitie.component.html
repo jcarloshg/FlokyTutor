@@ -5,81 +5,96 @@
             <p class="h4">Crea un actividad</p>
             <p>Ingresa los datos de la nueva actividad</p>
 
-            <div class="row g-3">
-                <div class="col-12">
-                    <label for="ForNameInput" class="form-label">Nombre de la actividad</label>
-                    <input type="text" class="form-control" id="ForNameInput" />
-                </div>
+            <form [formGroup]="createActivitieForm" autocomplete="off">
 
-                <div class="col-md-6">
-                    <label for="ForNameInput" class="form-label">Nivel</label>
-                    <select class="form-select" id="ForNameInput" aria-label="Default select example">
-                        <option value="A1">A1</option>
-                        <option value="A2">A2</option>
-                        <option value="B1">B1</option>
-                        <option value="B2">B2</option>
-                        <option value="C1">C1</option>
-                        <option value="C2">C2</option>
-                    </select>
-                    <!-- <input type="text" class="form-control" id="ForNameInput" /> -->
-                </div>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label for="ForNameInput" class="form-label">Nombre de la actividad</label>
+                        <input type="text" class="form-control" id="ForNameInput" formControlName="name" />
+                    </div>
 
-                <div class="col-md-6">
-                    <label for="ForNameInput" class="form-label">Tipo actividad</label>
-                    <select class="form-select" id="ForNameInput" aria-label="Default select example">
-                        <option value="WRITING">{{ "WRITING" | titlecase }}</option>
-                        <option value="READING">{{ "READING" | titlecase }}</option>
-                        <option value="TALKING">{{ "TALKING" | titlecase }}</option>
-                        <option value="LISTENING">{{ "LISTENING" | titlecase }}</option>
-                        <option value="TODAS">{{ "TODAS" | titlecase }}</option>
-                    </select>
-                </div>
+                    <div class="col-md-6">
+                        <label for="ForNameInput" class="form-label">Nivel</label>
+                        <select class="form-select" id="ForNameInput" aria-label="Default select example"
+                            formControlName="activityLevel">
+                            <option value="A1">A1</option>
+                            <option value="A2">A2</option>
+                            <option value="B1">B1</option>
+                            <option value="B2">B2</option>
+                            <option value="C1">C1</option>
+                            <option value="C2">C2</option>
+                        </select>
+                        <!-- <input type="text" class="form-control" id="ForNameInput" /> -->
+                    </div>
 
-                <div class="col-md-12">
-                    <label for="ForNameInput" class="form-label">Tema</label>
-                    <select class="form-select" id="ForNameInput" aria-label="Default select example">
-                        <option value="Animales">{{ "Animales" }}</option>
-                        <option value="Oficios">{{ "Oficios" }}</option>
-                        <option value="Países">{{ "Países" }}</option>
-                        <option value="Tiempo pasado">{{ "Tiempo pasado" }}</option>
-                        <option value="Nuevo tema">{{ "Nuevo tema" }}</option>
-                    </select>
-                    <!-- <input type="text" class="form-control" id="ForNameInput" /> -->
-                </div>
+                    <div class="col-md-6">
+                        <label for="ForNameInput" class="form-label">Tipo actividad</label>
+                        <select class="form-select" id="ForNameInput" aria-label="Default select example"
+                            formControlName="typeActivity">
+                            <option value="WRITING">{{ "WRITING" | titlecase }}</option>
+                            <option value="READING">{{ "READING" | titlecase }}</option>
+                            <option value="TALKING">{{ "TALKING" | titlecase }}</option>
+                            <option value="LISTENING">{{ "LISTENING" | titlecase }}</option>
+                            <option value="TODAS">{{ "TODAS" | titlecase }}</option>
+                        </select>
+                    </div>
 
-                <div class="col-12">
-                    <label for="ForNameInput" class="form-label">Pregunta</label>
-                    <input type="text" class="form-control" id="ForNameInput" />
-                </div>
+                    <div class="col-md-12">
+                        <label for="ForNameInput" class="form-label">Tema</label>
+                        <select class="form-select" id="ForNameInput" aria-label="Default select example"
+                            formControlName="topicID">
+                            <option value="Animales">{{ "Animales" }}</option>
+                            <option value="Oficios">{{ "Oficios" }}</option>
+                            <option value="Países">{{ "Países" }}</option>
+                            <option value="Tiempo pasado">{{ "Tiempo pasado" }}</option>
+                            <option value="Nuevo tema">{{ "Nuevo tema" }}</option>
+                        </select>
+                        <!-- <input type="text" class="form-control" id="ForNameInput" /> -->
+                    </div>
 
-                <div class="col-12">
-                    <label for="ForQuestionBody" class="form-label">Cuerpo de la pregunta</label>
-                    <textarea class="form-control" id="ForQuestionBody" rows="3"></textarea>
-                </div>
+                    <div class="col-12">
+                        <label for="ForNameInput" class="form-label">Pregunta</label>
+                        <input type="text" class="form-control" id="ForNameInput" formControlName="question" />
+                    </div>
 
-                <div class="col-12">
-                    <label for="ForNameInput" class="form-label">Repuestas</label>
+                    <div class="col-12">
+                        <label for="ForQuestionBody" class="form-label">Cuerpo de la pregunta</label>
+                        <textarea class="form-control" id="ForQuestionBody" rows="3"
+                            formControlName="questionBody"></textarea>
+                    </div>
 
-                    <div class="input-group mb-1">
-                        <input type="text" class="form-control" aria-label="Recipient's username"
-                            aria-describedby="ForResponse" />
-                        <button type="button" class="btn btn-outline-danger text-danger" id="ForResponse">
-                            Borrar respuesta
+                    <div class="col-12">
+                        <label for="ForNameInput" class="form-label">Repuestas</label>
+
+                        <div class="input-group mb-1">
+                            <input type="text" class="form-control" aria-label="Recipient's username"
+                                aria-describedby="ForResponse" />
+
+                            <button type="button" class="btn btn-outline-danger text-danger" id="ForResponse">
+                                Borrar respuesta
+                            </button>
+                        </div>
+
+
+                        <div class="mt-2 d-flex justify-content-end">
+                            <button type="button" class="btn btn-outline-primary w-25">
+                                Agregar respuesta
+                            </button>
+                        </div>
+
+                    </div>
+
+
+                    <div class="mt-5 d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary w-75" (click)="printActivitie()">
+                            Agregar actividad
                         </button>
                     </div>
 
-                    <button type="button" class="btn btn-outline-primary mt-1 w-25">
-                        Agregar respuesta
-                    </button>
+                    <pre>{{this.createActivitieForm.value | json}}</pre>
 
                 </div>
-
-
-                <button type="button" class="btn btn-primary mt-5 w-50">
-                    Agregar actividad
-                </button>
-
-            </div>
+            </form>
 
         </div>
     </div>

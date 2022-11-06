@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Activitie, ActivityLevel, ActivityType } from 'src/models';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ValidatorsService } from '../../../shared/inputs/service/validators.service';
 
-// name             |                   | nombre actividad
+// name             |                   |   nombre actividad
 // activitieLevel   |   ActivityLevel   |
 // typeActivity     |   ActivityType    |
 // topicID          |   topicID         |
@@ -12,22 +15,6 @@ import { Component, OnInit } from '@angular/core';
 // id
 // name
 
-// enum ActivityLevel {
-//   A1
-//   A2
-//   B1
-//   B2
-//   C1
-//   C2
-// }
-
-// enum ActivityType {
-//   WRITING
-//   READING
-//   TALKING
-//   LISTENING
-// }
-
 @Component({
   selector: 'app-create-activitie',
   templateUrl: './create-activitie.component.html',
@@ -35,8 +22,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateActivitieComponent implements OnInit {
 
-  constructor() { }
+  public createActivitieForm: FormGroup = this.formBuilder.group({
+    name: ['', Validators.required],
+    activityLevel: ['', Validators.required],
+    typeActivity: ['', Validators.required],
+    question: ['', Validators.required],
+    questionBody: ['', Validators.required],
+    answers: ['', Validators.required],
+    topicID: ['', Validators.required],
+  });
+
+  constructor(
+    private formBuilder: FormBuilder,
+    public validatorsService: ValidatorsService,
+  ) { }
 
   ngOnInit(): void { }
+
+  printActivitie() {
+    const activitie: Activitie = {
+      id: '',
+      name: '',
+      activityLevel: ActivityLevel.A1,
+      typeActivity: ActivityType.LISTENING,
+      question: '',
+      questionBody: '',
+      answers: '',
+      topicID: '',
+      createdAt: '',
+      updatedAt: '',
+    };
+
+    console.log("🚀 ~ file: create-activitie.component.ts ~ line 59 ~ CreateActivitieComponent ~ printActivitie ~ this.createActivitieForm.value", this.createActivitieForm.value)
+  }
 
 }
