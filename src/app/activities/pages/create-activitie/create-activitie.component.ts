@@ -3,10 +3,10 @@ import { Component, OnInit } from '@angular/core';
 // name             |                   | nombre actividad
 // activitieLevel   |   ActivityLevel   |
 // typeActivity     |   ActivityType    |
+// topicID          |   topicID         |
 // question         |                   |
 // questionBody     |                   |
 // answers          |   AWSJSON         |
-// topicID          |   topicID         |
 
 // topic
 // id

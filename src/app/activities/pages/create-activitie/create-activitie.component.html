@@ -1,10 +1,9 @@
-<div class="mt-3">
-
+<div class="mt-4">
     <div class="row d-flex justify-content-center">
-        <div class="col-8">
+        <div class="col-6">
+
             <p class="h4">Crea un actividad</p>
             <p>Ingresa los datos de la nueva actividad</p>
-
 
             <div class="row g-3">
                 <div class="col-12">
@@ -28,16 +27,24 @@
                 <div class="col-md-6">
                     <label for="ForNameInput" class="form-label">Tipo actividad</label>
                     <select class="form-select" id="ForNameInput" aria-label="Default select example">
-                        <option value="WRITING">{{ "WRITING" | titlecase}}</option>
-                        <option value="READING">{{ "READING" | titlecase}}</option>
-                        <option value="TALKING">{{ "TALKING" | titlecase}}</option>
-                        <option value="LISTENING">{{ "LISTENING" | titlecase}}</option>
+                        <option value="WRITING">{{ "WRITING" | titlecase }}</option>
+                        <option value="READING">{{ "READING" | titlecase }}</option>
+                        <option value="TALKING">{{ "TALKING" | titlecase }}</option>
+                        <option value="LISTENING">{{ "LISTENING" | titlecase }}</option>
+                        <option value="TODAS">{{ "TODAS" | titlecase }}</option>
                     </select>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <label for="ForNameInput" class="form-label">Tema</label>
-                    <input type="text" class="form-control" id="ForNameInput" />
+                    <select class="form-select" id="ForNameInput" aria-label="Default select example">
+                        <option value="Animales">{{ "Animales" }}</option>
+                        <option value="Oficios">{{ "Oficios" }}</option>
+                        <option value="Países">{{ "Países" }}</option>
+                        <option value="Tiempo pasado">{{ "Tiempo pasado" }}</option>
+                        <option value="Nuevo tema">{{ "Nuevo tema" }}</option>
+                    </select>
+                    <!-- <input type="text" class="form-control" id="ForNameInput" /> -->
                 </div>
 
                 <div class="col-12">
@@ -46,26 +53,34 @@
                 </div>
 
                 <div class="col-12">
-                    <label for="ForNameInput" class="form-label">Cuerpo de la pregunta</label>
-                    <input type="text" class="form-control" id="ForNameInput" />
+                    <label for="ForQuestionBody" class="form-label">Cuerpo de la pregunta</label>
+                    <textarea class="form-control" id="ForQuestionBody" rows="3"></textarea>
                 </div>
 
                 <div class="col-12">
                     <label for="ForNameInput" class="form-label">Repuestas</label>
-                    <input type="text" class="form-control" id="ForNameInput" />
+
+                    <div class="input-group mb-1">
+                        <input type="text" class="form-control" aria-label="Recipient's username"
+                            aria-describedby="ForResponse" />
+                        <button type="button" class="btn btn-outline-danger text-danger" id="ForResponse">
+                            Borrar respuesta
+                        </button>
+                    </div>
+
+                    <button type="button" class="btn btn-outline-primary mt-1 w-25">
+                        Agregar respuesta
+                    </button>
+
                 </div>
 
-                <div class="col-md-6">
-                    asdfs
-                </div>
 
-                <div class="col-md-6">
-                    lkj
-                </div>
+                <button type="button" class="btn btn-primary mt-5 w-50">
+                    Agregar actividad
+                </button>
 
             </div>
 
         </div>
     </div>
-
 </div>
