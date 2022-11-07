@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ValidatorsService } from '../../../shared/inputs/service/validators.service';
-import { Activitie, ActivityLevel, ActivityType } from 'src/models';
-
 
 @Component({
   selector: 'app-create-activitie',
@@ -48,6 +46,8 @@ export class CreateActivitieComponent implements OnInit {
     const examplesFormArry = this.createActivitieForm.get('examples') as FormArray;
     examplesFormArry.removeAt(exampleIndex);
   }
+
+  
 
   printActivitie() {
     console.log("🚀 ~ file: create-activitie.component.ts ~ line 73 ~ CreateActivitieComponent ~ printActivitie ~ this.topicFormControl", this.topicFormControl)

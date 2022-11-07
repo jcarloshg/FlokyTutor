@@ -9,7 +9,8 @@
             <div class="row g-3">
                 <div class="col-12">
                     <label for="ForNameInput" class="form-label">Nombre de la actividad</label>
-                    <input type="text" class="form-control" id="ForNameInput" formControlName="name" />
+                    <input type="text" class="form-control" id="ForNameInput" formControlName="name"
+                        placeholder="Pasado de 'To Be'" />
                 </div>
 
                 <div class="col-md-6">
@@ -23,7 +24,6 @@
                         <option value="C1">C1</option>
                         <option value="C2">C2</option>
                     </select>
-                    <!-- <input type="text" class="form-control" id="ForNameInput" /> -->
                 </div>
 
                 <div class="col-md-6">
@@ -43,6 +43,7 @@
                         <div class="col-md-6">
                             <select class="form-select" id="ForNameInput" aria-label="Default select example"
                                 formControlName="topicID">
+                                <option value="" disabled selected hidden>{{ "Pasado de 'To Be'" }}</option>
                                 <option value="Animales">{{ "Animales" }}</option>
                                 <option value="Oficios">{{ "Oficios" }}</option>
                                 <option value="Países">{{ "Países" }}</option>
@@ -51,7 +52,7 @@
                             </select>
                         </div>
                         <div class="col-md-6" *ngIf="this.createActivitieForm.get('topicID')?.value === 'new_topic'">
-                            <input type="text" class="form-control" id="ForNameInput" placeholder="Nombre nuevo tema"
+                            <input type="text" class="form-control" id="ForNameInput" placeholder="Clima"
                                 [formControl]="topicFormControl" />
                         </div>
                     </div>
@@ -59,12 +60,13 @@
 
                 <div class="col-12">
                     <label for="ForNameInput" class="form-label">Pregunta</label>
-                    <input type="text" class="form-control" id="ForNameInput" formControlName="question" />
+                    <input type="text" class="form-control" id="ForNameInput" formControlName="question"
+                        placeholder="Escribe en ingles la pallabra:" />
                 </div>
 
                 <div class="col-12">
                     <label for="ForQuestionBody" class="form-label">Cuerpo de la pregunta</label>
-                    <textarea class="form-control" id="ForQuestionBody" rows="3"
+                    <textarea class="form-control" id="ForQuestionBody" rows="3" placeholder="Cabra"
                         formControlName="questionBody"></textarea>
                 </div>
 
@@ -99,8 +101,9 @@
 
                     <div formArrayName="examples">
                         <div class="input-group mb-3" *ngFor="let example of examplesArr.controls; let i = index">
-                            <input type="text" class="form-control" placeholder="" aria-label="Recipient's username"
-                                aria-describedby="button-addon2" [formControlName]="i">
+                            <input type="text" class="form-control" placeholder="ej. They 'was' running two hours ago."
+                                aria-label="Recipient's username" aria-describedby="button-addon2"
+                                [formControlName]="i">
                             <button class="btn btn-outline-secondary text-bg-danger" type="button" id="button-addon2"
                                 (click)="deleteExample(i)">x</button>
                         </div>
