@@ -103,8 +103,6 @@
                     <div class="col-12">
                         <label for="ForExamplesInput" class="form-label">Ejemplos</label>
 
-                        <!-- <input type="text" class="form-control" id="ForExamplesInput" formControlName="question" /> -->
-
                         <div formArrayName="examples">
                             <div class="input-group mb-3" *ngFor="let example of examplesArr.controls; let i = index">
                                 <input type="text" class="form-control" placeholder="" aria-label="Recipient's username"
@@ -114,7 +112,7 @@
                             </div>
                         </div>
 
-                        <button class="btn btn-outline-primary" (click)="addExampleInput()">Agregar ejemplo</button>
+                        <button class="btn btn-outline-primary" (click)="addExample()">Agregar ejemplo</button>
                     </div>
 
 

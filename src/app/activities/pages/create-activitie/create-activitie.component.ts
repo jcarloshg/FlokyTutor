@@ -36,10 +36,7 @@ export class CreateActivitieComponent implements OnInit {
     return this.createActivitieForm.get('examples') as FormArray;
   }
 
-  /**
-   * addExampleInput
-   */
-  public addExampleInput() {
+  public addExample() {
     const exampleFormControl = new FormControl('', Validators.required);
     const examplesFormArry = this.createActivitieForm.get('examples') as FormArray;
     examplesFormArry.push(exampleFormControl);
