@@ -35,7 +35,6 @@
                             <option value="READING">{{ "READING" | titlecase }}</option>
                             <option value="TALKING">{{ "TALKING" | titlecase }}</option>
                             <option value="LISTENING">{{ "LISTENING" | titlecase }}</option>
-                            <option value="TODAS">{{ "TODAS" | titlecase }}</option>
                         </select>
                     </div>
 
@@ -66,22 +65,56 @@
                     <div class="col-12">
                         <label for="ForNameInput" class="form-label">Repuestas</label>
 
-                        <div class="input-group mb-1">
-                            <input type="text" class="form-control" aria-label="Recipient's username"
-                                aria-describedby="ForResponse" />
-
-                            <button type="button" class="btn btn-outline-danger text-danger" id="ForResponse">
-                                Borrar respuesta
-                            </button>
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Respuesta correcta</label>
+                            <div class="col-sm-8">
+                                <input type="email" class="form-control" id="inputEmail3"
+                                    formControlName="answers_correct">
+                            </div>
                         </div>
 
-
-                        <div class="mt-2 d-flex justify-content-end">
-                            <button type="button" class="btn btn-outline-primary w-25">
-                                Agregar respuesta
-                            </button>
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Respuesta incorrecta</label>
+                            <div class="col-sm-8">
+                                <input type="email" class="form-control" id="inputEmail3"
+                                    formControlName="answers_incorrecta_1">
+                            </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Respuesta incorrecta</label>
+                            <div class="col-sm-8">
+                                <input type="email" class="form-control" id="inputEmail3"
+                                    formControlName="answers_incorrecta_2">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Respuesta incorrecta</label>
+                            <div class="col-sm-8">
+                                <input type="email" class="form-control" id="inputEmail3"
+                                    formControlName="answers_incorrecta_3">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-12">
+                        <label for="ForExamplesInput" class="form-label">Ejemplos</label>
+
+                        <!-- <input type="text" class="form-control" id="ForExamplesInput" formControlName="question" /> -->
+
+                        <div formArrayName="examples">
+                            <div class="input-group mb-3" *ngFor="let example of examplesArr.controls; let i = index">
+                                <input type="text" class="form-control" placeholder="" aria-label="Recipient's username"
+                                    aria-describedby="button-addon2" [formControlName]="i">
+                                <button class="btn btn-outline-secondary text-bg-danger" type="button"
+                                    id="button-addon2">x</button>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-outline-primary" (click)="addExampleInput()">Agregar ejemplo</button>
                     </div>
 
 

@@ -281,18 +281,20 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "answers": {
-                    "name": "answers",
-                    "isArray": false,
-                    "type": "AWSJSON",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "topicID": {
                     "name": "topicID",
                     "isArray": false,
                     "type": "ID",
                     "isRequired": true,
+                    "attributes": []
+                },
+                "answers": {
+                    "name": "answers",
+                    "isArray": false,
+                    "type": {
+                        "nonModel": "Answer"
+                    },
+                    "isRequired": false,
                     "attributes": []
                 },
                 "accounts": {
@@ -308,6 +310,14 @@ export const schema = {
                         "connectionType": "HAS_MANY",
                         "associatedWith": "activitie"
                     }
+                },
+                "examples": {
+                    "name": "examples",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -390,6 +400,14 @@ export const schema = {
                         "connectionType": "HAS_MANY",
                         "associatedWith": "topicID"
                     }
+                },
+                "conceptInformation": {
+                    "name": "conceptInformation",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -544,7 +562,41 @@ export const schema = {
             ]
         }
     },
-    "nonModels": {},
+    "nonModels": {
+        "Answer": {
+            "name": "Answer",
+            "fields": {
+                "correct": {
+                    "name": "correct",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "incorrect_1": {
+                    "name": "incorrect_1",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "incorrect_2": {
+                    "name": "incorrect_2",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "incorrect_3": {
+                    "name": "incorrect_3",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                }
+            }
+        }
+    },
     "codegenVersion": "3.3.1",
-    "version": "a43e4c3f93f97edd45a3e7967829af3f"
+    "version": "bb6e80dc5bca5e349171bd695a9f3378"
 };

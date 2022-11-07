@@ -24,6 +24,24 @@ export enum ActivityType {
   LISTENING = "LISTENING"
 }
 
+type EagerAnswer = {
+  readonly correct: string;
+  readonly incorrect_1?: string | null;
+  readonly incorrect_2?: string | null;
+  readonly incorrect_3?: string | null;
+}
+
+type LazyAnswer = {
+  readonly correct: string;
+  readonly incorrect_1?: string | null;
+  readonly incorrect_2?: string | null;
+  readonly incorrect_3?: string | null;
+}
+
+export declare type Answer = LazyLoading extends LazyLoadingDisabled ? EagerAnswer : LazyAnswer
+
+export declare const Answer: (new (init: ModelInit<Answer>) => Answer)
+
 type ActivitiesProgressMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -119,9 +137,10 @@ type EagerActivitie = {
   readonly typeActivity?: ActivityType | keyof typeof ActivityType | null;
   readonly question: string;
   readonly questionBody?: string | null;
-  readonly answers?: string | null;
   readonly topicID: string;
+  readonly answers?: Answer | null;
   readonly accounts?: (AccountActivitie | null)[] | null;
+  readonly examples?: (string | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -133,9 +152,10 @@ type LazyActivitie = {
   readonly typeActivity?: ActivityType | keyof typeof ActivityType | null;
   readonly question: string;
   readonly questionBody?: string | null;
-  readonly answers?: string | null;
   readonly topicID: string;
+  readonly answers?: Answer | null;
   readonly accounts: AsyncCollection<AccountActivitie>;
+  readonly examples?: (string | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -150,6 +170,7 @@ type EagerTopic = {
   readonly id: string;
   readonly name: string;
   readonly activities?: (Activitie | null)[] | null;
+  readonly conceptInformation?: (string | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -158,6 +179,7 @@ type LazyTopic = {
   readonly id: string;
   readonly name: string;
   readonly activities: AsyncCollection<Activitie>;
+  readonly conceptInformation?: (string | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

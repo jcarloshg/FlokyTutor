@@ -1,19 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Activitie, ActivityLevel, ActivityType } from 'src/models';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ValidatorsService } from '../../../shared/inputs/service/validators.service';
+import { Activitie, ActivityLevel, ActivityType } from 'src/models';
 
-// name             |                   |   nombre actividad
-// activitieLevel   |   ActivityLevel   |
-// typeActivity     |   ActivityType    |
-// topicID          |   topicID         |
-// question         |                   |
-// questionBody     |                   |
-// answers          |   AWSJSON         |
-
-// topic
-// id
-// name
 
 @Component({
   selector: 'app-create-activitie',
@@ -28,8 +17,12 @@ export class CreateActivitieComponent implements OnInit {
     typeActivity: ['', Validators.required],
     question: ['', Validators.required],
     questionBody: ['', Validators.required],
-    answers: ['', Validators.required],
     topicID: ['', Validators.required],
+    answers_correct: ['', Validators.required],
+    answers_incorrecta_1: ['', Validators.required],
+    answers_incorrecta_2: ['', Validators.required],
+    answers_incorrecta_3: ['', Validators.required],
+    examples: this.formBuilder.array([[''],], Validators.required),
   });
 
   constructor(
@@ -39,7 +32,21 @@ export class CreateActivitieComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  public get examplesArr(): FormArray {
+    return this.createActivitieForm.get('examples') as FormArray;
+  }
+
+  /**
+   * addExampleInput
+   */
+  public addExampleInput() {
+    const exampleFormControl = new FormControl('', Validators.required);
+    const examplesFormArry = this.createActivitieForm.get('examples') as FormArray;
+    examplesFormArry.push(exampleFormControl);
+  }
+
   printActivitie() {
+
     const activitie: Activitie = {
       id: '',
       name: '',
@@ -47,10 +54,16 @@ export class CreateActivitieComponent implements OnInit {
       typeActivity: ActivityType.LISTENING,
       question: '',
       questionBody: '',
-      answers: '',
+      answers: {
+        correct: 'correcta',
+        incorrect_1: 'incorrect_1',
+        incorrect_2: 'incorrect_2',
+        incorrect_3: 'incorrect_3',
+      },
       topicID: '',
       createdAt: '',
       updatedAt: '',
+      examples: ['']
     };
 
     console.log("🚀 ~ file: create-activitie.component.ts ~ line 59 ~ CreateActivitieComponent ~ printActivitie ~ this.createActivitieForm.value", this.createActivitieForm.value)

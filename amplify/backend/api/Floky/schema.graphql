@@ -1,3 +1,10 @@
+type Answer {
+  correct: String!
+  incorrect_1: String
+  incorrect_2: String
+  incorrect_3: String
+}
+
 enum ActivityLevel {
   A1
   A2
@@ -43,9 +50,10 @@ type Activitie @model @auth(rules: [{allow: public}]) {
   typeActivity: ActivityType
   question: String!
   questionBody: String
-  answers: AWSJSON
   topicID: ID! @index(name: "byTopic")
+  answers: Answer
   accounts: [Account] @manyToMany(relationName: "AccountActivitie")
+  examples: [String]
 }
 
 enum ActivityType {
@@ -59,5 +67,6 @@ type Topic @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
   activities: [Activitie] @hasMany(indexName: "byTopic", fields: ["id"])
+  conceptInformation: [String]
 }
  
