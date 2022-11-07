@@ -10,7 +10,7 @@ import { ValidatorsService } from '../../../shared/inputs/service/validators.ser
 export class CreateActivitieComponent implements OnInit {
 
   public createActivitieForm: FormGroup = this.formBuilder.group({
-    name: ['', Validators.required],
+    name: ['', [Validators.required, Validators.pattern('^[a-zA-Z]{3,}( {1,2}[a-zA-Z]{3,}){1,}$')]],
     activityLevel: ['', Validators.required],
     typeActivity: ['', Validators.required],
     question: ['', Validators.required],
@@ -24,6 +24,10 @@ export class CreateActivitieComponent implements OnInit {
   });
 
   public topicFormControl: FormControl = this.formBuilder.control('', Validators.required);
+
+  private messagesError = new Map()
+    .set('required', "El dato es requerido.")
+    .set('pattern', "El dato no es valido");
 
   constructor(
     private formBuilder: FormBuilder,
@@ -47,7 +51,25 @@ export class CreateActivitieComponent implements OnInit {
     examplesFormArry.removeAt(exampleIndex);
   }
 
-  
+  public showMessageError(nameFormControl: string) {
+    const isFieldTouched = this.createActivitieForm.get(nameFormControl)?.touched;
+    const fieldHasErrors = this.createActivitieForm.get(nameFormControl)?.errors;
+
+    const fieldIsValid = isFieldTouched && fieldHasErrors;
+
+    return (fieldIsValid == null || fieldIsValid == false)
+      ? false
+      : true;
+  }
+
+  public getMessageError(nameFormControl: string): string | null {
+    const objErrors = this.createActivitieForm.get(nameFormControl)?.errors;
+    if (objErrors == null || objErrors == undefined) return null;
+    const typesErrors = Object.keys(objErrors); // example -> ["required","pattern"]
+    const typeError = typesErrors[0];
+    const messageError = this.messagesError.get(typeError);
+    return messageError ?? null;
+  }
 
   printActivitie() {
     console.log("🚀 ~ file: create-activitie.component.ts ~ line 73 ~ CreateActivitieComponent ~ printActivitie ~ this.topicFormControl", this.topicFormControl)

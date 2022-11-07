@@ -5,12 +5,16 @@
         <p>Ingresa los datos de la nueva actividad</p>
 
         <form [formGroup]="createActivitieForm" autocomplete="off">
-
             <div class="row g-3">
+
+
                 <div class="col-12">
                     <label for="ForNameInput" class="form-label">Nombre de la actividad</label>
-                    <input type="text" class="form-control" id="ForNameInput" formControlName="name"
-                        placeholder="Pasado de 'To Be'" />
+                    <input type="text" class="form-control" id="ForNameInput" placeholder="Pasado de 'To Be'"
+                        aria-describedby="validationServerUsernameFeedback" formControlName="name" required>
+                    <app-message-error [showMessage]="showMessageError('name')"
+                        [message_error]="getMessageError('name')"></app-message-error>
+
                 </div>
 
                 <div class="col-md-6">

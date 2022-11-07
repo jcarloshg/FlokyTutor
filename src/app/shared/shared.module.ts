@@ -9,6 +9,7 @@ import { EmailInputComponent } from './inputs/email-input/email-input.component'
 import { NameInputComponent } from './inputs/name-input/name-input.component';
 import { PasswordInputComponent } from './inputs/password-input/password-input.component';
 import { VerificationCodeInputComponent } from './inputs/verification-code-input/verification-code-input.component';
+import { MessageErrorComponent } from './inputs/message-error/message-error.component';
 
 
 
@@ -22,6 +23,7 @@ import { VerificationCodeInputComponent } from './inputs/verification-code-input
     NameInputComponent,
     PasswordInputComponent,
     VerificationCodeInputComponent,
+    MessageErrorComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +38,7 @@ import { VerificationCodeInputComponent } from './inputs/verification-code-input
     NameInputComponent,
     PasswordInputComponent,
     VerificationCodeInputComponent,
+    MessageErrorComponent,
   ]
 })
 export class SharedModule { }
