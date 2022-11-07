@@ -48,12 +48,13 @@
                                     <option value="Oficios">{{ "Oficios" }}</option>
                                     <option value="Países">{{ "Países" }}</option>
                                     <option value="Tiempo pasado">{{ "Tiempo pasado" }}</option>
-                                    <option value="Nuevo tema">{{ "Nuevo tema" }}</option>
+                                    <option value="new_topic">{{ "Nuevo tema" }}</option>
                                 </select>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6"
+                                *ngIf="this.createActivitieForm.get('topicID')?.value === 'new_topic'">
                                 <input type="text" class="form-control" id="ForNameInput"
-                                    placeholder="Nombre nuevo tema" formControlName="topicID" />
+                                    placeholder="Nombre nuevo tema" [formControl]="topicFormControl" />
                             </div>
                         </div>
                     </div>
@@ -118,6 +119,7 @@
                     </div>
 
                     <pre>{{this.createActivitieForm.value | json}}</pre>
+                    <pre>{{this.topicFormControl.value | json}}</pre>
 
                 </div>
             </form>

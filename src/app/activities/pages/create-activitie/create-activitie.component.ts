@@ -25,6 +25,8 @@ export class CreateActivitieComponent implements OnInit {
     examples: this.formBuilder.array([[''],], Validators.required),
   });
 
+  public topicFormControl: FormControl = this.formBuilder.control('', Validators.required);
+
   constructor(
     private formBuilder: FormBuilder,
     public validatorsService: ValidatorsService,
@@ -48,27 +50,7 @@ export class CreateActivitieComponent implements OnInit {
   }
 
   printActivitie() {
-
-    const activitie: Activitie = {
-      id: '',
-      name: '',
-      activityLevel: ActivityLevel.A1,
-      typeActivity: ActivityType.LISTENING,
-      question: '',
-      questionBody: '',
-      answers: {
-        correct: 'correcta',
-        incorrect_1: 'incorrect_1',
-        incorrect_2: 'incorrect_2',
-        incorrect_3: 'incorrect_3',
-      },
-      topicID: '',
-      createdAt: '',
-      updatedAt: '',
-      examples: ['']
-    };
-
-    console.log("🚀 ~ file: create-activitie.component.ts ~ line 59 ~ CreateActivitieComponent ~ printActivitie ~ this.createActivitieForm.value", this.createActivitieForm.value)
+    console.log("🚀 ~ file: create-activitie.component.ts ~ line 73 ~ CreateActivitieComponent ~ printActivitie ~ this.topicFormControl", this.topicFormControl)
   }
 
 }
