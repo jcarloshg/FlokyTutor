@@ -45,6 +45,11 @@ export class CreateActivitieComponent implements OnInit {
     examplesFormArry.push(exampleFormControl);
   }
 
+  public deleteExample(exampleIndex: number) {
+    const examplesFormArry = this.createActivitieForm.get('examples') as FormArray;
+    examplesFormArry.removeAt(exampleIndex);
+  }
+
   printActivitie() {
 
     const activitie: Activitie = {
