@@ -14,4 +14,6 @@ export interface ManagementActivities {
         conceptInformation: string[]
     ): Promise<ActivitiesResponse>;
 
+    getAllTopic(): Promise<ActivitiesResponse>;
+
 }

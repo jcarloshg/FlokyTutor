@@ -30,4 +30,18 @@ export class ActivitiesAWS implements ManagementActivities {
     return res;
   }
 
+
+  async getAllTopic(): Promise<ActivitiesResponse> {
+    console.log('====================================');
+    try {
+      const topics: Topic[] = await DataStore.query(Topic);
+      const topicsRes: ActivitiesResponse = { isOk: true, data: topics };
+      console.log("🚀 ~ file: activities.service.ts ~ line 39 ~ ActivitiesAWS ~ getAllTopic ~ topics", topics)
+      return topicsRes;
+    } catch (error) {
+      const erroRes: ActivitiesResponse = { isOk: true };
+      return erroRes;
+    }
+  }
+
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators, FormControl, ValidationErrors, AbstractControl } from '@angular/forms';
+import { Topic } from 'src/models';
 import { ValidatorsService } from '../../../shared/inputs/service/validators.service';
 import { ActivitiesAWS } from '../../services/activities.service';
 
@@ -34,6 +35,8 @@ export class CreateActivitieComponent implements OnInit {
     }
   );
 
+  public topics: Topic[] = [];
+
   private messagesError = new Map()
     .set('required', "El dato es requerido.")
     .set('pattern', "El dato no es valido")
@@ -45,12 +48,18 @@ export class CreateActivitieComponent implements OnInit {
     private activitiesAWS: ActivitiesAWS,
   ) { }
 
-  ngOnInit(): void {
-    this.createActivitieForm.reset({
-      topicID: 'new_topic',
-      new_topic: 'Números ordinales',
-    })
+  async ngOnInit(): Promise<void> {
+    if (this.topics.length == 0) {
+      this.topics = (await this.activitiesAWS.getAllTopic()).data;
+    }
   }
+
+  // async ngOnInit(): Promise<void> {
+  //   // this.createActivitieForm.reset({
+  //   //   topicID: 'new_topic',
+  //   //   new_topic: 'Colores',
+  //   // })
+  // }
 
   public get examplesArr(): FormArray {
     return this.createActivitieForm.get('examples') as FormArray;
@@ -137,16 +146,16 @@ export class CreateActivitieComponent implements OnInit {
     // console.log(isValidCreatedForm);
     // this.createActivitieForm.markAllAsTouched();
 
-    const isValidNewTopic = this.createActivitieForm.get('new_topic')?.valid;
-    if (isValidNewTopic == false) {
-      this.createActivitieForm.get('new_topic')?.markAsTouched();
-      return;
-    }
+    console.log(await this.activitiesAWS.getAllTopic());
 
-    const nameTopic = this.createActivitieForm.get('new_topic')?.value;
-
-    const createTopicRes = await this.activitiesAWS.createTopic(nameTopic, null, []);
-    console.log(`[createTopicRes] -> `, createTopicRes);
+    // const isValidNewTopic = this.createActivitieForm.get('new_topic')?.valid;
+    // if (isValidNewTopic == false) {
+    //   this.createActivitieForm.get('new_topic')?.markAsTouched();
+    //   return;
+    // }
+    // const nameTopic = this.createActivitieForm.get('new_topic')?.value;
+    // const createTopicRes = await this.activitiesAWS.createTopic(nameTopic, null, []);
+    // console.log(`[createTopicRes] -> `, createTopicRes);
 
   }
 
