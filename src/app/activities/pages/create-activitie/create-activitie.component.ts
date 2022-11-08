@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators, FormControl, ValidationErrors, AbstractControl } from '@angular/forms';
 import { ValidatorsService } from '../../../shared/inputs/service/validators.service';
+import { ActivitiesAWS } from '../../services/activities.service';
 
 @Component({
   selector: 'app-create-activitie',
@@ -17,7 +18,7 @@ export class CreateActivitieComponent implements OnInit {
       question: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ]{3,}( {1,2}[a-zA-ZÀ-ÿ]{3,}){2,}$')]],
       questionBody: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ]{3,}( {1,2}[a-zA-ZÀ-ÿ]{3,}){2,}$')]],
       topicID: ['', [Validators.required, Validators.pattern('^([a-zA-ZÀ-ÿ _]){1,}$')]],
-      new_topic: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ]{1,}( {1,2}[a-zA-ZÀ-ÿ]{2,}){1,}$')]],
+      new_topic: ['', [Validators.required, Validators.pattern('^([a-zA-ZÀ-ÿ _]){1,}$')]],
       answers_correct: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ]{3,}( {1,2}[a-zA-ZÀ-ÿ]{3,}){1,}$')]],
       answers_incorrecta_1: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ]{3,}( {1,2}[a-zA-ZÀ-ÿ]{3,}){1,}$')]],
       answers_incorrecta_2: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ]{3,}( {1,2}[a-zA-ZÀ-ÿ]{3,}){1,}$')]],
@@ -41,9 +42,15 @@ export class CreateActivitieComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public validatorsService: ValidatorsService,
+    private activitiesAWS: ActivitiesAWS,
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.createActivitieForm.reset({
+      topicID: 'new_topic',
+      new_topic: 'Números ordinales',
+    })
+  }
 
   public get examplesArr(): FormArray {
     return this.createActivitieForm.get('examples') as FormArray;
@@ -112,14 +119,6 @@ export class CreateActivitieComponent implements OnInit {
       const answers_incorrecta_2 = formGroup.get('answers_incorrecta_2')?.value;
       const answers_incorrecta_3 = formGroup.get('answers_incorrecta_3')?.value;
 
-      console.log({
-        answers_correct,
-        answers_incorrecta_1,
-        answers_incorrecta_2,
-        answers_incorrecta_3,
-      });
-
-
       const formHasAnswerCorrect: boolean = answers_correct ?? false;
       const formHasAnswerError: boolean = answers_incorrecta_1 || answers_incorrecta_2 || answers_incorrecta_3;
 
@@ -131,16 +130,24 @@ export class CreateActivitieComponent implements OnInit {
     }
   }
 
-  public crearActivitie() {
-    this.createActivitieForm.errors;
-    console.log("🚀 ~ file: create-activitie.component.ts ~ line 134 ~ CreateActivitieComponent ~ crearActivitie ~ this.createActivitieForm.errors", this.createActivitieForm.errors)
+  public async crearActivitie() {
 
-    const isValidCreatedForm = this.createActivitieForm.valid;
+    // TODO - check valid form
+    // const isValidCreatedForm = this.createActivitieForm.valid;
+    // console.log(isValidCreatedForm);
+    // this.createActivitieForm.markAllAsTouched();
 
-    console.log(isValidCreatedForm);
+    const isValidNewTopic = this.createActivitieForm.get('new_topic')?.valid;
+    if (isValidNewTopic == false) {
+      this.createActivitieForm.get('new_topic')?.markAsTouched();
+      return;
+    }
 
+    const nameTopic = this.createActivitieForm.get('new_topic')?.value;
 
-    this.createActivitieForm.markAllAsTouched();
+    const createTopicRes = await this.activitiesAWS.createTopic(nameTopic, null, []);
+    console.log(`[createTopicRes] -> `, createTopicRes);
+
   }
 
 }

@@ -140,7 +140,7 @@ type EagerActivitie = {
   readonly topicID: string;
   readonly answers?: Answer | null;
   readonly accounts?: (AccountActivitie | null)[] | null;
-  readonly examples?: (string | null)[] | null;
+  readonly examples?: string[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -155,7 +155,7 @@ type LazyActivitie = {
   readonly topicID: string;
   readonly answers?: Answer | null;
   readonly accounts: AsyncCollection<AccountActivitie>;
-  readonly examples?: (string | null)[] | null;
+  readonly examples?: string[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

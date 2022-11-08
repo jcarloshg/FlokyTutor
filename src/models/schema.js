@@ -315,7 +315,7 @@ export const schema = {
                     "name": "examples",
                     "isArray": true,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": [],
                     "isArrayNullable": true
                 },
@@ -598,5 +598,5 @@ export const schema = {
         }
     },
     "codegenVersion": "3.3.1",
-    "version": "bb6e80dc5bca5e349171bd695a9f3378"
+    "version": "d4ef0ae13ebc70914dda86b3f2c31198"
 };

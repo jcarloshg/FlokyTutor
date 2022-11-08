@@ -1,4 +1,4 @@
-<div class="mt-4 row d-flex justify-content-center">
+<div class="mt-3 mb-5 row d-flex justify-content-center">
     <div class="col-5">
         <p class="h4">Crea un actividad</p>
         <p>Ingresa los datos de la nueva actividad</p>
@@ -7,7 +7,7 @@
             <div class="row g-3">
                 <div class="col-12">
                     <label for="ForNameInput" class="form-label">Nombre de la actividad</label>
-                    <input type="text" class="form-control" id="ForNameInput" placeholder="Pasado de 'To Be'"
+                    <input type="text" class="form-control" id="ForNameInput" placeholder="Animales en ingles 'Cabra'"
                         aria-describedby="validationServerUsernameFeedback" formControlName="name" required />
                     <app-message-error [showMessage]="showMessageError('name')"
                         [message_error]="getMessageError('name')"></app-message-error>
@@ -47,11 +47,11 @@
                         <div class="col-md-6">
                             <select class="form-select" id="ForNameInput" aria-label="Default select example"
                                 formControlName="topicID">
+                                <option value="new_topic">{{ "Nuevo tema" }}</option>
                                 <option value="Animales">{{ "Animales" }}</option>
                                 <option value="Oficios">{{ "Oficios" }}</option>
                                 <option value="Países">{{ "Países" }}</option>
                                 <option value="Tiempo pasado">{{ "Tiempo pasado" }}</option>
-                                <option value="new_topic">{{ "Nuevo tema" }}</option>
                             </select>
                             <app-message-error [showMessage]="showMessageError('topicID')"
                                 [message_error]="getMessageError('topicID')"></app-message-error>
@@ -153,8 +153,8 @@
 
                 <!-- <pre>{{ this.createActivitieForm.value | json }}</pre>
                 <pre>{{ this.topicFormControl.value | json }}</pre> -->
-                <div class="h6">this.createActivitieForm.errors</div>
-                <pre>{{ this.createActivitieForm.errors | json }}</pre>
+                <!-- <div class="h6">this.createActivitieForm.errors</div>
+                <pre>{{ this.createActivitieForm.errors | json }}</pre> -->
             </div>
         </form>
     </div>

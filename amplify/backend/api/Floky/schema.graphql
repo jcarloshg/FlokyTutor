@@ -53,7 +53,7 @@ type Activitie @model @auth(rules: [{allow: public}]) {
   topicID: ID! @index(name: "byTopic")
   answers: Answer
   accounts: [Account] @manyToMany(relationName: "AccountActivitie")
-  examples: [String]
+  examples: [String!]
 }
 
 enum ActivityType {
