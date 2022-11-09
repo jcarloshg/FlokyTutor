@@ -48,18 +48,11 @@ export class CreateActivitieComponent implements OnInit {
     private activitiesAWS: ActivitiesAWS,
   ) { }
 
-  async ngOnInit(): Promise<void> {
-    if (this.topics.length == 0) {
-      this.topics = (await this.activitiesAWS.getAllTopic()).data;
-    }
-  }
 
-  // async ngOnInit(): Promise<void> {
-  //   // this.createActivitieForm.reset({
-  //   //   topicID: 'new_topic',
-  //   //   new_topic: 'Colores',
-  //   // })
-  // }
+  async ngOnInit(): Promise<void> {
+    console.log('CreateActivitieComponent');
+    // this.topics = (await this.activitiesAWS.getAllTopic()).data;
+  }
 
   public get examplesArr(): FormArray {
     return this.createActivitieForm.get('examples') as FormArray;
@@ -139,6 +132,13 @@ export class CreateActivitieComponent implements OnInit {
     }
   }
 
+  public async createTopic() {
+    // const nameTopic = this.createActivitieForm.get('new_topic')?.value;
+    // const nameTopic = 'NAME_EXAMPLE';
+    // const createTopicRes = await this.activitiesAWS.createTopic(nameTopic, null, []);
+    // console.log(`[createTopicRes] -> `, createTopicRes);
+  }
+
   public async crearActivitie() {
 
     // TODO - check valid form
@@ -146,7 +146,7 @@ export class CreateActivitieComponent implements OnInit {
     // console.log(isValidCreatedForm);
     // this.createActivitieForm.markAllAsTouched();
 
-    console.log(await this.activitiesAWS.getAllTopic());
+    // console.log(await this.activitiesAWS.getAllTopic());
 
     // const isValidNewTopic = this.createActivitieForm.get('new_topic')?.valid;
     // if (isValidNewTopic == false) {

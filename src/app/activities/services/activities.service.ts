@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DataStore } from 'aws-amplify';
+import { DataStore, Predicates } from 'aws-amplify';
 import { ActivitiesResponse, ManagementActivities } from "../../../domain/useCases/management_activities.interface";
 import { Topic } from 'src/models/index';
 
@@ -9,7 +9,15 @@ import { Topic } from 'src/models/index';
 })
 export class ActivitiesAWS implements ManagementActivities {
 
-  constructor() { }
+  constructor() {
+    console.log('ActivitiesAWS');
+    (
+      async () => {
+        // await DataStore.clear();
+        await DataStore.start();
+      }
+    )();
+  }
 
   async createTopic(
     name: string,
@@ -32,14 +40,21 @@ export class ActivitiesAWS implements ManagementActivities {
 
 
   async getAllTopic(): Promise<ActivitiesResponse> {
-    console.log('====================================');
     try {
-      const topics: Topic[] = await DataStore.query(Topic);
+      const topics: Topic[] = await DataStore.query(
+        Topic,
+        Predicates.ALL,
+        {
+          sort: topic => topic.name("ASCENDING")
+        }
+      );
       const topicsRes: ActivitiesResponse = { isOk: true, data: topics };
       console.log("🚀 ~ file: activities.service.ts ~ line 39 ~ ActivitiesAWS ~ getAllTopic ~ topics", topics)
       return topicsRes;
     } catch (error) {
-      const erroRes: ActivitiesResponse = { isOk: true };
+      console.log({ error });
+
+      const erroRes: ActivitiesResponse = { isOk: false };
       return erroRes;
     }
   }
