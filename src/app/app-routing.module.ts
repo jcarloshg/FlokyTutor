@@ -3,10 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
+  // {
+  //   path: 'cuenta',
+  //   // component: ErrPageComponent,
+  //   loadChildren: () => import('./account/account.module').then(m => m.AccountModule),
+  // },
   {
     path: 'cuenta',
-    // component: ErrPageComponent,
-    loadChildren: () => import('./account/account.module').then(m => m.AccountModule),
+    loadChildren: () => import('./authenticate/authenticate.module').then(m => m.AuthenticateModule),
   },
   {
     path: 'activities',
