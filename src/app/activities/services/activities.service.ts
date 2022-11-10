@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DataStore, Predicates } from 'aws-amplify';
-import { ActivitiesResponse, ManagementActivities } from "../../../domain/useCases/management_activities.interface";
+import { ActivitiesResponse, ManagementActivities } from "../../../domain/useCases/managementActivities.useCase.interface";
 import { Topic } from 'src/models/index';
 
 
