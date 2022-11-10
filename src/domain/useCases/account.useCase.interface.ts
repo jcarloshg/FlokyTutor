@@ -21,24 +21,22 @@ export interface AccountSignUp {
 
 export interface Account {
 
-    singIn: {
-        login: Login,
-        signIn(login: Login): Promise<AuthResponse>;
-    },
+    // singIn
+    login: Login;
+    signIn(login: Login): Promise<AuthResponse>;
 
-    singUp: {
-        accountSignUp: AccountSignUp,
-        signUp(accountSignUp: AccountSignUp): Promise<AuthResponse>;
-        confirmSignUp(): Promise<AuthResponse>;
-        resendConfirmationCode(): Promise<AuthResponse>;
-    },
+    // singUp
+    accountSignUp: AccountSignUp;
+    signUp(accountSignUp: AccountSignUp): Promise<AuthResponse>;
+    confirmSignUp(): Promise<AuthResponse>;
+    resendConfirmationCode(): Promise<AuthResponse>;
 
-    resetPassword: {
+    // reset pass
+    // TODO - send code
+    // TODO - confirm code && passs
 
-    },
+    // view profile
 
-    singOut: {
-        signOut(): Promise<AuthResponse>;
-    },
+    signOut(): Promise<AuthResponse>;
 
 }
