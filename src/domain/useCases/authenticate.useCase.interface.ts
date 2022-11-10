@@ -19,7 +19,7 @@ export interface AccountSignUp {
     }
 }
 
-export interface Account {
+export interface Authenticate {
 
     // singIn
     login: Login;
