@@ -10,8 +10,8 @@
                     </app-email-input>
                 </div>
                 <div class="col-12">
-                    <label for="ForPassInput" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="ForPassInput" placeholder="***" />
+                    <app-pass-input [formControlName]="'pass'" [formControl]="getFormControl('pass')">
+                    </app-pass-input>
                 </div>
                 <div class="col-12 mt-4">
                     <button type="button" class="btn btn-primary w-100">

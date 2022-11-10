@@ -17,8 +17,8 @@ import { CustomInput } from '../custom-input.interface';
 export class EmailInputComponent implements ControlValueAccessor, CustomInput {
 
   @Input() formControl!: FormControl;
-  public email: string = '';
   public messagesError: Map<string, string>;
+  public email: string = '';
 
   constructor() {
     this.messagesError = new Map()
