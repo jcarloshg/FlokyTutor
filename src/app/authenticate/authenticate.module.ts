@@ -5,6 +5,7 @@ import { AuthenticateRoutingModule } from './authenticate-routing.module';
 import { SingUpComponent } from './pages/sing-up/sing-up.component';
 import { LogInComponent } from './pages/log-in/log-in.component';
 import { HomeAuthenticateComponent } from './pages/home-authenticate/home-authenticate.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,6 +16,8 @@ import { HomeAuthenticateComponent } from './pages/home-authenticate/home-authen
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    // mine
     AuthenticateRoutingModule
   ]
 })
