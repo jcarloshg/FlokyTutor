@@ -1,0 +1,16 @@
+<label for="ForEmailInput" class="form-label"> Nombre completo </label>
+
+<input
+  type="email"
+  class="form-control"
+  id="ForEmailInput"
+  placeholder="ej. Fernando Gonzales Reyes"
+  [value]="data"
+  [(ngModel)]="data"
+  (ngModelChange)="onChange(data)"
+  (blur)="onTouched(true)"
+/>
+
+<div class="text-danger" style="font-size: 14px" *ngIf="showMessage()">
+  {{ getErrorMessage() }}
+</div>

@@ -8,6 +8,8 @@ import { HomeAuthenticateComponent } from './pages/home-authenticate/home-authen
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EmailInputComponent } from './component/email-input/email-input.component';
 import { PassInputComponent } from './component/pass-input/pass-input.component';
+import { FullNameInputComponent } from './component/full-name-input/full-name-input.component';
+
 
 
 @NgModule({
@@ -16,7 +18,8 @@ import { PassInputComponent } from './component/pass-input/pass-input.component'
     LogInComponent,
     HomeAuthenticateComponent,
     EmailInputComponent,
-    PassInputComponent
+    PassInputComponent,
+    FullNameInputComponent,
   ],
   imports: [
     CommonModule,
