@@ -1,0 +1,4 @@
+<label for="ForNameInput" class="form-label">Correo electrónico</label>
+<input type="email" class="form-control" id="ForEmailInput" placeholder="tutor@email.com" [value]="email"
+    [(ngModel)]="email" (ngModelChange)="onChange(email)" (blur)="onTouched(true)" />
+<div class="text-danger" style='font-size: 14px;' *ngIf="showMessage()">{{getErrorMessage()}}</div>

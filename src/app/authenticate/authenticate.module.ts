@@ -5,17 +5,22 @@ import { AuthenticateRoutingModule } from './authenticate-routing.module';
 import { SingUpComponent } from './pages/sing-up/sing-up.component';
 import { LogInComponent } from './pages/log-in/log-in.component';
 import { HomeAuthenticateComponent } from './pages/home-authenticate/home-authenticate.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { EmailInputComponent } from './component/email-input/email-input.component';
+import { PassInputComponent } from './component/pass-input/pass-input.component';
 
 
 @NgModule({
   declarations: [
     SingUpComponent,
     LogInComponent,
-    HomeAuthenticateComponent
+    HomeAuthenticateComponent,
+    EmailInputComponent,
+    PassInputComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     // mine
     AuthenticateRoutingModule

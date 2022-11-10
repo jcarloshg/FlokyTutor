@@ -1,26 +1,34 @@
-<div class="container my-5 d-flex justify-content-center">
-    <div class="shadow p-5 my-5 col-lg-6 bg-body rounded">
+<form [formGroup]="loginForm" autocomplete="off">
+    <div class="container my-5 d-flex justify-content-center">
+        <div class="shadow p-5 my-5 col-lg-6 bg-body rounded">
 
-        <p class="h4 my-4">Floky tutor</p>
+            <p class="h4 my-4">Floky tutor</p>
 
-        <div class="row g-3">
-            <div class="col-12">
-                <label for="ForNameInput" class="form-label">Correo electrónico</label>
-                <input type="email" class="form-control" id="ForEmailInput" placeholder="tutor@email.com" />
+            <div class="row g-3">
+                <div class="col-12">
+                    <app-email-input [formControlName]="'email'" [formControl]="getFormControl('email')">
+                    </app-email-input>
+                </div>
+                <div class="col-12">
+                    <label for="ForPassInput" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="ForPassInput" placeholder="***" />
+                </div>
+                <div class="col-12 mt-4">
+                    <button type="button" class="btn btn-primary w-100">
+                        Iniciar sesión
+                    </button>
+                    <button type="button" class="btn btn-link w-100">
+                        ¿Olvidaste tu contraseña?
+                    </button>
+                </div>
+
+
+                <div class="col-12">
+                    <pre>{{this.loginForm.value | json}}</pre>
+                </div>
+
             </div>
-            <div class="col-12">
-                <label for="ForPassInput" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="ForPassInput" placeholder="***" />
-            </div>
-            <div class="col-12 mt-4">
-                <button type="button" class="btn btn-primary w-100">
-                    Iniciar sesión
-                </button>
-                <button type="button" class="btn btn-link w-100">
-                    ¿Olvidaste tu contraseña?
-                </button>
-            </div>
+
         </div>
-
     </div>
-</div>
+</form>
