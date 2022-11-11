@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl, Valid
 import { CustomToast } from '../../component/custom-toast/custom-toast.inteferface';
 import { AuthenticateAWSService } from '../../services/authenticate-aws.service';
 import { AccountSignUp } from '../../../../domain/useCases/authenticate.useCase.interface';
-import { EagerAccount } from 'src/models';
+import { EagerAccount, Role } from 'src/models';
 
 @Component({
   selector: 'app-sing-up',
@@ -81,11 +81,13 @@ export class SingUpComponent {
       id: '',
       fullName: this.singUpForm.get('fullName')?.value,
       email: this.singUpForm.get('email')?.value,
+      role: Role.TEACHER,
       collegeEnrollment: this.singUpForm.get('collegeEnrollment')?.value,
       collegeName: this.singUpForm.get('collegeName')?.value,
     };
 
     const resAuth = await this.authenticateAWSService.signUp(singUpParam, accountParam);
+    console.log({ resAuth });
 
   }
 
