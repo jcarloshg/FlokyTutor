@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl, ValidationErrors } from '@angular/forms';
 import { CustomToast } from '../../component/custom-toast/custom-toast.inteferface';
+import { AuthenticateAWSService } from '../../services/authenticate-aws.service';
 
 @Component({
   selector: 'app-sing-up',
@@ -13,7 +14,8 @@ export class SingUpComponent implements OnInit {
   public messageToast: CustomToast;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public authenticateAWSService: AuthenticateAWSService,
   ) {
     this.singUpForm = this.formBuilder.group(
       {
@@ -48,9 +50,21 @@ export class SingUpComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  public singUp() {
-    this.messageToast = { typeToast: 'success', message: 'HOLA_PROOF' };
-    return;
+  public async singUp() {
+
+    const resAuth = await this.authenticateAWSService.signUp(
+      {
+        name: '',
+        username: '',
+        password: '',
+        attributes: {
+          email: '',
+          name: ''
+        }
+      }
+    );
+    console.log({ resAuth });
+
   }
 
 }

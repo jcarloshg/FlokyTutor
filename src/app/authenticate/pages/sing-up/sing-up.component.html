@@ -37,10 +37,18 @@
             [isToConfirmPass]="true"></app-pass-input>
         </div>
 
-        <div class="col-12 mt-4">
-          <button type="button" class="btn btn-primary w-100" (click)="singUp()" >
-            Registrarse
-          </button>
+        <div class="col-12 mt-4 d-flex justify-content-center">
+
+          <ng-container *ngIf="this.authenticateAWSService.isLoading; else elseLoading">
+            <div class="spinner-border text-primary"></div>
+          </ng-container>
+
+          <ng-template #elseLoading>
+            <button type="button" class="btn btn-primary w-100" (click)="singUp()">
+              Registrarse
+            </button>
+          </ng-template>
+
         </div>
 
       </div>
