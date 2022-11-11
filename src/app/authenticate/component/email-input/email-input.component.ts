@@ -1,7 +1,6 @@
 import { Component, forwardRef, Input } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
-import { CustomInput } from '../custom-input.interface';
-import { ClassCustomInput } from '../CustomInput';
+import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
+import { CustomInput } from '../CustomInput';
 
 @Component({
   selector: 'app-email-input',
@@ -15,7 +14,7 @@ import { ClassCustomInput } from '../CustomInput';
     }
   ]
 })
-export class EmailInputComponent extends ClassCustomInput {
+export class EmailInputComponent extends CustomInput {
 
   @Input() formControl!: FormControl<any>;
 

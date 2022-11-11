@@ -1,7 +1,6 @@
 import { Component, OnInit, forwardRef, Input } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
-import { CustomInput } from '../custom-input.interface';
-import { ClassCustomInput } from '../CustomInput';
+import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
+import { CustomInput } from '../CustomInput';
 
 @Component({
   selector: 'app-pass-input',
@@ -15,9 +14,10 @@ import { ClassCustomInput } from '../CustomInput';
     }
   ]
 })
-export class PassInputComponent extends ClassCustomInput {
+export class PassInputComponent extends CustomInput {
 
   @Input() formControl!: FormControl<any>;
+  // value: string = 'Hoa';
 
   constructor() {
     const messageError = new Map()

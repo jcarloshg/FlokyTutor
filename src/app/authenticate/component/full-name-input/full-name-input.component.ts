@@ -1,6 +1,6 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { ClassCustomInput } from '../CustomInput';
+import { CustomInput } from '../CustomInput';
 
 @Component({
   selector: 'app-full-name-input',
@@ -14,7 +14,7 @@ import { ClassCustomInput } from '../CustomInput';
     }
   ]
 })
-export class FullNameInputComponent extends ClassCustomInput {
+export class FullNameInputComponent extends CustomInput {
 
   @Input() formControl!: FormControl<any>;
 

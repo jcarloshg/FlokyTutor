@@ -1,13 +1,15 @@
 import { FormControl, ControlValueAccessor } from '@angular/forms';
 
-export abstract class ClassCustomInput implements ControlValueAccessor {
+export abstract class CustomInput implements ControlValueAccessor {
 
     abstract formControl: FormControl;
+    // abstract value: any;
     public data: any;
 
     constructor(
         private messagesError: Map<string, string>,
     ) { }
+
 
     //============================================================
     // ControlValueAccessor
@@ -22,6 +24,10 @@ export abstract class ClassCustomInput implements ControlValueAccessor {
     }
     setDisabledState?(isDisabled: boolean): void { }
 
+
+    //============================================================
+    // my methods custom input
+    //============================================================
     showMessage(): boolean {
         const isTouchedField = this.formControl.touched ? true : false;
         const isValidField = this.formControl.valid ? true : false;
