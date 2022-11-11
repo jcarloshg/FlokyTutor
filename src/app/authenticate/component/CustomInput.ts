@@ -3,8 +3,7 @@ import { FormControl, ControlValueAccessor } from '@angular/forms';
 export abstract class CustomInput implements ControlValueAccessor {
 
     abstract formControl: FormControl;
-    // abstract value: any;
-    public data: any;
+    abstract value: any;
 
     constructor(
         private messagesError: Map<string, string>,
@@ -19,8 +18,8 @@ export abstract class CustomInput implements ControlValueAccessor {
     registerOnChange(fn: any): void { this.onChange = fn; }
     registerOnTouched(fn: any): void { this.onTouched = fn; }
     writeValue(obj: any): void {
-        this.data = obj;
-        this.onChange(this.data);
+        this.value = obj;
+        this.onChange(this.value);
     }
     setDisabledState?(isDisabled: boolean): void { }
 
@@ -35,7 +34,6 @@ export abstract class CustomInput implements ControlValueAccessor {
         if (isValidField === false) return true;
         return true;
     }
-
     getErrorMessage(): string | null {
         const objErrors = this.formControl.errors;
         if (objErrors == null || objErrors == undefined) return null;

@@ -17,13 +17,15 @@ import { CustomInput } from '../CustomInput';
 export class PassInputComponent extends CustomInput {
 
   @Input() formControl!: FormControl<any>;
-  // value: string = 'Hoa';
+  public value: string;
 
   constructor() {
     const messageError = new Map()
       .set('required', "La contraseña es requerido.")
       .set('pattern', "La contraseña no es valido.");
     super(messageError);
+
+    this.value = '';
   }
 
 }

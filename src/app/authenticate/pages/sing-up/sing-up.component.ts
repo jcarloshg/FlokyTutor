@@ -15,14 +15,8 @@ export class SingUpComponent implements OnInit {
   ) {
     this.loginForm = this.formBuilder.group(
       {
-        fullName:
-          [
-            '',
-            [
-              Validators.required,
-              Validators.pattern("^[a-zA-ZÀ-ÿ]{3,}( {1,2}[a-zA-ZÀ-ÿ]{3,}){2,}$"),
-            ]
-          ]
+        fullName: ['', [Validators.required, Validators.pattern("^[a-zA-ZÀ-ÿ]{3,}( {1,2}[a-zA-ZÀ-ÿ]{3,}){2,}$"),]],
+        collegeName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ]{2,}( {1,2}[a-zA-ZÀ-ÿ]{2,}){2,}$'),]]
       }
     );
   }

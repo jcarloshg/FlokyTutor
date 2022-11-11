@@ -17,12 +17,14 @@ import { CustomInput } from '../CustomInput';
 export class EmailInputComponent extends CustomInput {
 
   @Input() formControl!: FormControl<any>;
+  public value: string;
 
   constructor() {
     const messageError = new Map()
       .set('required', "Correo electrónico es requerido.")
       .set('pattern', "Correo electrónico no es valido.");
     super(messageError);
+    this.value = '';
   }
 
 }

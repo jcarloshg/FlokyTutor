@@ -17,14 +17,16 @@ import { CustomInput } from '../CustomInput';
 export class FullNameInputComponent extends CustomInput {
 
   @Input() formControl!: FormControl<any>;
+  public value: string;
 
   constructor() {
     const messagesError = new Map()
       .set('required', "Nombre es requerido.")
       .set('pattern', "Debe ser el nombre con apellidos.")
       .set('short_name', "Nombre no es valido.")
-
     super(messagesError);
+
+    this.value = '';
   }
 
 }
