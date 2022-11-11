@@ -54,3 +54,14 @@ export interface Activitie {
     createdAt?: string | null;
     updatedAt?: string | null;
 }
+
+export interface Account {
+    id?: string,
+    fullName: string,
+    email: string,
+    collegeEnrollment: string,
+    collegeName: string,
+    activitiesProgress: any,
+    role: Role
+    activities: Activitie[],
+}

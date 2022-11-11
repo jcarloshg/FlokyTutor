@@ -1,3 +1,5 @@
+import { EagerAccount } from "src/models";
+
 export interface AuthResponse {
     isOk: boolean,
     message?: string,
@@ -21,13 +23,15 @@ export interface AccountSignUp {
 
 export interface Authenticate {
 
+    account: EagerAccount,
+
     // singIn
     login: Login;
     signIn(login: Login): Promise<AuthResponse>;
 
     // singUp
     accountSignUp: AccountSignUp;
-    signUp(accountSignUp: AccountSignUp): Promise<AuthResponse>;
+    signUp(accountSignUp: AccountSignUp, account: EagerAccount): Promise<AuthResponse>;
     confirmSignUp(): Promise<AuthResponse>;
     resendConfirmationCode(): Promise<AuthResponse>;
 

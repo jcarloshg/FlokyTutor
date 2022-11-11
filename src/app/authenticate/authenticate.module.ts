@@ -14,6 +14,7 @@ import { FullNameInputComponent } from './component/full-name-input/full-name-in
 import { PassInputComponent } from './component/pass-input/pass-input.component';
 import { CustomToastComponent } from './component/custom-toast/custom-toast.component';
 import { SpinnerLoadingComponent } from './component/spinner-loading/spinner-loading.component';
+import { ErroMessageComponent } from './component/erro-message/erro-message.component';
 
 
 
@@ -31,6 +32,7 @@ import { SpinnerLoadingComponent } from './component/spinner-loading/spinner-loa
     PassInputComponent,
     CustomToastComponent,
     SpinnerLoadingComponent,
+    ErroMessageComponent,
   ],
   imports: [
     CommonModule,
