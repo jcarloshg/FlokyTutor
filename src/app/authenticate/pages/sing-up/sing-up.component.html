@@ -1,10 +1,13 @@
-<div class="row mt-5 d-flex justify-content-center" style="border: 1px solid">
-  <div class="col-lg-4 col-md-8">
+<div class="row py-5 px-4 d-flex justify-content-center">
+
+  <app-custom-toast [customToast]="messageToast"> </app-custom-toast>
+
+  <div class="col-lg-6 col-md-8" style='border: 1px solid;'>
     <form [formGroup]="singUpForm" autocomplete="off">
       <p class="h4">Crea tu cuenta de tutor</p>
       <p>Ingresa tus datos</p>
 
-      <div class="row g-3">
+      <div class="row g-4">
         <div class="col-12">
           <app-full-name-input [formControlName]="'fullName'" [formControl]="getFormControl('fullName')">
           </app-full-name-input>
@@ -33,6 +36,13 @@
           <app-pass-input [formControlName]="'confiPass'" [formControl]="getFormControl('confiPass')"
             [isToConfirmPass]="true"></app-pass-input>
         </div>
+
+        <div class="col-12 mt-4">
+          <button type="button" class="btn btn-primary w-100" (click)="singUp()" >
+            Registrarse
+          </button>
+        </div>
+
       </div>
     </form>
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl, ValidationErrors } from '@angular/forms';
+import { CustomToast } from '../../component/custom-toast/custom-toast.inteferface';
 
 @Component({
   selector: 'app-sing-up',
@@ -9,6 +10,7 @@ import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl, Valid
 export class SingUpComponent implements OnInit {
 
   public singUpForm: FormGroup;
+  public messageToast: CustomToast;
 
   constructor(
     private formBuilder: FormBuilder
@@ -26,7 +28,13 @@ export class SingUpComponent implements OnInit {
         validators: [this.areTheSamePass]
       }
     );
+
+    this.messageToast = {
+      typeToast: 'success',
+      message: '',
+    }
   }
+
   areTheSamePass(formGroup: AbstractControl): ValidationErrors | null {
     const pass = formGroup.get('pass')?.value;
     const confiPass = formGroup.get('confiPass')?.value;
@@ -39,5 +47,10 @@ export class SingUpComponent implements OnInit {
   }
 
   ngOnInit(): void { }
+
+  public singUp() {
+    this.messageToast = { typeToast: 'success', message: 'HOLA_PROOF' };
+    return;
+  }
 
 }

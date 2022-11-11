@@ -12,6 +12,7 @@ import { CollegeNameInputComponent } from './component/college-name-input/colleg
 import { EmailInputComponent } from './component/email-input/email-input.component';
 import { FullNameInputComponent } from './component/full-name-input/full-name-input.component';
 import { PassInputComponent } from './component/pass-input/pass-input.component';
+import { CustomToastComponent } from './component/custom-toast/custom-toast.component';
 
 
 
@@ -27,6 +28,7 @@ import { PassInputComponent } from './component/pass-input/pass-input.component'
     EmailInputComponent,
     FullNameInputComponent,
     PassInputComponent,
+    CustomToastComponent,
   ],
   imports: [
     CommonModule,
