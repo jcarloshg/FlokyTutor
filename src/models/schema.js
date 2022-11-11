@@ -166,7 +166,7 @@ export const schema = {
                     "type": {
                         "enum": "Role"
                     },
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "activities": {
@@ -598,5 +598,5 @@ export const schema = {
         }
     },
     "codegenVersion": "3.3.1",
-    "version": "d4ef0ae13ebc70914dda86b3f2c31198"
+    "version": "4842ea71cf877cd57953f4163d767fdd"
 };

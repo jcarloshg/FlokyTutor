@@ -103,7 +103,7 @@ type EagerAccount = {
   readonly collegeEnrollment: string;
   readonly collegeName: string;
   readonly activitiesProgress?: ActivitiesProgress | null;
-  readonly role?: Role | keyof typeof Role | null;
+  readonly role: Role | keyof typeof Role;
   readonly activities?: (AccountActivitie | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
@@ -117,7 +117,7 @@ type LazyAccount = {
   readonly collegeEnrollment: string;
   readonly collegeName: string;
   readonly activitiesProgress: AsyncItem<ActivitiesProgress | undefined>;
-  readonly role?: Role | keyof typeof Role | null;
+  readonly role: Role | keyof typeof Role;
   readonly activities: AsyncCollection<AccountActivitie>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;

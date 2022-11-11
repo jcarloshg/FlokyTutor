@@ -39,7 +39,7 @@ type Account @model @auth(rules: [{allow: public}]) {
   collegeEnrollment: String!
   collegeName: String!
   activitiesProgress: ActivitiesProgress @hasOne
-  role: Role
+  role: Role!
   activities: [Activitie] @manyToMany(relationName: "AccountActivitie")
 }
 

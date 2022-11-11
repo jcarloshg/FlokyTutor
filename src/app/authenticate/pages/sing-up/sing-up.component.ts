@@ -67,26 +67,17 @@ export class SingUpComponent {
       return;
     }
 
-    const singUpParam: AccountSignUp = {
-      name: this.singUpForm.get('fullName')?.value,
-      username: this.singUpForm.get('email')?.value,
-      password: this.singUpForm.get('pass')?.value,
-      attributes: {
-        email: this.singUpForm.get('email')?.value,
-        name: this.singUpForm.get('fullName')?.value
+    const resAuth = await this.authenticateAWSService.signUp(
+      {
+        fullName:           this.singUpForm.get('fullName')?.value,
+        collegeName:        this.singUpForm.get('collegeName')?.value,
+        role:               Role.TEACHER,
+        collegeEnrollment:  this.singUpForm.get('collegeEnrollment')?.value,
+        email:              this.singUpForm.get('email')?.value,
+        pass:               this.singUpForm.get('pass')?.value,
       }
-    }
+    );
 
-    const accountParam: EagerAccount = {
-      id: '',
-      fullName: this.singUpForm.get('fullName')?.value,
-      email: this.singUpForm.get('email')?.value,
-      role: Role.TEACHER,
-      collegeEnrollment: this.singUpForm.get('collegeEnrollment')?.value,
-      collegeName: this.singUpForm.get('collegeName')?.value,
-    };
-
-    const resAuth = await this.authenticateAWSService.signUp(singUpParam, accountParam);
     console.log({ resAuth });
 
   }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Loading } from 'src/app/shared/services/loading';
-import { AccountSignUp, Authenticate, AuthResponse, Login } from '../../../domain/useCases/authenticate.useCase.interface';
+import { AccountSignUp, Authenticate, AuthResponse, Login, SignUpParams } from '../../../domain/useCases/authenticate.useCase.interface';
 import { EagerAccount, Role } from 'src/models';
 import { API, Auth, graphqlOperation } from 'aws-amplify';
 import { createAccount } from 'src/graphql/mutations';
@@ -44,38 +44,38 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
     }
   }
 
-  async signUp(accountSignUp: AccountSignUp, account: EagerAccount): Promise<AuthResponse> {
+  async signUp(signUpParams: SignUpParams): Promise<AuthResponse> {
 
     this.isLoading = true;
 
     try {
 
-      // const { user } = await Auth.signUp({
-      //   username: accountSignUp.username,
-      //   password: accountSignUp.password,
-      //   attributes: {
-      //     name: accountSignUp.name,
-      //     email: accountSignUp.username,
-      //   },
-      //   autoSignIn: {
-      //     enabled: true, // optional - enables auto sign in after user is confirmed
-      //   }
-      // });
-
-      // create accoun db
+      const { user } = await Auth.signUp({
+        username: signUpParams.email,
+        password: signUpParams.pass,
+        attributes: {
+          name: signUpParams.fullName,
+          email: signUpParams.email,
+        },
+        autoSignIn: {
+          enabled: true, // optional - enables auto sign in after user is confirmed
+        }
+      });
 
       const accountInput = {
-        fullName: '',
-        email: '',
-        role: Role.TEACHER,
-        collegeEnrollment: '',
-        collegeName: ''
+        fullName: signUpParams.fullName,
+        email: signUpParams.email,
+        role: signUpParams.role,
+        collegeEnrollment: signUpParams.collegeEnrollment,
+        collegeName: signUpParams.collegeName,
       }
 
       const accountRes = await API.graphql(
         graphqlOperation(
           createAccount,
-          { input: accountInput, }
+          {
+            input: accountInput,
+          }
         )
       );
 
@@ -85,9 +85,8 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
       return response;
 
     } catch (error: any) {
-      let response: AuthResponse = { isOk: false, data: null, message: undefined };
 
-      console.log({ error });
+      let response: AuthResponse = { isOk: false, data: null, message: undefined };
 
       switch (error.code) {
         case "UsernameExistsException": { response.message = 'El correo electrónico ya esta en uso.'; break; }
@@ -97,16 +96,6 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
       this.isLoading = false;
       return new Promise<AuthResponse>((resolve, reject) => resolve(response));
     }
-
-    // this.isLoading = true;
-    // const waitSeconds = 1000 * 3;
-    // setTimeout(() => { this.isLoading = false; }, waitSeconds);
-    // return new Promise<AuthResponse>((resolve, reject) => {
-    //   setTimeout(() => {
-    //     const res: AuthResponse = { isOk: false };
-    //     resolve(res);
-    //   }, 3000);
-    // });
 
   }
 
