@@ -51,7 +51,14 @@ export class SingUpComponent {
   areTheSamePass(formGroup: AbstractControl): ValidationErrors | null {
     const pass = formGroup.get('pass')?.value;
     const confiPass = formGroup.get('confiPass')?.value;
-    if (pass !== confiPass) return { areTheSamePass: false }
+
+    // if (pass !== confiPass) return { areTheSamePass: false }
+
+    if (pass !== confiPass) {
+      formGroup.get('confiPass')?.setErrors({ areTheSamePass: false });
+      return { areTheSamePass: true };
+    }
+
     return null;
   }
 
@@ -67,18 +74,23 @@ export class SingUpComponent {
       return;
     }
 
-    const resAuth = await this.authenticateAWSService.signUp(
+    const singUpResponse = await this.authenticateAWSService.signUp(
       {
-        fullName:           this.singUpForm.get('fullName')?.value,
-        collegeName:        this.singUpForm.get('collegeName')?.value,
-        role:               Role.TEACHER,
-        collegeEnrollment:  this.singUpForm.get('collegeEnrollment')?.value,
-        email:              this.singUpForm.get('email')?.value,
-        pass:               this.singUpForm.get('pass')?.value,
+        fullName: this.singUpForm.get('fullName')?.value,
+        collegeName: this.singUpForm.get('collegeName')?.value,
+        role: Role.TEACHER,
+        collegeEnrollment: this.singUpForm.get('collegeEnrollment')?.value,
+        email: this.singUpForm.get('email')?.value,
+        pass: this.singUpForm.get('pass')?.value,
       }
     );
 
-    console.log({ resAuth });
+    if (singUpResponse.isOk == false) {
+      this.messageToast = { typeToast: 'error', message: singUpResponse.message ?? 'Ocurrio un error inesperado' };
+      return;
+    }
+
+    this.messageToast = { typeToast: 'success', message: singUpResponse.message ?? 'Todo cool! :)' };
 
   }
 

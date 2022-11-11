@@ -22,8 +22,9 @@ export class PassInputComponent extends CustomInput {
 
   constructor() {
     const messageError = new Map()
-      .set('required', "La contraseña es requerido.")
-      .set('pattern', "La contraseña no es valido.");
+      .set('required', "La contraseña es requerida.")
+      .set('pattern', "La contraseña no es valida.")
+      .set('areTheSamePass', "Las contraseñas deben coincidir.");
     super(messageError);
 
     this.value = '';
