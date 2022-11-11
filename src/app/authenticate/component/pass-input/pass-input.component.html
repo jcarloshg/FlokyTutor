@@ -6,9 +6,9 @@
   class="form-control"
   id="FormPassInput"
   placeholder="tutor@email.com"
-  [value]="pass"
-  [(ngModel)]="pass"
-  (ngModelChange)="onChange(pass)"
+  [value]="data"
+  [(ngModel)]="data"
+  (ngModelChange)="onChange(data)"
   (blur)="onTouched(true)"
 />
 <div class="text-danger" style="font-size: 14px" *ngIf="showMessage()">
