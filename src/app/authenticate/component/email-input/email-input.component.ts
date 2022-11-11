@@ -23,7 +23,8 @@ export class EmailInputComponent extends CustomInput {
   constructor(
     private validatorService: ValidatorService,
   ) {
-    const messageError: Map<string, string> = validatorService.emailCustomValidator.getMessageErrors();
+    const messageError: Map<string, string> =
+      validatorService.emailCustomValidator.getMessageErrors();
     super(messageError);
     this.value = '';
   }

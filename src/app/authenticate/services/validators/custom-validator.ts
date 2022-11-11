@@ -22,9 +22,11 @@ export abstract class CustomValidator {
 
     public getMessageErrors(): Map<string, string> {
         const messageErr: Map<string, string> = new Map();
-        this.validatorsItems.forEach((validatorItem) => {
-            messageErr.set(validatorItem.name, validatorItem.message)
-        });
+        this.validatorsItems.forEach(
+            (validatorItem) => {
+                messageErr.set(validatorItem.name, validatorItem.message)
+            }
+        );
         return messageErr;
     }
 }

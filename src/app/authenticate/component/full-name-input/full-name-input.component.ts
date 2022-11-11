@@ -1,5 +1,6 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ValidatorService } from '../../services/validators/validator.service';
 import { CustomInput } from '../CustomInput';
 
 @Component({
@@ -19,11 +20,14 @@ export class FullNameInputComponent extends CustomInput {
   @Input() formControl!: FormControl<any>;
   public value: string;
 
-  constructor() {
-    const messagesError = new Map()
-      .set('required', "Nombre es requerido.")
-      .set('pattern', "Debe ser el nombre con apellidos.")
-      .set('short_name', "Nombre no es valido.")
+  constructor(
+    private validatorService: ValidatorService,
+  ) {
+    const messagesError: Map<string, string> =
+      validatorService.nameCustomValidator.getMessageErrors();
+    // .set('required', "Nombre es requerido.")
+    // .set('pattern', "Debe ser el nombre con apellidos.")
+    // .set('short_name', "Nombre no es valido.")
     super(messagesError);
 
     this.value = '';

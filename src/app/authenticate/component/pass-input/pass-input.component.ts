@@ -1,6 +1,7 @@
 import { Component, OnInit, forwardRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 import { CustomInput } from '../CustomInput';
+import { ValidatorService } from '../../services/validators/validator.service';
 
 @Component({
   selector: 'app-pass-input',
@@ -20,11 +21,11 @@ export class PassInputComponent extends CustomInput {
   @Input() isToConfirmPass: boolean = false;
   public value: string;
 
-  constructor() {
-    const messageError = new Map()
-      .set('required', "La contraseña es requerida.")
-      .set('pattern', "La contraseña no es valida.")
-      .set('areTheSamePass', "Las contraseñas deben coincidir.");
+  constructor(
+    private validatorService: ValidatorService,
+  ) {
+    const messageError: Map<string, string> =
+      validatorService.passwordCustomvalidator.getMessageErrors();
     super(messageError);
 
     this.value = '';

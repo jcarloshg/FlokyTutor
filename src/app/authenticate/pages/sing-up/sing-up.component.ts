@@ -4,6 +4,7 @@ import { CustomToast } from '../../component/custom-toast/custom-toast.inteferfa
 import { AuthenticateAWSService } from '../../services/authenticate-aws.service';
 import { AccountSignUp } from '../../../../domain/useCases/authenticate.useCase.interface';
 import { EagerAccount, Role } from 'src/models';
+import { ValidatorService } from '../../services/validators/validator.service';
 
 @Component({
   selector: 'app-sing-up',
@@ -18,10 +19,18 @@ export class SingUpComponent {
   constructor(
     private formBuilder: FormBuilder,
     public authenticateAWSService: AuthenticateAWSService,
+    private validatorService: ValidatorService,
   ) {
     this.singUpForm = this.formBuilder.group(
       {
-        fullName: ['', [Validators.required, Validators.pattern("^[a-zA-ZÀ-ÿ]{3,}( {1,2}[a-zA-ZÀ-ÿ]{3,}){2,}$"),]],
+        // fullName: ['', [Validators.required, Validators.pattern("^[a-zA-ZÀ-ÿ]{3,}( {1,2}[a-zA-ZÀ-ÿ]{3,}){2,}$"),]],
+        fullName: [
+          '',
+          [
+            Validators.required,
+            this.validatorService.nameCustomValidator.namesValidatorFunc,
+          ],
+        ],
         collegeName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ]{2,}( {1,2}[a-zA-ZÀ-ÿ]{2,}){2,}$'),]],
         collegeEnrollment: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]{4,}$'),]],
         email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),]],
@@ -39,7 +48,7 @@ export class SingUpComponent {
     }
 
     this.singUpForm.reset({
-      fullName: 'Jose Carlos Huerta Garcia',
+      fullName: 'Jose ',
       collegeName: 'Benemérita Universidad Autónoma de Puebla',
       collegeEnrollment: '201738087',
       email: 'carlosj12336@gmail.com',

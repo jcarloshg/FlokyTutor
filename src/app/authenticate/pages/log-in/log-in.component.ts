@@ -17,19 +17,14 @@ export class LogInComponent implements OnInit {
   ) {
 
     const emailCustomValidator = this.validatorService.emailCustomValidator;
-    // const emailCustomValidator = this.validatorService.emailCustomValidator;
+    const passwordCustomvalidator = this.validatorService.passwordCustomvalidator;
 
-    this.loginForm = this.formBuilder.group({
-      email: ['', emailCustomValidator.getValidators()],
-      pass:
-        [
-          '',
-          [
-            Validators.required,
-            Validators.pattern("^[a-zA-Z0-9._%+-]{6,}$"),
-          ]
-        ],
-    });
+    this.loginForm = this.formBuilder.group(
+      {
+        email: ['', emailCustomValidator.getValidators()],
+        pass: ['', passwordCustomvalidator.getValidators()],
+      }
+    );
   }
 
   public getFormControl(name: string): FormControl {
