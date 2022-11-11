@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CustomInput } from '../CustomInput';
+import { ValidatorService } from '../../services/validators/validator.service';
 
 @Component({
   selector: 'app-college-enrollment-input',
@@ -19,10 +20,11 @@ export class CollegeEnrollmentInputComponent extends CustomInput {
   @Input() formControl!: FormControl<any>;
   value: string;
 
-  constructor() {
-    const messagesError = new Map<string, string>()
-      .set('required', 'El registro escolar es obligatorio.')
-      .set('pattern', 'El registro no es valido.');
+  constructor(
+    private validatorService: ValidatorService,
+  ) {
+    const messagesError: Map<string, string> =
+      validatorService.collegeEnrollmentCustomValidator.getMessageErrors();
     super(messagesError);
 
     this.value = '';

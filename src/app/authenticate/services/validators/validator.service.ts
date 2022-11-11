@@ -3,6 +3,7 @@ import { EmailCustomValidator } from './email.custom-validator';
 import { CollegeNameCustomValidator } from './name.custom-validator';
 import { PasswordCustomvalidator } from './password.custom-validator';
 import { FullNameCustomValidator } from './full-name.custom-validator';
+import { CollegeEnrollmentCustomValidator } from './college-enrollment.custom-validator';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class ValidatorService {
   private _passwordCustomvalidator: PasswordCustomvalidator = new PasswordCustomvalidator();
   private _collegeNameCustomValidator: CollegeNameCustomValidator = new CollegeNameCustomValidator();
   private _fullNameCustomValidator: FullNameCustomValidator = new FullNameCustomValidator();
+  private _collegeEnrollmentCustomValidator: FullNameCustomValidator = new CollegeEnrollmentCustomValidator();
 
   constructor() { }
 
@@ -30,6 +32,10 @@ export class ValidatorService {
 
   public get fullNameCustomValidator(): FullNameCustomValidator {
     return this._fullNameCustomValidator;
+  }
+
+  public get collegeEnrollmentCustomValidator(): CollegeEnrollmentCustomValidator {
+    return this._collegeEnrollmentCustomValidator;
   }
 
 

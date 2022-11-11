@@ -25,8 +25,8 @@ export class SingUpComponent {
       {
         fullName: ['', validatorService.fullNameCustomValidator.getValidators()],
         collegeName: ['', validatorService.collegeNameCustomValidator.getValidators()],
-        collegeEnrollment: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]{4,}$'),]],
-        email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),]],
+        collegeEnrollment: ['', validatorService.collegeEnrollmentCustomValidator.getValidators()],
+        email: ['', validatorService.emailCustomValidator.getValidators()],
         pass: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]{6,}$"),]],
         confiPass: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]{6,}$"),]],
       },
