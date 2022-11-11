@@ -1,27 +1,32 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { AuthenticateRoutingModule } from './authenticate-routing.module';
-import { SingUpComponent } from './pages/sing-up/sing-up.component';
-import { LogInComponent } from './pages/log-in/log-in.component';
-import { HomeAuthenticateComponent } from './pages/home-authenticate/home-authenticate.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AuthenticateRoutingModule } from './authenticate-routing.module';
+
+import { HomeAuthenticateComponent } from './pages/home-authenticate/home-authenticate.component';
+import { LogInComponent } from './pages/log-in/log-in.component';
+import { SingUpComponent } from './pages/sing-up/sing-up.component';
+
+import { CollegeEnrollmentInputComponent } from './component/college-enrollment-input/college-enrollment-input.component';
+import { CollegeNameInputComponent } from './component/college-name-input/college-name-input.component';
 import { EmailInputComponent } from './component/email-input/email-input.component';
-import { PassInputComponent } from './component/pass-input/pass-input.component';
 import { FullNameInputComponent } from './component/full-name-input/full-name-input.component';
-import { CollegeNameComponent } from './component/college-name/college-name.component';
+import { PassInputComponent } from './component/pass-input/pass-input.component';
 
 
 
 @NgModule({
   declarations: [
-    SingUpComponent,
-    LogInComponent,
+    // screens
     HomeAuthenticateComponent,
+    LogInComponent,
+    SingUpComponent,
+    // components
+    CollegeEnrollmentInputComponent,
+    CollegeNameInputComponent,
     EmailInputComponent,
-    PassInputComponent,
     FullNameInputComponent,
-    CollegeNameComponent,
+    PassInputComponent,
   ],
   imports: [
     CommonModule,

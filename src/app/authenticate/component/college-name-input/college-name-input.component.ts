@@ -3,18 +3,18 @@ import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CustomInput } from '../CustomInput';
 
 @Component({
-  selector: 'app-college-name',
-  templateUrl: './college-name.component.html',
-  styleUrls: ['./college-name.component.css'],
+  selector: 'app-college-name-input',
+  templateUrl: './college-name-input.component.html',
+  styleUrls: ['./college-name-input.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CollegeNameComponent),
+      useExisting: forwardRef(() => CollegeNameInputComponent),
       multi: true
     }
   ]
 })
-export class CollegeNameComponent extends CustomInput {
+export class CollegeNameInputComponent extends CustomInput {
 
   @Input() formControl!: FormControl<any>;
   public value: string;
@@ -22,11 +22,12 @@ export class CollegeNameComponent extends CustomInput {
   constructor() {
 
     const messageError = new Map()
-      .set('required', 'El registro escolar es obligatorio.')
-      .set('pattern', 'El registro no es valido.');
+      .set('required', 'El nombre del colegio es obligatorio.')
+      .set('pattern', 'El nombre del colegio no es valido.');
     super(messageError);
 
     this.value = '';
   }
+
 
 }

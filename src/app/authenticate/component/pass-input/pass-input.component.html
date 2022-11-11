@@ -1,11 +1,14 @@
-<label for="FormPassInput" class="form-label">
-    Contraseña
+<label
+  [for]="isToConfirmPass ? 'ForConfirmPassInput' : 'ForPassInput'"
+  class="form-label"
+>
+  {{ isToConfirmPass ? "Confirmar contraseña" : "Contraseña" }}
 </label>
 <input
   type="password"
   class="form-control"
-  id="FormPassInput"
-  placeholder="tutor@email.com"
+  [id]="isToConfirmPass ? 'ForConfirmPassInput' : 'ForPassInput'"
+  placeholder="***"
   [value]="value"
   [(ngModel)]="value"
   (ngModelChange)="onChange(value)"

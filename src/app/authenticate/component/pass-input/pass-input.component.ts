@@ -17,6 +17,7 @@ import { CustomInput } from '../CustomInput';
 export class PassInputComponent extends CustomInput {
 
   @Input() formControl!: FormControl<any>;
+  @Input() isToConfirmPass: boolean = false;
   public value: string;
 
   constructor() {
