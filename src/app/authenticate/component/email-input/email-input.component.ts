@@ -1,6 +1,7 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 import { CustomInput } from '../CustomInput';
+import { ValidatorService } from '../../services/validators/validator.service';
 
 @Component({
   selector: 'app-email-input',
@@ -19,10 +20,10 @@ export class EmailInputComponent extends CustomInput {
   @Input() formControl!: FormControl<any>;
   public value: string;
 
-  constructor() {
-    const messageError = new Map()
-      .set('required', "Correo electrónico es requerido.")
-      .set('pattern', "Correo electrónico no es valido.");
+  constructor(
+    private validatorService: ValidatorService,
+  ) {
+    const messageError: Map<string, string> = validatorService.emailCustomValidator.getMessageErrors();
     super(messageError);
     this.value = '';
   }

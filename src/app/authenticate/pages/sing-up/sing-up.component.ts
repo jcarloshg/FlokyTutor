@@ -91,6 +91,7 @@ export class SingUpComponent {
     }
 
     this.messageToast = { typeToast: 'success', message: singUpResponse.message ?? 'Todo cool! :)' };
+    // this.router.navigate(['./cuenta/confirmar_cuenta']);
 
   }
 

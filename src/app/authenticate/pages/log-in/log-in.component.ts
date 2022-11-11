@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { ValidatorService } from '../../services/validators/validator.service';
 
 @Component({
   selector: 'app-log-in',
@@ -12,17 +13,14 @@ export class LogInComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private validatorService: ValidatorService,
   ) {
 
+    const emailCustomValidator = this.validatorService.emailCustomValidator;
+    // const emailCustomValidator = this.validatorService.emailCustomValidator;
+
     this.loginForm = this.formBuilder.group({
-      email:
-        [
-          '',
-          [
-            Validators.required,
-            Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),
-          ]
-        ],
+      email: ['', emailCustomValidator.getValidators()],
       pass:
         [
           '',
