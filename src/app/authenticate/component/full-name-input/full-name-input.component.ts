@@ -24,10 +24,7 @@ export class FullNameInputComponent extends CustomInput {
     private validatorService: ValidatorService,
   ) {
     const messagesError: Map<string, string> =
-      validatorService.nameCustomValidator.getMessageErrors();
-    // .set('required', "Nombre es requerido.")
-    // .set('pattern', "Debe ser el nombre con apellidos.")
-    // .set('short_name', "Nombre no es valido.")
+      validatorService.fullNameCustomValidator.getMessageErrors();
     super(messagesError);
 
     this.value = '';

@@ -1,17 +1,17 @@
 import { CustomValidator, ValidatorItem } from "./custom-validator";
 import { Validators } from '@angular/forms';
 
-export class CollegeNameCustomValidator extends CustomValidator {
+export class FullNameCustomValidator extends CustomValidator {
 
     public validatorsItems: ValidatorItem[] = [
         {
             name: "required",
-            message: "El nombre del colegio es requerido.",
+            message: "El nombre es requerido.",
             valiadator: Validators.required
         },
         {
             name: "pattern",
-            message: "El nombre del colegio no es valido.",
+            message: "Debe ser el nombre con apellidos.",
             valiadator: Validators.pattern('^[a-zA-ZÀ-ÿ]{2,}( {1,2}[a-zA-ZÀ-ÿ]{2,}){2,}$'),
         }
     ];
