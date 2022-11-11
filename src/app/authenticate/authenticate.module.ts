@@ -13,6 +13,7 @@ import { EmailInputComponent } from './component/email-input/email-input.compone
 import { FullNameInputComponent } from './component/full-name-input/full-name-input.component';
 import { PassInputComponent } from './component/pass-input/pass-input.component';
 import { CustomToastComponent } from './component/custom-toast/custom-toast.component';
+import { SpinnerLoadingComponent } from './component/spinner-loading/spinner-loading.component';
 
 
 
@@ -29,6 +30,7 @@ import { CustomToastComponent } from './component/custom-toast/custom-toast.comp
     FullNameInputComponent,
     PassInputComponent,
     CustomToastComponent,
+    SpinnerLoadingComponent,
   ],
   imports: [
     CommonModule,

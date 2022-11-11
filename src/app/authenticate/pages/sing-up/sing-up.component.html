@@ -1,46 +1,47 @@
-<div class="row py-5 px-4 d-flex justify-content-center">
+<div class="">
+  <div class="row py-4 px-4  d-flex justify-content-center">
 
-  <app-custom-toast [customToast]="messageToast"> </app-custom-toast>
+    <app-custom-toast [customToast]="messageToast"> </app-custom-toast>
 
-  <div class="col-lg-6 col-md-8" style='border: 1px solid;'>
-    <form [formGroup]="singUpForm" autocomplete="off">
-      <p class="h4">Crea tu cuenta de tutor</p>
-      <p>Ingresa tus datos</p>
+    <div class="bg-body rounded shadow py-lg-4 py-sm-3 px-5 col-lg-5 col-md-8">
 
-      <div class="row g-4">
-        <div class="col-12">
-          <app-full-name-input [formControlName]="'fullName'" [formControl]="getFormControl('fullName')">
-          </app-full-name-input>
-        </div>
+      <form [formGroup]="singUpForm" autocomplete="off">
 
-        <div class="col-12">
-          <app-college-name-input [formControlName]="'collegeName'" [formControl]="getFormControl('collegeName')">
-          </app-college-name-input>
-        </div>
+        <p class="h4">Crea tu cuenta de tutor</p>
+        <p>Ingresa tus datos</p>
 
-        <div class="col-12">
-          <app-college-enrollment-input [formControlName]="'collegeEnrollment'"
-            [formControl]="getFormControl('collegeEnrollment')">
-          </app-college-enrollment-input>
-        </div>
+        <div class="row g-4">
+          <div class="col-12">
+            <app-full-name-input [formControlName]="'fullName'" [formControl]="getFormControl('fullName')">
+            </app-full-name-input>
+          </div>
 
-        <div class="col-12">
-          <app-email-input [formControlName]="'email'" [formControl]="getFormControl('email')">
-          </app-email-input>
-        </div>
+          <div class="col-12">
+            <app-college-name-input [formControlName]="'collegeName'" [formControl]="getFormControl('collegeName')">
+            </app-college-name-input>
+          </div>
 
-        <div class="col-sm-6">
-          <app-pass-input [formControlName]="'pass'" [formControl]="getFormControl('pass')"></app-pass-input>
-        </div>
-        <div class="col-sm-6">
-          <app-pass-input [formControlName]="'confiPass'" [formControl]="getFormControl('confiPass')"
-            [isToConfirmPass]="true"></app-pass-input>
-        </div>
+          <div class="col-12">
+            <app-college-enrollment-input [formControlName]="'collegeEnrollment'"
+              [formControl]="getFormControl('collegeEnrollment')">
+            </app-college-enrollment-input>
+          </div>
 
-        <div class="col-12 mt-4 d-flex justify-content-center">
+          <div class="col-12">
+            <app-email-input [formControlName]="'email'" [formControl]="getFormControl('email')">
+            </app-email-input>
+          </div>
+
+          <div class="col-sm-6">
+            <app-pass-input [formControlName]="'pass'" [formControl]="getFormControl('pass')"></app-pass-input>
+          </div>
+          <div class="col-sm-6">
+            <app-pass-input [formControlName]="'confiPass'" [formControl]="getFormControl('confiPass')"
+              [isToConfirmPass]="true"></app-pass-input>
+          </div>
 
           <ng-container *ngIf="this.authenticateAWSService.isLoading; else elseLoading">
-            <div class="spinner-border text-primary"></div>
+            <app-spinner-loading></app-spinner-loading>
           </ng-container>
 
           <ng-template #elseLoading>
@@ -51,10 +52,9 @@
 
         </div>
 
-      </div>
-    </form>
+      </form>
 
-    <pre>{{ this.singUpForm.value | json }}</pre>
-    <pre>{{ this.singUpForm.errors | json }}</pre>
+    </div>
+
   </div>
 </div>
