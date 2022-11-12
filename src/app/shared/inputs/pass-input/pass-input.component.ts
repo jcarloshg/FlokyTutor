@@ -1,7 +1,7 @@
 import { Component, OnInit, forwardRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 import { CustomInput } from '../CustomInput';
-import { ValidatorService } from '../../services/validators/validator.service';
+import { ValidatorService } from '../../services/validator.service';
 
 @Component({
   selector: 'app-pass-input',

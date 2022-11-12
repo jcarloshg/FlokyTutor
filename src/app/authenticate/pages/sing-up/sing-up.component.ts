@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl, ValidationErrors } from '@angular/forms';
-import { CustomToast } from 'src/app/shared/inputs/custom-toast/custom-toast.inteferface';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, ValidationErrors } from '@angular/forms';
 import { AuthenticateAWSService } from '../../services/authenticate-aws.service';
 import { Role } from 'src/models';
-import { ValidatorService } from '../../../shared/services/validators/validator.service';
+import { ValidatorService } from '../../../shared/services/validator.service';
 import { Router } from '@angular/router';
+import { CustomToastService } from 'src/app/shared/services/custom-toast.service';
 
 @Component({
   selector: 'app-sing-up',
@@ -14,13 +14,13 @@ import { Router } from '@angular/router';
 export class SingUpComponent {
 
   public singUpForm: FormGroup;
-  public messageToast: CustomToast;
 
   constructor(
-    public authenticateAWSService: AuthenticateAWSService,
     private formBuilder: FormBuilder,
     private router: Router,
     private validatorService: ValidatorService,
+    public authenticateAWSService: AuthenticateAWSService,
+    public customToastService: CustomToastService,
   ) {
     this.singUpForm = this.formBuilder.group(
       {
@@ -35,11 +35,6 @@ export class SingUpComponent {
         validators: [this.validatorService.passwordCustomvalidator.areTheSamePass]
       }
     );
-
-    this.messageToast = {
-      typeToast: 'success',
-      message: '',
-    }
 
     this.singUpForm.reset({
       fullName: 'Jose Carlos Huerta Garcia',
@@ -60,7 +55,8 @@ export class SingUpComponent {
 
     if (this.singUpForm.valid == false) {
       this.singUpForm.markAllAsTouched();
-      this.messageToast = { typeToast: 'error', message: 'Los datos no son validos' };
+      this.customToastService.launchToast({ typeToast: 'error', message: 'Los datos no son validos' })
+      // this.messageToast = { typeToast: 'error', message: 'Los datos no son validos' };
       return;
     }
 
@@ -80,7 +76,7 @@ export class SingUpComponent {
     //   return;
     // }
 
-    this.messageToast = { typeToast: 'success', message: singUpResponse.message ?? 'Todo cool! :)' };
+    // this.messageToast = { typeToast: 'success', message: singUpResponse.message ?? 'Todo cool! :)' };
     this.router.navigate(['./cuenta/confirmar_nueva_cuenta'])
     // // this.router.navigate(['./cuenta/confirmar_cuenta']);
 

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { EmailCustomValidator } from './email.custom-validator';
-import { CollegeNameCustomValidator } from './name.custom-validator';
-import { PasswordCustomvalidator } from './password.custom-validator';
-import { FullNameCustomValidator } from './full-name.custom-validator';
-import { CollegeEnrollmentCustomValidator } from './college-enrollment.custom-validator';
-import { CodeVerificationCustomValidator } from './code-verification.custom-validator';
+import { EmailCustomValidator } from './validators/email.custom-validator';
+import { CollegeNameCustomValidator } from './validators/name.custom-validator';
+import { PasswordCustomvalidator } from './validators/password.custom-validator';
+import { FullNameCustomValidator } from './validators/full-name.custom-validator';
+import { CollegeEnrollmentCustomValidator } from './validators/college-enrollment.custom-validator';
+import { CodeVerificationCustomValidator } from './validators/code-verification.custom-validator';
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,7 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CustomInput } from '../CustomInput';
-import { ValidatorService } from '../../services/validators/validator.service';
+import { ValidatorService } from '../../services/validator.service';
 
 @Component({
   selector: 'app-college-name-input',

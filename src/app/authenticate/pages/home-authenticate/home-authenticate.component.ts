@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomToastService } from '../../../shared/services/custom-toast.service';
 
 @Component({
   selector: 'app-home-authenticate',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeAuthenticateComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public customToastService: CustomToastService,
+  ) { }
 
   ngOnInit(): void {
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticateAWSService } from '../../services/authenticate-aws.service';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ValidatorService } from '../../../shared/services/validators/validator.service';
+import { ValidatorService } from '../../../shared/services/validator.service';
 
 @Component({
   selector: 'app-confirm-sing-up',

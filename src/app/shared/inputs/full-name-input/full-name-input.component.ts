@@ -1,6 +1,6 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { ValidatorService } from '../../services/validators/validator.service';
+import { ValidatorService } from '../../services/validator.service';
 import { CustomInput } from '../CustomInput';
 
 @Component({
