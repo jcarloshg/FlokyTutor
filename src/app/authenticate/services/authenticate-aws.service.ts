@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Loading } from 'src/app/shared/services/loading';
-import { AccountSignUp, Authenticate, AuthResponse, Login, SignUpParams } from '../../../domain/useCases/authenticate.useCase.interface';
+import { Authenticate, AuthResponse, SignUpParams, LoginParams } from '../../../domain/useCases/authenticate.useCase.interface';
 import { EagerAccount, Role } from 'src/models';
 import { API, Auth, graphqlOperation } from 'aws-amplify';
 import { createAccount } from 'src/graphql/mutations';
@@ -10,46 +10,24 @@ import { createAccount } from 'src/graphql/mutations';
 })
 export class AuthenticateAWSService extends Loading implements Authenticate {
 
-  account: EagerAccount;
-  login: Login;
-  accountSignUp: AccountSignUp;
+  private _account: EagerAccount | null = null;
+  private _loginParams: LoginParams | null = null;
+  private _signUpParams: SignUpParams | null = null;
 
   constructor() {
     super();
-
-    this.account = {
-      id: '',
-      fullName: '',
-      email: '',
-      collegeEnrollment: '',
-      collegeName: '',
-      activitiesProgress: null,
-      role: Role.TEACHER,
-      activities: null,
-      createdAt: null,
-      updatedAt: null,
-      accountActivitiesProgressId: null,
-    };
-
-    this.login = { password: '', username: '' };
-
-    this.accountSignUp = {
-      name: '',
-      password: '',
-      username: '',
-      attributes: {
-        email: '',
-        name: '',
-      },
-    }
   }
+
+  public get account() { return this._account; }
+  public get signUpParams() { return this._signUpParams; }
+  public get loginParams() { return this._loginParams; }
 
   async signUp(signUpParams: SignUpParams): Promise<AuthResponse> {
 
     this.isLoading = true;
+    this._signUpParams = signUpParams;
 
     try {
-
       const { user } = await Auth.signUp({
         username: signUpParams.email,
         password: signUpParams.pass,
@@ -79,10 +57,11 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
         )
       );
 
-      let response: AuthResponse = { isOk: true, data: accountRes };
-
       this.isLoading = false;
-      return response;
+      return {
+        isOk: true,
+        data: accountRes,
+      };
 
     } catch (error: any) {
 
@@ -99,7 +78,7 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
 
   }
 
-  signIn(login: Login): Promise<AuthResponse> {
+  signIn(login: LoginParams): Promise<AuthResponse> {
     throw new Error('Method not implemented.');
   }
 

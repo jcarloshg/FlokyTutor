@@ -6,11 +6,13 @@
     <div class="bg-body rounded shadow py-lg-4 py-sm-3 px-5 col-lg-5 col-md-8">
 
       <form [formGroup]="singUpForm" autocomplete="off">
-
-        <p class="h4">Crea tu cuenta de tutor</p>
-        <p>Ingresa tus datos</p>
-
         <div class="row g-4">
+
+          <div class="col-12 mt-4">
+            <p class="h4">Crea tu cuenta de tutor</p>
+            <p class="text-secondary">Ingresa tus datos personales</p>
+          </div>
+
           <div class="col-12">
             <app-full-name-input [formControlName]="'fullName'" [formControl]="getFormControl('fullName')">
             </app-full-name-input>

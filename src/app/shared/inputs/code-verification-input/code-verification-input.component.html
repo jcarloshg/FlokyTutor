@@ -1,0 +1,16 @@
+<label for="ForCodeVerificationInput" class="form-label">
+    Código de verificación
+</label>
+<input
+  type="number"
+  class="form-control"
+  id="ForCodeVerificationInput"
+  placeholder="000000"
+  [value]="value"
+  [(ngModel)]="value"
+  (ngModelChange)="onChange(value)"
+  (blur)="onTouched(true)"
+/>
+<div class="text-danger" style="font-size: 14px" *ngIf="showMessage()">
+    {{ getErrorMessage() }}
+</div>

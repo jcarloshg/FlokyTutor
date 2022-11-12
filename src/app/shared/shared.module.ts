@@ -10,20 +10,22 @@ import { PassInputComponent } from './inputs/pass-input/pass-input.component';
 import { CustomToastComponent } from './inputs/custom-toast/custom-toast.component';
 import { SpinnerLoadingComponent } from './inputs/spinner-loading/spinner-loading.component';
 import { ErroMessageComponent } from './inputs/erro-message/erro-message.component';
+import { CodeVerificationInputComponent } from './inputs/code-verification-input/code-verification-input.component';
 
 
 
 
 @NgModule({
   declarations: [
+    CodeVerificationInputComponent,
     CollegeEnrollmentInputComponent,
     CollegeNameInputComponent,
+    CustomToastComponent,
     EmailInputComponent,
+    ErroMessageComponent,
     FullNameInputComponent,
     PassInputComponent,
-    CustomToastComponent,
     SpinnerLoadingComponent,
-    ErroMessageComponent,
   ],
   imports: [
     CommonModule,
@@ -31,14 +33,15 @@ import { ErroMessageComponent } from './inputs/erro-message/erro-message.compone
     ReactiveFormsModule,
   ],
   exports: [
+    CodeVerificationInputComponent,
     CollegeEnrollmentInputComponent,
     CollegeNameInputComponent,
+    CustomToastComponent,
     EmailInputComponent,
+    ErroMessageComponent,
     FullNameInputComponent,
     PassInputComponent,
-    CustomToastComponent,
     SpinnerLoadingComponent,
-    ErroMessageComponent,
   ]
 })
 export class SharedModule { }

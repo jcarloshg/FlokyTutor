@@ -4,6 +4,7 @@ import { CollegeNameCustomValidator } from './name.custom-validator';
 import { PasswordCustomvalidator } from './password.custom-validator';
 import { FullNameCustomValidator } from './full-name.custom-validator';
 import { CollegeEnrollmentCustomValidator } from './college-enrollment.custom-validator';
+import { CodeVerificationCustomValidator } from './code-verification.custom-validator';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class ValidatorService {
   private _emailCustomValidator: EmailCustomValidator = new EmailCustomValidator();
   private _fullNameCustomValidator: FullNameCustomValidator = new FullNameCustomValidator();
   private _passwordCustomvalidator: PasswordCustomvalidator = new PasswordCustomvalidator();
+  private _codeVerificationCustomValidator: CodeVerificationCustomValidator = new CodeVerificationCustomValidator();
 
   constructor() { }
 
@@ -38,5 +40,8 @@ export class ValidatorService {
     return this._collegeEnrollmentCustomValidator;
   }
 
+  public get codeVerificationCustomValidator(): CodeVerificationCustomValidator {
+    return this._codeVerificationCustomValidator;
+  }
 
 }

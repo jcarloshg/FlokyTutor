@@ -6,19 +6,9 @@ export interface AuthResponse {
     data?: any
 }
 
-export interface Login {
+export interface LoginParams {
     username: string,
     password: string,
-}
-
-export interface AccountSignUp {
-    name: string;
-    username: string;
-    password: string;
-    attributes: {
-        email: string,
-        name: string,
-    }
 }
 
 export interface SignUpParams {
@@ -32,14 +22,10 @@ export interface SignUpParams {
 
 export interface Authenticate {
 
-    account: EagerAccount,
-
     // singIn
-    login: Login;
-    signIn(login: Login): Promise<AuthResponse>;
+    signIn(login: LoginParams): Promise<AuthResponse>;
 
     // singUp
-    accountSignUp: AccountSignUp;
     signUp(signUpParams: SignUpParams): Promise<AuthResponse>;
     confirmSignUp(): Promise<AuthResponse>;
     resendConfirmationCode(): Promise<AuthResponse>;

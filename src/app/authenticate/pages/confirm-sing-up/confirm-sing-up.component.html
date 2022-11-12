@@ -1,1 +1,33 @@
-<p>confirm-sing-up works!</p>
+<form [formGroup]="confirmSingUpForm" autocomplete="off">
+    <div class="container my-5 d-flex justify-content-center">
+        <div class="shadow p-5 my-5 col-lg-6 bg-body rounded">
+
+            <p class="h4 mb-5">Confirma tu cuenta de tutor</p>
+
+            <div class="row g-4">
+                <div class="col-12">
+                    <p class="text-secondary">Ingrese el código de verificación que llegó al correo electrónico:</p>
+                    <p class="text-center fw-semibold">{{authenticateAWSService.signUpParams?.email}}</p>
+                </div>
+
+                <div class="col-12">
+                    <app-code-verification-input [formControlName]="'codeVerification'"
+                        [formControl]="getFormControl('codeVerification')"></app-code-verification-input>
+                </div>
+
+                <div class="col-12">
+                    <ng-container *ngIf="this.authenticateAWSService.isLoading; else elseLoading">
+                        <app-spinner-loading></app-spinner-loading>
+                    </ng-container>
+
+                    <ng-template #elseLoading>
+                        <button type="button" class="btn btn-primary w-100">
+                            Confirmar cuenta
+                        </button>
+                    </ng-template>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
