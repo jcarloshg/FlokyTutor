@@ -44,7 +44,6 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
     } catch (error: any) {
       console.log(error);
       this.isLoading = false;
-
       switch (error.code) {
         case 'NotAuthorizedException': return { isOk: false, message: 'El correo electrónico o contraseña son incorrectos.' }
         default: return { isOk: false, message: 'No se pudo iniciar sesión.' }
