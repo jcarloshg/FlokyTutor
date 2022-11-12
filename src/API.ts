@@ -97,7 +97,7 @@ export type CreateAccountInput = {
   email: string,
   collegeEnrollment: string,
   collegeName: string,
-  role?: Role | null,
+  role: Role,
   _version?: number | null,
   accountActivitiesProgressId?: string | null,
 };
@@ -176,7 +176,7 @@ export type Account = {
   collegeEnrollment: string,
   collegeName: string,
   activitiesProgress?: ActivitiesProgress | null,
-  role?: Role | null,
+  role: Role,
   activities?: ModelAccountActivitieConnection | null,
   createdAt: string,
   updatedAt: string,
@@ -685,7 +685,7 @@ export type CreateAccountMutation = {
       _deleted?: boolean | null,
       _lastChangedAt: number,
     } | null,
-    role?: Role | null,
+    role: Role,
     activities?:  {
       __typename: "ModelAccountActivitieConnection",
       items:  Array< {
@@ -741,7 +741,7 @@ export type UpdateAccountMutation = {
       _deleted?: boolean | null,
       _lastChangedAt: number,
     } | null,
-    role?: Role | null,
+    role: Role,
     activities?:  {
       __typename: "ModelAccountActivitieConnection",
       items:  Array< {
@@ -797,7 +797,7 @@ export type DeleteAccountMutation = {
       _deleted?: boolean | null,
       _lastChangedAt: number,
     } | null,
-    role?: Role | null,
+    role: Role,
     activities?:  {
       __typename: "ModelAccountActivitieConnection",
       items:  Array< {
@@ -1119,7 +1119,7 @@ export type CreateAccountActivitieMutation = {
         _deleted?: boolean | null,
         _lastChangedAt: number,
       } | null,
-      role?: Role | null,
+      role: Role,
       activities?:  {
         __typename: "ModelAccountActivitieConnection",
         nextToken?: string | null,
@@ -1203,7 +1203,7 @@ export type UpdateAccountActivitieMutation = {
         _deleted?: boolean | null,
         _lastChangedAt: number,
       } | null,
-      role?: Role | null,
+      role: Role,
       activities?:  {
         __typename: "ModelAccountActivitieConnection",
         nextToken?: string | null,
@@ -1287,7 +1287,7 @@ export type DeleteAccountActivitieMutation = {
         _deleted?: boolean | null,
         _lastChangedAt: number,
       } | null,
-      role?: Role | null,
+      role: Role,
       activities?:  {
         __typename: "ModelAccountActivitieConnection",
         nextToken?: string | null,
@@ -1452,7 +1452,7 @@ export type GetAccountQuery = {
       _deleted?: boolean | null,
       _lastChangedAt: number,
     } | null,
-    role?: Role | null,
+    role: Role,
     activities?:  {
       __typename: "ModelAccountActivitieConnection",
       items:  Array< {
@@ -1511,7 +1511,7 @@ export type ListAccountsQuery = {
         _deleted?: boolean | null,
         _lastChangedAt: number,
       } | null,
-      role?: Role | null,
+      role: Role,
       activities?:  {
         __typename: "ModelAccountActivitieConnection",
         nextToken?: string | null,
@@ -1563,7 +1563,7 @@ export type SyncAccountsQuery = {
         _deleted?: boolean | null,
         _lastChangedAt: number,
       } | null,
-      role?: Role | null,
+      role: Role,
       activities?:  {
         __typename: "ModelAccountActivitieConnection",
         nextToken?: string | null,
@@ -1846,7 +1846,7 @@ export type GetAccountActivitieQuery = {
         _deleted?: boolean | null,
         _lastChangedAt: number,
       } | null,
-      role?: Role | null,
+      role: Role,
       activities?:  {
         __typename: "ModelAccountActivitieConnection",
         nextToken?: string | null,
@@ -1916,7 +1916,7 @@ export type ListAccountActivitiesQuery = {
         email: string,
         collegeEnrollment: string,
         collegeName: string,
-        role?: Role | null,
+        role: Role,
         createdAt: string,
         updatedAt: string,
         _version: number,
@@ -1973,7 +1973,7 @@ export type SyncAccountActivitiesQuery = {
         email: string,
         collegeEnrollment: string,
         collegeName: string,
-        role?: Role | null,
+        role: Role,
         createdAt: string,
         updatedAt: string,
         _version: number,
@@ -2109,7 +2109,7 @@ export type OnCreateAccountSubscription = {
       _deleted?: boolean | null,
       _lastChangedAt: number,
     } | null,
-    role?: Role | null,
+    role: Role,
     activities?:  {
       __typename: "ModelAccountActivitieConnection",
       items:  Array< {
@@ -2164,7 +2164,7 @@ export type OnUpdateAccountSubscription = {
       _deleted?: boolean | null,
       _lastChangedAt: number,
     } | null,
-    role?: Role | null,
+    role: Role,
     activities?:  {
       __typename: "ModelAccountActivitieConnection",
       items:  Array< {
@@ -2219,7 +2219,7 @@ export type OnDeleteAccountSubscription = {
       _deleted?: boolean | null,
       _lastChangedAt: number,
     } | null,
-    role?: Role | null,
+    role: Role,
     activities?:  {
       __typename: "ModelAccountActivitieConnection",
       items:  Array< {
@@ -2534,7 +2534,7 @@ export type OnCreateAccountActivitieSubscription = {
         _deleted?: boolean | null,
         _lastChangedAt: number,
       } | null,
-      role?: Role | null,
+      role: Role,
       activities?:  {
         __typename: "ModelAccountActivitieConnection",
         nextToken?: string | null,
@@ -2617,7 +2617,7 @@ export type OnUpdateAccountActivitieSubscription = {
         _deleted?: boolean | null,
         _lastChangedAt: number,
       } | null,
-      role?: Role | null,
+      role: Role,
       activities?:  {
         __typename: "ModelAccountActivitieConnection",
         nextToken?: string | null,
@@ -2700,7 +2700,7 @@ export type OnDeleteAccountActivitieSubscription = {
         _deleted?: boolean | null,
         _lastChangedAt: number,
       } | null,
-      role?: Role | null,
+      role: Role,
       activities?:  {
         __typename: "ModelAccountActivitieConnection",
         nextToken?: string | null,
