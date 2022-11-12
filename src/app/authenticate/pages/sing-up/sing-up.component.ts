@@ -4,6 +4,7 @@ import { CustomToast } from 'src/app/shared/inputs/custom-toast/custom-toast.int
 import { AuthenticateAWSService } from '../../services/authenticate-aws.service';
 import { Role } from 'src/models';
 import { ValidatorService } from '../../../shared/services/validators/validator.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sing-up',
@@ -16,8 +17,9 @@ export class SingUpComponent {
   public messageToast: CustomToast;
 
   constructor(
-    private formBuilder: FormBuilder,
     public authenticateAWSService: AuthenticateAWSService,
+    private formBuilder: FormBuilder,
+    private router: Router,
     private validatorService: ValidatorService,
   ) {
     this.singUpForm = this.formBuilder.group(
@@ -39,14 +41,14 @@ export class SingUpComponent {
       message: '',
     }
 
-    // this.singUpForm.reset({
-    //   fullName: 'Jose ',
-    //   collegeName: 'Benemérita',
-    //   collegeEnrollment: '201738087',
-    //   email: 'carlosj12336@gmail.com',
-    //   password: 'Qazwsx123',
-    //   confirmationPassword: 'Qazwsx123',
-    // });
+    this.singUpForm.reset({
+      fullName: 'Jose Carlos Huerta Garcia',
+      collegeName: 'Benemérita Universiada Autonoma de Puebla',
+      collegeEnrollment: '201738087',
+      email: 'carlosj12336@gmail.com',
+      password: 'Qazwsx123',
+      confirmationPassword: 'Qazwsx123',
+    });
   }
 
 
@@ -73,13 +75,14 @@ export class SingUpComponent {
       }
     );
 
-    if (singUpResponse.isOk == false) {
-      this.messageToast = { typeToast: 'error', message: singUpResponse.message ?? 'Ocurrio un error inesperado' };
-      return;
-    }
+    // if (singUpResponse.isOk == false) {
+    //   this.messageToast = { typeToast: 'error', message: singUpResponse.message ?? 'Ocurrio un error inesperado' };
+    //   return;
+    // }
 
     this.messageToast = { typeToast: 'success', message: singUpResponse.message ?? 'Todo cool! :)' };
-    // this.router.navigate(['./cuenta/confirmar_cuenta']);
+    this.router.navigate(['./cuenta/confirmar_nueva_cuenta'])
+    // // this.router.navigate(['./cuenta/confirmar_cuenta']);
 
   }
 

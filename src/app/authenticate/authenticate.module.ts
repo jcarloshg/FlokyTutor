@@ -7,6 +7,7 @@ import { HomeAuthenticateComponent } from './pages/home-authenticate/home-authen
 import { LogInComponent } from './pages/log-in/log-in.component';
 import { SingUpComponent } from './pages/sing-up/sing-up.component';
 import { SharedModule } from '../shared/shared.module';
+import { ConfirmSingUpComponent } from './pages/confirm-sing-up/confirm-sing-up.component';
 
 
 
@@ -16,6 +17,7 @@ import { SharedModule } from '../shared/shared.module';
     HomeAuthenticateComponent,
     LogInComponent,
     SingUpComponent,
+    ConfirmSingUpComponent,
   ],
   imports: [
     CommonModule,

@@ -12,7 +12,7 @@ export class CollegeEnrollmentCustomValidator extends CustomValidator {
         {
             name: 'pattern',
             message: "El registro escolar no es valido",
-            valiadator: Validators.pattern('[a-zA-Z0-9]{4,}$'),
+            valiadator: Validators.pattern('^[a-zA-Z0-9]{4,}$'),
         },
     ];
 

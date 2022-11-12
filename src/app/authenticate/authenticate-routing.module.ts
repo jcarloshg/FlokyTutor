@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ConfirmSingUpComponent } from './pages/confirm-sing-up/confirm-sing-up.component';
 
 // mine
 import { HomeAuthenticateComponent } from './pages/home-authenticate/home-authenticate.component';
@@ -18,6 +19,10 @@ const routes: Routes = [
       {
         path: 'registro_nueva_cuenta',
         component: SingUpComponent,
+      },
+      {
+        path: 'confirmar_nueva_cuenta',
+        component: ConfirmSingUpComponent
       },
       {
         path: '**',
