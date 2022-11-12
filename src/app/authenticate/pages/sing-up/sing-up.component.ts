@@ -55,8 +55,7 @@ export class SingUpComponent {
 
     if (this.singUpForm.valid == false) {
       this.singUpForm.markAllAsTouched();
-      this.customToastService.launchToast({ typeToast: 'error', message: 'Los datos no son validos' })
-      // this.messageToast = { typeToast: 'error', message: 'Los datos no son validos' };
+      this.customToastService.launchToast({ typeToast: 'error', message: 'Los datos no son validos' });
       return;
     }
 
@@ -72,13 +71,12 @@ export class SingUpComponent {
     );
 
     // if (singUpResponse.isOk == false) {
-    //   this.messageToast = { typeToast: 'error', message: singUpResponse.message ?? 'Ocurrio un error inesperado' };
+    //   this.customToastService.launchToast({ typeToast: 'error', message: singUpResponse.message ?? 'Ocurrio un error inesperado' });
     //   return;
     // }
 
-    // this.messageToast = { typeToast: 'success', message: singUpResponse.message ?? 'Todo cool! :)' };
+    this.customToastService.launchToast({ typeToast: 'success', message: singUpResponse.message ?? 'Todo cool! :)' });
     this.router.navigate(['./cuenta/confirmar_nueva_cuenta'])
-    // // this.router.navigate(['./cuenta/confirmar_cuenta']);
 
   }
 

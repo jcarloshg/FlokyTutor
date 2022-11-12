@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Loading } from 'src/app/shared/services/loading';
-import { Authenticate, AuthResponse, SignUpParams, LoginParams } from '../../../domain/useCases/authenticate.useCase.interface';
+import { Authenticate, AuthResponse, SignUpParams, LoginParams, ConfirmSignUpParams } from '../../../domain/useCases/authenticate.useCase.interface';
 import { EagerAccount, Role } from 'src/models';
 import { API, Auth, graphqlOperation } from 'aws-amplify';
 import { createAccount } from 'src/graphql/mutations';
@@ -13,15 +13,31 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
   private _account: EagerAccount | null = null;
   private _loginParams: LoginParams | null = null;
   private _signUpParams: SignUpParams | null = null;
+  private _confirmSignUpParams: ConfirmSignUpParams | null = null;
 
   constructor() {
     super();
   }
 
+  //============================================================
+  // access to data from this service
+  //============================================================
   public get account() { return this._account; }
   public get signUpParams() { return this._signUpParams; }
   public get loginParams() { return this._loginParams; }
 
+
+  //============================================================
+  // log-in
+  //============================================================
+  signIn(login: LoginParams): Promise<AuthResponse> {
+    throw new Error('Method not implemented.');
+  }
+
+
+  //============================================================
+  // sing-up
+  //============================================================
   async signUp(signUpParams: SignUpParams): Promise<AuthResponse> {
 
     this.isLoading = true;
@@ -78,13 +94,31 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
 
   }
 
-  signIn(login: LoginParams): Promise<AuthResponse> {
-    throw new Error('Method not implemented.');
+  async confirmSignUp(confirmSignUpParams: ConfirmSignUpParams): Promise<AuthResponse> {
+
+    this.isLoading = true;
+    this._confirmSignUpParams = confirmSignUpParams;
+
+    try {
+
+      await Auth.confirmSignUp(
+        confirmSignUpParams.email,
+        confirmSignUpParams.code,
+      );
+
+      this.isLoading = false;
+      return { isOk: true, message: 'Registro completado exitosamente. \n ¡Ahora eres parte de la familia Floky!' }
+    } catch (error: any) {
+
+      console.log({ ...error });
+      this.isLoading = false;
+      switch (error.code) {
+        case "CodeMismatchException": return { isOk: false, message: 'Código invalido' }
+        default: return { isOk: false, message: 'Se obtuvo un error inesperado :(' }
+      }
+    }
   }
 
-  confirmSignUp(): Promise<AuthResponse> {
-    throw new Error('Method not implemented.');
-  }
 
   resendConfirmationCode(): Promise<AuthResponse> {
     throw new Error('Method not implemented.');

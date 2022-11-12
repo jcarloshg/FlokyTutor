@@ -1,4 +1,24 @@
-import { EagerAccount, Role } from "src/models";
+import { Role } from "src/models";
+
+export interface Authenticate {
+
+    // singIn
+    signIn(login: LoginParams): Promise<AuthResponse>;
+
+    // singUp
+    signUp(signUpParams: SignUpParams): Promise<AuthResponse>;
+    confirmSignUp(confirmSignUpParams: ConfirmSignUpParams): Promise<AuthResponse>;
+    resendConfirmationCode(): Promise<AuthResponse>;
+
+    // reset pass
+    // TODO - send code
+    // TODO - confirm code && passs
+
+    // view profile
+
+    signOut(): Promise<AuthResponse>;
+
+}
 
 export interface AuthResponse {
     isOk: boolean,
@@ -19,23 +39,7 @@ export interface SignUpParams {
     email: string,
     pass: string,
 }
-
-export interface Authenticate {
-
-    // singIn
-    signIn(login: LoginParams): Promise<AuthResponse>;
-
-    // singUp
-    signUp(signUpParams: SignUpParams): Promise<AuthResponse>;
-    confirmSignUp(): Promise<AuthResponse>;
-    resendConfirmationCode(): Promise<AuthResponse>;
-
-    // reset pass
-    // TODO - send code
-    // TODO - confirm code && passs
-
-    // view profile
-
-    signOut(): Promise<AuthResponse>;
-
+export interface ConfirmSignUpParams {
+    email: string,
+    code: string,
 }

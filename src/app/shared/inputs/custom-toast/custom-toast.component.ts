@@ -8,7 +8,7 @@ import { CustomToast } from './custom-toast.inteferface';
 })
 export class CustomToastComponent implements OnChanges {
 
-  @Input() seconds: number = 5;
+  @Input() seconds: number = 3;
   @Input() customToast!: CustomToast;
   private typeToastStyle: Map<string, string>;
   public showToast: boolean = false;
