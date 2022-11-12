@@ -3,7 +3,7 @@ import { Role } from "src/models";
 export interface Authenticate {
 
     // singIn
-    signIn(login: LoginParams): Promise<AuthResponse>;
+    signIn(loginParams: LoginParams): Promise<AuthResponse>;
 
     // singUp
     signUp(signUpParams: SignUpParams): Promise<AuthResponse>;

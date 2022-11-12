@@ -13,18 +13,21 @@
                     <app-pass-input [formControlName]="'pass'" [formControl]="getFormControl('pass')">
                     </app-pass-input>
                 </div>
+
                 <div class="col-12 mt-4">
-                    <button type="button" class="btn btn-primary w-100">
-                        Iniciar sesión
-                    </button>
+
+                    <ng-container *ngIf="this.authenticateAWSService.isLoading; else elseLoading">
+                        <app-spinner-loading></app-spinner-loading>
+                    </ng-container>
+                    <ng-template #elseLoading>
+                        <button type="button" class="btn btn-primary w-100" (click)="login()">
+                            Iniciar sesión
+                        </button>
+                    </ng-template>
+
                     <button type="button" class="btn btn-link w-100">
                         ¿Olvidaste tu contraseña?
                     </button>
-                </div>
-
-
-                <div class="col-12">
-                    <pre>{{this.loginForm.value | json}}</pre>
                 </div>
 
             </div>

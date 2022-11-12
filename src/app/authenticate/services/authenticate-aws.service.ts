@@ -19,6 +19,7 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
     super();
   }
 
+
   //============================================================
   // access to data from this service
   //============================================================
@@ -30,8 +31,25 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
   //============================================================
   // log-in
   //============================================================
-  signIn(login: LoginParams): Promise<AuthResponse> {
-    throw new Error('Method not implemented.');
+  async signIn(loginParams: LoginParams): Promise<AuthResponse> {
+
+    this.isLoading = true;
+    this._loginParams = loginParams;
+
+    try {
+      const user = await Auth.signIn(loginParams.username, loginParams.password);
+      console.log({ user });
+      this.isLoading = false;
+      return { isOk: true, message: '¡Hola, bienvenido tutor! :)' }
+    } catch (error: any) {
+      console.log(error);
+      this.isLoading = false;
+
+      switch (error.code) {
+        case 'NotAuthorizedException': return { isOk: false, message: 'El correo electrónico o contraseña son incorrectos.' }
+        default: return { isOk: false, message: 'No se pudo iniciar sesión.' }
+      }
+    }
   }
 
 

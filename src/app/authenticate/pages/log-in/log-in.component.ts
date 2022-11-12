@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ValidatorService } from '../../../shared/services/validator.service';
+import { AuthenticateAWSService } from '../../services/authenticate-aws.service';
+import { CustomToastService } from '../../../shared/services/custom-toast.service';
 
 @Component({
   selector: 'app-log-in',
@@ -13,6 +15,8 @@ export class LogInComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    public authenticateAWSService: AuthenticateAWSService,
+    public customToastService: CustomToastService,
     private validatorService: ValidatorService,
   ) {
 
@@ -25,6 +29,11 @@ export class LogInComponent implements OnInit {
         pass: ['', passwordCustomvalidator.getValidators()],
       }
     );
+
+    this.loginForm.reset({
+      email: 'carlosj12336@gmail.com',
+      pass: 'Qazwsx123',
+    })
   }
 
   public getFormControl(name: string): FormControl {
@@ -32,5 +41,28 @@ export class LogInComponent implements OnInit {
   }
 
   ngOnInit(): void { }
+
+  public async login() {
+
+    if (this.loginForm.valid == false) {
+      this.loginForm.markAllAsTouched();
+      this.customToastService.launchToast({ typeToast: 'error', message: 'Los datos no son validos' });
+      return;
+    }
+
+    const signInResponse = await this.authenticateAWSService.signIn({
+      username: this.loginForm.get('email')!.value,
+      password: this.loginForm.get('pass')!.value,
+    });
+
+    if (signInResponse.isOk == false) {
+      this.customToastService.launchToast({ typeToast: 'error', message: signInResponse.message ?? 'Ocurrio un error inesperado' });
+      return;
+    }
+
+    this.customToastService.launchToast({ typeToast: 'success', message: signInResponse.message! });
+    // this.router.navigate(['./cuenta/confirmar_nueva_cuenta'])
+
+  }
 
 }
