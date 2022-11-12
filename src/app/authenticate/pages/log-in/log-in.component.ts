@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { ValidatorService } from '../../../shared/services/validator.service';
 import { AuthenticateAWSService } from '../../services/authenticate-aws.service';
 import { CustomToastService } from '../../../shared/services/custom-toast.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -15,6 +16,7 @@ export class LogInComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private router: Router,
     public authenticateAWSService: AuthenticateAWSService,
     public customToastService: CustomToastService,
     private validatorService: ValidatorService,
@@ -61,7 +63,7 @@ export class LogInComponent implements OnInit {
     }
 
     this.customToastService.launchToast({ typeToast: 'success', message: signInResponse.message! });
-    // this.router.navigate(['./cuenta/confirmar_nueva_cuenta'])
+    this.router.navigate(['./actividades'])
 
   }
 

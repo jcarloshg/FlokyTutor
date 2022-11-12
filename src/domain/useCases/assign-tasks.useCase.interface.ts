@@ -1,12 +1,4 @@
-import { Topic } from '../entities/entities.interface'
-
-export interface ActivitiesResponse {
-    isOk: boolean,
-    message?: string,
-    data?: any
-}
-
-export interface ManagementActivities {
+export interface AssignTasks {
 
     createTopic(
         name: string,
@@ -16,4 +8,10 @@ export interface ManagementActivities {
 
     getAllTopic(): Promise<ActivitiesResponse>;
 
+}
+
+export interface ActivitiesResponse {
+    isOk: boolean,
+    message?: string,
+    data?: any
 }
