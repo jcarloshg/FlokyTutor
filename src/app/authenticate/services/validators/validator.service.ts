@@ -10,11 +10,11 @@ import { CollegeEnrollmentCustomValidator } from './college-enrollment.custom-va
 })
 export class ValidatorService {
 
-  private _emailCustomValidator: EmailCustomValidator = new EmailCustomValidator();
-  private _passwordCustomvalidator: PasswordCustomvalidator = new PasswordCustomvalidator();
-  private _collegeNameCustomValidator: CollegeNameCustomValidator = new CollegeNameCustomValidator();
-  private _fullNameCustomValidator: FullNameCustomValidator = new FullNameCustomValidator();
   private _collegeEnrollmentCustomValidator: FullNameCustomValidator = new CollegeEnrollmentCustomValidator();
+  private _collegeNameCustomValidator: CollegeNameCustomValidator = new CollegeNameCustomValidator();
+  private _emailCustomValidator: EmailCustomValidator = new EmailCustomValidator();
+  private _fullNameCustomValidator: FullNameCustomValidator = new FullNameCustomValidator();
+  private _passwordCustomvalidator: PasswordCustomvalidator = new PasswordCustomvalidator();
 
   constructor() { }
 

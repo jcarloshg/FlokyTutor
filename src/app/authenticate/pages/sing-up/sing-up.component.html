@@ -33,11 +33,11 @@
           </div>
 
           <div class="col-sm-6">
-            <app-pass-input [formControlName]="'pass'" [formControl]="getFormControl('pass')"></app-pass-input>
+            <app-pass-input [formControlName]="'password'" [formControl]="getFormControl('password')"></app-pass-input>
           </div>
           <div class="col-sm-6">
-            <app-pass-input [formControlName]="'confiPass'" [formControl]="getFormControl('confiPass')"
-              [isToConfirmPass]="true"></app-pass-input>
+            <app-pass-input [formControlName]="'confirmationPassword'"
+              [formControl]="getFormControl('confirmationPassword')" [isToConfirmPass]="true"></app-pass-input>
           </div>
 
           <ng-container *ngIf="this.authenticateAWSService.isLoading; else elseLoading">

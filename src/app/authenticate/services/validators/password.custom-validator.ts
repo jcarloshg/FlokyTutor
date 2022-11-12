@@ -25,13 +25,13 @@ export class PasswordCustomvalidator extends CustomValidator {
         super();
     }
 
-    private areTheSamePass(formGroup: AbstractControl): ValidationErrors | null {
+    public areTheSamePass(formGroup: AbstractControl): ValidationErrors | null {
 
         const pass = formGroup.get('password')?.value;
-        const confiPass = formGroup.get('confiPassword')?.value;
+        const confiPass = formGroup.get('confirmationPassword')?.value;
 
         if (pass !== confiPass) {
-            formGroup.get('confiPass')?.setErrors({ areTheSamePass: false });
+            formGroup.get('confirmationPassword')?.setErrors({ areTheSamePass: false });
             return { areTheSamePass: true };
         }
 

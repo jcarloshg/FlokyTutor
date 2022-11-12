@@ -27,11 +27,11 @@ export class SingUpComponent {
         collegeName: ['', validatorService.collegeNameCustomValidator.getValidators()],
         collegeEnrollment: ['', validatorService.collegeEnrollmentCustomValidator.getValidators()],
         email: ['', validatorService.emailCustomValidator.getValidators()],
-        pass: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]{6,}$"),]],
-        confiPass: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]{6,}$"),]],
+        password: ['', validatorService.passwordCustomvalidator.getValidators()],
+        confirmationPassword: ['', validatorService.passwordCustomvalidator.getValidators()],
       },
       {
-        validators: [this.areTheSamePass]
+        validators: [this.validatorService.passwordCustomvalidator.areTheSamePass]
       }
     );
 
@@ -45,24 +45,11 @@ export class SingUpComponent {
       collegeName: 'Benemérita',
       collegeEnrollment: '201738087',
       email: 'carlosj12336@gmail.com',
-      pass: 'Qazwsx123',
-      confiPass: 'Qazwsx123',
+      password: 'Qazwsx123',
+      confirmationPassword: 'Qazwsx123',
     });
   }
 
-  areTheSamePass(formGroup: AbstractControl): ValidationErrors | null {
-    const pass = formGroup.get('pass')?.value;
-    const confiPass = formGroup.get('confiPass')?.value;
-
-    // if (pass !== confiPass) return { areTheSamePass: false }
-
-    if (pass !== confiPass) {
-      formGroup.get('confiPass')?.setErrors({ areTheSamePass: false });
-      return { areTheSamePass: true };
-    }
-
-    return null;
-  }
 
   public getFormControl(name: string): FormControl {
     return this.singUpForm.get(name) as FormControl;
@@ -83,7 +70,7 @@ export class SingUpComponent {
         role: Role.TEACHER,
         collegeEnrollment: this.singUpForm.get('collegeEnrollment')?.value,
         email: this.singUpForm.get('email')?.value,
-        pass: this.singUpForm.get('pass')?.value,
+        pass: this.singUpForm.get('password')?.value,
       }
     );
 
