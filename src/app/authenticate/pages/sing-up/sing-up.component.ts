@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl, ValidationErrors } from '@angular/forms';
-import { CustomToast } from '../../component/custom-toast/custom-toast.inteferface';
+import { CustomToast } from 'src/app/shared/inputs/custom-toast/custom-toast.inteferface';
 import { AuthenticateAWSService } from '../../services/authenticate-aws.service';
-import { AccountSignUp } from '../../../../domain/useCases/authenticate.useCase.interface';
-import { EagerAccount, Role } from 'src/models';
-import { ValidatorService } from '../../services/validators/validator.service';
+import { Role } from 'src/models';
+import { ValidatorService } from '../../../shared/services/validators/validator.service';
 
 @Component({
   selector: 'app-sing-up',
@@ -40,14 +39,14 @@ export class SingUpComponent {
       message: '',
     }
 
-    this.singUpForm.reset({
-      fullName: 'Jose ',
-      collegeName: 'Benemérita',
-      collegeEnrollment: '201738087',
-      email: 'carlosj12336@gmail.com',
-      password: 'Qazwsx123',
-      confirmationPassword: 'Qazwsx123',
-    });
+    // this.singUpForm.reset({
+    //   fullName: 'Jose ',
+    //   collegeName: 'Benemérita',
+    //   collegeEnrollment: '201738087',
+    //   email: 'carlosj12336@gmail.com',
+    //   password: 'Qazwsx123',
+    //   confirmationPassword: 'Qazwsx123',
+    // });
   }
 
 

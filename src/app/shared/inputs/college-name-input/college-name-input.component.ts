@@ -1,5 +1,7 @@
-import { Component, OnInit, forwardRef, Input } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Component, forwardRef, Input } from '@angular/core';
+import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { CustomInput } from '../CustomInput';
+import { ValidatorService } from '../../services/validators/validator.service';
 
 @Component({
   selector: 'app-college-name-input',
@@ -13,24 +15,20 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
     }
   ]
 })
-export class CollegeNameInputComponent implements ControlValueAccessor {
+export class CollegeNameInputComponent extends CustomInput {
 
-  @Input() messageError: string | null = null;
-  @Input() showError: boolean = false;
+  @Input() formControl!: FormControl<any>;
+  public value: string;
 
-  public collegeName: string = '';
+  constructor(
+    private validatorService: ValidatorService,
+  ) {
+    const messagesError: Map<string, string> =
+      validatorService.collegeNameCustomValidator.getMessageErrors();
+    super(messagesError);
 
-  constructor() { }
-
-  onChange = (_: any) => { };
-  onTouched = (_: any) => { };
-
-  registerOnChange(fn: any): void { this.onChange = fn; }
-  registerOnTouched(fn: any): void { this.onTouched = fn; }
-  setDisabledState?(isDisabled: boolean): void { }
-  writeValue(obj: any): void {
-    this.collegeName = obj;
-    this.onChange(this.collegeName);
+    this.value = '';
   }
+
 
 }

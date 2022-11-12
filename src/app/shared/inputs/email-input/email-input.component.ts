@@ -1,5 +1,7 @@
 import { Component, forwardRef, Input } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
+import { CustomInput } from '../CustomInput';
+import { ValidatorService } from '../../services/validators/validator.service';
 
 @Component({
   selector: 'app-email-input',
@@ -13,24 +15,18 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class EmailInputComponent implements ControlValueAccessor {
+export class EmailInputComponent extends CustomInput {
 
-  @Input() messageError: string | null = null;
-  @Input() showError: boolean = false;
+  @Input() formControl!: FormControl<any>;
+  public value: string;
 
-  public email: string = '';
-
-  constructor() { }
-
-  onChange = (_: any) => { };
-  onTouched = (_: any) => { };
-
-  registerOnChange(fn: any): void { this.onChange = fn; }
-  registerOnTouched(fn: any): void { this.onTouched = fn; }
-  writeValue(obj: any): void {
-    this.email = obj;
-    this.onChange(this.email);
+  constructor(
+    private validatorService: ValidatorService,
+  ) {
+    const messageError: Map<string, string> =
+      validatorService.emailCustomValidator.getMessageErrors();
+    super(messageError);
+    this.value = '';
   }
-  setDisabledState?(isDisabled: boolean): void { }
 
 }

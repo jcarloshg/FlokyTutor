@@ -4,12 +4,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // mine
 import { CollegeEnrollmentInputComponent } from './inputs/college-enrollment-input/college-enrollment-input.component';
 import { CollegeNameInputComponent } from './inputs/college-name-input/college-name-input.component';
-import { CustomToastComponent } from './inputs/custom-toast/custom-toast.component';
 import { EmailInputComponent } from './inputs/email-input/email-input.component';
-import { NameInputComponent } from './inputs/name-input/name-input.component';
-import { PasswordInputComponent } from './inputs/password-input/password-input.component';
-import { VerificationCodeInputComponent } from './inputs/verification-code-input/verification-code-input.component';
-import { MessageErrorComponent } from './inputs/message-error/message-error.component';
+import { FullNameInputComponent } from './inputs/full-name-input/full-name-input.component';
+import { PassInputComponent } from './inputs/pass-input/pass-input.component';
+import { CustomToastComponent } from './inputs/custom-toast/custom-toast.component';
+import { SpinnerLoadingComponent } from './inputs/spinner-loading/spinner-loading.component';
+import { ErroMessageComponent } from './inputs/erro-message/erro-message.component';
 
 
 
@@ -18,12 +18,12 @@ import { MessageErrorComponent } from './inputs/message-error/message-error.comp
   declarations: [
     CollegeEnrollmentInputComponent,
     CollegeNameInputComponent,
-    CustomToastComponent,
     EmailInputComponent,
-    NameInputComponent,
-    PasswordInputComponent,
-    VerificationCodeInputComponent,
-    MessageErrorComponent,
+    FullNameInputComponent,
+    PassInputComponent,
+    CustomToastComponent,
+    SpinnerLoadingComponent,
+    ErroMessageComponent,
   ],
   imports: [
     CommonModule,
@@ -33,12 +33,12 @@ import { MessageErrorComponent } from './inputs/message-error/message-error.comp
   exports: [
     CollegeEnrollmentInputComponent,
     CollegeNameInputComponent,
-    CustomToastComponent,
     EmailInputComponent,
-    NameInputComponent,
-    PasswordInputComponent,
-    VerificationCodeInputComponent,
-    MessageErrorComponent,
+    FullNameInputComponent,
+    PassInputComponent,
+    CustomToastComponent,
+    SpinnerLoadingComponent,
+    ErroMessageComponent,
   ]
 })
 export class SharedModule { }

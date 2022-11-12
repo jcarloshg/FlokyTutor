@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import { CustomToast } from './custom-toast.inteferface';
 
 @Component({
@@ -8,21 +8,16 @@ import { CustomToast } from './custom-toast.inteferface';
 })
 export class CustomToastComponent implements OnChanges {
 
-  @Input() seconds: number;
-  @Input() customToast: CustomToast;
+  @Input() seconds: number = 5;
+  @Input() customToast!: CustomToast;
   private typeToastStyle: Map<string, string>;
   public showToast: boolean = false;
 
   constructor() {
-    this.seconds = 5;
     this.typeToastStyle = new Map<string, string>()
       .set('error', "toast show bg-danger bg-gradient text-white")
       .set('warning', "toast show bg-warning bg-gradient text-white")
       .set('success', "toast show bg-success bg-gradient text-white")
-    this.customToast = {
-      typeToast: 'success',
-      message: 'Cuenta tutro creada correctamente :)'
-    };
   }
 
   ngOnChanges(changes: SimpleChanges): void {

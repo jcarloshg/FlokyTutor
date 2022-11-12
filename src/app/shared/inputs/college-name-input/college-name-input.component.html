@@ -1,16 +1,16 @@
-<div>
-  <label for="ForCollageEnrollment" class="form-label"
-    >Nombre de la institución</label
-  >
-  <input
-    type="text"
-    class="form-control"
-    id="ForCollageName"
-    placeholder="ej. BUAP"
-    [value]="collegeName"
-    [(ngModel)]="collegeName"
-    (ngModelChange)="onChange(collegeName)"
-    (blur)="onTouched(true)"
-  />
-  <p class="form-text text-danger" *ngIf="showError">{{ messageError }}</p>
+<label for="ForNameCollegeInput" class="form-label">
+    Nombre del colegio
+</label>
+<input
+  type="text"
+  class="form-control"
+  id="ForNameCollegeInput"
+  placeholder="ej. Benemérita Universidad Autónoma de Puebla"
+  [value]="value"
+  [(ngModel)]="value"
+  (ngModelChange)="onChange(value)"
+  (blur)="onTouched(true)"
+/>
+<div class="text-danger" style="font-size: 14px" *ngIf="showMessage()">
+  {{ getErrorMessage() }}
 </div>
