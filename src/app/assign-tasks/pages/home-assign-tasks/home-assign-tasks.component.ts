@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Topic } from 'src/models';
 import { AssignTasksAWSService } from '../../services/assign-tasks-aws.service';
+
 
 @Component({
   selector: 'app-home-assign-tasks',
@@ -8,11 +10,15 @@ import { AssignTasksAWSService } from '../../services/assign-tasks-aws.service';
 })
 export class HomeAssignTasksComponent implements OnInit {
 
-  topics = [];
+  public topics: any = [];
 
   constructor(
     public assignTasksAWSService: AssignTasksAWSService,
-  ) { }
+  ) {
+
+    (async () => await this.getActivities())()
+
+  }
 
   async ngOnInit(): Promise<void> {
     const response = await this.assignTasksAWSService.getAllTopic();
@@ -22,6 +28,13 @@ export class HomeAssignTasksComponent implements OnInit {
   async getActivities() {
     const response = await this.assignTasksAWSService.getAllTopic();
     this.topics = response.data;
+    return response;
+  }
+
+  async createTopic() {
+    const newTopic = await this.assignTasksAWSService.createTopic('TOPIC_EXAMPLE', [], []);
+    console.log({ newTopic });
+
   }
 
   async clearDataStore() {

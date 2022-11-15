@@ -8,4 +8,9 @@
     [DROP_DATA]
 </button>
 
-<pre>{{topics | json}}</pre>
+<button type="button" class="btn btn-primary w-100" (click)="createTopic()">
+    [CREATE_TOPIC]
+</button>
+
+
+<p *ngFor="let topic of topics">{{topic.name}}</p>

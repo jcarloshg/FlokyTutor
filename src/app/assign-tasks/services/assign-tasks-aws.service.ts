@@ -9,25 +9,35 @@ import { Topic } from 'src/models/index';
 export class AssignTasksAWSService implements AssignTasks {
 
   constructor() {
-    (async () => { await DataStore.start(); })();
+    (async () => {
+      console.log('start');
+      await DataStore.start();
+    })();
   }
 
-  createTopic(name: string, activities: string[], conceptInformation: string[]): Promise<ActivitiesResponse> {
-    throw new Error('Method not implemented.');
+  async createTopic(name: string, activities: string[], conceptInformation: string[]): Promise<ActivitiesResponse> {
+
+    const newTopic = await DataStore.save(
+      new Topic({
+        name: name,
+        activities: null,
+        conceptInformation: conceptInformation,
+      })
+    )
+
+    return { isOk: true, data: newTopic };
+
   }
 
   async getAllTopic(): Promise<ActivitiesResponse> {
     console.log('getAllTopic');
     const topics = await DataStore.query(Topic);
-    console.log({ topics });
-
     return { isOk: true, data: topics };
   }
 
   async clearDataStore() {
-    console.log('clear data');
+    console.log('clearDataStore');
     await DataStore.clear();
-
   }
 
 }
