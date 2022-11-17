@@ -1,16 +1,26 @@
-<p>home-assign-tasks works!</p>
+<div class="row">
 
-<button type="button" class="btn btn-primary w-100" (click)="getActivities()">
-    [GET_ACTIVITIES]
-</button>
+    <div class="col-2">
+        <app-side-bar></app-side-bar>
+    </div>
 
-<button type="button" class="btn btn-primary w-100" (click)="clearDataStore()">
-    [DROP_DATA]
-</button>
+    <div class="col" style='border: 1px solid;'>
 
-<button type="button" class="btn btn-primary w-100" (click)="createTopic()">
-    [CREATE_TOPIC]
-</button>
+        <router-outlet></router-outlet>
 
+        <button type="button" class="btn btn-primary w-100" (click)="getActivities()">
+            [GET_ACTIVITIES]
+        </button>
 
-<p *ngFor="let topic of topics">{{topic.name}}</p>
+        <button type="button" class="btn btn-primary w-100" (click)="clearDataStore()">
+            [DROP_DATA]
+        </button>
+
+        <button type="button" class="btn btn-primary w-100" (click)="createTopic()">
+            [CREATE_TOPIC]
+        </button>
+
+        <p *ngFor="let topic of topics">{{topic.name}}</p>
+
+    </div>
+</div>

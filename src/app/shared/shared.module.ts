@@ -11,6 +11,7 @@ import { CustomToastComponent } from './inputs/custom-toast/custom-toast.compone
 import { SpinnerLoadingComponent } from './inputs/spinner-loading/spinner-loading.component';
 import { ErroMessageComponent } from './inputs/erro-message/erro-message.component';
 import { CodeVerificationInputComponent } from './inputs/code-verification-input/code-verification-input.component';
+import { SideBarComponent } from './ui/side-bar/side-bar.component';
 
 
 
@@ -26,6 +27,7 @@ import { CodeVerificationInputComponent } from './inputs/code-verification-input
     FullNameInputComponent,
     PassInputComponent,
     SpinnerLoadingComponent,
+    SideBarComponent,
   ],
   imports: [
     CommonModule,
@@ -41,6 +43,7 @@ import { CodeVerificationInputComponent } from './inputs/code-verification-input
     ErroMessageComponent,
     FullNameInputComponent,
     PassInputComponent,
+    SideBarComponent,
     SpinnerLoadingComponent,
   ]
 })
