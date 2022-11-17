@@ -12,6 +12,7 @@ import { SpinnerLoadingComponent } from './inputs/spinner-loading/spinner-loadin
 import { ErroMessageComponent } from './inputs/erro-message/erro-message.component';
 import { CodeVerificationInputComponent } from './inputs/code-verification-input/code-verification-input.component';
 import { SideBarComponent } from './ui/side-bar/side-bar.component';
+import { HeaderLogInComponent } from './ui/header-log-in/header-log-in.component';
 
 
 
@@ -28,6 +29,7 @@ import { SideBarComponent } from './ui/side-bar/side-bar.component';
     PassInputComponent,
     SpinnerLoadingComponent,
     SideBarComponent,
+    HeaderLogInComponent,
   ],
   imports: [
     CommonModule,
@@ -42,6 +44,7 @@ import { SideBarComponent } from './ui/side-bar/side-bar.component';
     EmailInputComponent,
     ErroMessageComponent,
     FullNameInputComponent,
+    HeaderLogInComponent,
     PassInputComponent,
     SideBarComponent,
     SpinnerLoadingComponent,

@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Topic } from 'src/models';
-import { AssignTasksAWSService } from '../../services/assign-tasks-aws.service';
+import { Component } from '@angular/core';
 
 
 @Component({
@@ -8,37 +6,10 @@ import { AssignTasksAWSService } from '../../services/assign-tasks-aws.service';
   templateUrl: './home-assign-tasks.component.html',
   styleUrls: ['./home-assign-tasks.component.css']
 })
-export class HomeAssignTasksComponent implements OnInit {
+export class HomeAssignTasksComponent {
 
-  public topics: any = [];
 
-  constructor(
-    public assignTasksAWSService: AssignTasksAWSService,
-  ) {
+  constructor() { }
 
-    (async () => await this.getActivities())()
-
-  }
-
-  async ngOnInit(): Promise<void> {
-    const response = await this.assignTasksAWSService.getAllTopic();
-    this.topics = response.data;
-  }
-
-  async getActivities() {
-    const response = await this.assignTasksAWSService.getAllTopic();
-    this.topics = response.data;
-    return response;
-  }
-
-  async createTopic() {
-    const newTopic = await this.assignTasksAWSService.createTopic('TOPIC_EXAMPLE', [], []);
-    console.log({ newTopic });
-
-  }
-
-  async clearDataStore() {
-    const response = await this.assignTasksAWSService.clearDataStore();
-  }
 
 }
