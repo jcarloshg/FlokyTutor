@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('./assign-tasks/assign-tasks.module').then(m => m.AssignTasksModule),
   },
   {
+    path: 'publicaciones',
+    loadChildren: () => import('./publications/publications.module').then(m => m.PublicationsModule),
+  },
+  {
     path: '**',
     redirectTo: 'cuenta',
   }
