@@ -1,84 +1,22 @@
-<div class="d-flex flex-column flex-shrink-0 p-3 pt-5 bg-greyEEEEEE">
+<div class="d-flex flex-column flex-shrink-0 p-3 bg-greyEEEEEE">
+    <ul class=" nav nav-pills flex-column mb-auto">
 
-    <h2>Busquedas</h2>
-
-    <hr />
-
-    <nav id="sidebarMenu" class="d-md-block bg-light sidebar collapse" style='border: 1px solid;'>
-        <div class="position-sticky sidebar-sticky">
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    Mi perfil
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page">
-                        Actividades
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">
-                        Publicaciones
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">
-                        Grupos
-                    </a>
-                </li>
-            </ul>
-
-        </div>
-    </nav>
-
-    <hr />
-
-    <ul class="list-group">
-
-        <li class="list-group-item" routerLink="./actividades" routerLinkActive="active">
+        <li class="nav-item px-3 py-3" routerLink="./actividades" routerLinkActive="active">
             Actividades
         </li>
 
-        <li class="list-group-item">
+        <!--
+        <li class="nav-item px-3 py-3" routerLinkActive="active">
             Grupos alumnos
-        </li>
-        <li class="list-group-item" routerLink="./publicaciones/" routerLinkActive="active">
+        </li> -->
+
+        <li class="nav-item px-3 py-3" routerLink="./publicaciones" routerLinkActive="active">
             Publicaciones
         </li>
 
-        <li class="list-group-item" routerLink="./cuenta" routerLinkActive="active">
-            Cerrar sesion
+        <li class="nav-item px-3 py-3" routerLink="./cuenta" routerLinkActive="active">
+            Cerrar sesión
         </li>
 
     </ul>
-
-    <hr>
-
-    <!--
-    <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item" routerLink="actividades" routerLinkActive="active">
-            Actividades
-        </li>
-        <li class="nav-item" routerLink="cuenta" routerLinkActive="active">
-            Grupos alumnos
-        </li>
-        <li class="nav-item" routerLink="publicaciones" routerLinkActive="active">
-            Publicaciones
-        </li>
-    </ul> -->
-    <!-- <div class="dropdown">
-        <a class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong>mdo</strong>
-        </a>
-        <ul class="dropdown-menu text-small shadow">
-            <li><a class="dropdown-item">New project...</a></li>
-            <li><a class="dropdown-item">Settings</a></li>
-            <li><a class="dropdown-item">Profile</a></li>
-            <li>
-                <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item">Sign out</a></li>
-        </ul>
-    </div> -->
 </div>
