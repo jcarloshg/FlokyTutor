@@ -13,6 +13,7 @@ import { ErroMessageComponent } from './inputs/erro-message/erro-message.compone
 import { CodeVerificationInputComponent } from './inputs/code-verification-input/code-verification-input.component';
 import { SideBarComponent } from './ui/side-bar/side-bar.component';
 import { HeaderLogInComponent } from './ui/header-log-in/header-log-in.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -34,6 +35,7 @@ import { HeaderLogInComponent } from './ui/header-log-in/header-log-in.component
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     ReactiveFormsModule,
   ],
   exports: [
