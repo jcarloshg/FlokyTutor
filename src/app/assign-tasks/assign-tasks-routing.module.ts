@@ -6,7 +6,7 @@ import { ViewActivitiesComponent } from './pages/view-activities/view-activities
 const routes: Routes = [
   {
     path: '',
-    // component: HomeAssignTasksComponent,
+    component: HomeAssignTasksComponent,
     children: [
       {
         path: 'ver_actividades',

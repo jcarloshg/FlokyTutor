@@ -8,12 +8,8 @@ const routes: Routes = [
     loadChildren: () => import('./authenticate/authenticate.module').then(m => m.AuthenticateModule),
   },
   {
-    path: 'actividades',
-    loadChildren: () => import('./assign-tasks/assign-tasks.module').then(m => m.AssignTasksModule),
-  },
-  {
-    path: 'publicaciones',
-    loadChildren: () => import('./publications/publications.module').then(m => m.PublicationsModule),
+    path: 'incio',
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
   },
   {
     path: '**',

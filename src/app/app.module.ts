@@ -4,7 +4,6 @@ import { Auth } from "aws-amplify";
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -16,7 +15,6 @@ import { RouterModule } from '@angular/router';
     // mine
     RouterModule,
     AppRoutingModule,
-    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
