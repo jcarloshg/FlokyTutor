@@ -14,23 +14,37 @@ import { CodeVerificationInputComponent } from './inputs/code-verification-input
 import { SideBarComponent } from './ui/side-bar/side-bar.component';
 import { HeaderLogInComponent } from './ui/header-log-in/header-log-in.component';
 import { RouterModule } from '@angular/router';
+import { ButtonReadingComponent } from './ui/button-reading/button-reading.component';
+import { ButtonWritingComponent } from './ui/button-writing/button-writing.component';
+import { ButtonSpeakingComponent } from './ui/button-speaking/button-speaking.component';
+import { ButtonListeningComponent } from './ui/button-listening/button-listening.component';
+
 
 
 
 
 @NgModule({
   declarations: [
+    //inputs
     CodeVerificationInputComponent,
     CollegeEnrollmentInputComponent,
     CollegeNameInputComponent,
-    CustomToastComponent,
     EmailInputComponent,
-    ErroMessageComponent,
     FullNameInputComponent,
     PassInputComponent,
-    SpinnerLoadingComponent,
-    SideBarComponent,
+
+    //buttons
+    ButtonListeningComponent,
+    ButtonReadingComponent,
+    ButtonSpeakingComponent,
+    ButtonWritingComponent,
+
+    //other
+    CustomToastComponent,
+    ErroMessageComponent,
     HeaderLogInComponent,
+    SideBarComponent,
+    SpinnerLoadingComponent,
   ],
   imports: [
     CommonModule,
@@ -39,15 +53,25 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
   ],
   exports: [
+
+    //inputs
     CodeVerificationInputComponent,
     CollegeEnrollmentInputComponent,
     CollegeNameInputComponent,
-    CustomToastComponent,
     EmailInputComponent,
-    ErroMessageComponent,
     FullNameInputComponent,
-    HeaderLogInComponent,
     PassInputComponent,
+
+    //buttons
+    ButtonListeningComponent,
+    ButtonReadingComponent,
+    ButtonSpeakingComponent,
+    ButtonWritingComponent,
+
+    //other
+    CustomToastComponent,
+    ErroMessageComponent,
+    HeaderLogInComponent,
     SideBarComponent,
     SpinnerLoadingComponent,
   ]
