@@ -38,9 +38,7 @@ type Account @model @auth(rules: [{allow: public}]) {
   email: String!
   collegeEnrollment: String!
   collegeName: String!
-  activitiesProgress: ActivitiesProgress @hasOne
   role: Role!
-  activities: [Activitie] @manyToMany(relationName: "AccountActivitie")
 }
 
 type Activitie @model @auth(rules: [{allow: public}]) {
@@ -50,10 +48,8 @@ type Activitie @model @auth(rules: [{allow: public}]) {
   typeActivity: ActivityType
   question: String!
   questionBody: String
-  topicID: ID! @index(name: "byTopic")
   answers: Answer
-  accounts: [Account] @manyToMany(relationName: "AccountActivitie")
-  examples: [String!]
+  topic: Topic @hasOne
 }
 
 enum ActivityType {
@@ -66,7 +62,7 @@ enum ActivityType {
 type Topic @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
-  activities: [Activitie] @hasMany(indexName: "byTopic", fields: ["id"])
   conceptInformation: [String]
+  examples: [String!]
 }
  

@@ -24,14 +24,13 @@ const ActivityType = {
   "LISTENING": "LISTENING"
 };
 
-const { ActivitiesProgress, Account, Activitie, Topic, AccountActivitie, Answer } = initSchema(schema);
+const { ActivitiesProgress, Account, Activitie, Topic, Answer } = initSchema(schema);
 
 export {
   ActivitiesProgress,
   Account,
   Activitie,
   Topic,
-  AccountActivitie,
   ActivityLevel,
   Role,
   ActivityType,

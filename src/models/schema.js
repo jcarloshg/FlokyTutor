@@ -146,20 +146,6 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "activitiesProgress": {
-                    "name": "activitiesProgress",
-                    "isArray": false,
-                    "type": {
-                        "model": "ActivitiesProgress"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "association": {
-                        "connectionType": "HAS_ONE",
-                        "associatedWith": "id",
-                        "targetName": "accountActivitiesProgressId"
-                    }
-                },
                 "role": {
                     "name": "role",
                     "isArray": false,
@@ -168,20 +154,6 @@ export const schema = {
                     },
                     "isRequired": true,
                     "attributes": []
-                },
-                "activities": {
-                    "name": "activities",
-                    "isArray": true,
-                    "type": {
-                        "model": "AccountActivitie"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true,
-                    "association": {
-                        "connectionType": "HAS_MANY",
-                        "associatedWith": "account"
-                    }
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -198,13 +170,6 @@ export const schema = {
                     "isRequired": false,
                     "attributes": [],
                     "isReadOnly": true
-                },
-                "accountActivitiesProgressId": {
-                    "name": "accountActivitiesProgressId",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": false,
-                    "attributes": []
                 }
             },
             "syncable": true,
@@ -281,13 +246,6 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "topicID": {
-                    "name": "topicID",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
                 "answers": {
                     "name": "answers",
                     "isArray": false,
@@ -297,27 +255,19 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "accounts": {
-                    "name": "accounts",
-                    "isArray": true,
+                "topic": {
+                    "name": "topic",
+                    "isArray": false,
                     "type": {
-                        "model": "AccountActivitie"
+                        "model": "Topic"
                     },
                     "isRequired": false,
                     "attributes": [],
-                    "isArrayNullable": true,
                     "association": {
-                        "connectionType": "HAS_MANY",
-                        "associatedWith": "activitie"
+                        "connectionType": "HAS_ONE",
+                        "associatedWith": "id",
+                        "targetName": "activitieTopicId"
                     }
-                },
-                "examples": {
-                    "name": "examples",
-                    "isArray": true,
-                    "type": "String",
-                    "isRequired": true,
-                    "attributes": [],
-                    "isArrayNullable": true
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -334,6 +284,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": [],
                     "isReadOnly": true
+                },
+                "activitieTopicId": {
+                    "name": "activitieTopicId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
                 }
             },
             "syncable": true,
@@ -342,15 +299,6 @@ export const schema = {
                 {
                     "type": "model",
                     "properties": {}
-                },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byTopic",
-                        "fields": [
-                            "topicID"
-                        ]
-                    }
                 },
                 {
                     "type": "auth",
@@ -387,25 +335,19 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "activities": {
-                    "name": "activities",
-                    "isArray": true,
-                    "type": {
-                        "model": "Activitie"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true,
-                    "association": {
-                        "connectionType": "HAS_MANY",
-                        "associatedWith": "topicID"
-                    }
-                },
                 "conceptInformation": {
                     "name": "conceptInformation",
                     "isArray": true,
                     "type": "String",
                     "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "examples": {
+                    "name": "examples",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": true,
                     "attributes": [],
                     "isArrayNullable": true
                 },
@@ -446,86 +388,6 @@ export const schema = {
                                     "read"
                                 ]
                             }
-                        ]
-                    }
-                }
-            ]
-        },
-        "AccountActivitie": {
-            "name": "AccountActivitie",
-            "fields": {
-                "id": {
-                    "name": "id",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "account": {
-                    "name": "account",
-                    "isArray": false,
-                    "type": {
-                        "model": "Account"
-                    },
-                    "isRequired": true,
-                    "attributes": [],
-                    "association": {
-                        "connectionType": "BELONGS_TO",
-                        "targetName": "accountID"
-                    }
-                },
-                "activitie": {
-                    "name": "activitie",
-                    "isArray": false,
-                    "type": {
-                        "model": "Activitie"
-                    },
-                    "isRequired": true,
-                    "attributes": [],
-                    "association": {
-                        "connectionType": "BELONGS_TO",
-                        "targetName": "activitieID"
-                    }
-                },
-                "createdAt": {
-                    "name": "createdAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                },
-                "updatedAt": {
-                    "name": "updatedAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                }
-            },
-            "syncable": true,
-            "pluralName": "AccountActivities",
-            "attributes": [
-                {
-                    "type": "model",
-                    "properties": {}
-                },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byAccount",
-                        "fields": [
-                            "accountID"
-                        ]
-                    }
-                },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byActivitie",
-                        "fields": [
-                            "activitieID"
                         ]
                     }
                 }
@@ -598,5 +460,5 @@ export const schema = {
         }
     },
     "codegenVersion": "3.3.1",
-    "version": "4842ea71cf877cd57953f4163d767fdd"
+    "version": "4257a42ecdfc281555dc36ccc8818e61"
 };
