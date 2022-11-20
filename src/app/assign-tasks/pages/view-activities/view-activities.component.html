@@ -8,7 +8,7 @@
     </button>
 </div>
 
-<div class="container px-lg-5 my-3">
+<!-- <div class="container px-lg-5 my-3">
     <div class="row mx-lg-5 g-2">
         <div class="col-lg-6">
             <app-button-reading></app-button-reading>
@@ -23,33 +23,17 @@
             <app-button-listening></app-button-listening>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="my-4" style='border: 1px solid;'>
     <p class="h5">Nuevas actividades 🆕</p>
+    <div class="d-flex flex-row justify-content-start mt-1">
+        <app-card-activity *ngFor="let activitie of newActivities" [activitie]="activitie"></app-card-activity>
+    </div>
 </div>
 
 <div class="my-4" style='border: 1px solid;'>
     <p class="h5">Nuevas actividades</p>
 </div>
 
-<div style='height: 100vh;'></div>
-
-
-<button type="button" class="btn btn-primary w-100" (click)="getActivities()">
-    [GET_ACTIVITIES]
-</button>
-
-<button type="button" class="btn btn-primary w-100" (click)="clearDataStore()">
-    [DROP_DATA]
-</button>
-
-<button type="button" class="btn btn-primary w-100" (click)="createTopic()">
-    [CREATE_TOPIC]
-</button>
-
-<pre *ngFor="let topic of topics">{{topic | json}}</pre>
-
-<div *ngFor="let topic of topics" style='border: 1px solid;'>
-    <p *ngFor="let info of topic.conceptInformation">{{info}}</p>
-</div>
+<pre *ngFor="let activitie of newActivities">{{activitie | json}}</pre>

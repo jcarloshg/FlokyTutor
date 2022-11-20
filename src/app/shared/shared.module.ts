@@ -18,6 +18,7 @@ import { ButtonReadingComponent } from './ui/button-reading/button-reading.compo
 import { ButtonWritingComponent } from './ui/button-writing/button-writing.component';
 import { ButtonSpeakingComponent } from './ui/button-speaking/button-speaking.component';
 import { ButtonListeningComponent } from './ui/button-listening/button-listening.component';
+import { CardActivityComponent } from './ui/card-activity/card-activity.component';
 
 
 
@@ -38,6 +39,7 @@ import { ButtonListeningComponent } from './ui/button-listening/button-listening
     ButtonReadingComponent,
     ButtonSpeakingComponent,
     ButtonWritingComponent,
+    CardActivityComponent,
 
     //other
     CustomToastComponent,
@@ -67,6 +69,7 @@ import { ButtonListeningComponent } from './ui/button-listening/button-listening
     ButtonReadingComponent,
     ButtonSpeakingComponent,
     ButtonWritingComponent,
+    CardActivityComponent,
 
     //other
     CustomToastComponent,

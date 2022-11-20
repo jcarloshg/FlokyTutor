@@ -8,6 +8,8 @@ export interface AssignTasks {
 
     getAllTopic(): Promise<ActivitiesResponse>;
 
+    getNewActivities(): Promise<ActivitiesResponse>;
+
 }
 
 export interface ActivitiesResponse {
