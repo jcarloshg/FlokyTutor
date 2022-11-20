@@ -1,18 +1,30 @@
-<div class="container p-5">
-    <p class="h2">Buenas tardes, <small>Fernando Herrera R.</small> </p>
-    <p class="text-secondary">Estas con las actividades que puedes asignara a tus alumnos. :)</p>
+<p class="h2">Buenas tardes, <small>Fernando Herrera R.</small> </p>
+<p class="text-secondary">Estas con las actividades que puedes asignara a tus alumnos. :)</p>
 
-    <button type="button" class="btn btn-primary w-100" (click)="getActivities()">
-        [GET_ACTIVITIES]
+<div class="input-group py-3">
+    <input type="text" class="form-control" placeholder="Busca por nombre de actividades" />
+    <button class="btn btn-outline-primary" type="button">
+        Buscar
     </button>
+</div>
 
-    <button type="button" class="btn btn-primary w-100" (click)="clearDataStore()">
-        [DROP_DATA]
-    </button>
 
-    <button type="button" class="btn btn-primary w-100" (click)="createTopic()">
-        [CREATE_TOPIC]
-    </button>
 
-    <p *ngFor="let topic of topics">{{topic.name}}</p>
+
+<button type="button" class="btn btn-primary w-100" (click)="getActivities()">
+    [GET_ACTIVITIES]
+</button>
+
+<button type="button" class="btn btn-primary w-100" (click)="clearDataStore()">
+    [DROP_DATA]
+</button>
+
+<button type="button" class="btn btn-primary w-100" (click)="createTopic()">
+    [CREATE_TOPIC]
+</button>
+
+<pre *ngFor="let topic of topics">{{topic | json}}</pre>
+
+<div *ngFor="let topic of topics" style='border: 1px solid;'>
+    <p *ngFor="let info of topic.conceptInformation">{{info}}</p>
 </div>
