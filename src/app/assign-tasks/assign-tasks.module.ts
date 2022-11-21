@@ -5,6 +5,7 @@ import { AssignTasksRoutingModule } from './assign-tasks-routing.module';
 import { HomeAssignTasksComponent } from './pages/home-assign-tasks/home-assign-tasks.component';
 import { SharedModule } from '../shared/shared.module';
 import { ViewActivitiesComponent } from './pages/view-activities/view-activities.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,6 +15,8 @@ import { ViewActivitiesComponent } from './pages/view-activities/view-activities
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    // mine
     AssignTasksRoutingModule,
     SharedModule,
   ]
