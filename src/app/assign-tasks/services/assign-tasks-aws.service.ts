@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivitiesResponse, AssignTasks } from '../../../domain/useCases/assign-tasks.useCase.interface';
 import { DataStore } from '@aws-amplify/datastore';
-import { Topic, Activity, ActivityLevel, ActivityType } from 'src/models/index';
+import { Topic, Activity } from 'src/models/index';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,7 @@ export class AssignTasksAWSService implements AssignTasks {
 
   async getNewActivities(): Promise<ActivitiesResponse> {
     const activities = await DataStore.query(Activity);
+    console.log(`[activities] -> `, activities);
     return { isOk: true, data: activities };
   }
 

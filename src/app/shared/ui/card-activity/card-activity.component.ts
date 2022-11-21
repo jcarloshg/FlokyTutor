@@ -9,10 +9,10 @@ import { Activity } from 'src/models';
 export class CardActivityComponent implements OnInit {
 
   @Input() activitie!: Activity;
+  @Input() spaceLeft: boolean = false;
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

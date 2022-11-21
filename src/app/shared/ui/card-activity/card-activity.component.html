@@ -1,7 +1,17 @@
-<div class="py-2 px-3 bg-read bg-opacity-10 border border-read rounded" style='width: 250px;'>
+<div class="d-flex flex-row">
 
-    <p>{{activitie.name}}</p>
-    <!-- <p>{{activitie.topic?.name}}</p> -->
-    <p>{{activitie.activityLevel}}</p>
+    <div style='border: 1px solid; width: 300px; height: 150px'
+        class="px-3 py-2 bg-read d-flex flex-column justify-content-between bg-opacity-10 border border-read rounded">
+
+        <div>
+            <p class="fw-bold fs-5 m-0">{{activitie.name}}</p>
+            <p class="text-secondary m-0">{{activitie.Topic?.name}}</p>
+        </div>
+
+        <p class="fw-bold fs-5 mb-0">{{activitie.activityLevel}}</p>
+
+    </div>
+
+    <div style='width: 8px;' *ngIf="spaceLeft"></div>
 
 </div>
