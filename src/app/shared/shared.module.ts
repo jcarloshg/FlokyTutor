@@ -19,6 +19,7 @@ import { ButtonWritingComponent } from './ui/button-writing/button-writing.compo
 import { ButtonSpeakingComponent } from './ui/button-speaking/button-speaking.component';
 import { ButtonListeningComponent } from './ui/button-listening/button-listening.component';
 import { CardActivityComponent } from './ui/card-activity/card-activity.component';
+import { CardActivityDirective } from './directives/card-activity.directive';
 
 
 
@@ -47,6 +48,7 @@ import { CardActivityComponent } from './ui/card-activity/card-activity.componen
     HeaderLogInComponent,
     SideBarComponent,
     SpinnerLoadingComponent,
+    CardActivityDirective,
   ],
   imports: [
     CommonModule,
