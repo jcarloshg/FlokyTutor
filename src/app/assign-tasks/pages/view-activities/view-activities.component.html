@@ -8,8 +8,8 @@
     </button>
 </div>
 
-<div class="my-2">
-    <div class="row g-2">
+<div class="px-lg-5 my-2">
+    <div class="row container-lg px-lg-5 g-2">
         <div class="col-lg-3">
             <app-button-reading></app-button-reading>
         </div>
@@ -27,7 +27,7 @@
 
 <div class="mt-5 w-100">
     <p class="h5">Nuevas actividades 🆕</p>
-    <div class="d-flex flex-row justify-content-start mt-2 pb-1 overflow-auto">
+    <div class="d-flex flex-row justify-content-start mt-2 pb-2 overflow-auto">
         <app-card-activity *ngFor="let activitie of newActivities" [activitie]="activitie" [spaceLeft]="true">
         </app-card-activity>
         <app-card-activity *ngFor="let activitie of newActivities" [activitie]="activitie" [spaceLeft]="true">

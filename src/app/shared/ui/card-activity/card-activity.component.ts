@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Activity } from 'src/models';
+import { Activity, ActivityType } from 'src/models';
 
 @Component({
   selector: 'app-card-activity',
@@ -14,5 +14,21 @@ export class CardActivityComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void { }
+
+  getImageActivity(): string {
+    const urlImageListen = './assets/categories/listen.png';
+    const urlImageRead = './assets/categories/read.png';
+    const urlImageSpeak = './assets/categories/speak.png';
+    const urlImageWrtie = './assets/categories/write.png';
+
+    const activityType = this.activitie.activityType;
+
+    if (activityType == ActivityType.LISTENING) return urlImageListen;
+    if (activityType == ActivityType.READING) return urlImageRead;
+    if (activityType == ActivityType.TALKING) return urlImageSpeak;
+    if (activityType == ActivityType.WRITING) return urlImageWrtie;
+
+    return urlImageWrtie
+  }
 
 }
