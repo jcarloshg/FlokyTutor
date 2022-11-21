@@ -1,5 +1,201 @@
 export const schema = {
     "models": {
+        "Activity": {
+            "name": "Activity",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "name": {
+                    "name": "name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "activityLevel": {
+                    "name": "activityLevel",
+                    "isArray": false,
+                    "type": {
+                        "enum": "ActivityLevel"
+                    },
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "activityType": {
+                    "name": "activityType",
+                    "isArray": false,
+                    "type": {
+                        "enum": "ActivityType"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "question": {
+                    "name": "question",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "questionBody": {
+                    "name": "questionBody",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "answers": {
+                    "name": "answers",
+                    "isArray": false,
+                    "type": {
+                        "nonModel": "Answer"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "Topic": {
+                    "name": "Topic",
+                    "isArray": false,
+                    "type": {
+                        "model": "Topic"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "HAS_ONE",
+                        "associatedWith": "id",
+                        "targetName": "activityTopicId"
+                    }
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "activityTopicId": {
+                    "name": "activityTopicId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                }
+            },
+            "syncable": true,
+            "pluralName": "Activities",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "Topic": {
+            "name": "Topic",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "name": {
+                    "name": "name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "conceptInformation": {
+                    "name": "conceptInformation",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "examples": {
+                    "name": "examples",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "Topics",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
         "ActivitiesProgress": {
             "name": "ActivitiesProgress",
             "fields": {
@@ -196,202 +392,6 @@ export const schema = {
                     }
                 }
             ]
-        },
-        "Activitie": {
-            "name": "Activitie",
-            "fields": {
-                "id": {
-                    "name": "id",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "name": {
-                    "name": "name",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "activityLevel": {
-                    "name": "activityLevel",
-                    "isArray": false,
-                    "type": {
-                        "enum": "ActivityLevel"
-                    },
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "typeActivity": {
-                    "name": "typeActivity",
-                    "isArray": false,
-                    "type": {
-                        "enum": "ActivityType"
-                    },
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "question": {
-                    "name": "question",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "questionBody": {
-                    "name": "questionBody",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "answers": {
-                    "name": "answers",
-                    "isArray": false,
-                    "type": {
-                        "nonModel": "Answer"
-                    },
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "topic": {
-                    "name": "topic",
-                    "isArray": false,
-                    "type": {
-                        "model": "Topic"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "association": {
-                        "connectionType": "HAS_ONE",
-                        "associatedWith": "id",
-                        "targetName": "activitieTopicId"
-                    }
-                },
-                "createdAt": {
-                    "name": "createdAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                },
-                "updatedAt": {
-                    "name": "updatedAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                },
-                "activitieTopicId": {
-                    "name": "activitieTopicId",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": false,
-                    "attributes": []
-                }
-            },
-            "syncable": true,
-            "pluralName": "Activities",
-            "attributes": [
-                {
-                    "type": "model",
-                    "properties": {}
-                },
-                {
-                    "type": "auth",
-                    "properties": {
-                        "rules": [
-                            {
-                                "allow": "public",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        "Topic": {
-            "name": "Topic",
-            "fields": {
-                "id": {
-                    "name": "id",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "name": {
-                    "name": "name",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "conceptInformation": {
-                    "name": "conceptInformation",
-                    "isArray": true,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true
-                },
-                "examples": {
-                    "name": "examples",
-                    "isArray": true,
-                    "type": "String",
-                    "isRequired": true,
-                    "attributes": [],
-                    "isArrayNullable": true
-                },
-                "createdAt": {
-                    "name": "createdAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                },
-                "updatedAt": {
-                    "name": "updatedAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                }
-            },
-            "syncable": true,
-            "pluralName": "Topics",
-            "attributes": [
-                {
-                    "type": "model",
-                    "properties": {}
-                },
-                {
-                    "type": "auth",
-                    "properties": {
-                        "rules": [
-                            {
-                                "allow": "public",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            }
-                        ]
-                    }
-                }
-            ]
         }
     },
     "enums": {
@@ -406,14 +406,6 @@ export const schema = {
                 "C2"
             ]
         },
-        "Role": {
-            "name": "Role",
-            "values": [
-                "STUDENT",
-                "TEACHER",
-                "ADMIN"
-            ]
-        },
         "ActivityType": {
             "name": "ActivityType",
             "values": [
@@ -421,6 +413,14 @@ export const schema = {
                 "READING",
                 "TALKING",
                 "LISTENING"
+            ]
+        },
+        "Role": {
+            "name": "Role",
+            "values": [
+                "STUDENT",
+                "TEACHER",
+                "ADMIN"
             ]
         }
     },
@@ -460,5 +460,5 @@ export const schema = {
         }
     },
     "codegenVersion": "3.3.1",
-    "version": "4257a42ecdfc281555dc36ccc8818e61"
+    "version": "c8f4a5dade53b74d42bdb78a59eb5c13"
 };

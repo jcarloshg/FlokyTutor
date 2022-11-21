@@ -1,3 +1,14 @@
+type Activity @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  activityLevel: ActivityLevel!
+  activityType: ActivityType
+  question: String!
+  questionBody: String!
+  answers: Answer
+  Topic: Topic @hasOne
+}
+
 type Answer {
   correct: String!
   incorrect_1: String
@@ -39,17 +50,6 @@ type Account @model @auth(rules: [{allow: public}]) {
   collegeEnrollment: String!
   collegeName: String!
   role: Role!
-}
-
-type Activitie @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  name: String!
-  activityLevel: ActivityLevel
-  typeActivity: ActivityType
-  question: String!
-  questionBody: String
-  answers: Answer
-  topic: Topic @hasOne
 }
 
 enum ActivityType {

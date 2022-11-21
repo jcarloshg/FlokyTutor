@@ -5,9 +5,8 @@ export interface AssignTasks {
         activities: string[],
         conceptInformation: string[]
     ): Promise<ActivitiesResponse>;
-
+    createActivitie(): Promise<ActivitiesResponse>;
     getAllTopic(): Promise<ActivitiesResponse>;
-
     getNewActivities(): Promise<ActivitiesResponse>;
 
 }

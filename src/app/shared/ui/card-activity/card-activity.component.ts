@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Activitie } from 'src/models';
+import { Activity } from 'src/models';
 
 @Component({
   selector: 'app-card-activity',
@@ -8,7 +8,7 @@ import { Activitie } from 'src/models';
 })
 export class CardActivityComponent implements OnInit {
 
-  @Input() activitie!: Activitie;
+  @Input() activitie!: Activity;
 
   constructor() { }
 

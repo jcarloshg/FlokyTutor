@@ -11,12 +11,6 @@ const ActivityLevel = {
   "C2": "C2"
 };
 
-const Role = {
-  "STUDENT": "STUDENT",
-  "TEACHER": "TEACHER",
-  "ADMIN": "ADMIN"
-};
-
 const ActivityType = {
   "WRITING": "WRITING",
   "READING": "READING",
@@ -24,15 +18,21 @@ const ActivityType = {
   "LISTENING": "LISTENING"
 };
 
-const { ActivitiesProgress, Account, Activitie, Topic, Answer } = initSchema(schema);
+const Role = {
+  "STUDENT": "STUDENT",
+  "TEACHER": "TEACHER",
+  "ADMIN": "ADMIN"
+};
+
+const { Activity, Topic, ActivitiesProgress, Account, Answer } = initSchema(schema);
 
 export {
+  Activity,
+  Topic,
   ActivitiesProgress,
   Account,
-  Activitie,
-  Topic,
   ActivityLevel,
-  Role,
   ActivityType,
+  Role,
   Answer
 };
