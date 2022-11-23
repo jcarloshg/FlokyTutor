@@ -8,11 +8,8 @@ import { CustomToastService } from '../../../shared/services/custom-toast.servic
 })
 export class HomeAuthenticateComponent implements OnInit {
 
-  constructor(
-    public customToastService: CustomToastService,
-  ) { }
+  constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

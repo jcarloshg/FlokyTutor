@@ -63,7 +63,7 @@ export class LogInComponent implements OnInit {
     }
 
     this.customToastService.launchToast({ typeToast: 'success', message: signInResponse.message! });
-    this.router.navigate(['./incio'])
+    this.router.navigate(['./incio']);
 
   }
 

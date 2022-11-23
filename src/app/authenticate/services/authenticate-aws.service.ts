@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Loading } from 'src/app/shared/services/loading';
 import { Authenticate, AuthResponse, SignUpParams, LoginParams, ConfirmSignUpParams } from '../../../domain/useCases/authenticate.useCase.interface';
-import { EagerAccount, Role } from 'src/models';
+import { Account } from 'src/models';
 import { API, Auth, graphqlOperation } from 'aws-amplify';
 import { createAccount } from 'src/graphql/mutations';
 
@@ -10,7 +10,9 @@ import { createAccount } from 'src/graphql/mutations';
 })
 export class AuthenticateAWSService extends Loading implements Authenticate {
 
-  private _account: EagerAccount | null = null;
+  public IDTUTOR = 'sa;lkdjflas;kdjf;lkasdf';
+
+  private _account: Account | null = null;
   private _loginParams: LoginParams | null = null;
   private _signUpParams: SignUpParams | null = null;
   private _confirmSignUpParams: ConfirmSignUpParams | null = null;
@@ -37,10 +39,21 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
     this._loginParams = loginParams;
 
     try {
-      const user = await Auth.signIn(loginParams.username, loginParams.password);
-      console.log({ user });
+
+      // get
+      const user = await Auth.signIn(
+        loginParams.username,
+        loginParams.password
+      );
+
+      // get
+      this.IDTUTOR = user.username;
+      console.log(this.IDTUTOR);
+
+
       this.isLoading = false;
       return { isOk: true, message: '¡Hola, bienvenido tutor! :)' }
+
     } catch (error: any) {
       console.log(error);
       this.isLoading = false;

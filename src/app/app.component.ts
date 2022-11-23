@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CustomToastService } from './shared/services/custom-toast.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'FlokyTutor';
+
+  constructor(
+    public customToastService: CustomToastService,
+  ) { }
+
+
 }

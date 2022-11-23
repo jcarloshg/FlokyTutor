@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticateAWSService } from '../../../authenticate/services/authenticate-aws.service';
 
 @Component({
   selector: 'app-header-log-in',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderLogInComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public authenticateAWSService: AuthenticateAWSService
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  goToMyProfile() {
+    console.log(this.authenticateAWSService.IDTUTOR);
   }
 
 }
