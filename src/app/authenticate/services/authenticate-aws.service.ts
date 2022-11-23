@@ -29,15 +29,20 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
   //============================================================
   // access to data from this service
   //============================================================
-  public async currentTutor(): Promise<Account> {
-
-    if (this._currentTutor == null) {
-      const currentUser = await Auth.currentSession();
-      const tutorID = currentUser.getAccessToken().payload['sub'].toString();
-      const currentTutorUser = await DataStore.query<Account>(Account, tutorID);
-      this._currentTutor = currentTutorUser!;
+  public async currentTutor(): Promise<Account | null> | never {
+    try {
+      if (this._currentTutor == null) {
+        const currentUser = await Auth.currentSession();
+        const tutorID = currentUser.getAccessToken().payload['sub'].toString();
+        const currentTutorUser = await DataStore.query<Account>(Account, tutorID);
+        this._currentTutor = currentTutorUser!;
+      }
+      return this._currentTutor;
+    } catch (error) {
+      this._currentTutor = null;
+      // return error;
+      throw error;
     }
-    return this._currentTutor;
   }
   public get signUpParams() { return this._signUpParams; }
   public get loginParams() { return this._loginParams; }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, RouterStateSnapshot, UrlSegment, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthenticateAWSService } from '../services/authenticate-aws.service';
 
@@ -9,32 +9,50 @@ import { AuthenticateAWSService } from '../services/authenticate-aws.service';
 export class AuthenticateGuard implements CanLoad {
 
   constructor(
+    private router: Router,
     public authenticateAWSService: AuthenticateAWSService,
-  ) {
+  ) { }
+
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+
+    return this.authenticateAWSService.currentTutor()
+      .then(
+        (userTutor) => {
+          console.log('canLoad - then: ', userTutor);
+          return true;
+        }
+      )
+      .catch(
+        (error) => {
+          console.log('canLoad - error: ', error);
+          this.router.navigate(['./cuenta/ingresar']);
+          return false;
+        }
+      );
 
   }
 
-  // canActivate(
-  //   route: ActivatedRouteSnapshot,
-  //   state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-  //   return true;
-  // }
-
   canLoad(
     route: Route,
-    segments: UrlSegment[]): Promise<boolean> | boolean {
+    segments: UrlSegment[],
+  ): Promise<boolean> | boolean {
 
-
-    this.authenticateAWSService.currentTutor()
+    return this.authenticateAWSService.currentTutor()
       .then(
         (userTutor) => {
-          console.log(userTutor);
-
+          console.log('canLoad - then: ', userTutor);
+          return true;
         }
       )
-      .catch();
-
-    return true;
+      .catch(
+        (error) => {
+          console.log('canLoad - error: ', error);
+          this.router.navigate(['./cuenta/ingresar']);
+          return false;
+        }
+      );
   }
 
 }

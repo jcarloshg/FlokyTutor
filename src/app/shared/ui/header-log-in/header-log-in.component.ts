@@ -19,8 +19,12 @@ export class HeaderLogInComponent implements OnInit {
   }
 
   async goToMyProfile() {
-    const tutor = await this.authenticateAWSService.currentTutor();
+
+    const tutor = await this.authenticateAWSService.signOut();
     console.log(tutor);
+
+    // const tutor = await this.authenticateAWSService.currentTutor();
+    // console.log(tutor);
   }
 
 }
