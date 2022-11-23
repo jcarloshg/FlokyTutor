@@ -19,7 +19,7 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
 
   public IDTUTOR = 'sa;lkdjflas;kdjf;lkasdf';
 
-  private _account: Account | null = null;
+  private _account!: Account | null;
   private _loginParams: LoginParams | null = null;
   private _signUpParams: SignUpParams | null = null;
   private _confirmSignUpParams: ConfirmSignUpParams | null = null;
@@ -27,7 +27,6 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
   constructor() {
     super();
   }
-
 
   //============================================================
   // access to data from this service
@@ -68,6 +67,22 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
         case 'NotAuthorizedException': return { isOk: false, message: 'El correo electrónico o contraseña son incorrectos.' }
         default: return { isOk: false, message: 'No se pudo iniciar sesión.' }
       }
+    }
+  }
+
+  async getInfoUserLogged(): Promise<AuthResponse> {
+    try {
+      const currentUser = await Auth.currentSession();
+      const tutorID = currentUser.getAccessToken().payload['sub'].toString();
+
+      const currentTutor = await DataStore.query(Account, tutorID);
+      console.log(currentTutor);
+
+
+      return { isOk: false, data: currentTutor };
+    } catch (error) {
+
+      return { isOk: false, data: error }
     }
   }
 
@@ -170,15 +185,6 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
 
   resendConfirmationCode(): Promise<AuthResponse> {
     throw new Error('Method not implemented.');
-  }
-
-  public async getCurrent() {
-    try {
-      const currentSessionResponse = await Auth.currentSession();
-      console.log({ currentSessionResponse });
-    } catch (error) {
-      console.log({ error });
-    }
   }
 
   signOut(): Promise<AuthResponse> {

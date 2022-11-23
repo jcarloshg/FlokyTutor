@@ -16,7 +16,9 @@ export class HeaderLogInComponent implements OnInit {
 
   async goToMyProfile() {
     // console.log(this.authenticateAWSService.IDTUTOR);
-    await this.authenticateAWSService.getCurrent();
+    const res = await this.authenticateAWSService.getInfoUserLogged();
+    console.log(res);
+
   }
 
 }
