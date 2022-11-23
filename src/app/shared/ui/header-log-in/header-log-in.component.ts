@@ -14,8 +14,9 @@ export class HeaderLogInComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  goToMyProfile() {
-    console.log(this.authenticateAWSService.IDTUTOR);
+  async goToMyProfile() {
+    // console.log(this.authenticateAWSService.IDTUTOR);
+    await this.authenticateAWSService.getCurrent();
   }
 
 }

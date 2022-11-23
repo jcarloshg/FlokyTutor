@@ -154,6 +154,15 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
     throw new Error('Method not implemented.');
   }
 
+  public async getCurrent() {
+    try {
+      const currentSessionResponse = await Auth.currentSession();
+      console.log({ currentSessionResponse });
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+
   signOut(): Promise<AuthResponse> {
     throw new Error('Method not implemented.');
   }
