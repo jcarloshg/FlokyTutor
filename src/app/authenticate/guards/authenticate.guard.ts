@@ -22,13 +22,19 @@ export class AuthenticateGuard implements CanLoad {
 
   canLoad(
     route: Route,
-    segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    segments: UrlSegment[]): Promise<boolean> | boolean {
 
-    // console.log(route);
-    // console.log(segments);
+
+    this.authenticateAWSService.currentTutor()
+      .then(
+        (userTutor) => {
+          console.log(userTutor);
+
+        }
+      )
+      .catch();
 
     return true;
-
   }
 
 }

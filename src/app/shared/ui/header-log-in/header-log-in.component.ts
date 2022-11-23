@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticateAWSService } from '../../../authenticate/services/authenticate-aws.service';
+import { Account } from 'src/models';
 
 @Component({
   selector: 'app-header-log-in',
@@ -12,13 +13,14 @@ export class HeaderLogInComponent implements OnInit {
     public authenticateAWSService: AuthenticateAWSService
   ) { }
 
-  ngOnInit(): void { }
+  async ngOnInit(): Promise<void> {
+    const tutor = await this.authenticateAWSService.currentTutor();
+    console.log(tutor);
+  }
 
   async goToMyProfile() {
-    // console.log(this.authenticateAWSService.IDTUTOR);
-    const res = await this.authenticateAWSService.getInfoUserLogged();
-    console.log(res);
-
+    const tutor = await this.authenticateAWSService.currentTutor();
+    console.log(tutor);
   }
 
 }

@@ -4,7 +4,7 @@ export interface Authenticate {
 
     // singIn
     signIn(loginParams: LoginParams): Promise<AuthResponse>;
-    getInfoUserLogged(): Promise<AuthResponse>;
+    getCurrentTutor(): Promise<AuthResponse>;
 
     // singUp
     signUp(signUpParams: SignUpParams): Promise<AuthResponse>;

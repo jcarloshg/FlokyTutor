@@ -17,9 +17,7 @@ import { createAccount } from 'src/graphql/mutations';
 })
 export class AuthenticateAWSService extends Loading implements Authenticate {
 
-  public IDTUTOR = 'sa;lkdjflas;kdjf;lkasdf';
-
-  private _account!: Account | null;
+  private _currentTutor: Account | null = null;
   private _loginParams: LoginParams | null = null;
   private _signUpParams: SignUpParams | null = null;
   private _confirmSignUpParams: ConfirmSignUpParams | null = null;
@@ -31,7 +29,16 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
   //============================================================
   // access to data from this service
   //============================================================
-  public get account() { return this._account; }
+  public async currentTutor(): Promise<Account> {
+
+    if (this._currentTutor == null) {
+      const currentUser = await Auth.currentSession();
+      const tutorID = currentUser.getAccessToken().payload['sub'].toString();
+      const currentTutorUser = await DataStore.query<Account>(Account, tutorID);
+      this._currentTutor = currentTutorUser!;
+    }
+    return this._currentTutor;
+  }
   public get signUpParams() { return this._signUpParams; }
   public get loginParams() { return this._loginParams; }
 
@@ -46,16 +53,10 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
 
     try {
 
-      // get
       const user = await Auth.signIn(
         loginParams.username,
         loginParams.password
       );
-
-      // get
-      this.IDTUTOR = user.username;
-      console.log(this.IDTUTOR);
-
 
       this.isLoading = false;
       return { isOk: true, message: '¡Hola, bienvenido tutor! :)' }
@@ -70,7 +71,7 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
     }
   }
 
-  async getInfoUserLogged(): Promise<AuthResponse> {
+  async getCurrentTutor(): Promise<AuthResponse> {
     try {
       const currentUser = await Auth.currentSession();
       const tutorID = currentUser.getAccessToken().payload['sub'].toString();
@@ -187,7 +188,14 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
     throw new Error('Method not implemented.');
   }
 
-  signOut(): Promise<AuthResponse> {
-    throw new Error('Method not implemented.');
+  async signOut(): Promise<AuthResponse> {
+    try {
+      const signOutResponse = await Auth.signOut();
+      return { isOk: true, data: signOutResponse };
+    } catch (error) {
+      console.log(`[signOut] -> `, error);
+      const signOutResponse = await Auth.signOut();
+      return { isOk: true, data: signOutResponse };
+    }
   }
 }
