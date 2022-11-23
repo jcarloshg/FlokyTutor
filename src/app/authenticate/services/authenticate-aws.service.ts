@@ -1,8 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Loading } from 'src/app/shared/services/loading';
-import { Authenticate, AuthResponse, SignUpParams, LoginParams, ConfirmSignUpParams } from '../../../domain/useCases/authenticate.useCase.interface';
-import { Account } from 'src/models';
+import { DataStore } from '@aws-amplify/datastore';
 import { API, Auth, graphqlOperation } from 'aws-amplify';
+import { Loading } from 'src/app/shared/services/loading';
+import {
+  Authenticate,
+  AuthResponse,
+  ConfirmSignUpParams,
+  LoginParams,
+  SignUpParams,
+} from '../../../domain/useCases/authenticate.useCase.interface';
+import { Account } from 'src/models';
 import { createAccount } from 'src/graphql/mutations';
 
 @Injectable({
@@ -74,7 +81,8 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
     this._signUpParams = signUpParams;
 
     try {
-      const { user } = await Auth.signUp({
+
+      const signUpResposne = await Auth.signUp({
         username: signUpParams.email,
         password: signUpParams.pass,
         attributes: {
@@ -86,7 +94,10 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
         }
       });
 
-      const accountInput = {
+      const tutorID = signUpResposne.userSub;
+
+      const newTutor = {
+        id: tutorID,
         fullName: signUpParams.fullName,
         email: signUpParams.email,
         role: signUpParams.role,
@@ -98,28 +109,35 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
         graphqlOperation(
           createAccount,
           {
-            input: accountInput,
-          }
+            input: newTutor,
+          },
         )
       );
+
+      console.log({ accountRes });
+
 
       this.isLoading = false;
       return {
         isOk: true,
-        data: accountRes,
+        data: signUpResposne,
       };
 
     } catch (error: any) {
 
-      let response: AuthResponse = { isOk: false, data: null, message: undefined };
+      let messageErro = '';
 
       switch (error.code) {
-        case "UsernameExistsException": { response.message = 'El correo electrónico ya esta en uso.'; break; }
-        default: response.data = error;
+        case "UsernameExistsException": messageErro = 'El correo electrónico ya esta en uso.'; break;
+        default: messageErro = error;
       }
 
       this.isLoading = false;
-      return new Promise<AuthResponse>((resolve, reject) => resolve(response));
+      return {
+        isOk: false,
+        message: messageErro,
+        data: error,
+      }
     }
 
   }

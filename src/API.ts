@@ -2,6 +2,177 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
+export type CreateActivityInput = {
+  id?: string | null,
+  name: string,
+  activityLevel: ActivityLevel,
+  activityType?: ActivityType | null,
+  question: string,
+  questionBody: string,
+  answers?: AnswerInput | null,
+  _version?: number | null,
+  activityTopicId?: string | null,
+};
+
+export enum ActivityLevel {
+  A1 = "A1",
+  A2 = "A2",
+  B1 = "B1",
+  B2 = "B2",
+  C1 = "C1",
+  C2 = "C2",
+}
+
+
+export enum ActivityType {
+  WRITING = "WRITING",
+  READING = "READING",
+  TALKING = "TALKING",
+  LISTENING = "LISTENING",
+}
+
+
+export type AnswerInput = {
+  correct: string,
+  incorrect_1?: string | null,
+  incorrect_2?: string | null,
+  incorrect_3?: string | null,
+};
+
+export type ModelActivityConditionInput = {
+  name?: ModelStringInput | null,
+  activityLevel?: ModelActivityLevelInput | null,
+  activityType?: ModelActivityTypeInput | null,
+  question?: ModelStringInput | null,
+  questionBody?: ModelStringInput | null,
+  and?: Array< ModelActivityConditionInput | null > | null,
+  or?: Array< ModelActivityConditionInput | null > | null,
+  not?: ModelActivityConditionInput | null,
+  activityTopicId?: ModelIDInput | null,
+};
+
+export type ModelStringInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
+};
+
+export enum ModelAttributeTypes {
+  binary = "binary",
+  binarySet = "binarySet",
+  bool = "bool",
+  list = "list",
+  map = "map",
+  number = "number",
+  numberSet = "numberSet",
+  string = "string",
+  stringSet = "stringSet",
+  _null = "_null",
+}
+
+
+export type ModelSizeInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+};
+
+export type ModelActivityLevelInput = {
+  eq?: ActivityLevel | null,
+  ne?: ActivityLevel | null,
+};
+
+export type ModelActivityTypeInput = {
+  eq?: ActivityType | null,
+  ne?: ActivityType | null,
+};
+
+export type ModelIDInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
+};
+
+export type Activity = {
+  __typename: "Activity",
+  id: string,
+  name: string,
+  activityLevel: ActivityLevel,
+  activityType?: ActivityType | null,
+  question: string,
+  questionBody: string,
+  answers?: Answer | null,
+  Topic?: Topic | null,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+  activityTopicId?: string | null,
+};
+
+export type Answer = {
+  __typename: "Answer",
+  correct: string,
+  incorrect_1?: string | null,
+  incorrect_2?: string | null,
+  incorrect_3?: string | null,
+};
+
+export type Topic = {
+  __typename: "Topic",
+  id: string,
+  name: string,
+  conceptInformation?: Array< string | null > | null,
+  examples?: Array< string > | null,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+};
+
+export type UpdateActivityInput = {
+  id: string,
+  name?: string | null,
+  activityLevel?: ActivityLevel | null,
+  activityType?: ActivityType | null,
+  question?: string | null,
+  questionBody?: string | null,
+  answers?: AnswerInput | null,
+  _version?: number | null,
+  activityTopicId?: string | null,
+};
+
+export type DeleteActivityInput = {
+  id: string,
+  _version?: number | null,
+};
+
 export type CreateActivitiesProgressInput = {
   id?: string | null,
   correctReading?: number | null,
@@ -40,20 +211,6 @@ export type ModelIntInput = {
   attributeExists?: boolean | null,
   attributeType?: ModelAttributeTypes | null,
 };
-
-export enum ModelAttributeTypes {
-  binary = "binary",
-  binarySet = "binarySet",
-  bool = "bool",
-  list = "list",
-  map = "map",
-  number = "number",
-  numberSet = "numberSet",
-  string = "string",
-  stringSet = "stringSet",
-  _null = "_null",
-}
-
 
 export type ActivitiesProgress = {
   __typename: "ActivitiesProgress",
@@ -99,7 +256,6 @@ export type CreateAccountInput = {
   collegeName: string,
   role: Role,
   _version?: number | null,
-  accountActivitiesProgressId?: string | null,
 };
 
 export enum Role {
@@ -118,54 +274,11 @@ export type ModelAccountConditionInput = {
   and?: Array< ModelAccountConditionInput | null > | null,
   or?: Array< ModelAccountConditionInput | null > | null,
   not?: ModelAccountConditionInput | null,
-  accountActivitiesProgressId?: ModelIDInput | null,
-};
-
-export type ModelStringInput = {
-  ne?: string | null,
-  eq?: string | null,
-  le?: string | null,
-  lt?: string | null,
-  ge?: string | null,
-  gt?: string | null,
-  contains?: string | null,
-  notContains?: string | null,
-  between?: Array< string | null > | null,
-  beginsWith?: string | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-  size?: ModelSizeInput | null,
-};
-
-export type ModelSizeInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  between?: Array< number | null > | null,
 };
 
 export type ModelRoleInput = {
   eq?: Role | null,
   ne?: Role | null,
-};
-
-export type ModelIDInput = {
-  ne?: string | null,
-  eq?: string | null,
-  le?: string | null,
-  lt?: string | null,
-  ge?: string | null,
-  gt?: string | null,
-  contains?: string | null,
-  notContains?: string | null,
-  between?: Array< string | null > | null,
-  beginsWith?: string | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-  size?: ModelSizeInput | null,
 };
 
 export type Account = {
@@ -175,81 +288,12 @@ export type Account = {
   email: string,
   collegeEnrollment: string,
   collegeName: string,
-  activitiesProgress?: ActivitiesProgress | null,
   role: Role,
-  activities?: ModelAccountActivitieConnection | null,
   createdAt: string,
   updatedAt: string,
   _version: number,
   _deleted?: boolean | null,
   _lastChangedAt: number,
-  accountActivitiesProgressId?: string | null,
-};
-
-export type ModelAccountActivitieConnection = {
-  __typename: "ModelAccountActivitieConnection",
-  items:  Array<AccountActivitie | null >,
-  nextToken?: string | null,
-  startedAt?: number | null,
-};
-
-export type AccountActivitie = {
-  __typename: "AccountActivitie",
-  id: string,
-  accountID: string,
-  activitieID: string,
-  account: Account,
-  activitie: Activitie,
-  createdAt: string,
-  updatedAt: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
-};
-
-export type Activitie = {
-  __typename: "Activitie",
-  id: string,
-  name: string,
-  activityLevel?: ActivityLevel | null,
-  typeActivity?: ActivityType | null,
-  question: string,
-  questionBody?: string | null,
-  topicID: string,
-  answers?: Answer | null,
-  accounts?: ModelAccountActivitieConnection | null,
-  examples?: Array< string > | null,
-  createdAt: string,
-  updatedAt: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
-};
-
-export enum ActivityLevel {
-  A1 = "A1",
-  A2 = "A2",
-  B1 = "B1",
-  B2 = "B2",
-  C1 = "C1",
-  C2 = "C2",
-}
-
-
-export enum ActivityType {
-  WRITING = "WRITING",
-  READING = "READING",
-  TALKING = "TALKING",
-  LISTENING = "LISTENING",
-}
-
-
-export type Answer = {
-  __typename: "Answer",
-  correct: string,
-  incorrect_1?: string | null,
-  incorrect_2?: string | null,
-  incorrect_3?: string | null,
 };
 
 export type UpdateAccountInput = {
@@ -260,71 +304,9 @@ export type UpdateAccountInput = {
   collegeName?: string | null,
   role?: Role | null,
   _version?: number | null,
-  accountActivitiesProgressId?: string | null,
 };
 
 export type DeleteAccountInput = {
-  id: string,
-  _version?: number | null,
-};
-
-export type CreateActivitieInput = {
-  id?: string | null,
-  name: string,
-  activityLevel?: ActivityLevel | null,
-  typeActivity?: ActivityType | null,
-  question: string,
-  questionBody?: string | null,
-  topicID: string,
-  answers?: AnswerInput | null,
-  examples?: Array< string > | null,
-  _version?: number | null,
-};
-
-export type AnswerInput = {
-  correct: string,
-  incorrect_1?: string | null,
-  incorrect_2?: string | null,
-  incorrect_3?: string | null,
-};
-
-export type ModelActivitieConditionInput = {
-  name?: ModelStringInput | null,
-  activityLevel?: ModelActivityLevelInput | null,
-  typeActivity?: ModelActivityTypeInput | null,
-  question?: ModelStringInput | null,
-  questionBody?: ModelStringInput | null,
-  topicID?: ModelIDInput | null,
-  examples?: ModelStringInput | null,
-  and?: Array< ModelActivitieConditionInput | null > | null,
-  or?: Array< ModelActivitieConditionInput | null > | null,
-  not?: ModelActivitieConditionInput | null,
-};
-
-export type ModelActivityLevelInput = {
-  eq?: ActivityLevel | null,
-  ne?: ActivityLevel | null,
-};
-
-export type ModelActivityTypeInput = {
-  eq?: ActivityType | null,
-  ne?: ActivityType | null,
-};
-
-export type UpdateActivitieInput = {
-  id: string,
-  name?: string | null,
-  activityLevel?: ActivityLevel | null,
-  typeActivity?: ActivityType | null,
-  question?: string | null,
-  questionBody?: string | null,
-  topicID?: string | null,
-  answers?: AnswerInput | null,
-  examples?: Array< string > | null,
-  _version?: number | null,
-};
-
-export type DeleteActivitieInput = {
   id: string,
   _version?: number | null,
 };
@@ -333,41 +315,24 @@ export type CreateTopicInput = {
   id?: string | null,
   name: string,
   conceptInformation?: Array< string | null > | null,
+  examples?: Array< string > | null,
   _version?: number | null,
 };
 
 export type ModelTopicConditionInput = {
   name?: ModelStringInput | null,
   conceptInformation?: ModelStringInput | null,
+  examples?: ModelStringInput | null,
   and?: Array< ModelTopicConditionInput | null > | null,
   or?: Array< ModelTopicConditionInput | null > | null,
   not?: ModelTopicConditionInput | null,
-};
-
-export type Topic = {
-  __typename: "Topic",
-  id: string,
-  name: string,
-  activities?: ModelActivitieConnection | null,
-  conceptInformation?: Array< string | null > | null,
-  createdAt: string,
-  updatedAt: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
-};
-
-export type ModelActivitieConnection = {
-  __typename: "ModelActivitieConnection",
-  items:  Array<Activitie | null >,
-  nextToken?: string | null,
-  startedAt?: number | null,
 };
 
 export type UpdateTopicInput = {
   id: string,
   name?: string | null,
   conceptInformation?: Array< string | null > | null,
+  examples?: Array< string > | null,
   _version?: number | null,
 };
 
@@ -376,31 +341,24 @@ export type DeleteTopicInput = {
   _version?: number | null,
 };
 
-export type CreateAccountActivitieInput = {
-  id?: string | null,
-  accountID: string,
-  activitieID: string,
-  _version?: number | null,
+export type ModelActivityFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  activityLevel?: ModelActivityLevelInput | null,
+  activityType?: ModelActivityTypeInput | null,
+  question?: ModelStringInput | null,
+  questionBody?: ModelStringInput | null,
+  and?: Array< ModelActivityFilterInput | null > | null,
+  or?: Array< ModelActivityFilterInput | null > | null,
+  not?: ModelActivityFilterInput | null,
+  activityTopicId?: ModelIDInput | null,
 };
 
-export type ModelAccountActivitieConditionInput = {
-  accountID?: ModelIDInput | null,
-  activitieID?: ModelIDInput | null,
-  and?: Array< ModelAccountActivitieConditionInput | null > | null,
-  or?: Array< ModelAccountActivitieConditionInput | null > | null,
-  not?: ModelAccountActivitieConditionInput | null,
-};
-
-export type UpdateAccountActivitieInput = {
-  id: string,
-  accountID?: string | null,
-  activitieID?: string | null,
-  _version?: number | null,
-};
-
-export type DeleteAccountActivitieInput = {
-  id: string,
-  _version?: number | null,
+export type ModelActivityConnection = {
+  __typename: "ModelActivityConnection",
+  items:  Array<Activity | null >,
+  nextToken?: string | null,
+  startedAt?: number | null,
 };
 
 export type ModelActivitiesProgressFilterInput = {
@@ -435,7 +393,6 @@ export type ModelAccountFilterInput = {
   and?: Array< ModelAccountFilterInput | null > | null,
   or?: Array< ModelAccountFilterInput | null > | null,
   not?: ModelAccountFilterInput | null,
-  accountActivitiesProgressId?: ModelIDInput | null,
 };
 
 export type ModelAccountConnection = {
@@ -445,24 +402,11 @@ export type ModelAccountConnection = {
   startedAt?: number | null,
 };
 
-export type ModelActivitieFilterInput = {
-  id?: ModelIDInput | null,
-  name?: ModelStringInput | null,
-  activityLevel?: ModelActivityLevelInput | null,
-  typeActivity?: ModelActivityTypeInput | null,
-  question?: ModelStringInput | null,
-  questionBody?: ModelStringInput | null,
-  topicID?: ModelIDInput | null,
-  examples?: ModelStringInput | null,
-  and?: Array< ModelActivitieFilterInput | null > | null,
-  or?: Array< ModelActivitieFilterInput | null > | null,
-  not?: ModelActivitieFilterInput | null,
-};
-
 export type ModelTopicFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
   conceptInformation?: ModelStringInput | null,
+  examples?: ModelStringInput | null,
   and?: Array< ModelTopicFilterInput | null > | null,
   or?: Array< ModelTopicFilterInput | null > | null,
   not?: ModelTopicFilterInput | null,
@@ -475,27 +419,15 @@ export type ModelTopicConnection = {
   startedAt?: number | null,
 };
 
-export type ModelAccountActivitieFilterInput = {
-  id?: ModelIDInput | null,
-  accountID?: ModelIDInput | null,
-  activitieID?: ModelIDInput | null,
-  and?: Array< ModelAccountActivitieFilterInput | null > | null,
-  or?: Array< ModelAccountActivitieFilterInput | null > | null,
-  not?: ModelAccountActivitieFilterInput | null,
-};
-
-export type ModelSubscriptionActivitiesProgressFilterInput = {
+export type ModelSubscriptionActivityFilterInput = {
   id?: ModelSubscriptionIDInput | null,
-  correctReading?: ModelSubscriptionIntInput | null,
-  wrongReading?: ModelSubscriptionIntInput | null,
-  correctWriting?: ModelSubscriptionIntInput | null,
-  wrongWriting?: ModelSubscriptionIntInput | null,
-  correctSpeaking?: ModelSubscriptionIntInput | null,
-  wrongSpeaking?: ModelSubscriptionIntInput | null,
-  correctListening?: ModelSubscriptionIntInput | null,
-  wrongListening?: ModelSubscriptionIntInput | null,
-  and?: Array< ModelSubscriptionActivitiesProgressFilterInput | null > | null,
-  or?: Array< ModelSubscriptionActivitiesProgressFilterInput | null > | null,
+  name?: ModelSubscriptionStringInput | null,
+  activityLevel?: ModelSubscriptionStringInput | null,
+  activityType?: ModelSubscriptionStringInput | null,
+  question?: ModelSubscriptionStringInput | null,
+  questionBody?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionActivityFilterInput | null > | null,
+  or?: Array< ModelSubscriptionActivityFilterInput | null > | null,
 };
 
 export type ModelSubscriptionIDInput = {
@@ -511,6 +443,35 @@ export type ModelSubscriptionIDInput = {
   beginsWith?: string | null,
   in?: Array< string | null > | null,
   notIn?: Array< string | null > | null,
+};
+
+export type ModelSubscriptionStringInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  in?: Array< string | null > | null,
+  notIn?: Array< string | null > | null,
+};
+
+export type ModelSubscriptionActivitiesProgressFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  correctReading?: ModelSubscriptionIntInput | null,
+  wrongReading?: ModelSubscriptionIntInput | null,
+  correctWriting?: ModelSubscriptionIntInput | null,
+  wrongWriting?: ModelSubscriptionIntInput | null,
+  correctSpeaking?: ModelSubscriptionIntInput | null,
+  wrongSpeaking?: ModelSubscriptionIntInput | null,
+  correctListening?: ModelSubscriptionIntInput | null,
+  wrongListening?: ModelSubscriptionIntInput | null,
+  and?: Array< ModelSubscriptionActivitiesProgressFilterInput | null > | null,
+  or?: Array< ModelSubscriptionActivitiesProgressFilterInput | null > | null,
 };
 
 export type ModelSubscriptionIntInput = {
@@ -536,48 +497,139 @@ export type ModelSubscriptionAccountFilterInput = {
   or?: Array< ModelSubscriptionAccountFilterInput | null > | null,
 };
 
-export type ModelSubscriptionStringInput = {
-  ne?: string | null,
-  eq?: string | null,
-  le?: string | null,
-  lt?: string | null,
-  ge?: string | null,
-  gt?: string | null,
-  contains?: string | null,
-  notContains?: string | null,
-  between?: Array< string | null > | null,
-  beginsWith?: string | null,
-  in?: Array< string | null > | null,
-  notIn?: Array< string | null > | null,
-};
-
-export type ModelSubscriptionActivitieFilterInput = {
-  id?: ModelSubscriptionIDInput | null,
-  name?: ModelSubscriptionStringInput | null,
-  activityLevel?: ModelSubscriptionStringInput | null,
-  typeActivity?: ModelSubscriptionStringInput | null,
-  question?: ModelSubscriptionStringInput | null,
-  questionBody?: ModelSubscriptionStringInput | null,
-  topicID?: ModelSubscriptionIDInput | null,
-  examples?: ModelSubscriptionStringInput | null,
-  and?: Array< ModelSubscriptionActivitieFilterInput | null > | null,
-  or?: Array< ModelSubscriptionActivitieFilterInput | null > | null,
-};
-
 export type ModelSubscriptionTopicFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   name?: ModelSubscriptionStringInput | null,
   conceptInformation?: ModelSubscriptionStringInput | null,
+  examples?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionTopicFilterInput | null > | null,
   or?: Array< ModelSubscriptionTopicFilterInput | null > | null,
 };
 
-export type ModelSubscriptionAccountActivitieFilterInput = {
-  id?: ModelSubscriptionIDInput | null,
-  accountID?: ModelSubscriptionIDInput | null,
-  activitieID?: ModelSubscriptionIDInput | null,
-  and?: Array< ModelSubscriptionAccountActivitieFilterInput | null > | null,
-  or?: Array< ModelSubscriptionAccountActivitieFilterInput | null > | null,
+export type CreateActivityMutationVariables = {
+  input: CreateActivityInput,
+  condition?: ModelActivityConditionInput | null,
+};
+
+export type CreateActivityMutation = {
+  createActivity?:  {
+    __typename: "Activity",
+    id: string,
+    name: string,
+    activityLevel: ActivityLevel,
+    activityType?: ActivityType | null,
+    question: string,
+    questionBody: string,
+    answers?:  {
+      __typename: "Answer",
+      correct: string,
+      incorrect_1?: string | null,
+      incorrect_2?: string | null,
+      incorrect_3?: string | null,
+    } | null,
+    Topic?:  {
+      __typename: "Topic",
+      id: string,
+      name: string,
+      conceptInformation?: Array< string | null > | null,
+      examples?: Array< string > | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    activityTopicId?: string | null,
+  } | null,
+};
+
+export type UpdateActivityMutationVariables = {
+  input: UpdateActivityInput,
+  condition?: ModelActivityConditionInput | null,
+};
+
+export type UpdateActivityMutation = {
+  updateActivity?:  {
+    __typename: "Activity",
+    id: string,
+    name: string,
+    activityLevel: ActivityLevel,
+    activityType?: ActivityType | null,
+    question: string,
+    questionBody: string,
+    answers?:  {
+      __typename: "Answer",
+      correct: string,
+      incorrect_1?: string | null,
+      incorrect_2?: string | null,
+      incorrect_3?: string | null,
+    } | null,
+    Topic?:  {
+      __typename: "Topic",
+      id: string,
+      name: string,
+      conceptInformation?: Array< string | null > | null,
+      examples?: Array< string > | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    activityTopicId?: string | null,
+  } | null,
+};
+
+export type DeleteActivityMutationVariables = {
+  input: DeleteActivityInput,
+  condition?: ModelActivityConditionInput | null,
+};
+
+export type DeleteActivityMutation = {
+  deleteActivity?:  {
+    __typename: "Activity",
+    id: string,
+    name: string,
+    activityLevel: ActivityLevel,
+    activityType?: ActivityType | null,
+    question: string,
+    questionBody: string,
+    answers?:  {
+      __typename: "Answer",
+      correct: string,
+      incorrect_1?: string | null,
+      incorrect_2?: string | null,
+      incorrect_3?: string | null,
+    } | null,
+    Topic?:  {
+      __typename: "Topic",
+      id: string,
+      name: string,
+      conceptInformation?: Array< string | null > | null,
+      examples?: Array< string > | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    activityTopicId?: string | null,
+  } | null,
 };
 
 export type CreateActivitiesProgressMutationVariables = {
@@ -668,46 +720,12 @@ export type CreateAccountMutation = {
     email: string,
     collegeEnrollment: string,
     collegeName: string,
-    activitiesProgress?:  {
-      __typename: "ActivitiesProgress",
-      id: string,
-      correctReading?: number | null,
-      wrongReading?: number | null,
-      correctWriting?: number | null,
-      wrongWriting?: number | null,
-      correctSpeaking?: number | null,
-      wrongSpeaking?: number | null,
-      correctListening?: number | null,
-      wrongListening?: number | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null,
     role: Role,
-    activities?:  {
-      __typename: "ModelAccountActivitieConnection",
-      items:  Array< {
-        __typename: "AccountActivitie",
-        id: string,
-        accountID: string,
-        activitieID: string,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    accountActivitiesProgressId?: string | null,
   } | null,
 };
 
@@ -724,46 +742,12 @@ export type UpdateAccountMutation = {
     email: string,
     collegeEnrollment: string,
     collegeName: string,
-    activitiesProgress?:  {
-      __typename: "ActivitiesProgress",
-      id: string,
-      correctReading?: number | null,
-      wrongReading?: number | null,
-      correctWriting?: number | null,
-      wrongWriting?: number | null,
-      correctSpeaking?: number | null,
-      wrongSpeaking?: number | null,
-      correctListening?: number | null,
-      wrongListening?: number | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null,
     role: Role,
-    activities?:  {
-      __typename: "ModelAccountActivitieConnection",
-      items:  Array< {
-        __typename: "AccountActivitie",
-        id: string,
-        accountID: string,
-        activitieID: string,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    accountActivitiesProgressId?: string | null,
   } | null,
 };
 
@@ -780,182 +764,7 @@ export type DeleteAccountMutation = {
     email: string,
     collegeEnrollment: string,
     collegeName: string,
-    activitiesProgress?:  {
-      __typename: "ActivitiesProgress",
-      id: string,
-      correctReading?: number | null,
-      wrongReading?: number | null,
-      correctWriting?: number | null,
-      wrongWriting?: number | null,
-      correctSpeaking?: number | null,
-      wrongSpeaking?: number | null,
-      correctListening?: number | null,
-      wrongListening?: number | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null,
     role: Role,
-    activities?:  {
-      __typename: "ModelAccountActivitieConnection",
-      items:  Array< {
-        __typename: "AccountActivitie",
-        id: string,
-        accountID: string,
-        activitieID: string,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    accountActivitiesProgressId?: string | null,
-  } | null,
-};
-
-export type CreateActivitieMutationVariables = {
-  input: CreateActivitieInput,
-  condition?: ModelActivitieConditionInput | null,
-};
-
-export type CreateActivitieMutation = {
-  createActivitie?:  {
-    __typename: "Activitie",
-    id: string,
-    name: string,
-    activityLevel?: ActivityLevel | null,
-    typeActivity?: ActivityType | null,
-    question: string,
-    questionBody?: string | null,
-    topicID: string,
-    answers?:  {
-      __typename: "Answer",
-      correct: string,
-      incorrect_1?: string | null,
-      incorrect_2?: string | null,
-      incorrect_3?: string | null,
-    } | null,
-    accounts?:  {
-      __typename: "ModelAccountActivitieConnection",
-      items:  Array< {
-        __typename: "AccountActivitie",
-        id: string,
-        accountID: string,
-        activitieID: string,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    examples?: Array< string > | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-  } | null,
-};
-
-export type UpdateActivitieMutationVariables = {
-  input: UpdateActivitieInput,
-  condition?: ModelActivitieConditionInput | null,
-};
-
-export type UpdateActivitieMutation = {
-  updateActivitie?:  {
-    __typename: "Activitie",
-    id: string,
-    name: string,
-    activityLevel?: ActivityLevel | null,
-    typeActivity?: ActivityType | null,
-    question: string,
-    questionBody?: string | null,
-    topicID: string,
-    answers?:  {
-      __typename: "Answer",
-      correct: string,
-      incorrect_1?: string | null,
-      incorrect_2?: string | null,
-      incorrect_3?: string | null,
-    } | null,
-    accounts?:  {
-      __typename: "ModelAccountActivitieConnection",
-      items:  Array< {
-        __typename: "AccountActivitie",
-        id: string,
-        accountID: string,
-        activitieID: string,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    examples?: Array< string > | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-  } | null,
-};
-
-export type DeleteActivitieMutationVariables = {
-  input: DeleteActivitieInput,
-  condition?: ModelActivitieConditionInput | null,
-};
-
-export type DeleteActivitieMutation = {
-  deleteActivitie?:  {
-    __typename: "Activitie",
-    id: string,
-    name: string,
-    activityLevel?: ActivityLevel | null,
-    typeActivity?: ActivityType | null,
-    question: string,
-    questionBody?: string | null,
-    topicID: string,
-    answers?:  {
-      __typename: "Answer",
-      correct: string,
-      incorrect_1?: string | null,
-      incorrect_2?: string | null,
-      incorrect_3?: string | null,
-    } | null,
-    accounts?:  {
-      __typename: "ModelAccountActivitieConnection",
-      items:  Array< {
-        __typename: "AccountActivitie",
-        id: string,
-        accountID: string,
-        activitieID: string,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    examples?: Array< string > | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -974,28 +783,8 @@ export type CreateTopicMutation = {
     __typename: "Topic",
     id: string,
     name: string,
-    activities?:  {
-      __typename: "ModelActivitieConnection",
-      items:  Array< {
-        __typename: "Activitie",
-        id: string,
-        name: string,
-        activityLevel?: ActivityLevel | null,
-        typeActivity?: ActivityType | null,
-        question: string,
-        questionBody?: string | null,
-        topicID: string,
-        examples?: Array< string > | null,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
     conceptInformation?: Array< string | null > | null,
+    examples?: Array< string > | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -1014,28 +803,8 @@ export type UpdateTopicMutation = {
     __typename: "Topic",
     id: string,
     name: string,
-    activities?:  {
-      __typename: "ModelActivitieConnection",
-      items:  Array< {
-        __typename: "Activitie",
-        id: string,
-        name: string,
-        activityLevel?: ActivityLevel | null,
-        typeActivity?: ActivityType | null,
-        question: string,
-        questionBody?: string | null,
-        topicID: string,
-        examples?: Array< string > | null,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
     conceptInformation?: Array< string | null > | null,
+    examples?: Array< string > | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -1054,93 +823,123 @@ export type DeleteTopicMutation = {
     __typename: "Topic",
     id: string,
     name: string,
-    activities?:  {
-      __typename: "ModelActivitieConnection",
-      items:  Array< {
-        __typename: "Activitie",
+    conceptInformation?: Array< string | null > | null,
+    examples?: Array< string > | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type GetActivityQueryVariables = {
+  id: string,
+};
+
+export type GetActivityQuery = {
+  getActivity?:  {
+    __typename: "Activity",
+    id: string,
+    name: string,
+    activityLevel: ActivityLevel,
+    activityType?: ActivityType | null,
+    question: string,
+    questionBody: string,
+    answers?:  {
+      __typename: "Answer",
+      correct: string,
+      incorrect_1?: string | null,
+      incorrect_2?: string | null,
+      incorrect_3?: string | null,
+    } | null,
+    Topic?:  {
+      __typename: "Topic",
+      id: string,
+      name: string,
+      conceptInformation?: Array< string | null > | null,
+      examples?: Array< string > | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    activityTopicId?: string | null,
+  } | null,
+};
+
+export type ListActivitiesQueryVariables = {
+  filter?: ModelActivityFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListActivitiesQuery = {
+  listActivities?:  {
+    __typename: "ModelActivityConnection",
+    items:  Array< {
+      __typename: "Activity",
+      id: string,
+      name: string,
+      activityLevel: ActivityLevel,
+      activityType?: ActivityType | null,
+      question: string,
+      questionBody: string,
+      answers?:  {
+        __typename: "Answer",
+        correct: string,
+        incorrect_1?: string | null,
+        incorrect_2?: string | null,
+        incorrect_3?: string | null,
+      } | null,
+      Topic?:  {
+        __typename: "Topic",
         id: string,
         name: string,
-        activityLevel?: ActivityLevel | null,
-        typeActivity?: ActivityType | null,
-        question: string,
-        questionBody?: string | null,
-        topicID: string,
+        conceptInformation?: Array< string | null > | null,
         examples?: Array< string > | null,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    conceptInformation?: Array< string | null > | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-  } | null,
-};
-
-export type CreateAccountActivitieMutationVariables = {
-  input: CreateAccountActivitieInput,
-  condition?: ModelAccountActivitieConditionInput | null,
-};
-
-export type CreateAccountActivitieMutation = {
-  createAccountActivitie?:  {
-    __typename: "AccountActivitie",
-    id: string,
-    accountID: string,
-    activitieID: string,
-    account:  {
-      __typename: "Account",
-      id: string,
-      fullName: string,
-      email: string,
-      collegeEnrollment: string,
-      collegeName: string,
-      activitiesProgress?:  {
-        __typename: "ActivitiesProgress",
-        id: string,
-        correctReading?: number | null,
-        wrongReading?: number | null,
-        correctWriting?: number | null,
-        wrongWriting?: number | null,
-        correctSpeaking?: number | null,
-        wrongSpeaking?: number | null,
-        correctListening?: number | null,
-        wrongListening?: number | null,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null,
-      role: Role,
-      activities?:  {
-        __typename: "ModelAccountActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
       } | null,
       createdAt: string,
       updatedAt: string,
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      accountActivitiesProgressId?: string | null,
-    },
-    activitie:  {
-      __typename: "Activitie",
+      activityTopicId?: string | null,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
+};
+
+export type SyncActivitiesQueryVariables = {
+  filter?: ModelActivityFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+  lastSync?: number | null,
+};
+
+export type SyncActivitiesQuery = {
+  syncActivities?:  {
+    __typename: "ModelActivityConnection",
+    items:  Array< {
+      __typename: "Activity",
       id: string,
       name: string,
-      activityLevel?: ActivityLevel | null,
-      typeActivity?: ActivityType | null,
+      activityLevel: ActivityLevel,
+      activityType?: ActivityType | null,
       question: string,
-      questionBody?: string | null,
-      topicID: string,
+      questionBody: string,
       answers?:  {
         __typename: "Answer",
         correct: string,
@@ -1148,191 +947,27 @@ export type CreateAccountActivitieMutation = {
         incorrect_2?: string | null,
         incorrect_3?: string | null,
       } | null,
-      accounts?:  {
-        __typename: "ModelAccountActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
-      } | null,
-      examples?: Array< string > | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    },
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-  } | null,
-};
-
-export type UpdateAccountActivitieMutationVariables = {
-  input: UpdateAccountActivitieInput,
-  condition?: ModelAccountActivitieConditionInput | null,
-};
-
-export type UpdateAccountActivitieMutation = {
-  updateAccountActivitie?:  {
-    __typename: "AccountActivitie",
-    id: string,
-    accountID: string,
-    activitieID: string,
-    account:  {
-      __typename: "Account",
-      id: string,
-      fullName: string,
-      email: string,
-      collegeEnrollment: string,
-      collegeName: string,
-      activitiesProgress?:  {
-        __typename: "ActivitiesProgress",
+      Topic?:  {
+        __typename: "Topic",
         id: string,
-        correctReading?: number | null,
-        wrongReading?: number | null,
-        correctWriting?: number | null,
-        wrongWriting?: number | null,
-        correctSpeaking?: number | null,
-        wrongSpeaking?: number | null,
-        correctListening?: number | null,
-        wrongListening?: number | null,
+        name: string,
+        conceptInformation?: Array< string | null > | null,
+        examples?: Array< string > | null,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
       } | null,
-      role: Role,
-      activities?:  {
-        __typename: "ModelAccountActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
-      } | null,
       createdAt: string,
       updatedAt: string,
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      accountActivitiesProgressId?: string | null,
-    },
-    activitie:  {
-      __typename: "Activitie",
-      id: string,
-      name: string,
-      activityLevel?: ActivityLevel | null,
-      typeActivity?: ActivityType | null,
-      question: string,
-      questionBody?: string | null,
-      topicID: string,
-      answers?:  {
-        __typename: "Answer",
-        correct: string,
-        incorrect_1?: string | null,
-        incorrect_2?: string | null,
-        incorrect_3?: string | null,
-      } | null,
-      accounts?:  {
-        __typename: "ModelAccountActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
-      } | null,
-      examples?: Array< string > | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    },
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-  } | null,
-};
-
-export type DeleteAccountActivitieMutationVariables = {
-  input: DeleteAccountActivitieInput,
-  condition?: ModelAccountActivitieConditionInput | null,
-};
-
-export type DeleteAccountActivitieMutation = {
-  deleteAccountActivitie?:  {
-    __typename: "AccountActivitie",
-    id: string,
-    accountID: string,
-    activitieID: string,
-    account:  {
-      __typename: "Account",
-      id: string,
-      fullName: string,
-      email: string,
-      collegeEnrollment: string,
-      collegeName: string,
-      activitiesProgress?:  {
-        __typename: "ActivitiesProgress",
-        id: string,
-        correctReading?: number | null,
-        wrongReading?: number | null,
-        correctWriting?: number | null,
-        wrongWriting?: number | null,
-        correctSpeaking?: number | null,
-        wrongSpeaking?: number | null,
-        correctListening?: number | null,
-        wrongListening?: number | null,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null,
-      role: Role,
-      activities?:  {
-        __typename: "ModelAccountActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
-      } | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-      accountActivitiesProgressId?: string | null,
-    },
-    activitie:  {
-      __typename: "Activitie",
-      id: string,
-      name: string,
-      activityLevel?: ActivityLevel | null,
-      typeActivity?: ActivityType | null,
-      question: string,
-      questionBody?: string | null,
-      topicID: string,
-      answers?:  {
-        __typename: "Answer",
-        correct: string,
-        incorrect_1?: string | null,
-        incorrect_2?: string | null,
-        incorrect_3?: string | null,
-      } | null,
-      accounts?:  {
-        __typename: "ModelAccountActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
-      } | null,
-      examples?: Array< string > | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    },
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
+      activityTopicId?: string | null,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
   } | null,
 };
 
@@ -1435,46 +1070,12 @@ export type GetAccountQuery = {
     email: string,
     collegeEnrollment: string,
     collegeName: string,
-    activitiesProgress?:  {
-      __typename: "ActivitiesProgress",
-      id: string,
-      correctReading?: number | null,
-      wrongReading?: number | null,
-      correctWriting?: number | null,
-      wrongWriting?: number | null,
-      correctSpeaking?: number | null,
-      wrongSpeaking?: number | null,
-      correctListening?: number | null,
-      wrongListening?: number | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null,
     role: Role,
-    activities?:  {
-      __typename: "ModelAccountActivitieConnection",
-      items:  Array< {
-        __typename: "AccountActivitie",
-        id: string,
-        accountID: string,
-        activitieID: string,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    accountActivitiesProgressId?: string | null,
   } | null,
 };
 
@@ -1494,35 +1095,12 @@ export type ListAccountsQuery = {
       email: string,
       collegeEnrollment: string,
       collegeName: string,
-      activitiesProgress?:  {
-        __typename: "ActivitiesProgress",
-        id: string,
-        correctReading?: number | null,
-        wrongReading?: number | null,
-        correctWriting?: number | null,
-        wrongWriting?: number | null,
-        correctSpeaking?: number | null,
-        wrongSpeaking?: number | null,
-        correctListening?: number | null,
-        wrongListening?: number | null,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null,
       role: Role,
-      activities?:  {
-        __typename: "ModelAccountActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
-      } | null,
       createdAt: string,
       updatedAt: string,
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      accountActivitiesProgressId?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
@@ -1546,161 +1124,7 @@ export type SyncAccountsQuery = {
       email: string,
       collegeEnrollment: string,
       collegeName: string,
-      activitiesProgress?:  {
-        __typename: "ActivitiesProgress",
-        id: string,
-        correctReading?: number | null,
-        wrongReading?: number | null,
-        correctWriting?: number | null,
-        wrongWriting?: number | null,
-        correctSpeaking?: number | null,
-        wrongSpeaking?: number | null,
-        correctListening?: number | null,
-        wrongListening?: number | null,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null,
       role: Role,
-      activities?:  {
-        __typename: "ModelAccountActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
-      } | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-      accountActivitiesProgressId?: string | null,
-    } | null >,
-    nextToken?: string | null,
-    startedAt?: number | null,
-  } | null,
-};
-
-export type GetActivitieQueryVariables = {
-  id: string,
-};
-
-export type GetActivitieQuery = {
-  getActivitie?:  {
-    __typename: "Activitie",
-    id: string,
-    name: string,
-    activityLevel?: ActivityLevel | null,
-    typeActivity?: ActivityType | null,
-    question: string,
-    questionBody?: string | null,
-    topicID: string,
-    answers?:  {
-      __typename: "Answer",
-      correct: string,
-      incorrect_1?: string | null,
-      incorrect_2?: string | null,
-      incorrect_3?: string | null,
-    } | null,
-    accounts?:  {
-      __typename: "ModelAccountActivitieConnection",
-      items:  Array< {
-        __typename: "AccountActivitie",
-        id: string,
-        accountID: string,
-        activitieID: string,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    examples?: Array< string > | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-  } | null,
-};
-
-export type ListActivitiesQueryVariables = {
-  filter?: ModelActivitieFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-};
-
-export type ListActivitiesQuery = {
-  listActivities?:  {
-    __typename: "ModelActivitieConnection",
-    items:  Array< {
-      __typename: "Activitie",
-      id: string,
-      name: string,
-      activityLevel?: ActivityLevel | null,
-      typeActivity?: ActivityType | null,
-      question: string,
-      questionBody?: string | null,
-      topicID: string,
-      answers?:  {
-        __typename: "Answer",
-        correct: string,
-        incorrect_1?: string | null,
-        incorrect_2?: string | null,
-        incorrect_3?: string | null,
-      } | null,
-      accounts?:  {
-        __typename: "ModelAccountActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
-      } | null,
-      examples?: Array< string > | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null >,
-    nextToken?: string | null,
-    startedAt?: number | null,
-  } | null,
-};
-
-export type SyncActivitiesQueryVariables = {
-  filter?: ModelActivitieFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-  lastSync?: number | null,
-};
-
-export type SyncActivitiesQuery = {
-  syncActivities?:  {
-    __typename: "ModelActivitieConnection",
-    items:  Array< {
-      __typename: "Activitie",
-      id: string,
-      name: string,
-      activityLevel?: ActivityLevel | null,
-      typeActivity?: ActivityType | null,
-      question: string,
-      questionBody?: string | null,
-      topicID: string,
-      answers?:  {
-        __typename: "Answer",
-        correct: string,
-        incorrect_1?: string | null,
-        incorrect_2?: string | null,
-        incorrect_3?: string | null,
-      } | null,
-      accounts?:  {
-        __typename: "ModelAccountActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
-      } | null,
-      examples?: Array< string > | null,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -1721,28 +1145,8 @@ export type GetTopicQuery = {
     __typename: "Topic",
     id: string,
     name: string,
-    activities?:  {
-      __typename: "ModelActivitieConnection",
-      items:  Array< {
-        __typename: "Activitie",
-        id: string,
-        name: string,
-        activityLevel?: ActivityLevel | null,
-        typeActivity?: ActivityType | null,
-        question: string,
-        questionBody?: string | null,
-        topicID: string,
-        examples?: Array< string > | null,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
     conceptInformation?: Array< string | null > | null,
+    examples?: Array< string > | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -1764,12 +1168,8 @@ export type ListTopicsQuery = {
       __typename: "Topic",
       id: string,
       name: string,
-      activities?:  {
-        __typename: "ModelActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
-      } | null,
       conceptInformation?: Array< string | null > | null,
+      examples?: Array< string > | null,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -1795,216 +1195,139 @@ export type SyncTopicsQuery = {
       __typename: "Topic",
       id: string,
       name: string,
-      activities?:  {
-        __typename: "ModelActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
-      } | null,
       conceptInformation?: Array< string | null > | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null >,
-    nextToken?: string | null,
-    startedAt?: number | null,
-  } | null,
-};
-
-export type GetAccountActivitieQueryVariables = {
-  id: string,
-};
-
-export type GetAccountActivitieQuery = {
-  getAccountActivitie?:  {
-    __typename: "AccountActivitie",
-    id: string,
-    accountID: string,
-    activitieID: string,
-    account:  {
-      __typename: "Account",
-      id: string,
-      fullName: string,
-      email: string,
-      collegeEnrollment: string,
-      collegeName: string,
-      activitiesProgress?:  {
-        __typename: "ActivitiesProgress",
-        id: string,
-        correctReading?: number | null,
-        wrongReading?: number | null,
-        correctWriting?: number | null,
-        wrongWriting?: number | null,
-        correctSpeaking?: number | null,
-        wrongSpeaking?: number | null,
-        correctListening?: number | null,
-        wrongListening?: number | null,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null,
-      role: Role,
-      activities?:  {
-        __typename: "ModelAccountActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
-      } | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-      accountActivitiesProgressId?: string | null,
-    },
-    activitie:  {
-      __typename: "Activitie",
-      id: string,
-      name: string,
-      activityLevel?: ActivityLevel | null,
-      typeActivity?: ActivityType | null,
-      question: string,
-      questionBody?: string | null,
-      topicID: string,
-      answers?:  {
-        __typename: "Answer",
-        correct: string,
-        incorrect_1?: string | null,
-        incorrect_2?: string | null,
-        incorrect_3?: string | null,
-      } | null,
-      accounts?:  {
-        __typename: "ModelAccountActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
-      } | null,
       examples?: Array< string > | null,
       createdAt: string,
       updatedAt: string,
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-    },
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
+};
+
+export type OnCreateActivitySubscriptionVariables = {
+  filter?: ModelSubscriptionActivityFilterInput | null,
+};
+
+export type OnCreateActivitySubscription = {
+  onCreateActivity?:  {
+    __typename: "Activity",
+    id: string,
+    name: string,
+    activityLevel: ActivityLevel,
+    activityType?: ActivityType | null,
+    question: string,
+    questionBody: string,
+    answers?:  {
+      __typename: "Answer",
+      correct: string,
+      incorrect_1?: string | null,
+      incorrect_2?: string | null,
+      incorrect_3?: string | null,
+    } | null,
+    Topic?:  {
+      __typename: "Topic",
+      id: string,
+      name: string,
+      conceptInformation?: Array< string | null > | null,
+      examples?: Array< string > | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
+    activityTopicId?: string | null,
   } | null,
 };
 
-export type ListAccountActivitiesQueryVariables = {
-  filter?: ModelAccountActivitieFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
+export type OnUpdateActivitySubscriptionVariables = {
+  filter?: ModelSubscriptionActivityFilterInput | null,
 };
 
-export type ListAccountActivitiesQuery = {
-  listAccountActivities?:  {
-    __typename: "ModelAccountActivitieConnection",
-    items:  Array< {
-      __typename: "AccountActivitie",
+export type OnUpdateActivitySubscription = {
+  onUpdateActivity?:  {
+    __typename: "Activity",
+    id: string,
+    name: string,
+    activityLevel: ActivityLevel,
+    activityType?: ActivityType | null,
+    question: string,
+    questionBody: string,
+    answers?:  {
+      __typename: "Answer",
+      correct: string,
+      incorrect_1?: string | null,
+      incorrect_2?: string | null,
+      incorrect_3?: string | null,
+    } | null,
+    Topic?:  {
+      __typename: "Topic",
       id: string,
-      accountID: string,
-      activitieID: string,
-      account:  {
-        __typename: "Account",
-        id: string,
-        fullName: string,
-        email: string,
-        collegeEnrollment: string,
-        collegeName: string,
-        role: Role,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-        accountActivitiesProgressId?: string | null,
-      },
-      activitie:  {
-        __typename: "Activitie",
-        id: string,
-        name: string,
-        activityLevel?: ActivityLevel | null,
-        typeActivity?: ActivityType | null,
-        question: string,
-        questionBody?: string | null,
-        topicID: string,
-        examples?: Array< string > | null,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      },
+      name: string,
+      conceptInformation?: Array< string | null > | null,
+      examples?: Array< string > | null,
       createdAt: string,
       updatedAt: string,
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-    } | null >,
-    nextToken?: string | null,
-    startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    activityTopicId?: string | null,
   } | null,
 };
 
-export type SyncAccountActivitiesQueryVariables = {
-  filter?: ModelAccountActivitieFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-  lastSync?: number | null,
+export type OnDeleteActivitySubscriptionVariables = {
+  filter?: ModelSubscriptionActivityFilterInput | null,
 };
 
-export type SyncAccountActivitiesQuery = {
-  syncAccountActivities?:  {
-    __typename: "ModelAccountActivitieConnection",
-    items:  Array< {
-      __typename: "AccountActivitie",
+export type OnDeleteActivitySubscription = {
+  onDeleteActivity?:  {
+    __typename: "Activity",
+    id: string,
+    name: string,
+    activityLevel: ActivityLevel,
+    activityType?: ActivityType | null,
+    question: string,
+    questionBody: string,
+    answers?:  {
+      __typename: "Answer",
+      correct: string,
+      incorrect_1?: string | null,
+      incorrect_2?: string | null,
+      incorrect_3?: string | null,
+    } | null,
+    Topic?:  {
+      __typename: "Topic",
       id: string,
-      accountID: string,
-      activitieID: string,
-      account:  {
-        __typename: "Account",
-        id: string,
-        fullName: string,
-        email: string,
-        collegeEnrollment: string,
-        collegeName: string,
-        role: Role,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-        accountActivitiesProgressId?: string | null,
-      },
-      activitie:  {
-        __typename: "Activitie",
-        id: string,
-        name: string,
-        activityLevel?: ActivityLevel | null,
-        typeActivity?: ActivityType | null,
-        question: string,
-        questionBody?: string | null,
-        topicID: string,
-        examples?: Array< string > | null,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      },
+      name: string,
+      conceptInformation?: Array< string | null > | null,
+      examples?: Array< string > | null,
       createdAt: string,
       updatedAt: string,
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-    } | null >,
-    nextToken?: string | null,
-    startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    activityTopicId?: string | null,
   } | null,
 };
 
@@ -2092,46 +1415,12 @@ export type OnCreateAccountSubscription = {
     email: string,
     collegeEnrollment: string,
     collegeName: string,
-    activitiesProgress?:  {
-      __typename: "ActivitiesProgress",
-      id: string,
-      correctReading?: number | null,
-      wrongReading?: number | null,
-      correctWriting?: number | null,
-      wrongWriting?: number | null,
-      correctSpeaking?: number | null,
-      wrongSpeaking?: number | null,
-      correctListening?: number | null,
-      wrongListening?: number | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null,
     role: Role,
-    activities?:  {
-      __typename: "ModelAccountActivitieConnection",
-      items:  Array< {
-        __typename: "AccountActivitie",
-        id: string,
-        accountID: string,
-        activitieID: string,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    accountActivitiesProgressId?: string | null,
   } | null,
 };
 
@@ -2147,46 +1436,12 @@ export type OnUpdateAccountSubscription = {
     email: string,
     collegeEnrollment: string,
     collegeName: string,
-    activitiesProgress?:  {
-      __typename: "ActivitiesProgress",
-      id: string,
-      correctReading?: number | null,
-      wrongReading?: number | null,
-      correctWriting?: number | null,
-      wrongWriting?: number | null,
-      correctSpeaking?: number | null,
-      wrongSpeaking?: number | null,
-      correctListening?: number | null,
-      wrongListening?: number | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null,
     role: Role,
-    activities?:  {
-      __typename: "ModelAccountActivitieConnection",
-      items:  Array< {
-        __typename: "AccountActivitie",
-        id: string,
-        accountID: string,
-        activitieID: string,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    accountActivitiesProgressId?: string | null,
   } | null,
 };
 
@@ -2202,179 +1457,7 @@ export type OnDeleteAccountSubscription = {
     email: string,
     collegeEnrollment: string,
     collegeName: string,
-    activitiesProgress?:  {
-      __typename: "ActivitiesProgress",
-      id: string,
-      correctReading?: number | null,
-      wrongReading?: number | null,
-      correctWriting?: number | null,
-      wrongWriting?: number | null,
-      correctSpeaking?: number | null,
-      wrongSpeaking?: number | null,
-      correctListening?: number | null,
-      wrongListening?: number | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null,
     role: Role,
-    activities?:  {
-      __typename: "ModelAccountActivitieConnection",
-      items:  Array< {
-        __typename: "AccountActivitie",
-        id: string,
-        accountID: string,
-        activitieID: string,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    accountActivitiesProgressId?: string | null,
-  } | null,
-};
-
-export type OnCreateActivitieSubscriptionVariables = {
-  filter?: ModelSubscriptionActivitieFilterInput | null,
-};
-
-export type OnCreateActivitieSubscription = {
-  onCreateActivitie?:  {
-    __typename: "Activitie",
-    id: string,
-    name: string,
-    activityLevel?: ActivityLevel | null,
-    typeActivity?: ActivityType | null,
-    question: string,
-    questionBody?: string | null,
-    topicID: string,
-    answers?:  {
-      __typename: "Answer",
-      correct: string,
-      incorrect_1?: string | null,
-      incorrect_2?: string | null,
-      incorrect_3?: string | null,
-    } | null,
-    accounts?:  {
-      __typename: "ModelAccountActivitieConnection",
-      items:  Array< {
-        __typename: "AccountActivitie",
-        id: string,
-        accountID: string,
-        activitieID: string,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    examples?: Array< string > | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-  } | null,
-};
-
-export type OnUpdateActivitieSubscriptionVariables = {
-  filter?: ModelSubscriptionActivitieFilterInput | null,
-};
-
-export type OnUpdateActivitieSubscription = {
-  onUpdateActivitie?:  {
-    __typename: "Activitie",
-    id: string,
-    name: string,
-    activityLevel?: ActivityLevel | null,
-    typeActivity?: ActivityType | null,
-    question: string,
-    questionBody?: string | null,
-    topicID: string,
-    answers?:  {
-      __typename: "Answer",
-      correct: string,
-      incorrect_1?: string | null,
-      incorrect_2?: string | null,
-      incorrect_3?: string | null,
-    } | null,
-    accounts?:  {
-      __typename: "ModelAccountActivitieConnection",
-      items:  Array< {
-        __typename: "AccountActivitie",
-        id: string,
-        accountID: string,
-        activitieID: string,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    examples?: Array< string > | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-  } | null,
-};
-
-export type OnDeleteActivitieSubscriptionVariables = {
-  filter?: ModelSubscriptionActivitieFilterInput | null,
-};
-
-export type OnDeleteActivitieSubscription = {
-  onDeleteActivitie?:  {
-    __typename: "Activitie",
-    id: string,
-    name: string,
-    activityLevel?: ActivityLevel | null,
-    typeActivity?: ActivityType | null,
-    question: string,
-    questionBody?: string | null,
-    topicID: string,
-    answers?:  {
-      __typename: "Answer",
-      correct: string,
-      incorrect_1?: string | null,
-      incorrect_2?: string | null,
-      incorrect_3?: string | null,
-    } | null,
-    accounts?:  {
-      __typename: "ModelAccountActivitieConnection",
-      items:  Array< {
-        __typename: "AccountActivitie",
-        id: string,
-        accountID: string,
-        activitieID: string,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    examples?: Array< string > | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -2392,28 +1475,8 @@ export type OnCreateTopicSubscription = {
     __typename: "Topic",
     id: string,
     name: string,
-    activities?:  {
-      __typename: "ModelActivitieConnection",
-      items:  Array< {
-        __typename: "Activitie",
-        id: string,
-        name: string,
-        activityLevel?: ActivityLevel | null,
-        typeActivity?: ActivityType | null,
-        question: string,
-        questionBody?: string | null,
-        topicID: string,
-        examples?: Array< string > | null,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
     conceptInformation?: Array< string | null > | null,
+    examples?: Array< string > | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -2431,28 +1494,8 @@ export type OnUpdateTopicSubscription = {
     __typename: "Topic",
     id: string,
     name: string,
-    activities?:  {
-      __typename: "ModelActivitieConnection",
-      items:  Array< {
-        __typename: "Activitie",
-        id: string,
-        name: string,
-        activityLevel?: ActivityLevel | null,
-        typeActivity?: ActivityType | null,
-        question: string,
-        questionBody?: string | null,
-        topicID: string,
-        examples?: Array< string > | null,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
     conceptInformation?: Array< string | null > | null,
+    examples?: Array< string > | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -2470,277 +1513,8 @@ export type OnDeleteTopicSubscription = {
     __typename: "Topic",
     id: string,
     name: string,
-    activities?:  {
-      __typename: "ModelActivitieConnection",
-      items:  Array< {
-        __typename: "Activitie",
-        id: string,
-        name: string,
-        activityLevel?: ActivityLevel | null,
-        typeActivity?: ActivityType | null,
-        question: string,
-        questionBody?: string | null,
-        topicID: string,
-        examples?: Array< string > | null,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null >,
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
     conceptInformation?: Array< string | null > | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-  } | null,
-};
-
-export type OnCreateAccountActivitieSubscriptionVariables = {
-  filter?: ModelSubscriptionAccountActivitieFilterInput | null,
-};
-
-export type OnCreateAccountActivitieSubscription = {
-  onCreateAccountActivitie?:  {
-    __typename: "AccountActivitie",
-    id: string,
-    accountID: string,
-    activitieID: string,
-    account:  {
-      __typename: "Account",
-      id: string,
-      fullName: string,
-      email: string,
-      collegeEnrollment: string,
-      collegeName: string,
-      activitiesProgress?:  {
-        __typename: "ActivitiesProgress",
-        id: string,
-        correctReading?: number | null,
-        wrongReading?: number | null,
-        correctWriting?: number | null,
-        wrongWriting?: number | null,
-        correctSpeaking?: number | null,
-        wrongSpeaking?: number | null,
-        correctListening?: number | null,
-        wrongListening?: number | null,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null,
-      role: Role,
-      activities?:  {
-        __typename: "ModelAccountActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
-      } | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-      accountActivitiesProgressId?: string | null,
-    },
-    activitie:  {
-      __typename: "Activitie",
-      id: string,
-      name: string,
-      activityLevel?: ActivityLevel | null,
-      typeActivity?: ActivityType | null,
-      question: string,
-      questionBody?: string | null,
-      topicID: string,
-      answers?:  {
-        __typename: "Answer",
-        correct: string,
-        incorrect_1?: string | null,
-        incorrect_2?: string | null,
-        incorrect_3?: string | null,
-      } | null,
-      accounts?:  {
-        __typename: "ModelAccountActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
-      } | null,
-      examples?: Array< string > | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    },
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-  } | null,
-};
-
-export type OnUpdateAccountActivitieSubscriptionVariables = {
-  filter?: ModelSubscriptionAccountActivitieFilterInput | null,
-};
-
-export type OnUpdateAccountActivitieSubscription = {
-  onUpdateAccountActivitie?:  {
-    __typename: "AccountActivitie",
-    id: string,
-    accountID: string,
-    activitieID: string,
-    account:  {
-      __typename: "Account",
-      id: string,
-      fullName: string,
-      email: string,
-      collegeEnrollment: string,
-      collegeName: string,
-      activitiesProgress?:  {
-        __typename: "ActivitiesProgress",
-        id: string,
-        correctReading?: number | null,
-        wrongReading?: number | null,
-        correctWriting?: number | null,
-        wrongWriting?: number | null,
-        correctSpeaking?: number | null,
-        wrongSpeaking?: number | null,
-        correctListening?: number | null,
-        wrongListening?: number | null,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null,
-      role: Role,
-      activities?:  {
-        __typename: "ModelAccountActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
-      } | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-      accountActivitiesProgressId?: string | null,
-    },
-    activitie:  {
-      __typename: "Activitie",
-      id: string,
-      name: string,
-      activityLevel?: ActivityLevel | null,
-      typeActivity?: ActivityType | null,
-      question: string,
-      questionBody?: string | null,
-      topicID: string,
-      answers?:  {
-        __typename: "Answer",
-        correct: string,
-        incorrect_1?: string | null,
-        incorrect_2?: string | null,
-        incorrect_3?: string | null,
-      } | null,
-      accounts?:  {
-        __typename: "ModelAccountActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
-      } | null,
-      examples?: Array< string > | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    },
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-  } | null,
-};
-
-export type OnDeleteAccountActivitieSubscriptionVariables = {
-  filter?: ModelSubscriptionAccountActivitieFilterInput | null,
-};
-
-export type OnDeleteAccountActivitieSubscription = {
-  onDeleteAccountActivitie?:  {
-    __typename: "AccountActivitie",
-    id: string,
-    accountID: string,
-    activitieID: string,
-    account:  {
-      __typename: "Account",
-      id: string,
-      fullName: string,
-      email: string,
-      collegeEnrollment: string,
-      collegeName: string,
-      activitiesProgress?:  {
-        __typename: "ActivitiesProgress",
-        id: string,
-        correctReading?: number | null,
-        wrongReading?: number | null,
-        correctWriting?: number | null,
-        wrongWriting?: number | null,
-        correctSpeaking?: number | null,
-        wrongSpeaking?: number | null,
-        correctListening?: number | null,
-        wrongListening?: number | null,
-        createdAt: string,
-        updatedAt: string,
-        _version: number,
-        _deleted?: boolean | null,
-        _lastChangedAt: number,
-      } | null,
-      role: Role,
-      activities?:  {
-        __typename: "ModelAccountActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
-      } | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-      accountActivitiesProgressId?: string | null,
-    },
-    activitie:  {
-      __typename: "Activitie",
-      id: string,
-      name: string,
-      activityLevel?: ActivityLevel | null,
-      typeActivity?: ActivityType | null,
-      question: string,
-      questionBody?: string | null,
-      topicID: string,
-      answers?:  {
-        __typename: "Answer",
-        correct: string,
-        incorrect_1?: string | null,
-        incorrect_2?: string | null,
-        incorrect_3?: string | null,
-      } | null,
-      accounts?:  {
-        __typename: "ModelAccountActivitieConnection",
-        nextToken?: string | null,
-        startedAt?: number | null,
-      } | null,
-      examples?: Array< string > | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    },
+    examples?: Array< string > | null,
     createdAt: string,
     updatedAt: string,
     _version: number,

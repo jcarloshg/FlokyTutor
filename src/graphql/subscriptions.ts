@@ -2,6 +2,111 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateActivity = /* GraphQL */ `
+  subscription OnCreateActivity($filter: ModelSubscriptionActivityFilterInput) {
+    onCreateActivity(filter: $filter) {
+      id
+      name
+      activityLevel
+      activityType
+      question
+      questionBody
+      answers {
+        correct
+        incorrect_1
+        incorrect_2
+        incorrect_3
+      }
+      Topic {
+        id
+        name
+        conceptInformation
+        examples
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      activityTopicId
+    }
+  }
+`;
+export const onUpdateActivity = /* GraphQL */ `
+  subscription OnUpdateActivity($filter: ModelSubscriptionActivityFilterInput) {
+    onUpdateActivity(filter: $filter) {
+      id
+      name
+      activityLevel
+      activityType
+      question
+      questionBody
+      answers {
+        correct
+        incorrect_1
+        incorrect_2
+        incorrect_3
+      }
+      Topic {
+        id
+        name
+        conceptInformation
+        examples
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      activityTopicId
+    }
+  }
+`;
+export const onDeleteActivity = /* GraphQL */ `
+  subscription OnDeleteActivity($filter: ModelSubscriptionActivityFilterInput) {
+    onDeleteActivity(filter: $filter) {
+      id
+      name
+      activityLevel
+      activityType
+      question
+      questionBody
+      answers {
+        correct
+        incorrect_1
+        incorrect_2
+        incorrect_3
+      }
+      Topic {
+        id
+        name
+        conceptInformation
+        examples
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      activityTopicId
+    }
+  }
+`;
 export const onCreateActivitiesProgress = /* GraphQL */ `
   subscription OnCreateActivitiesProgress(
     $filter: ModelSubscriptionActivitiesProgressFilterInput
@@ -76,43 +181,12 @@ export const onCreateAccount = /* GraphQL */ `
       email
       collegeEnrollment
       collegeName
-      activitiesProgress {
-        id
-        correctReading
-        wrongReading
-        correctWriting
-        wrongWriting
-        correctSpeaking
-        wrongSpeaking
-        correctListening
-        wrongListening
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
       role
-      activities {
-        items {
-          id
-          accountID
-          activitieID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      accountActivitiesProgressId
     }
   }
 `;
@@ -124,43 +198,12 @@ export const onUpdateAccount = /* GraphQL */ `
       email
       collegeEnrollment
       collegeName
-      activitiesProgress {
-        id
-        correctReading
-        wrongReading
-        correctWriting
-        wrongWriting
-        correctSpeaking
-        wrongSpeaking
-        correctListening
-        wrongListening
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
       role
-      activities {
-        items {
-          id
-          accountID
-          activitieID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      accountActivitiesProgressId
     }
   }
 `;
@@ -172,161 +215,7 @@ export const onDeleteAccount = /* GraphQL */ `
       email
       collegeEnrollment
       collegeName
-      activitiesProgress {
-        id
-        correctReading
-        wrongReading
-        correctWriting
-        wrongWriting
-        correctSpeaking
-        wrongSpeaking
-        correctListening
-        wrongListening
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
       role
-      activities {
-        items {
-          id
-          accountID
-          activitieID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      accountActivitiesProgressId
-    }
-  }
-`;
-export const onCreateActivitie = /* GraphQL */ `
-  subscription OnCreateActivitie(
-    $filter: ModelSubscriptionActivitieFilterInput
-  ) {
-    onCreateActivitie(filter: $filter) {
-      id
-      name
-      activityLevel
-      typeActivity
-      question
-      questionBody
-      topicID
-      answers {
-        correct
-        incorrect_1
-        incorrect_2
-        incorrect_3
-      }
-      accounts {
-        items {
-          id
-          accountID
-          activitieID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
-      examples
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onUpdateActivitie = /* GraphQL */ `
-  subscription OnUpdateActivitie(
-    $filter: ModelSubscriptionActivitieFilterInput
-  ) {
-    onUpdateActivitie(filter: $filter) {
-      id
-      name
-      activityLevel
-      typeActivity
-      question
-      questionBody
-      topicID
-      answers {
-        correct
-        incorrect_1
-        incorrect_2
-        incorrect_3
-      }
-      accounts {
-        items {
-          id
-          accountID
-          activitieID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
-      examples
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onDeleteActivitie = /* GraphQL */ `
-  subscription OnDeleteActivitie(
-    $filter: ModelSubscriptionActivitieFilterInput
-  ) {
-    onDeleteActivitie(filter: $filter) {
-      id
-      name
-      activityLevel
-      typeActivity
-      question
-      questionBody
-      topicID
-      answers {
-        correct
-        incorrect_1
-        incorrect_2
-        incorrect_3
-      }
-      accounts {
-        items {
-          id
-          accountID
-          activitieID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
-      examples
       createdAt
       updatedAt
       _version
@@ -340,26 +229,8 @@ export const onCreateTopic = /* GraphQL */ `
     onCreateTopic(filter: $filter) {
       id
       name
-      activities {
-        items {
-          id
-          name
-          activityLevel
-          typeActivity
-          question
-          questionBody
-          topicID
-          examples
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
       conceptInformation
+      examples
       createdAt
       updatedAt
       _version
@@ -373,26 +244,8 @@ export const onUpdateTopic = /* GraphQL */ `
     onUpdateTopic(filter: $filter) {
       id
       name
-      activities {
-        items {
-          id
-          name
-          activityLevel
-          typeActivity
-          question
-          questionBody
-          topicID
-          examples
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
       conceptInformation
+      examples
       createdAt
       updatedAt
       _version
@@ -406,251 +259,8 @@ export const onDeleteTopic = /* GraphQL */ `
     onDeleteTopic(filter: $filter) {
       id
       name
-      activities {
-        items {
-          id
-          name
-          activityLevel
-          typeActivity
-          question
-          questionBody
-          topicID
-          examples
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
       conceptInformation
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onCreateAccountActivitie = /* GraphQL */ `
-  subscription OnCreateAccountActivitie(
-    $filter: ModelSubscriptionAccountActivitieFilterInput
-  ) {
-    onCreateAccountActivitie(filter: $filter) {
-      id
-      accountID
-      activitieID
-      account {
-        id
-        fullName
-        email
-        collegeEnrollment
-        collegeName
-        activitiesProgress {
-          id
-          correctReading
-          wrongReading
-          correctWriting
-          wrongWriting
-          correctSpeaking
-          wrongSpeaking
-          correctListening
-          wrongListening
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        role
-        activities {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        accountActivitiesProgressId
-      }
-      activitie {
-        id
-        name
-        activityLevel
-        typeActivity
-        question
-        questionBody
-        topicID
-        answers {
-          correct
-          incorrect_1
-          incorrect_2
-          incorrect_3
-        }
-        accounts {
-          nextToken
-          startedAt
-        }
-        examples
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onUpdateAccountActivitie = /* GraphQL */ `
-  subscription OnUpdateAccountActivitie(
-    $filter: ModelSubscriptionAccountActivitieFilterInput
-  ) {
-    onUpdateAccountActivitie(filter: $filter) {
-      id
-      accountID
-      activitieID
-      account {
-        id
-        fullName
-        email
-        collegeEnrollment
-        collegeName
-        activitiesProgress {
-          id
-          correctReading
-          wrongReading
-          correctWriting
-          wrongWriting
-          correctSpeaking
-          wrongSpeaking
-          correctListening
-          wrongListening
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        role
-        activities {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        accountActivitiesProgressId
-      }
-      activitie {
-        id
-        name
-        activityLevel
-        typeActivity
-        question
-        questionBody
-        topicID
-        answers {
-          correct
-          incorrect_1
-          incorrect_2
-          incorrect_3
-        }
-        accounts {
-          nextToken
-          startedAt
-        }
-        examples
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onDeleteAccountActivitie = /* GraphQL */ `
-  subscription OnDeleteAccountActivitie(
-    $filter: ModelSubscriptionAccountActivitieFilterInput
-  ) {
-    onDeleteAccountActivitie(filter: $filter) {
-      id
-      accountID
-      activitieID
-      account {
-        id
-        fullName
-        email
-        collegeEnrollment
-        collegeName
-        activitiesProgress {
-          id
-          correctReading
-          wrongReading
-          correctWriting
-          wrongWriting
-          correctSpeaking
-          wrongSpeaking
-          correctListening
-          wrongListening
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        role
-        activities {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        accountActivitiesProgressId
-      }
-      activitie {
-        id
-        name
-        activityLevel
-        typeActivity
-        question
-        questionBody
-        topicID
-        answers {
-          correct
-          incorrect_1
-          incorrect_2
-          incorrect_3
-        }
-        accounts {
-          nextToken
-          startedAt
-        }
-        examples
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
+      examples
       createdAt
       updatedAt
       _version

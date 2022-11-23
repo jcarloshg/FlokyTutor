@@ -70,10 +70,13 @@ export class SingUpComponent {
       }
     );
 
-    // if (singUpResponse.isOk == false) {
-    //   this.customToastService.launchToast({ typeToast: 'error', message: singUpResponse.message ?? 'Ocurrio un error inesperado' });
-    //   return;
-    // }
+    console.log({ singUpResponse });
+
+
+    if (singUpResponse.isOk == false) {
+      this.customToastService.launchToast({ typeToast: 'error', message: singUpResponse.message ?? 'Ocurrio un error inesperado' });
+      return;
+    }
 
     this.customToastService.launchToast({ typeToast: 'success', message: singUpResponse.message ?? 'Todo cool! :)' });
     this.router.navigate(['./cuenta/confirmar_nueva_cuenta'])
