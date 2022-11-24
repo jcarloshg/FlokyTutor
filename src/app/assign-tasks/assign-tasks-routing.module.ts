@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeAssignTasksComponent } from './pages/home-assign-tasks/home-assign-tasks.component';
 import { ViewActivitiesComponent } from './pages/view-activities/view-activities.component';
+import { ActivityComponent } from './pages/activity/activity.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
       {
         path: 'ver_actividades',
         component: ViewActivitiesComponent,
+      },
+      {
+        path: ':id',
+        component: ActivityComponent,
       },
       {
         path: '**',

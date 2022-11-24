@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Activity, ActivityType } from 'src/models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-activity',
@@ -11,7 +12,9 @@ export class CardActivityComponent implements OnInit {
   @Input() activitie!: Activity;
   @Input() spaceLeft: boolean = false;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void { }
 
@@ -29,6 +32,10 @@ export class CardActivityComponent implements OnInit {
     if (activityType == ActivityType.WRITING) return urlImageWrtie;
 
     return urlImageWrtie
+  }
+
+  goToActivityByID(activityID: string) {
+    this.router.navigate(['./incio/actividades/', activityID])
   }
 
 }

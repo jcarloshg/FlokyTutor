@@ -6,12 +6,14 @@ import { HomeAssignTasksComponent } from './pages/home-assign-tasks/home-assign-
 import { SharedModule } from '../shared/shared.module';
 import { ViewActivitiesComponent } from './pages/view-activities/view-activities.component';
 import { FormsModule } from '@angular/forms';
+import { ActivityComponent } from './pages/activity/activity.component';
 
 
 @NgModule({
   declarations: [
     HomeAssignTasksComponent,
     ViewActivitiesComponent,
+    ActivityComponent,
   ],
   imports: [
     CommonModule,
