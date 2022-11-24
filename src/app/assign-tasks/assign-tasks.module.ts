@@ -10,6 +10,7 @@ import { ActivityComponent } from './pages/activity/activity.component';
 import { ActivityTypeBadgeComponent } from './components/activity-type-badge/activity-type-badge.component';
 import { ActivityBodyWriteComponent } from './components/activity-body-write/activity-body-write.component';
 import { ActivityBodyReadingComponent } from './components/activity-body-reading/activity-body-reading.component';
+import { ActivityBodyTalkingComponent } from './components/activity-body-talking/activity-body-talking.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ActivityBodyReadingComponent } from './components/activity-body-reading
     ActivityTypeBadgeComponent,
     ActivityBodyWriteComponent,
     ActivityBodyReadingComponent,
+    ActivityBodyTalkingComponent,
   ],
   imports: [
     CommonModule,

@@ -24,6 +24,10 @@
 
         <app-activity-body-reading *ngIf="activity.activityType == 'READING'" [activity]="activity">
         </app-activity-body-reading>
+
+        <app-activity-body-talking *ngIf="activity.activityType == 'TALKING'" [activity]="activity">
+        </app-activity-body-talking>
+
     </div>
 
     <!-- footer -->
