@@ -9,30 +9,23 @@ import { ActivityType } from 'src/models';
 })
 export class ActivityTypeBadgeComponent implements OnInit {
 
+  @Input() activityTypePPP!: string;
   public tagEspaniol = '';
-  public activityTypeBadgeHTMLElement: ElementRef<HTMLElement>;
-  public dataToBadge: Map<string, any> = new Map<string, any>()
-    .set(ActivityType.LISTENING, { tagEspaniol: 'Escuchar', backgroundCSS: 'bg-listen' })
-    .set(ActivityType.READING, { tagEspaniol: 'Leer', backgroundCSS: 'bg-read' })
-    .set(ActivityType.TALKING, { tagEspaniol: 'Hablar', backgroundCSS: 'bg-speak' })
-    .set(ActivityType.WRITING, { tagEspaniol: 'Escribir', backgroundCSS: 'border-write' });
+  public styleCSS = 'd-inline-flex py-0 border rounded-pill';
 
-  constructor(
-    private elementRef: ElementRef<HTMLElement>
-  ) {
-    this.activityTypeBadgeHTMLElement = elementRef;
-  }
+  constructor() { }
 
-  ngOnInit(): void { }
-
-  @Input() set activityType(type: string | null | undefined) {
-
-    const itemDataToBadge = this.dataToBadge.get(type!);
-    console.log({ itemDataToBadge });
-
-    this.tagEspaniol = itemDataToBadge!.tagEspaniol;
-    this.activityTypeBadgeHTMLElement.nativeElement.classList.add(itemDataToBadge!.backgroundCSS);
-
+  ngOnInit(): void {
+    // tag
+    if (this.activityTypePPP == ActivityType.LISTENING) this.tagEspaniol = 'Escuchar';
+    if (this.activityTypePPP == ActivityType.READING) this.tagEspaniol = 'Leer';
+    if (this.activityTypePPP == ActivityType.TALKING) this.tagEspaniol = 'Hablar';
+    if (this.activityTypePPP == ActivityType.WRITING) this.tagEspaniol = 'Escribir';
+    // background
+    if (this.activityTypePPP == ActivityType.LISTENING) this.styleCSS += ' bg-listen';
+    if (this.activityTypePPP == ActivityType.READING) this.styleCSS += ' bg-read';
+    if (this.activityTypePPP == ActivityType.TALKING) this.styleCSS += ' bg-speak';
+    if (this.activityTypePPP == ActivityType.WRITING) this.styleCSS += ' bg-write';
   }
 
 }

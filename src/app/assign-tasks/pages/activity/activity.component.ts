@@ -10,7 +10,7 @@ import { AssignTasksAWSService } from '../../services/assign-tasks-aws.service';
 })
 export class ActivityComponent implements OnInit {
 
-  public activity: Activity | null = null;
+  public activity!: Activity;
 
   constructor(
     private router: Router,
@@ -22,12 +22,6 @@ export class ActivityComponent implements OnInit {
     const activityIDtoSearch = this.activatedRoute.snapshot.paramMap.get('id');
     const getActivityByIDResponse = await this.assignTasksAWSService.getActivityByID(activityIDtoSearch!);
     this.activity = getActivityByIDResponse.data;
-
-    this.getAnswerLikeArr()
-  }
-
-  getAnswerLikeArr() {
-    return Object.values(this.activity?.answers!);
   }
 
 }

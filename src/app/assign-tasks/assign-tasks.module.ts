@@ -8,6 +8,7 @@ import { ViewActivitiesComponent } from './pages/view-activities/view-activities
 import { FormsModule } from '@angular/forms';
 import { ActivityComponent } from './pages/activity/activity.component';
 import { ActivityTypeBadgeComponent } from './components/activity-type-badge/activity-type-badge.component';
+import { ActivityBodyWriteComponent } from './components/activity-body-write/activity-body-write.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ActivityTypeBadgeComponent } from './components/activity-type-badge/act
     ViewActivitiesComponent,
     ActivityComponent,
     ActivityTypeBadgeComponent,
+    ActivityBodyWriteComponent,
   ],
   imports: [
     CommonModule,
