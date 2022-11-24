@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Activity } from 'src/models';
 
 @Component({
   selector: 'app-activity-body-listening',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./activity-body-listening.component.css']
 })
 export class ActivityBodyListeningComponent implements OnInit {
+
+  @Input() public activity!: Activity;
 
   constructor() { }
 
