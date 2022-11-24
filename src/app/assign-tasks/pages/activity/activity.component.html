@@ -1,2 +1,37 @@
-<p>activity works!</p>
-<pre>{{activity | json}}</pre>
+<div style='height: 90%;' *ngIf="activity" class="d-flex flex-column justify-content-between">
+
+    <!-- title -->
+
+    <div>
+
+        <div>
+            <p class="h3">{{activity.name}}</p>
+            <div class="d-flex align-items-center">
+                <p class="fw-bold m-0 me-2">{{activity.activityLevel}}</p>
+                <p class="text-secondary m-0">{{activity.Topic?.name}}</p>
+            </div>
+        </div>
+
+        <app-activity-type-badge [activityType]="activity.activityType">
+        </app-activity-type-badge>
+
+    </div>
+
+
+    <!-- body -->
+    <div>
+        <p class="fs-5 m-0">{{activity.question}}</p>
+        <p class="fs-3 fw-bold">{{activity.questionBody}}</p>
+
+        <p class="fs-6" *ngFor="let answer of this.getAnswerLikeArr()">(o) {{answer}}</p>
+    </div>
+
+    <!-- footer -->
+    <div>
+        <p>HOLA</p>
+    </div>
+
+</div>
+
+<!-- <div style='height: 100vh;' style='border: 1px solid;'></div> -->
+<!-- <pre>{{activity | json}}</pre> -->

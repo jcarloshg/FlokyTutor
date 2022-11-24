@@ -18,6 +18,7 @@ export class CardActivityDirective implements OnInit {
   constructor(private elementRef: ElementRef<HTMLElement>) {
     this.cardActivityHTMLElement = elementRef;
   }
+
   ngOnInit(): void {
     this.cardActivityHTMLElement.nativeElement.classList.add('bg-opacity-10');
     this.cardActivityHTMLElement.nativeElement.classList.add('border');

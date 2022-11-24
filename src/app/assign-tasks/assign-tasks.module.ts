@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ViewActivitiesComponent } from './pages/view-activities/view-activities.component';
 import { FormsModule } from '@angular/forms';
 import { ActivityComponent } from './pages/activity/activity.component';
+import { ActivityTypeBadgeComponent } from './components/activity-type-badge/activity-type-badge.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { ActivityComponent } from './pages/activity/activity.component';
     HomeAssignTasksComponent,
     ViewActivitiesComponent,
     ActivityComponent,
+    ActivityTypeBadgeComponent,
   ],
   imports: [
     CommonModule,
