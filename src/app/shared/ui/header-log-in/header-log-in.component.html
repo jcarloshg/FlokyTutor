@@ -1,11 +1,22 @@
 <header class="p-3 px-5 text-bg-dark">
     <div class="d-flex align-items-center justify-content-between">
 
-        <span class="h5 text-white">Floky Tutor</span>
+        <!-- <span class="hFloky Tutor5 text-white">Floky Tutor</span> -->
 
-        <button class="btn btn-primary align-items-end" (click)="goToMyProfile()">
-            Mi perfil, [COLLAPSE_MENU]
-        </button>
+        <p>Floky Tutor</p>
+
+        <div style='border: 1px solid;'>
+
+            <p class="m-0 p-0">{{getShortName()}}</p>
+
+            <button type="button" class="btn btn-link text-light w-100 m-0 p-0" (click)="signOut()">
+                Cerrar sesión
+            </button>
+
+            <!-- <button class="btn btn-primary align-items-end" (click)="goToMyProfile()">
+                Mi perfil, [COLLAPSE_MENU]
+            </button> -->
+        </div>
 
     </div>
 </header>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticateAWSService } from '../../../authenticate/services/authenticate-aws.service';
 import { Account } from 'src/models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-log-in',
@@ -9,22 +10,30 @@ import { Account } from 'src/models';
 })
 export class HeaderLogInComponent implements OnInit {
 
+  public userTutorCurrent: Account | null = null;
+
   constructor(
+    private router: Router,
     public authenticateAWSService: AuthenticateAWSService
   ) { }
 
   async ngOnInit(): Promise<void> {
-    const tutor = await this.authenticateAWSService.currentTutor();
-    console.log(tutor);
+    this.userTutorCurrent = await this.authenticateAWSService.currentTutor();
+  }
+
+  public async signOut() {
+    const signOutResponse = await this.authenticateAWSService.signOut();
+    if (signOutResponse.isOk == true) this.router.navigate(['./cuenta/ingresar']);
   }
 
   async goToMyProfile() {
+    console.log(this.userTutorCurrent);
+  }
 
-    const tutor = await this.authenticateAWSService.signOut();
-    console.log(tutor);
-
-    // const tutor = await this.authenticateAWSService.currentTutor();
-    // console.log(tutor);
+  public getShortName() {
+    const shortName = this.userTutorCurrent!.fullName.split(' ').slice(0, 3).join(' ');
+    const shortNameWithoutSpaces = shortName.trim();
+    return shortNameWithoutSpaces;
   }
 
 }

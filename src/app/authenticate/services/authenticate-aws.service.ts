@@ -17,13 +17,20 @@ import { createAccount } from 'src/graphql/mutations';
 })
 export class AuthenticateAWSService extends Loading implements Authenticate {
 
-  private _currentTutor: Account | null = null;
+  private _userTutorCurrent: Account | null = null;
   private _loginParams: LoginParams | null = null;
   private _signUpParams: SignUpParams | null = null;
   private _confirmSignUpParams: ConfirmSignUpParams | null = null;
 
   constructor() {
     super();
+
+    (
+      async () => {
+        // await DataStore.clear();
+        await DataStore.start();
+      }
+    )();
   }
 
   //============================================================
@@ -31,15 +38,15 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
   //============================================================
   public async currentTutor(): Promise<Account | null> | never {
     try {
-      if (this._currentTutor == null) {
+      if (this._userTutorCurrent == null) {
         const currentUser = await Auth.currentSession();
         const tutorID = currentUser.getAccessToken().payload['sub'].toString();
-        const currentTutorUser = await DataStore.query<Account>(Account, tutorID);
-        this._currentTutor = currentTutorUser!;
+        const userTutorCurrent = await DataStore.query<Account>(Account, tutorID);
+        this._userTutorCurrent = userTutorCurrent!;
       }
-      return this._currentTutor;
+      return this._userTutorCurrent;
     } catch (error) {
-      this._currentTutor = null;
+      this._userTutorCurrent = null;
       // return error;
       throw error;
     }
@@ -196,6 +203,7 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
   async signOut(): Promise<AuthResponse> {
     try {
       const signOutResponse = await Auth.signOut();
+      await DataStore.clear();
       return { isOk: true, data: signOutResponse };
     } catch (error) {
       console.log(`[signOut] -> `, error);

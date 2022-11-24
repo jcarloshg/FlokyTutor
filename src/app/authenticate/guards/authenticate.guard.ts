@@ -20,13 +20,13 @@ export class AuthenticateGuard implements CanLoad {
     return this.authenticateAWSService.currentTutor()
       .then(
         (userTutor) => {
-          console.log('canLoad - then: ', userTutor);
+          // console.log('canLoad - then: ', userTutor);
           return true;
         }
       )
       .catch(
         (error) => {
-          console.log('canLoad - error: ', error);
+          // console.log('canLoad - error: ', error);
           this.router.navigate(['./cuenta/ingresar']);
           return false;
         }
@@ -42,13 +42,13 @@ export class AuthenticateGuard implements CanLoad {
     return this.authenticateAWSService.currentTutor()
       .then(
         (userTutor) => {
-          console.log('canLoad - then: ', userTutor);
+          // console.log('canLoad - then: ', userTutor);
           return true;
         }
       )
       .catch(
         (error) => {
-          console.log('canLoad - error: ', error);
+          // console.log('canLoad - error: ', error);
           this.router.navigate(['./cuenta/ingresar']);
           return false;
         }
