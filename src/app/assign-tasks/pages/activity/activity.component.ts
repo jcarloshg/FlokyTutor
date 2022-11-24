@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Activity } from 'src/models';
+import { AssignTasksAWSService } from '../../services/assign-tasks-aws.service';
 
 @Component({
   selector: 'app-activity',
@@ -8,12 +10,18 @@ import { Router } from '@angular/router';
 })
 export class ActivityComponent implements OnInit {
 
+  public activity: Activity | null = null;
+
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
+    public assignTasksAWSService: AssignTasksAWSService,
   ) { }
 
-  ngOnInit(): void {
-    console.log(this.router.url);
+  async ngOnInit(): Promise<void> {
+    const activityIDtoSearch = this.activatedRoute.snapshot.paramMap.get('id');
+    const getActivityByIDResponse = await this.assignTasksAWSService.getActivityByID(activityIDtoSearch!);
+    this.activity = getActivityByIDResponse.data;
   }
 
 }

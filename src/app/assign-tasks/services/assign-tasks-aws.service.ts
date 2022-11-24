@@ -42,6 +42,11 @@ export class AssignTasksAWSService implements AssignTasks {
     return { isOk: true, data: activities };
   }
 
+  async getActivityByID(ID: string): Promise<ActivitiesResponse> {
+    const activity = await DataStore.query<Activity>(Activity, ID);
+    return { isOk: true, data: activity };
+  }
+
   //============================================================
   // this is auxiliar (👇)
   //============================================================

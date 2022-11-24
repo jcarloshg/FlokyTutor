@@ -2,6 +2,7 @@ export interface AssignTasks {
 
     getNewActivities(): Promise<ActivitiesResponse>;
     searchActivitiesByName(name: string): Promise<ActivitiesResponse>;
+    getActivityByID(ID: string): Promise<ActivitiesResponse>;
 
 
     //============================================================

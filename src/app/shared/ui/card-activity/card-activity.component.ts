@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Activity, ActivityType } from 'src/models';
 import { Router } from '@angular/router';
+import { Activity, ActivityType } from 'src/models';
 
 @Component({
   selector: 'app-card-activity',
