@@ -21,6 +21,9 @@
     <div>
         <app-activity-body-write *ngIf="activity.activityType == 'WRITING'" [activity]="activity">
         </app-activity-body-write>
+
+        <app-activity-body-reading *ngIf="activity.activityType == 'READING'" [activity]="activity">
+        </app-activity-body-reading>
     </div>
 
     <!-- footer -->

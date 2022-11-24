@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { ActivityComponent } from './pages/activity/activity.component';
 import { ActivityTypeBadgeComponent } from './components/activity-type-badge/activity-type-badge.component';
 import { ActivityBodyWriteComponent } from './components/activity-body-write/activity-body-write.component';
+import { ActivityBodyReadingComponent } from './components/activity-body-reading/activity-body-reading.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ActivityBodyWriteComponent } from './components/activity-body-write/act
     ActivityComponent,
     ActivityTypeBadgeComponent,
     ActivityBodyWriteComponent,
+    ActivityBodyReadingComponent,
   ],
   imports: [
     CommonModule,

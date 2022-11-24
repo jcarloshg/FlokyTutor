@@ -14,10 +14,6 @@ export class ActivityBodyWriteComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  getAnswerLikeArr() {
-    return Object.values(this.activity?.answers!);
-  }
-
   getAnswerCorrect(): string {
     return this.activity.answers?.correct!
   }
