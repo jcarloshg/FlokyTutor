@@ -35,14 +35,14 @@
 
     <!-- footer -->
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <app-concept-information-viewer [conceptInformation]="activity.Topic!.conceptInformation!">
             </app-concept-information-viewer>
         </div>
-        <!-- <div class="col-lg-6">
-            <app-examples-viewer></app-examples-viewer>
-            <pre>{{activity.Topic?.examples | json}}</pre>
-        </div> -->
+        <div class="col-lg-12">
+            <app-examples-viewer [examples]="activity.Topic!.examples!"></app-examples-viewer>
+            <!-- <pre>{{activity.Topic?.examples | json}}</pre> -->
+        </div>
     </div>
 
 </div>

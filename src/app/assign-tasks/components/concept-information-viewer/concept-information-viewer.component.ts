@@ -12,7 +12,7 @@ export class ConceptInformationViewerComponent implements OnInit {
   public itemConcepInfomation: string | null = null;
 
   constructor(
-    private changeDetectorRef: ChangeDetectorRef
+    // private changeDetectorRef: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void { }
@@ -37,7 +37,7 @@ export class ConceptInformationViewerComponent implements OnInit {
     const indexRandom = Math.floor(Math.random() * (lengthConceptInformation - 0) + 0);
     const itemConceptInformationRandom = this.conceptInformation[indexRandom];
     this.itemConcepInfomation = itemConceptInformationRandom;
-    this.changeDetectorRef.detectChanges();
+    // this.changeDetectorRef.detectChanges();
   }
 
 }

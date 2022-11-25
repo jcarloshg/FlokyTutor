@@ -1,1 +1,19 @@
-<p>examples-viewer works!</p>
+<div class="my-2 position-relative" *ngIf="examples">
+
+    <div *ngIf="exampleIsDisplayed == false" class="d-flex align-items-center" (click)="showAInfo()">
+        <img src="./assets/src/activities/body/info.png" alt='image' class="me-1" style='height: 20px;'>
+        <p class="fs-6 text-button_text_2C06C6 m-0">Ejemplos</p>
+    </div>
+
+    <div *ngIf="exampleIsDisplayed == true"
+        class="position-absolute top-0 start-50 translate-middle shadow py-4 px-4 bg-body rounded w-100">
+
+        <p class="fs-6 text-button_text_2C06C6">Ejemplos</p>
+        <p>{{this.itemExample}}</p>
+        <button type="button" class="btn btn-link m-0" (click)="showAInfo()">
+            Aceptar
+        </button>
+
+    </div>
+
+</div>
