@@ -12,6 +12,8 @@ import { ActivityBodyWriteComponent } from './components/activity-body-write/act
 import { ActivityBodyReadingComponent } from './components/activity-body-reading/activity-body-reading.component';
 import { ActivityBodyTalkingComponent } from './components/activity-body-talking/activity-body-talking.component';
 import { ActivityBodyListeningComponent } from './components/activity-body-listening/activity-body-listening.component';
+import { ExamplesViewerComponent } from './components/examples-viewer/examples-viewer.component';
+import { ConceptInformationViewerComponent } from './components/concept-information-viewer/concept-information-viewer.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { ActivityBodyListeningComponent } from './components/activity-body-liste
     ActivityBodyReadingComponent,
     ActivityBodyTalkingComponent,
     ActivityBodyListeningComponent,
+    ExamplesViewerComponent,
+    ConceptInformationViewerComponent,
   ],
   imports: [
     CommonModule,

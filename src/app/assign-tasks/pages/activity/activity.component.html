@@ -1,4 +1,4 @@
-<div *ngIf="activity" class="d-flex flex-column justify-content-between px-lg-5 mx-lg-5" style='height: 90%;'>
+<div *ngIf="activity" class="d-flex flex-column justify-content-between px-lg-5 mx-lg-5" style='height: 80%;'>
 
     <!-- title -->
     <div class="d-flex justify-content-between">
@@ -34,11 +34,15 @@
     </div>
 
     <!-- footer -->
-    <div style='border: 1px solid; height: 200px;'>
-        <p>HOLA</p>
+    <div class="row">
+        <div class="col-lg-6">
+            <app-concept-information-viewer [conceptInformation]="activity.Topic!.conceptInformation!">
+            </app-concept-information-viewer>
+        </div>
+        <!-- <div class="col-lg-6">
+            <app-examples-viewer></app-examples-viewer>
+            <pre>{{activity.Topic?.examples | json}}</pre>
+        </div> -->
     </div>
 
 </div>
-
-<!-- <div style='height: 100vh;' style='border: 1px solid;'></div> -->
-<!-- <pre>{{activity | json}}</pre> -->
