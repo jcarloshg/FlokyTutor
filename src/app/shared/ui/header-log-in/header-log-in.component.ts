@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class HeaderLogInComponent implements OnInit {
 
   public userTutorCurrent: Account | null = null;
+  public showCollapseMenu: boolean = false;
 
   constructor(
     private router: Router,
@@ -28,6 +29,10 @@ export class HeaderLogInComponent implements OnInit {
 
   async goToMyProfile() {
     console.log(this.userTutorCurrent);
+  }
+
+  public toogleShowMenu() {
+    this.showCollapseMenu = !this.showCollapseMenu;
   }
 
   public getShortName() {

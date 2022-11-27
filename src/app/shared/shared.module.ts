@@ -20,6 +20,7 @@ import { ButtonSpeakingComponent } from './ui/button-speaking/button-speaking.co
 import { ButtonListeningComponent } from './ui/button-listening/button-listening.component';
 import { CardActivityComponent } from './ui/card-activity/card-activity.component';
 import { CardActivityDirective } from './directives/card-activity.directive';
+import { HeaderHomeComponent } from './ui/header-home/header-home.component';
 
 
 
@@ -43,12 +44,13 @@ import { CardActivityDirective } from './directives/card-activity.directive';
     CardActivityComponent,
 
     //other
+    CardActivityDirective,
     CustomToastComponent,
     ErroMessageComponent,
+    HeaderHomeComponent,
     HeaderLogInComponent,
     SideBarComponent,
     SpinnerLoadingComponent,
-    CardActivityDirective,
   ],
   imports: [
     CommonModule,
@@ -76,6 +78,7 @@ import { CardActivityDirective } from './directives/card-activity.directive';
     //other
     CustomToastComponent,
     ErroMessageComponent,
+    HeaderHomeComponent,
     HeaderLogInComponent,
     SideBarComponent,
     SpinnerLoadingComponent,
