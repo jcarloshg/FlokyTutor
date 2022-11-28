@@ -20,7 +20,7 @@ export class HeaderHomeComponent implements OnInit {
   }
 
   public getShortName() {
-    // if (this.userTutorCurrent == null) return;
+    if (this.userTutorCurrent == null) return;
     const shortName = this.userTutorCurrent!.fullName.split(' ').slice(0, 3).join(' ');
     const shortNameWithoutSpaces = shortName.trim();
     return shortNameWithoutSpaces;

@@ -4,11 +4,11 @@
         class="px-3 py-2 d-flex flex-column justify-content-between rounded position-relative">
 
         <div>
-            <p class="fw-bold fs-5 m-0">{{activitie.name}}</p>
-            <p class="text-secondary m-0">{{activitie.Topic?.name}}</p>
+            <p class="fw-bold fs-6 m-0">{{activitie.name}}</p>
+            <p class="text-secondary fw-light m-0">{{activitie.Topic?.name}}</p>
         </div>
 
-        <p class="fw-bold fs-5 mb-0">{{activitie.activityLevel}}</p>
+        <p class="fw-bold fs-6 mb-0">{{activitie.activityLevel}}</p>
 
         <img [src]="getImageActivity()" class="position-absolute bottom-0 end-0 img-fluid opacity-50"
             style='height: 75px;'>

@@ -1,1 +1,43 @@
-<p>my-profile works!</p>
+<div *ngIf="this.userTutorCurrent" class="container px-5 py-4">
+
+    <div class="row g-3">
+
+        <div class="col-lg-4 d-flex flex-column align-items-center">
+            <img class="rounded-circle mb-3" style="height: 200px; width: 200px;"
+                src="./assets/src/header/not_photo.png">
+            <p class="fs-6 bg-read">{{this.userTutorCurrent.role}}</p>
+            <p class="fs-6">ID: {{this.userTutorCurrent.id}}</p>
+        </div>
+
+        <div class="col-lg-8">
+
+            <p class="fs-6 mb-0 fw-light">Datos personales</p>
+            <hr class="m-0 m-2">
+            <app-person-info-row tag="Nombre completo:" [valueInfo]="userTutorCurrent.fullName"></app-person-info-row>
+
+
+            <div class="m-5"></div>
+
+            <p class="fs-6 mb-0 fw-light">Registro de la institución</p>
+            <hr class="m-0 m-2">
+            <app-person-info-row tag="Nombre de la institución:" [valueInfo]="userTutorCurrent.collegeName">
+            </app-person-info-row>
+            <app-person-info-row tag="Registro del tutor:" [valueInfo]="userTutorCurrent.collegeEnrollment">
+            </app-person-info-row>
+            <app-person-info-row tag="Correo electrónico:" [valueInfo]="userTutorCurrent.email"></app-person-info-row>
+
+            <div class="m-5"></div>
+
+            <p class="fs-6 mb-0 fw-light">Cuenta creada</p>
+            <hr class="m-0 m-2">
+            <app-person-info-row tag="Fecha:" [valueInfo]="userTutorCurrent.createdAt!"></app-person-info-row>
+
+            <div class="m-5"></div>
+
+            <p class="fs-6 text-center">[v] Cerrar sesión</p>
+
+        </div>
+
+    </div>
+
+</div>
