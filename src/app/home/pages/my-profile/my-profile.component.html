@@ -6,11 +6,14 @@
             <img class="rounded-circle mb-3" style="height: 200px; width: 200px;"
                 src="./assets/src/header/not_photo.png">
 
-            <div class="bg-read rounded-pill px-3 py-1">
+            <div class="bg-read rounded-pill px-3 py-1 mb-2">
                 <p class="fs-6 m-0 text-light">{{this.userTutorCurrent.role}}</p>
             </div>
 
-            <p class="fs-6">ID: {{this.userTutorCurrent.id}}</p>
+            <p class="fs-6">
+                <span class="fw-bold">ID: </span>
+                {{this.userTutorCurrent.id | accountShortID}}
+            </p>
         </div>
 
         <div class="col-lg-8">
@@ -34,7 +37,9 @@
 
             <p class="fs-6 mb-0 fw-light">Cuenta creada</p>
             <hr class="m-0 m-2">
-            <app-person-info-row tag="Fecha:" [valueInfo]="userTutorCurrent.createdAt!"></app-person-info-row>
+            <app-person-info-row tag="Fecha:"
+                [valueInfo]='(getCreatedAt() | date: "fullDate":"GMT-6":"es-MX") ?? "hola"'>
+            </app-person-info-row>
 
             <div class="m-5"></div>
 

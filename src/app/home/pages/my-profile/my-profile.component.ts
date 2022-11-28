@@ -18,4 +18,10 @@ export class MyProfileComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.userTutorCurrent = await this.authenticateAWSService.currentTutor() as Account;
   }
+
+  public getCreatedAt(): string {
+    const date: string = this.userTutorCurrent.createdAt!;
+    return date;
+  }
+
 }

@@ -20,6 +20,7 @@ import { PassInputComponent } from './inputs/pass-input/pass-input.component';
 import { RouterModule } from '@angular/router';
 import { SideBarComponent } from './ui/side-bar/side-bar.component';
 import { SpinnerLoadingComponent } from './inputs/spinner-loading/spinner-loading.component';
+import { AccountShortIDPipe } from './pipes/account-short-id.pipe';
 
 
 
@@ -49,6 +50,9 @@ import { SpinnerLoadingComponent } from './inputs/spinner-loading/spinner-loadin
     HeaderHomeComponent,
     SideBarComponent,
     SpinnerLoadingComponent,
+
+    // pipes
+    AccountShortIDPipe,
   ],
   imports: [
     CommonModule,
@@ -79,6 +83,9 @@ import { SpinnerLoadingComponent } from './inputs/spinner-loading/spinner-loadin
     HeaderHomeComponent,
     SideBarComponent,
     SpinnerLoadingComponent,
+
+    // pipes
+    AccountShortIDPipe
   ]
 })
 export class SharedModule { }
