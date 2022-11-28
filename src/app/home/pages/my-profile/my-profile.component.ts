@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticateAWSService } from 'src/app/authenticate/services/authenticate-aws.service';
 import { Account } from 'src/models';
 
@@ -12,6 +13,7 @@ export class MyProfileComponent implements OnInit {
   public userTutorCurrent!: Account;
 
   constructor(
+    private router: Router,
     public authenticateAWSService: AuthenticateAWSService,
   ) { }
 
@@ -22,6 +24,11 @@ export class MyProfileComponent implements OnInit {
   public getCreatedAt(): string {
     const date: string = this.userTutorCurrent.createdAt!;
     return date;
+  }
+
+  public async logOut() {
+    const signOutResponse = await this.authenticateAWSService.signOut();
+    if (signOutResponse.isOk == true) this.router.navigate(['./cuenta/ingresar']);
   }
 
 }

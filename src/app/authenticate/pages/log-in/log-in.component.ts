@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ValidatorService } from '../../../shared/services/validator.service';
 import { AuthenticateAWSService } from '../../services/authenticate-aws.service';
 import { CustomToastService } from '../../../shared/services/custom-toast.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
