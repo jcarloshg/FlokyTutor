@@ -22,3 +22,6 @@ $custom-colors: (
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
 @import "../node_modules/bootstrap/scss/bootstrap";
+
+@import "~quill/dist/quill.core.css";
+@import "~quill/dist/quill.snow.css";
