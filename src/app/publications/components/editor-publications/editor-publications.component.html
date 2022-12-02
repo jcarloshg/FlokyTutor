@@ -2,6 +2,16 @@
 <button type="button" class="btn btn-primary w-100" (click)="pirntFormVontrol()">
     Registrarse
 </button>
-<!-- <pre>{{this.formControl.value | json}}</pre> -->
-<div [innerHTML]="formControl.value"></div>
+
+<div class="my-3" style='border: 1px solid;'>
+
+    <pre>{{this.formControl.value | json}}</pre>
+
+</div>
+
+<hr>
+
+<div [innerHTML]="formControl.value | sanitizeHtml" style='border: 1px solid;'></div>
+<div [innerHTML]="tag | sanitizeHtml"></div>
+
 <quill-editor [formControl]="formControl"></quill-editor>

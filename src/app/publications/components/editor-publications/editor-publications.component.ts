@@ -10,8 +10,8 @@ import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill'
 })
 export class EditorPublicationsComponent implements OnInit {
 
-  // @Input() formControl!: FormControl<any>;
   @Input() formControl: FormControl<any> = new FormControl();
+  public tag = "<iframe class=\"ql-video\" frameborder=\"0\" allowfullscreen=\"true\" src=\"https://www.youtube.com/embed/H91aqUHn8sE?showinfo=0\"></iframe><p><br></p>";
   public value: any;
 
   constructor() { }

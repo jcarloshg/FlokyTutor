@@ -21,6 +21,7 @@ import { RouterModule } from '@angular/router';
 import { SideBarComponent } from './ui/side-bar/side-bar.component';
 import { SpinnerLoadingComponent } from './inputs/spinner-loading/spinner-loading.component';
 import { AccountShortIDPipe } from './pipes/account-short-id.pipe';
+import { SanitizeHtmlPipe } from './pipes/sanitizeHtml.pipe';
 
 
 
@@ -53,6 +54,7 @@ import { AccountShortIDPipe } from './pipes/account-short-id.pipe';
 
     // pipes
     AccountShortIDPipe,
+    SanitizeHtmlPipe,
   ],
   imports: [
     CommonModule,
@@ -85,7 +87,8 @@ import { AccountShortIDPipe } from './pipes/account-short-id.pipe';
     SpinnerLoadingComponent,
 
     // pipes
-    AccountShortIDPipe
+    AccountShortIDPipe,
+    SanitizeHtmlPipe,
   ]
 })
 export class SharedModule { }
