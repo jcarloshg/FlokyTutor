@@ -23,8 +23,7 @@ export class FullNameInputComponent extends CustomInput {
   constructor(
     private validatorService: ValidatorService,
   ) {
-    const messagesError: Map<string, string> =
-      validatorService.fullNameCustomValidator.getMessageErrors();
+    const messagesError: Map<string, string> = validatorService.fullNameCustomValidator.getMessageErrors();
     super(messagesError);
 
     this.value = '';

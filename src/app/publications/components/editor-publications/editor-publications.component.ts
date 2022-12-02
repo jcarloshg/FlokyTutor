@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { QuillConfiguration } from './quill-configuration';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill'
+
 
 @Component({
   selector: 'app-editor-publications',
@@ -8,9 +10,16 @@ import { QuillConfiguration } from './quill-configuration';
 })
 export class EditorPublicationsComponent implements OnInit {
 
-  public quillConfiguration = QuillConfiguration;
+  // @Input() formControl!: FormControl<any>;
+  @Input() formControl: FormControl<any> = new FormControl();
+  public value: any;
+
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit() { }
+
+  pirntFormVontrol() {
+    console.log(this.formControl);
+  }
 
 }
