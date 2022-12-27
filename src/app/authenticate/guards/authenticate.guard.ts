@@ -42,13 +42,9 @@ export class AuthenticateGuard implements CanLoad {
 
     return this.authenticateAWSService.getCurrentTutor()
       .then(
-        (userTutor) => {
-          console.log('====================================');
-          console.log({ userTutor });
-          console.log('====================================');
-
-
-          return true;
+        (getCurrentTutorResponse) => {
+          const existATutorLogged = getCurrentTutorResponse.isOk;
+          return existATutorLogged;
         }
       )
       .catch(
