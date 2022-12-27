@@ -27,7 +27,6 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
 
     (
       async () => {
-        // await DataStore.clear();
         await DataStore.start();
       }
     )();
@@ -177,25 +176,24 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
       await DataStore.clear();
       return { isOk: true, data: signOutResponse };
     } catch (error) {
-      console.log(`[signOut] -> `, error);
       const signOutResponse = await Auth.signOut();
+      await DataStore.clear();
       return { isOk: true, data: signOutResponse };
     }
   }
 
 
   public async getCurrentTutor(): Promise<AuthResponse> {
-    try {
-      if (this._userTutorCurrent == null) {
-        const currentUser = await Auth.currentSession();
-        const tutorID = currentUser.getAccessToken().payload['sub'].toString();
-        const userTutorCurrent = await DataStore.query<Account>(Account, tutorID);
-        this._userTutorCurrent = userTutorCurrent!;
-      }
-      return { isOk: true, data: this._userTutorCurrent }
-    } catch (error) {
-      this._userTutorCurrent = null;
-      return { isOk: false }
+    const existAnInstanceFromTutor = this._userTutorCurrent ? true : false;
+    if (existAnInstanceFromTutor == false) {
+      const currentUser = await Auth.currentSession();
+      const tutorID = currentUser.getAccessToken().payload['sub'].toString();
+      const userTutorCurrent = await DataStore.query<Account>(Account, tutorID);
+      this._userTutorCurrent = userTutorCurrent ?? null;
+    }
+    return {
+      isOk: this._userTutorCurrent ? true : false,
+      data: this._userTutorCurrent,
     }
   }
 }

@@ -20,7 +20,7 @@ export class AuthenticateGuard implements CanLoad {
     return this.authenticateAWSService.getCurrentTutor()
       .then(
         (userTutor) => {
-          console.log({ userTutor });
+
           // console.log('canLoad - then: ', userTutor);
           return true;
         }
@@ -43,7 +43,11 @@ export class AuthenticateGuard implements CanLoad {
     return this.authenticateAWSService.getCurrentTutor()
       .then(
         (userTutor) => {
-          // console.log('canLoad - then: ', userTutor);
+          console.log('====================================');
+          console.log({ userTutor });
+          console.log('====================================');
+
+
           return true;
         }
       )
