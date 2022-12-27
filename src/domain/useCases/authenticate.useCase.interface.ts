@@ -16,6 +16,7 @@ export interface Authenticate {
     // TODO - confirm code && passs
 
     // view profile
+    getCurrentTutor(): Promise<AuthResponse>;
 
     signOut(): Promise<AuthResponse>;
 

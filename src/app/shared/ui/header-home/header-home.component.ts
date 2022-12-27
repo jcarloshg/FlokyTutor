@@ -16,7 +16,8 @@ export class HeaderHomeComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    this.userTutorCurrent = await this.authenticateAWSService.currentTutor() as Account;
+    const getCurrentTutorResponse = await this.authenticateAWSService.getCurrentTutor();
+    this.userTutorCurrent = getCurrentTutorResponse.data as Account;
   }
 
   public getShortName() {

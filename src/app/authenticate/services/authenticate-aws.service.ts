@@ -33,31 +33,10 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
     )();
   }
 
-  //============================================================
-  // access to data from this service
-  //============================================================
-  public async currentTutor(): Promise<Account | null> | never {
-    try {
-      if (this._userTutorCurrent == null) {
-        const currentUser = await Auth.currentSession();
-        const tutorID = currentUser.getAccessToken().payload['sub'].toString();
-        const userTutorCurrent = await DataStore.query<Account>(Account, tutorID);
-        this._userTutorCurrent = userTutorCurrent!;
-      }
-      return this._userTutorCurrent;
-    } catch (error) {
-      this._userTutorCurrent = null;
-      // return error;
-      throw error;
-    }
-  }
   public get signUpParams() { return this._signUpParams; }
   public get loginParams() { return this._loginParams; }
 
 
-  //============================================================
-  // log-in
-  //============================================================
   async signIn(loginParams: LoginParams): Promise<AuthResponse> {
 
     this.isLoading = true;
@@ -83,26 +62,18 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
     }
   }
 
-  async getCurrentTutor(): Promise<AuthResponse> {
-    try {
-      const currentUser = await Auth.currentSession();
-      const tutorID = currentUser.getAccessToken().payload['sub'].toString();
+  // async getCurrentTutor(): Promise<AuthResponse> {
+  //   try {
+  //     const currentUser = await Auth.currentSession();
+  //     const tutorID = currentUser.getAccessToken().payload['sub'].toString();
+  //     const currentTutor = await DataStore.query(Account, tutorID);
+  //     console.log(currentTutor);
+  //     return { isOk: false, data: currentTutor };
+  //   } catch (error) {
+  //     return { isOk: false, data: error }
+  //   }
+  // }
 
-      const currentTutor = await DataStore.query(Account, tutorID);
-      console.log(currentTutor);
-
-
-      return { isOk: false, data: currentTutor };
-    } catch (error) {
-
-      return { isOk: false, data: error }
-    }
-  }
-
-
-  //============================================================
-  // sing-up
-  //============================================================
   async signUp(signUpParams: SignUpParams): Promise<AuthResponse> {
 
     this.isLoading = true;
@@ -209,6 +180,22 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
       console.log(`[signOut] -> `, error);
       const signOutResponse = await Auth.signOut();
       return { isOk: true, data: signOutResponse };
+    }
+  }
+
+
+  public async getCurrentTutor(): Promise<AuthResponse> {
+    try {
+      if (this._userTutorCurrent == null) {
+        const currentUser = await Auth.currentSession();
+        const tutorID = currentUser.getAccessToken().payload['sub'].toString();
+        const userTutorCurrent = await DataStore.query<Account>(Account, tutorID);
+        this._userTutorCurrent = userTutorCurrent!;
+      }
+      return { isOk: true, data: this._userTutorCurrent }
+    } catch (error) {
+      this._userTutorCurrent = null;
+      return { isOk: false }
     }
   }
 }

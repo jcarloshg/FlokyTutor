@@ -17,9 +17,10 @@ export class AuthenticateGuard implements CanLoad {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    return this.authenticateAWSService.currentTutor()
+    return this.authenticateAWSService.getCurrentTutor()
       .then(
         (userTutor) => {
+          console.log({ userTutor });
           // console.log('canLoad - then: ', userTutor);
           return true;
         }
@@ -39,7 +40,7 @@ export class AuthenticateGuard implements CanLoad {
     segments: UrlSegment[],
   ): Promise<boolean> | boolean {
 
-    return this.authenticateAWSService.currentTutor()
+    return this.authenticateAWSService.getCurrentTutor()
       .then(
         (userTutor) => {
           // console.log('canLoad - then: ', userTutor);
