@@ -22,19 +22,13 @@ export class AuthenticateGuard implements CanLoad {
       .then(
         (getCurrentTutorResponse) => {
           const userLogged = getCurrentTutorResponse.data as Account;
-          const userLoggedIsATutor = userLogged.role == Role.TEACHER;
-          if (userLoggedIsATutor) return true;
-          this.router.navigate(['./cuenta/ingresar']);
-          return false;
-        }
-      )
-      .catch(
-        (error) => {
-          // console.log('canLoad - error: ', error);
-          this.router.navigate(['./cuenta/ingresar']);
+          const existAUserTutorLogged = !(userLogged === null);
+          if (existAUserTutorLogged == false) return true;
+          this.router.navigate(['./incio']);
           return false;
         }
       );
+
   }
 
 }

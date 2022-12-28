@@ -8,6 +8,7 @@ const routes: Routes = [
   {
     path: 'cuenta',
     loadChildren: () => import('./authenticate/authenticate.module').then(m => m.AuthenticateModule),
+    canLoad: [AuthenticateGuard]
   },
   {
     path: 'incio',

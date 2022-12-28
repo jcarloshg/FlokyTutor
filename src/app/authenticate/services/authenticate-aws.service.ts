@@ -24,6 +24,11 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
 
   constructor() {
     super();
+    (
+      async () => {
+        await DataStore.start();
+      }
+    )();
   }
 
   public get signUpParams() { return this._signUpParams; }
@@ -43,7 +48,6 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
       );
 
       this.isLoading = false;
-      await DataStore.start();
       return { isOk: true, message: '¡Hola, bienvenido tutor! :)' }
 
     } catch (error: any) {
@@ -168,11 +172,14 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
 
   public async getCurrentTutor(): Promise<AuthResponse> {
     try {
-      const existAnInstanceFromTutor = this._userTutorCurrent ? true : false;
+      const existAnInstanceFromTutor = !(this._userTutorCurrent === null)
       if (existAnInstanceFromTutor == false) {
         const currentUser = await Auth.currentSession();
         const tutorID = currentUser.getAccessToken().payload['sub'].toString();
         const userTutorCurrent = await DataStore.query<Account>(Account, tutorID);
+
+        console.log({ currentUser, userTutorCurrent });
+
         this._userTutorCurrent = userTutorCurrent ?? null;
       }
       return {
