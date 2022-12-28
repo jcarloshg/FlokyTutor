@@ -12,8 +12,8 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 
 import { Amplify } from 'aws-amplify';
-import { DataStore } from '@aws-amplify/datastore';
+// import { DataStore } from '@aws-amplify/datastore';
 import aws_exports from './aws-exports';
 Amplify.configure(aws_exports);
-DataStore.configure(aws_exports);
+// DataStore.configure(aws_exports);
 // (async () => { await DataStore.start(); })();

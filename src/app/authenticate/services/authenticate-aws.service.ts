@@ -24,19 +24,13 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
 
   constructor() {
     super();
-
-    (
-      async () => {
-        await DataStore.start();
-      }
-    )();
   }
 
   public get signUpParams() { return this._signUpParams; }
   public get loginParams() { return this._loginParams; }
 
 
-  async signIn(loginParams: LoginParams): Promise<AuthResponse> {
+  public async signIn(loginParams: LoginParams): Promise<AuthResponse> {
 
     this.isLoading = true;
     this._loginParams = loginParams;
@@ -49,6 +43,7 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
       );
 
       this.isLoading = false;
+      await DataStore.start();
       return { isOk: true, message: '¡Hola, bienvenido tutor! :)' }
 
     } catch (error: any) {
@@ -60,18 +55,6 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
       }
     }
   }
-
-  // async getCurrentTutor(): Promise<AuthResponse> {
-  //   try {
-  //     const currentUser = await Auth.currentSession();
-  //     const tutorID = currentUser.getAccessToken().payload['sub'].toString();
-  //     const currentTutor = await DataStore.query(Account, tutorID);
-  //     console.log(currentTutor);
-  //     return { isOk: false, data: currentTutor };
-  //   } catch (error) {
-  //     return { isOk: false, data: error }
-  //   }
-  // }
 
   async signUp(signUpParams: SignUpParams): Promise<AuthResponse> {
 
