@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthenticateGuard } from './authenticate/guards/authenticate.guard';
+import { ExistATutorLoggedGuard } from './authenticate/guards/exist-atutor-logged.guard';
 
 
 const routes: Routes = [
@@ -11,7 +12,7 @@ const routes: Routes = [
   {
     path: 'incio',
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
-    canLoad: [AuthenticateGuard]
+    canLoad: [ExistATutorLoggedGuard]
   },
   {
     path: '**',

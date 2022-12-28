@@ -57,10 +57,6 @@ export class LogInComponent implements OnInit {
       password: this.loginForm.get('pass')!.value,
     });
 
-    console.log('====================================');
-    console.log(signInResponse);
-    console.log('====================================');
-
     if (signInResponse.isOk == false) {
       this.customToastService.launchToast({ typeToast: 'error', message: signInResponse.message ?? 'Ocurrio un error inesperado' });
       return;

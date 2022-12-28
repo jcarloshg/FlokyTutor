@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { CanLoad, Route, UrlSegment, Router } from '@angular/router';
+import { CanLoad, Route, UrlSegment, UrlTree, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { AuthenticateAWSService } from '../services/authenticate-aws.service';
 import { Account, Role } from 'src/models';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticateGuard implements CanLoad {
+export class ExistATutorLoggedGuard implements CanLoad {
 
   constructor(
     private router: Router,
@@ -15,7 +16,7 @@ export class AuthenticateGuard implements CanLoad {
 
   canLoad(
     route: Route,
-    segments: UrlSegment[],
+    segments: UrlSegment[]
   ): Promise<boolean> | boolean {
 
     return this.authenticateAWSService.getCurrentTutor()
@@ -28,13 +29,7 @@ export class AuthenticateGuard implements CanLoad {
           return false;
         }
       )
-      .catch(
-        (error) => {
-          // console.log('canLoad - error: ', error);
-          this.router.navigate(['./cuenta/ingresar']);
-          return false;
-        }
-      );
-  }
 
+    return true;
+  }
 }
