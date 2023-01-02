@@ -1,7 +1,7 @@
 <div class="my-2 bg-greyEEEEEE px-5 py-4 h-auto rounded-3">
     <div class="col-12">
         <p class="h2">{{this.inputCreatePost.title}}</p>
-        <div [innerHTML]="this.inputCreatePost.body"></div>
+        <div [innerHTML]="this.inputCreatePost.body | sanitizeHtml"></div>
     </div>
     <div class="col-12">
         <div class="d-flex flex-row-reverse">
