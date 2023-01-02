@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-button-card-to-create-publication',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ButtonCardToCreatePublicationComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  public goToCreatePublication() {
+    this.router.navigate(['./incio/publicaciones/create_publicacion'])
   }
 
 }
