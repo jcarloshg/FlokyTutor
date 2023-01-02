@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePublicationsComponent } from './pages/home-publications/home-publications.component';
 import { ViewPublicationsComponent } from './pages/view-publications/view-publications.component';
+import { CreatePublicationsComponent } from './pages/create-publications/create-publications.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
       {
         path: 'ver_publicaciones',
         component: ViewPublicationsComponent,
+      },
+      {
+        path: 'create_publicacion',
+        component: CreatePublicationsComponent,
       },
       {
         path: '**',
