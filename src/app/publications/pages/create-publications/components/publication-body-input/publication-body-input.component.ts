@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-publication-body-input',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublicationBodyInputComponent implements OnInit {
 
+  @Input() formControl: FormControl<any> = new FormControl();
+
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }
