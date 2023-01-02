@@ -1,0 +1,13 @@
+<div class="my-2 bg-greyEEEEEE px-5 py-4 h-auto rounded-3">
+    <div class="col-12">
+        <p class="h2">{{this.inputCreatePost.title}}</p>
+        <div [innerHTML]="this.inputCreatePost.body"></div>
+    </div>
+    <div class="col-12">
+        <div class="d-flex flex-row-reverse">
+            <button type="button" class="btn btn-outline-primary w-auto" (click)="seeEditPost()">
+                Editar
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,35 +1,55 @@
 <p class="h2">Crea una publicación<small>📰</small> </p>
 <p class="text-secondary">Rellena todos los campos.</p>
 
+<ng-container *ngIf="isSeePreview; else elseTemplate">
 
-<!-- EDITOR -->
+    <app-preview-publication [inputCreatePost]="inputCreatePost"
+        (viewEditPublication)="seeEditPost()"></app-preview-publication>
 
-<form [formGroup]="publicationForm">
-
-    <div class="my-2 bg-greyEEEEEE px-5 py-4 h-auto rounded-3">
-        <div class="row g-3">
-
-            <div class="col-12">
-                <app-publication-title-input [formControlName]="'title'" [formControl]="getFormControl('title')">
-                </app-publication-title-input>
+    <!-- <div class="my-2 bg-greyEEEEEE px-5 py-4 h-auto rounded-3">
+        <div class="col-12">
+            <p class="h2">{{this.getTitleValue()}}</p>
+            <div [innerHTML]="getBodyValue()"></div>
+        </div>
+        <div class="col-12">
+            <div class="d-flex flex-row-reverse">
+                <button type="button" class="btn btn-outline-primary w-auto" (click)="seeEditPost()">
+                    Editar
+                </button>
             </div>
+        </div>
+    </div> -->
 
-            <div class="col-12">
-                <app-publication-body-input [formControlName]="'body'" [formControl]="getFormControl('body')">
-                </app-publication-body-input>
-            </div>
-
-            <div class="col-12">
-                <div class="d-flex flex-row-reverse">
-                    <button type="button" class="btn btn-outline-primary w-auto" (click)="printForm()">
-                        Vista previa
-                    </button>
+</ng-container>
+<ng-template #elseTemplate>
+    <form [formGroup]="publicationForm">
+        <div class="my-2 bg-greyEEEEEE px-5 py-4 h-auto rounded-3">
+            <div class="row g-3">
+                <div class="col-12">
+                    <app-publication-title-input [formControlName]="'title'" [formControl]="getFormControl('title')">
+                    </app-publication-title-input>
+                </div>
+                <div class="col-12">
+                    <app-publication-body-input [formControlName]="'body'" [formControl]="getFormControl('body')">
+                    </app-publication-body-input>
+                </div>
+                <div class="col-12">
+                    <div class="d-flex flex-row-reverse">
+                        <button type="button" class="btn btn-outline-primary w-auto" (click)="seePreview()">
+                            Vista previa
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 
-</form>
+</ng-template>
+
+
+
+<!-- EDITOR -->
+
 
 
 <!-- PREVIEW -->
