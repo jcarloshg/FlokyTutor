@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { QuillModule } from 'ngx-quill';
 import { EditorPublicationsComponent } from './editor-publications.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from '../../../shared/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 
 
 @NgModule({
