@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { CustomInput } from 'src/app/shared/inputs/CustomInput';
+import { ValidatorService } from 'src/app/shared/services/validator.service';
 
 @Component({
   selector: 'app-publication-title-input',
@@ -13,15 +15,17 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class PublicationTitleInputComponent implements OnInit {
+export class PublicationTitleInputComponent extends CustomInput {
 
+  @Input() formControl!: FormControl<any>;
+  public value: string;
 
-  @Input() plok: string;
-
-  constructor() {
-    this.plok = 'aslkdjf';
+  constructor(
+    private validatorService: ValidatorService,
+  ) {
+    const messageError: Map<string, string> = validatorService.fullNameCustomValidator.getMessageErrors();
+    super(messageError);
+    this.value = '';
   }
-
-  ngOnInit(): void { }
 
 }

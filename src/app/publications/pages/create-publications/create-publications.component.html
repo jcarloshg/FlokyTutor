@@ -3,27 +3,38 @@
 
 
 <!-- EDITOR -->
-<div class="my-2 bg-greyEEEEEE px-5 py-4 h-auto rounded-3">
-    <div class="row g-3">
 
-        <div class="col-12">
-            <app-publication-title-input></app-publication-title-input>
-        </div>
+<form [formGroup]="publicationForm">
 
-        <div class="col-12">
-            <app-publication-body-input></app-publication-body-input>
-        </div>
+    <div class="my-2 bg-greyEEEEEE px-5 py-4 h-auto rounded-3">
+        <div class="row g-3">
 
-        <div class="col-12">
-            <div class="d-flex flex-row-reverse">
-                <button type="button" class="btn btn-outline-primary w-auto">
-                    Vista previa
-                </button>
+            <div class="col-12">
+                <app-publication-title-input [formControlName]="'title'" [formControl]="getFormControl('title')">
+                </app-publication-title-input>
+            </div>
+
+            <div class="col-12">
+                <app-publication-title-input [formControlName]="'body'" [formControl]="getFormControl('body')">
+                </app-publication-title-input>
+            </div>
+
+            <!-- <div class="col-12">
+                <app-publication-body-input>
+                </app-publication-body-input>
+            </div> -->
+
+            <div class="col-12">
+                <div class="d-flex flex-row-reverse">
+                    <button type="button" class="btn btn-outline-primary w-auto" (click)="printForm()">
+                        Vista previa
+                    </button>
+                </div>
             </div>
         </div>
-
     </div>
-</div>
+
+</form>
 
 
 <!-- PREVIEW -->

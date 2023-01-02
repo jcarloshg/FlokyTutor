@@ -6,7 +6,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
   templateUrl: './create-publications.component.html',
   styleUrls: ['./create-publications.component.css']
 })
-export class CreatePublicationsComponent implements OnInit {
+export class CreatePublicationsComponent {
 
   public publicationForm: FormGroup;
 
@@ -29,6 +29,10 @@ export class CreatePublicationsComponent implements OnInit {
     return this.publicationForm.get(name) as FormControl;
   }
 
-  ngOnInit(): void { }
+  public printForm() {
+    console.log(this.publicationForm.get('title')?.value ?? 'NOT_TITLE');
+    console.log(this.publicationForm.get('body')?.value ?? 'NOT_BODY');
+
+  }
 
 }

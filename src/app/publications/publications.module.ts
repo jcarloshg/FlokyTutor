@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PublicationsRoutingModule } from './publications-routing.module';
 import { HomePublicationsComponent } from './pages/home-publications/home-publications.component';
@@ -24,6 +25,8 @@ import { PublicationBodyInputModule } from './pages/create-publications/componen
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
     PublicationBodyInputModule,
     PublicationsRoutingModule,
     SharedModule,

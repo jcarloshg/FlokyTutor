@@ -5,5 +5,13 @@
 -->
 
 <div class="input-group input-group-lg">
-    <input type="text" class="form-control" placeholder="Titulo de la publicacion">
+    <input
+    type="text"
+    class="form-control"
+    placeholder="Titulo de la publicacion"
+    [value]="value"
+    [(ngModel)]="value"
+    (ngModelChange)="onChange(value)"
+    (blur)="onTouched(true)"
+    >
 </div>
