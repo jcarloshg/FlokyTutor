@@ -9,49 +9,18 @@ import { InputCreatePost } from './models/publication';
 })
 export class CreatePublicationsComponent {
 
-  public publicationForm: FormGroup;
-  public inputCreatePost: InputCreatePost;
   public isSeePreview: boolean = false;
+  public inputCreatePost: InputCreatePost = { title: '', body: '' };
 
-  constructor(
-    private formBuilder: FormBuilder,
-  ) {
-    this.publicationForm = this.formBuilder.group({
-      title: [''],
-      body: [''],
-    });
+  constructor() { }
 
-    this.inputCreatePost = { title: '', body: '' };
-  }
-
-  public getFormControl(name: string): FormControl {
-    return this.publicationForm.get(name) as FormControl;
-  }
-
-  public seePreview() {
-    this.inputCreatePost.title = this.publicationForm.get('title')?.value ?? "";
-    this.inputCreatePost.body = this.publicationForm.get('body')?.value ?? "";
-
+  public seePreview(inputCreatePost: InputCreatePost) {
+    this.inputCreatePost = inputCreatePost;
     this.isSeePreview = true;
   }
 
   public seeEditPost() {
     this.isSeePreview = false;
-  }
-
-  getTitleValue(): string {
-    const title = this.publicationForm.get('title')?.value ?? 'NOT_TITLE';
-    return title as string;
-  }
-
-  getBodyValue(): string {
-    const body = this.publicationForm.get('body')?.value ?? 'NOT_BODY';
-    return body as string;
-  }
-
-  public printForm() {
-    console.log(this.publicationForm.get('title')?.value ?? 'NOT_TITLE');
-    console.log(this.publicationForm.get('body')?.value ?? 'NOT_BODY');
   }
 
 }

@@ -13,6 +13,7 @@ import { CreatePublicationsComponent } from './pages/create-publications/create-
 import { PublicationTitleInputComponent } from './pages/create-publications/components/publication-title-input/publication-title-input.component';
 import { PublicationBodyInputModule } from './pages/create-publications/components/publication-body-input/publication-body-input.module';
 import { PreviewPublicationComponent } from './pages/create-publications/components/preview-publication/preview-publication.component';
+import { EditPublicationComponent } from './pages/create-publications/components/edit-publication/edit-publication.component';
 
 
 
@@ -24,6 +25,7 @@ import { PreviewPublicationComponent } from './pages/create-publications/compone
     ButtonCardToCreatePublicationComponent,
     PublicationTitleInputComponent,
     PreviewPublicationComponent,
+    EditPublicationComponent,
   ],
   imports: [
     CommonModule,
