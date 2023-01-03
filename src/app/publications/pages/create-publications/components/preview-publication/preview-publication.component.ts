@@ -10,13 +10,18 @@ export class PreviewPublicationComponent implements OnInit {
 
   @Input() inputCreatePost!: InputCreatePost;
   @Output() viewEditPublication = new EventEmitter();
+  @Output() createPublicationEvent = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void { }
 
-  seeEditPost() {
+  public seeEditPost() {
     this.viewEditPublication.emit();
+  }
+
+  public createPublication() {
+    this.createPublicationEvent.emit();
   }
 
 }

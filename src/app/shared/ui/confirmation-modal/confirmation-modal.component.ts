@@ -15,20 +15,26 @@ export class ConfirmationModalComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.toggleConfirmation();
-    console.log(this.confirmationModal.title);
-    console.log(this.confirmationModal.message);
+    console.log(this.confirmationModal);
   }
 
   public toggleConfirmation() {
     this.showConfirmationModal = !this.showConfirmationModal;
   }
 
-  public accept() {
-    console.log('accept');
+  public async accept() {
+    try {
+      await this.confirmationModal.functionAccept!();
+      console.log('acept');
+    } catch (error) { }
+    this.toggleConfirmation();
   }
 
   public cancel() {
-    console.log('cancel');
+    try {
+      this.confirmationModal.functionCancel!();
+    } catch (error) { }
+    this.toggleConfirmation();
   }
 
 }

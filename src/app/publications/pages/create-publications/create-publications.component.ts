@@ -26,8 +26,24 @@ export class CreatePublicationsComponent {
     this.isSeePreview = false;
   }
 
-  public createPost() {
-    this.confirmationModalService.launch({ title: 'TITULO_PROOF', message: 'BODY_PRROF' });
+  public lunchConfirmationModal() {
+    this.confirmationModalService.launch({
+      title: 'Nueva publicación',
+      message: '¿Deseas crear una nueva publicación?',
+      functionAccept: this.createPost,
+      functionCancel: () => { }
+    });
+  }
+
+  public async createPost() {
+    await console.log('CREATE POST');
+
+    const waitSeconds = 1000 * 3;
+    setTimeout(
+      () => { console.log('CREATE POST'); },
+      waitSeconds
+    );
+
   }
 
 }

@@ -9,7 +9,7 @@ export class ConfirmationModalService {
   private _confirmationModal: ConfirmationModal;
 
   constructor() {
-    this._confirmationModal = { title: '', message: '' };
+    this._confirmationModal = { title: 'PROOF', message: 'BODY' };
   }
 
   public launch(confirmationModal: ConfirmationModal) {

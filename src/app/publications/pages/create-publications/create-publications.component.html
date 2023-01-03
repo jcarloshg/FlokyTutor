@@ -2,10 +2,18 @@
 <p class="text-secondary">Rellena todos los campos.</p>
 
 <ng-container *ngIf="isSeePreview; else elseTemplate">
-    <app-preview-publication [inputCreatePost]="inputCreatePost"
-        (viewEditPublication)="seeEditPost()"></app-preview-publication>
+    <app-preview-publication
+        [inputCreatePost]="inputCreatePost"
+        (viewEditPublication)="seeEditPost()"
+        (createPublicationEvent)="lunchConfirmationModal()"
+        >
+    </app-preview-publication>
 </ng-container>
 
 <ng-template #elseTemplate>
-    <app-edit-publication [inputCreatePost]="inputCreatePost" (viewPreview)="seePreview($event)"></app-edit-publication>
+    <app-edit-publication
+        [inputCreatePost]="inputCreatePost"
+        (viewPreview)="seePreview($event)"
+        >
+    </app-edit-publication>
 </ng-template>

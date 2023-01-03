@@ -1,4 +1,6 @@
 export interface ConfirmationModal {
     title: string,
-    message: string
+    message: string,
+    functionAccept?(): void,
+    functionCancel?(): void,
 }
