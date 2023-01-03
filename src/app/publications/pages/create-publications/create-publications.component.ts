@@ -37,13 +37,6 @@ export class CreatePublicationsComponent {
 
   public async createPost() {
     await console.log('CREATE POST');
-
-    const waitSeconds = 1000 * 3;
-    setTimeout(
-      () => { console.log('CREATE POST'); },
-      waitSeconds
-    );
-
   }
 
 }

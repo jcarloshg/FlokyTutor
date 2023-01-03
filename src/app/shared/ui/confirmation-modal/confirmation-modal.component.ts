@@ -14,13 +14,11 @@ export class ConfirmationModalComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
+    if (this.confirmationModal.message == '' || this.confirmationModal.title == '') return;
     this.toggleConfirmation();
-    console.log(this.confirmationModal);
   }
 
-  public toggleConfirmation() {
-    this.showConfirmationModal = !this.showConfirmationModal;
-  }
+  public toggleConfirmation() { this.showConfirmationModal = !this.showConfirmationModal; }
 
   public async accept() {
     try {
