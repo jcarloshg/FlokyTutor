@@ -22,6 +22,7 @@ import { SideBarComponent } from './ui/side-bar/side-bar.component';
 import { SpinnerLoadingComponent } from './inputs/spinner-loading/spinner-loading.component';
 import { AccountShortIDPipe } from './pipes/account-short-id.pipe';
 import { SanitizeHtmlPipe } from './pipes/sanitizeHtml.pipe';
+import { ConfirmationModalComponent } from './ui/confirmation-modal/confirmation-modal.component';
 
 
 
@@ -55,6 +56,7 @@ import { SanitizeHtmlPipe } from './pipes/sanitizeHtml.pipe';
     // pipes
     AccountShortIDPipe,
     SanitizeHtmlPipe,
+    ConfirmationModalComponent,
   ],
   imports: [
     CommonModule,
@@ -80,6 +82,7 @@ import { SanitizeHtmlPipe } from './pipes/sanitizeHtml.pipe';
     CardActivityComponent,
 
     //other
+    ConfirmationModalComponent,
     CustomToastComponent,
     ErroMessageComponent,
     HeaderHomeComponent,
