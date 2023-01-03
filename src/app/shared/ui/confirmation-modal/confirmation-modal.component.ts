@@ -4,7 +4,7 @@ import { ConfirmationModal } from './confirmation-modal.interface';
 @Component({
   selector: 'app-confirmation-modal',
   templateUrl: './confirmation-modal.component.html',
-  styleUrls: ['./confirmation-modal.component.css']
+  // styleUrls: ['./confirmation-modal.component.css']
 })
 export class ConfirmationModalComponent implements OnChanges {
 
@@ -13,25 +13,22 @@ export class ConfirmationModalComponent implements OnChanges {
 
   constructor() { }
 
+  public toggleConfirmation() { this.showConfirmationModal = !this.showConfirmationModal; }
+
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.confirmationModal.message == '' || this.confirmationModal.title == '') return;
+    // if (this.confirmationModal.message == '' || this.confirmationModal.title == '') return;
     this.toggleConfirmation();
   }
 
-  public toggleConfirmation() { this.showConfirmationModal = !this.showConfirmationModal; }
-
   public async accept() {
-    try {
-      await this.confirmationModal.functionAccept!();
-      console.log('acept');
-    } catch (error) { }
+    try { await this.confirmationModal.functionAccept!(); }
+    catch (error) { }
     this.toggleConfirmation();
   }
 
   public cancel() {
-    try {
-      this.confirmationModal.functionCancel!();
-    } catch (error) { }
+    try { this.confirmationModal.functionCancel!(); }
+    catch (error) { }
     this.toggleConfirmation();
   }
 
