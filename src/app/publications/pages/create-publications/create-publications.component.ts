@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { InputCreatePost } from './models/publication';
+import { ConfirmationModalService } from 'src/app/shared/services/confirmation-modal.service';
 
 @Component({
   selector: 'app-create-publications',
@@ -12,7 +13,9 @@ export class CreatePublicationsComponent {
   public isSeePreview: boolean = false;
   public inputCreatePost: InputCreatePost = { title: '', body: '' };
 
-  constructor() { }
+  constructor(
+    public confirmationModalService: ConfirmationModalService,
+  ) { }
 
   public seePreview(inputCreatePost: InputCreatePost) {
     this.inputCreatePost = inputCreatePost;
@@ -21,6 +24,10 @@ export class CreatePublicationsComponent {
 
   public seeEditPost() {
     this.isSeePreview = false;
+  }
+
+  public createPost() {
+    this.confirmationModalService.launch({ title: 'TITULO_PROOF', message: 'BODY_PRROF' });
   }
 
 }

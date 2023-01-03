@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CustomToastService } from './shared/services/custom-toast.service';
+import { ConfirmationModalService } from './shared/services/confirmation-modal.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
 
   constructor(
     public customToastService: CustomToastService,
+    public confirmationModalService: ConfirmationModalService,
   ) { }
-
 
 }

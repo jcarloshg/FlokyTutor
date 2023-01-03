@@ -1,21 +1,22 @@
-<div class="position-absolute h-100 w-100" style="background-color: rgba(155,147,184,0.4); z-index: 1;">
+<div *ngIf="showConfirmationModal">
 
-    <div class="position-absolute top-50 start-50 translate-middle">
 
+    <div class="position-absolute h-100 w-100" style="background-color: rgba(155,147,184,0.4); z-index: 1;"
+        (click)="toggleConfirmation()">
+    </div>
+
+    <div class="position-absolute top-50 start-50 translate-middle" style='z-index: 2;'>
         <div class="rounded-2 bg-white border border-greyAAAAAA">
-
             <p class="fw-semibold fs-5 my-2 mx-4">Title</p>
             <hr>
-            <p class="my-5 mx-4">Modal body text goes here.</p>
+            <p class="my-4 mx-4">Modal body text goes here.</p>
             <hr>
             <div class="d-flex flex-row-reverse m-2">
-                <button type="button" class="btn btn-primary">Aceptar</button>
+                <button type="button" class="btn btn-primary" (click)="accept()">Aceptar</button>
                 &nbsp;
-                <button type="button" class="btn btn-outline-primary">Cancelar</button>
+                <button type="button" class="btn btn-outline-primary" (click)="cancel()">Cancelar</button>
             </div>
-
         </div>
-
     </div>
 
 </div>
