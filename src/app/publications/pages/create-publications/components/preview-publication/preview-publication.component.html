@@ -4,7 +4,11 @@
         <div [innerHTML]="this.inputCreatePost.body | sanitizeHtml"></div>
     </div>
     <div class="col-12">
-        <div class="d-flex flex-row-reverse">
+        <div class="d-flex flex-row-reverse g-4">
+            <button type="button" class="btn btn-primary w-auto">
+                Crear publicación
+            </button>
+            &nbsp;
             <button type="button" class="btn btn-outline-primary w-auto" (click)="seeEditPost()">
                 Editar
             </button>
