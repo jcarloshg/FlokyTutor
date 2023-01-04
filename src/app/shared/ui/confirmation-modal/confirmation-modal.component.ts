@@ -4,7 +4,7 @@ import { ConfirmationModal } from './confirmation-modal.interface';
 @Component({
   selector: 'app-confirmation-modal',
   templateUrl: './confirmation-modal.component.html',
-  // styleUrls: ['./confirmation-modal.component.css']
+  styleUrls: ['./confirmation-modal.component.css']
 })
 export class ConfirmationModalComponent implements OnChanges {
 
@@ -16,7 +16,7 @@ export class ConfirmationModalComponent implements OnChanges {
   public toggleConfirmation() { this.showConfirmationModal = !this.showConfirmationModal; }
 
   ngOnChanges(changes: SimpleChanges): void {
-    // if (this.confirmationModal.message == '' || this.confirmationModal.title == '') return;
+    if (this.confirmationModal.message == '' || this.confirmationModal.title == '') return;
     this.toggleConfirmation();
   }
 
