@@ -5,7 +5,7 @@
     <app-preview-publication
         [inputCreatePost]="inputCreatePost"
         (viewEditPublication)="seeEditPost()"
-        (createPublicationEvent)="lunchConfirmationModal()"
+        (createPublicationEvent)="createPost()"
         >
     </app-preview-publication>
 </ng-container>
@@ -17,3 +17,5 @@
         >
     </app-edit-publication>
 </ng-template>
+
+<app-confirmation-dialog></app-confirmation-dialog>

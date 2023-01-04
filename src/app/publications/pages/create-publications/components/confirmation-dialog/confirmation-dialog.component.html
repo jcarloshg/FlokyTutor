@@ -1,0 +1,20 @@
+<div *ngIf="showConfirmationDialog">
+
+    <div class="background_opacity" (click)="toggleConfirmation()" style='border: 1px solid red;'>
+    </div>
+
+    <div class="dialog">
+        <div class="rounded-2 bg-white border border-greyAAAAAA">
+            <p class="fw-semibold fs-5 my-2 mx-4">{{confirmationDialog.title}}</p>
+            <hr>
+            <p class="my-4 mx-4">{{confirmationDialog.message}}</p>
+            <hr>
+            <div class="d-flex flex-row-reverse m-2">
+                <button type="button" class="btn btn-primary" (click)="accept()">Aceptar</button>
+                &nbsp;
+                <button type="button" class="btn btn-outline-primary" (click)="cancel()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+</div>

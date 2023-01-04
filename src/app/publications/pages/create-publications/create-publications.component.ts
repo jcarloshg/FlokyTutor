@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { Component, ViewChild } from '@angular/core';
 import { InputCreatePost } from './models/publication';
 import { ConfirmationModalService } from 'src/app/shared/services/confirmation-modal.service';
 import { PublicationAWSService } from '../../service/publication-aws.service';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-create-publications',
@@ -11,6 +11,7 @@ import { PublicationAWSService } from '../../service/publication-aws.service';
 })
 export class CreatePublicationsComponent {
 
+  @ViewChild(ConfirmationDialogComponent, { static: true }) confirmationDialog!: ConfirmationDialogComponent;
   public isSeePreview: boolean = false;
   public inputCreatePost: InputCreatePost = { title: '', body: '' };
 
@@ -28,21 +29,14 @@ export class CreatePublicationsComponent {
     this.isSeePreview = false;
   }
 
-  public async lunchConfirmationModal() {
-
-    await this.createPost()
-
-
-    // this.confirmationModalService.launch({
-    //   title: 'Nueva publicación',
-    //   message: '¿Deseas crear una nueva publicación?',
-    //   functionAccept: this.createPost,
-    //   functionCancel: () => { }
-    // });
-  }
-
   public async createPost() {
-    await console.log('CREATE POST');
+
+    this.confirmationDialog.launch({
+      title: 'New post',
+      message: 'want to create a new post?',
+    });
+
+    return;
 
     const postTitle = this.inputCreatePost.title;
     const postBody = this.inputCreatePost.body;
@@ -57,5 +51,16 @@ export class CreatePublicationsComponent {
     console.log(createPostResponse);
 
   }
+
+
+  // public async lunchConfirmationModal() {
+  //   await this.createPost()
+  //   // this.confirmationModalService.launch({
+  //   //   title: 'Nueva publicación',
+  //   //   message: '¿Deseas crear una nueva publicación?',
+  //   //   functionAccept: this.createPost,
+  //   //   functionCancel: () => { }
+  //   // });
+  // }
 
 }
