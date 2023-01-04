@@ -24,10 +24,12 @@ export class ConfirmationDialogComponent {
 
   public accept() {
     console.log('accept');
+    this.toggleConfirmation();
   }
 
   public cancel() {
     console.log('cancel');
+    this.toggleConfirmation();
   }
 
 
