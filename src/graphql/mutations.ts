@@ -2,6 +2,165 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createAccount = /* GraphQL */ `
+  mutation CreateAccount(
+    $input: CreateAccountInput!
+    $condition: ModelAccountConditionInput
+  ) {
+    createAccount(input: $input, condition: $condition) {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      posts {
+        items {
+          id
+          title
+          body
+          tutorAccountID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const updateAccount = /* GraphQL */ `
+  mutation UpdateAccount(
+    $input: UpdateAccountInput!
+    $condition: ModelAccountConditionInput
+  ) {
+    updateAccount(input: $input, condition: $condition) {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      posts {
+        items {
+          id
+          title
+          body
+          tutorAccountID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const deleteAccount = /* GraphQL */ `
+  mutation DeleteAccount(
+    $input: DeleteAccountInput!
+    $condition: ModelAccountConditionInput
+  ) {
+    deleteAccount(input: $input, condition: $condition) {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      posts {
+        items {
+          id
+          title
+          body
+          tutorAccountID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const createPost = /* GraphQL */ `
+  mutation CreatePost(
+    $input: CreatePostInput!
+    $condition: ModelPostConditionInput
+  ) {
+    createPost(input: $input, condition: $condition) {
+      id
+      title
+      body
+      tutorAccountID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const updatePost = /* GraphQL */ `
+  mutation UpdatePost(
+    $input: UpdatePostInput!
+    $condition: ModelPostConditionInput
+  ) {
+    updatePost(input: $input, condition: $condition) {
+      id
+      title
+      body
+      tutorAccountID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const deletePost = /* GraphQL */ `
+  mutation DeletePost(
+    $input: DeletePostInput!
+    $condition: ModelPostConditionInput
+  ) {
+    deletePost(input: $input, condition: $condition) {
+      id
+      title
+      body
+      tutorAccountID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
 export const createActivity = /* GraphQL */ `
   mutation CreateActivity(
     $input: CreateActivityInput!
@@ -177,66 +336,6 @@ export const deleteActivitiesProgress = /* GraphQL */ `
       wrongSpeaking
       correctListening
       wrongListening
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const createAccount = /* GraphQL */ `
-  mutation CreateAccount(
-    $input: CreateAccountInput!
-    $condition: ModelAccountConditionInput
-  ) {
-    createAccount(input: $input, condition: $condition) {
-      id
-      fullName
-      email
-      collegeEnrollment
-      collegeName
-      role
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const updateAccount = /* GraphQL */ `
-  mutation UpdateAccount(
-    $input: UpdateAccountInput!
-    $condition: ModelAccountConditionInput
-  ) {
-    updateAccount(input: $input, condition: $condition) {
-      id
-      fullName
-      email
-      collegeEnrollment
-      collegeName
-      role
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const deleteAccount = /* GraphQL */ `
-  mutation DeleteAccount(
-    $input: DeleteAccountInput!
-    $condition: ModelAccountConditionInput
-  ) {
-    deleteAccount(input: $input, condition: $condition) {
-      id
-      fullName
-      email
-      collegeEnrollment
-      collegeName
-      role
       createdAt
       updatedAt
       _version

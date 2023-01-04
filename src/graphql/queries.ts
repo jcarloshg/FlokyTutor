@@ -2,6 +2,169 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getAccount = /* GraphQL */ `
+  query GetAccount($id: ID!) {
+    getAccount(id: $id) {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      posts {
+        items {
+          id
+          title
+          body
+          tutorAccountID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listAccounts = /* GraphQL */ `
+  query ListAccounts(
+    $filter: ModelAccountFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAccounts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        fullName
+        email
+        collegeEnrollment
+        collegeName
+        role
+        posts {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncAccounts = /* GraphQL */ `
+  query SyncAccounts(
+    $filter: ModelAccountFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncAccounts(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        fullName
+        email
+        collegeEnrollment
+        collegeName
+        role
+        posts {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getPost = /* GraphQL */ `
+  query GetPost($id: ID!) {
+    getPost(id: $id) {
+      id
+      title
+      body
+      tutorAccountID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listPosts = /* GraphQL */ `
+  query ListPosts(
+    $filter: ModelPostFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        title
+        body
+        tutorAccountID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncPosts = /* GraphQL */ `
+  query SyncPosts(
+    $filter: ModelPostFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncPosts(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        title
+        body
+        tutorAccountID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
 export const getActivity = /* GraphQL */ `
   query GetActivity($id: ID!) {
     getActivity(id: $id) {
@@ -204,79 +367,6 @@ export const syncActivitiesProgresses = /* GraphQL */ `
         wrongSpeaking
         correctListening
         wrongListening
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const getAccount = /* GraphQL */ `
-  query GetAccount($id: ID!) {
-    getAccount(id: $id) {
-      id
-      fullName
-      email
-      collegeEnrollment
-      collegeName
-      role
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const listAccounts = /* GraphQL */ `
-  query ListAccounts(
-    $filter: ModelAccountFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listAccounts(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        fullName
-        email
-        collegeEnrollment
-        collegeName
-        role
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncAccounts = /* GraphQL */ `
-  query SyncAccounts(
-    $filter: ModelAccountFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncAccounts(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        fullName
-        email
-        collegeEnrollment
-        collegeName
-        role
         createdAt
         updatedAt
         _version

@@ -1,12 +1,18 @@
-type Activity @model @auth(rules: [{allow: public}]) {
+type Account @model @auth(rules: [{allow: public}]) {
   id: ID!
-  name: String!
-  activityLevel: ActivityLevel!
-  activityType: ActivityType
-  question: String!
-  questionBody: String!
-  answers: Answer
-  Topic: Topic @hasOne
+  fullName: String!
+  email: String!
+  collegeEnrollment: String!
+  collegeName: String!
+  role: Role!
+  posts: [Post] @hasMany(indexName: "byAccount", fields: ["id"])
+}
+
+type Post @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String!
+  body: String!
+  tutorAccountID: ID! @index(name: "byAccount")
 }
 
 type Answer {
@@ -23,12 +29,18 @@ enum ActivityLevel {
   B2
   C1
   C2
+  PRUEBA_DROP_THIS
 }
 
-enum Role {
-  STUDENT
-  TEACHER
-  ADMIN
+type Activity @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  activityLevel: ActivityLevel!
+  activityType: ActivityType
+  question: String!
+  questionBody: String!
+  answers: Answer
+  Topic: Topic @hasOne
 }
 
 type ActivitiesProgress @model @auth(rules: [{allow: public}]) {
@@ -43,13 +55,10 @@ type ActivitiesProgress @model @auth(rules: [{allow: public}]) {
   wrongListening: Int
 }
 
-type Account @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  fullName: String!
-  email: String!
-  collegeEnrollment: String!
-  collegeName: String!
-  role: Role!
+enum Role {
+  STUDENT
+  TEACHER
+  ADMIN
 }
 
 enum ActivityType {

@@ -1,6 +1,12 @@
 import { ModelInit, MutableModel } from "@aws-amplify/datastore";
 // @ts-ignore
-import { LazyLoading, LazyLoadingDisabled, AsyncItem } from "@aws-amplify/datastore";
+import { LazyLoading, LazyLoadingDisabled, AsyncCollection, AsyncItem } from "@aws-amplify/datastore";
+
+export enum Role {
+  STUDENT = "STUDENT",
+  TEACHER = "TEACHER",
+  ADMIN = "ADMIN"
+}
 
 export enum ActivityLevel {
   A1 = "A1",
@@ -8,7 +14,8 @@ export enum ActivityLevel {
   B1 = "B1",
   B2 = "B2",
   C1 = "C1",
-  C2 = "C2"
+  C2 = "C2",
+  PRUEBA_DROP_THIS = "PRUEBA_DROP_THIS"
 }
 
 export enum ActivityType {
@@ -16,12 +23,6 @@ export enum ActivityType {
   READING = "READING",
   TALKING = "TALKING",
   LISTENING = "LISTENING"
-}
-
-export enum Role {
-  STUDENT = "STUDENT",
-  TEACHER = "TEACHER",
-  ADMIN = "ADMIN"
 }
 
 type EagerAnswer = {
@@ -42,6 +43,14 @@ export declare type Answer = LazyLoading extends LazyLoadingDisabled ? EagerAnsw
 
 export declare const Answer: (new (init: ModelInit<Answer>) => Answer)
 
+type AccountMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type PostMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type ActivityMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -54,8 +63,58 @@ type ActivitiesProgressMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-type AccountMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
+type EagerAccount = {
+  readonly id: string;
+  readonly fullName: string;
+  readonly email: string;
+  readonly collegeEnrollment: string;
+  readonly collegeName: string;
+  readonly role: Role | keyof typeof Role;
+  readonly posts?: (Post | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyAccount = {
+  readonly id: string;
+  readonly fullName: string;
+  readonly email: string;
+  readonly collegeEnrollment: string;
+  readonly collegeName: string;
+  readonly role: Role | keyof typeof Role;
+  readonly posts: AsyncCollection<Post>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Account = LazyLoading extends LazyLoadingDisabled ? EagerAccount : LazyAccount
+
+export declare const Account: (new (init: ModelInit<Account, AccountMetaData>) => Account) & {
+  copyOf(source: Account, mutator: (draft: MutableModel<Account, AccountMetaData>) => MutableModel<Account, AccountMetaData> | void): Account;
+}
+
+type EagerPost = {
+  readonly id: string;
+  readonly title: string;
+  readonly body: string;
+  readonly tutorAccountID: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyPost = {
+  readonly id: string;
+  readonly title: string;
+  readonly body: string;
+  readonly tutorAccountID: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Post = LazyLoading extends LazyLoadingDisabled ? EagerPost : LazyPost
+
+export declare const Post: (new (init: ModelInit<Post, PostMetaData>) => Post) & {
+  copyOf(source: Post, mutator: (draft: MutableModel<Post, PostMetaData>) => MutableModel<Post, PostMetaData> | void): Post;
 }
 
 type EagerActivity = {
@@ -148,32 +207,4 @@ export declare type ActivitiesProgress = LazyLoading extends LazyLoadingDisabled
 
 export declare const ActivitiesProgress: (new (init: ModelInit<ActivitiesProgress, ActivitiesProgressMetaData>) => ActivitiesProgress) & {
   copyOf(source: ActivitiesProgress, mutator: (draft: MutableModel<ActivitiesProgress, ActivitiesProgressMetaData>) => MutableModel<ActivitiesProgress, ActivitiesProgressMetaData> | void): ActivitiesProgress;
-}
-
-type EagerAccount = {
-  readonly id: string;
-  readonly fullName: string;
-  readonly email: string;
-  readonly collegeEnrollment: string;
-  readonly collegeName: string;
-  readonly role: Role | keyof typeof Role;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-type LazyAccount = {
-  readonly id: string;
-  readonly fullName: string;
-  readonly email: string;
-  readonly collegeEnrollment: string;
-  readonly collegeName: string;
-  readonly role: Role | keyof typeof Role;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-export declare type Account = LazyLoading extends LazyLoadingDisabled ? EagerAccount : LazyAccount
-
-export declare const Account: (new (init: ModelInit<Account, AccountMetaData>) => Account) & {
-  copyOf(source: Account, mutator: (draft: MutableModel<Account, AccountMetaData>) => MutableModel<Account, AccountMetaData> | void): Account;
 }

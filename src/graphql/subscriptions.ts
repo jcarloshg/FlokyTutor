@@ -2,6 +2,147 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateAccount = /* GraphQL */ `
+  subscription OnCreateAccount($filter: ModelSubscriptionAccountFilterInput) {
+    onCreateAccount(filter: $filter) {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      posts {
+        items {
+          id
+          title
+          body
+          tutorAccountID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateAccount = /* GraphQL */ `
+  subscription OnUpdateAccount($filter: ModelSubscriptionAccountFilterInput) {
+    onUpdateAccount(filter: $filter) {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      posts {
+        items {
+          id
+          title
+          body
+          tutorAccountID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteAccount = /* GraphQL */ `
+  subscription OnDeleteAccount($filter: ModelSubscriptionAccountFilterInput) {
+    onDeleteAccount(filter: $filter) {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      posts {
+        items {
+          id
+          title
+          body
+          tutorAccountID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onCreatePost = /* GraphQL */ `
+  subscription OnCreatePost($filter: ModelSubscriptionPostFilterInput) {
+    onCreatePost(filter: $filter) {
+      id
+      title
+      body
+      tutorAccountID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdatePost = /* GraphQL */ `
+  subscription OnUpdatePost($filter: ModelSubscriptionPostFilterInput) {
+    onUpdatePost(filter: $filter) {
+      id
+      title
+      body
+      tutorAccountID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeletePost = /* GraphQL */ `
+  subscription OnDeletePost($filter: ModelSubscriptionPostFilterInput) {
+    onDeletePost(filter: $filter) {
+      id
+      title
+      body
+      tutorAccountID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
 export const onCreateActivity = /* GraphQL */ `
   subscription OnCreateActivity($filter: ModelSubscriptionActivityFilterInput) {
     onCreateActivity(filter: $filter) {
@@ -165,57 +306,6 @@ export const onDeleteActivitiesProgress = /* GraphQL */ `
       wrongSpeaking
       correctListening
       wrongListening
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onCreateAccount = /* GraphQL */ `
-  subscription OnCreateAccount($filter: ModelSubscriptionAccountFilterInput) {
-    onCreateAccount(filter: $filter) {
-      id
-      fullName
-      email
-      collegeEnrollment
-      collegeName
-      role
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onUpdateAccount = /* GraphQL */ `
-  subscription OnUpdateAccount($filter: ModelSubscriptionAccountFilterInput) {
-    onUpdateAccount(filter: $filter) {
-      id
-      fullName
-      email
-      collegeEnrollment
-      collegeName
-      role
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onDeleteAccount = /* GraphQL */ `
-  subscription OnDeleteAccount($filter: ModelSubscriptionAccountFilterInput) {
-    onDeleteAccount(filter: $filter) {
-      id
-      fullName
-      email
-      collegeEnrollment
-      collegeName
-      role
       createdAt
       updatedAt
       _version

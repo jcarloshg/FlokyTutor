@@ -13,7 +13,7 @@ export interface Authenticate {
 
     // reset pass
     // TODO - send code
-    // TODO - confirm code && passs
+    // TODO - confirm code && pass
 
     // view profile
     getCurrentTutor(): Promise<AuthResponse>;
