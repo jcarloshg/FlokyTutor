@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ManagePost, PostResponse } from 'src/domain/useCases/managePost.useCase.interface';
+import { InputCreatePost, ManagePost, PostResponse } from 'src/domain/useCases/managePost.useCase.interface';
 import { Loading } from '../../shared/services/loading';
 
 @Injectable({
@@ -11,7 +11,11 @@ export class PublicationAWSService extends Loading implements ManagePost {
     super();
   }
 
-  createPost(): Promise<PostResponse> {
-    throw new Error('Method not implemented.');
+  public async createPost(inputCreatePost: InputCreatePost): Promise<PostResponse> {
+    this.isLoading = true;
+    await console.log(inputCreatePost);
+    this.isLoading = false;
+    return { isOk: true }
   }
+
 }

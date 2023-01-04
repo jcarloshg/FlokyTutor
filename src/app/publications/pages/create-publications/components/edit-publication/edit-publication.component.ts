@@ -41,8 +41,6 @@ export class EditPublicationComponent {
       body: this.publicationForm.get('body')?.value
     }
 
-    console.log(this.inputCreatePost);
-
     this.viewPreview.emit(this.inputCreatePost);
   }
 
