@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { InputCreatePost } from '../../models/publication';
 
 @Component({
@@ -6,15 +6,13 @@ import { InputCreatePost } from '../../models/publication';
   templateUrl: './preview-publication.component.html',
   styleUrls: ['./preview-publication.component.css']
 })
-export class PreviewPublicationComponent implements OnInit {
+export class PreviewPublicationComponent {
 
   @Input() inputCreatePost!: InputCreatePost;
   @Output() viewEditPublication = new EventEmitter();
   @Output() createPublicationEvent = new EventEmitter();
 
   constructor() { }
-
-  ngOnInit(): void { }
 
   public seeEditPost() {
     this.viewEditPublication.emit();

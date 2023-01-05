@@ -3,6 +3,8 @@ import { InputCreatePost } from './models/publication';
 import { ConfirmationModalService } from 'src/app/shared/services/confirmation-modal.service';
 import { PublicationAWSService } from '../../service/publication-aws.service';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { ActionsDialogs } from './components/confirmation-dialog/ActionsDialogs.interface';
+import { ConfirmationDialog } from './components/confirmation-dialog/ConfirmationDialog.interface';
 
 @Component({
   selector: 'app-create-publications',
@@ -11,7 +13,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
 })
 export class CreatePublicationsComponent {
 
-  @ViewChild(ConfirmationDialogComponent, { static: true }) confirmationDialog!: ConfirmationDialogComponent;
+  @ViewChild(ConfirmationDialogComponent, { static: true }) confirmationDialog!: ActionsDialogs<ConfirmationDialog>;
   public isSeePreview: boolean = false;
   public inputCreatePost: InputCreatePost = { title: '', body: '' };
 
@@ -29,14 +31,16 @@ export class CreatePublicationsComponent {
     this.isSeePreview = false;
   }
 
-  public async createPost() {
-
+  public async launchDialogConfirmation() {
     this.confirmationDialog.launch({
-      title: 'New post',
-      message: 'want to create a new post?',
+      title: 'Hello',
+      message: 'body'
     });
+  }
 
-    return;
+  public async createPost(eventResponse: boolean) {
+
+    if (eventResponse == false) return;
 
     const postTitle = this.inputCreatePost.title;
     const postBody = this.inputCreatePost.body;
@@ -49,18 +53,6 @@ export class CreatePublicationsComponent {
     });
 
     console.log(createPostResponse);
-
   }
-
-
-  // public async lunchConfirmationModal() {
-  //   await this.createPost()
-  //   // this.confirmationModalService.launch({
-  //   //   title: 'Nueva publicación',
-  //   //   message: '¿Deseas crear una nueva publicación?',
-  //   //   functionAccept: this.createPost,
-  //   //   functionCancel: () => { }
-  //   // });
-  // }
 
 }
