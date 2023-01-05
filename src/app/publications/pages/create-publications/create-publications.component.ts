@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { InputCreatePost } from './models/publication';
 import { ConfirmationModalService } from 'src/app/shared/services/confirmation-modal.service';
 import { PublicationAWSService } from '../../service/publication-aws.service';
@@ -11,16 +11,23 @@ import { ConfirmationDialog } from './components/confirmation-dialog/Confirmatio
   templateUrl: './create-publications.component.html',
   styleUrls: ['./create-publications.component.css']
 })
-export class CreatePublicationsComponent {
+export class CreatePublicationsComponent implements OnInit {
 
   @ViewChild(ConfirmationDialogComponent, { static: true }) confirmationDialog!: ActionsDialogs<ConfirmationDialog>;
   public isSeePreview: boolean = false;
   public inputCreatePost: InputCreatePost = { title: '', body: '' };
 
+  public posts = [];
+
   constructor(
     public confirmationModalService: ConfirmationModalService,
     public publicationAWSService: PublicationAWSService,
   ) { }
+
+  async ngOnInit(): Promise<void> {
+    const searchPostsResponse = await this.publicationAWSService.searchPosts({ byTitle: '', byDate: '' });
+    this.posts = searchPostsResponse.data;
+  }
 
   public seePreview(inputCreatePost: InputCreatePost) {
     this.inputCreatePost = inputCreatePost;

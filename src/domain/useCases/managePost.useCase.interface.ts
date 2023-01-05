@@ -1,5 +1,6 @@
 export interface ManagePost {
     createPost(inputCreatePost: InputCreatePost): Promise<PostResponse>;
+    searchPosts(inputSearchPosts: InputSearchPosts): Promise<PostResponse>;
 }
 
 export interface PostResponse {
@@ -13,3 +14,8 @@ export interface InputCreatePost {
     body: string;
     tutorAccountID: string;
 }
+export interface InputSearchPosts {
+    byTitle: string;
+    byDate: string;
+}
+
