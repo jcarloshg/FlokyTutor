@@ -15,6 +15,7 @@ import { PublicationBodyInputModule } from './pages/create-publications/componen
 import { PreviewPublicationComponent } from './pages/create-publications/components/preview-publication/preview-publication.component';
 import { EditPublicationComponent } from './pages/create-publications/components/edit-publication/edit-publication.component';
 import { ConfirmationDialogComponent } from './pages/create-publications/components/confirmation-dialog/confirmation-dialog.component';
+import { PostEditorComponent } from './pages/create-publications/components/post-editor/post-editor.component';
 
 
 
@@ -28,6 +29,7 @@ import { ConfirmationDialogComponent } from './pages/create-publications/compone
     PreviewPublicationComponent,
     EditPublicationComponent,
     ConfirmationDialogComponent,
+    PostEditorComponent,
   ],
   imports: [
     CommonModule,

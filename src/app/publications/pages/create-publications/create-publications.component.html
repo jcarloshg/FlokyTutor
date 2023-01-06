@@ -1,6 +1,9 @@
 <p class="h2">Crea una publicación<small>📰</small> </p>
 <p class="text-secondary">Rellena todos los campos.</p>
 
+
+<app-post-editor></app-post-editor>
+
 <ng-container *ngIf="isSeePreview; else elseTemplate">
     <app-preview-publication [inputCreatePost]="inputCreatePost" (viewEditPublication)="seeEditPost()"
         (createPublicationEvent)="launchDialogConfirmation()">
