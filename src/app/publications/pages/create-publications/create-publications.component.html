@@ -1,7 +1,10 @@
 <p class="h2">Crea una publicación<small>📰</small> </p>
 <p class="text-secondary">Rellena todos los campos.</p>
 
-<app-post-editor [inputCreatePost]="inputCreatePost" (createPostEvent)="createPost($event)">
+<app-post-editor
+    [inputCreatePost]="inputCreatePost"
+    (createPostEvent)="createPost($event)"
+>
 </app-post-editor>
 
-<pre>{{this.posts | json}}</pre>
+<!-- <pre>{{this.posts | json}}</pre> -->

@@ -12,8 +12,8 @@ import { ActionsDialogs } from '../confirmation-dialog/ActionsDialogs.interface'
 export class PostEditorComponent implements OnInit {
 
   @ViewChild(ConfirmationDialogComponent, { static: true }) confirmationDialog!: ActionsDialogs<ConfirmationDialog>;
-  @Input() inputCreatePost: InputCreatePost = { title: '', body: '' };
-  @Output() createPostEvent = new EventEmitter();
+  @Input() inputCreatePost!: InputCreatePost;
+  @Output() createPostEvent = new EventEmitter<InputCreatePost>();
   public isSeePreview: boolean = false;
 
   constructor() { }
@@ -36,8 +36,8 @@ export class PostEditorComponent implements OnInit {
     });
   }
 
-  createPost(eventResponse: boolean) {
-    this.createPostEvent.emit(eventResponse);
+  public createPost(eventResponse: boolean) {
+    this.createPostEvent.emit(this.inputCreatePost);
   }
 
 }

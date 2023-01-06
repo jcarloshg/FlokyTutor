@@ -11,22 +11,33 @@ import { Account } from 'src/models';
 })
 export class CreatePublicationsComponent implements OnInit {
 
-  public inputCreatePost: InputCreatePost = { title: '', body: '' };
+  public inputCreatePost: InputCreatePost;
   public posts = [];
 
   constructor(
     public publicationAWSService: PublicationAWSService,
     public authenticateAWSService: AuthenticateAWSService,
-  ) { }
+  ) {
+    this.inputCreatePost = {
+      title: '',
+      body: '',
+      isValidTitle: false,
+      isValidBody: false
+    };
+  }
 
   async ngOnInit(): Promise<void> {
     const searchPostsResponse = await this.publicationAWSService.searchPosts({ byTitle: '', byDate: '' });
     this.posts = searchPostsResponse.data;
   }
 
-  public async createPost(eventResponse: boolean) {
+  public async createPost(inputCreatePost: InputCreatePost) {
 
-    if (eventResponse == false) return;
+    const isValidPost = inputCreatePost.isValidTitle && inputCreatePost.body;
+    if (isValidPost == false) {
+      // todo - launch error
+      return;
+    }
 
     const getCurrentTutorResponse = await this.authenticateAWSService.getCurrentTutor();
     const currentTutor = getCurrentTutorResponse.data as Account;
