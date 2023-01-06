@@ -18,11 +18,6 @@ export class ViewPublicationsComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const searchPostsResponse = await this.publicationAWSService.searchPosts({ byDate: '', byTitle: '' });
     this.posts = searchPostsResponse.data as Post[] ?? [];
-    // if (searchPostsResponse.isOk == true) {
-    //   const posts = searchPostsResponse.data as Post[];
-    //   this.posts = posts;
-    // }
-
   }
 
 }
