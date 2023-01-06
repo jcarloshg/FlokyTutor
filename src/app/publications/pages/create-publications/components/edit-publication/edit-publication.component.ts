@@ -20,7 +20,7 @@ export class EditPublicationComponent implements OnInit {
   ) {
     this.publicationForm = this.formBuilder.group({
       title: ['', validatorService.postTitle.getValidators()],
-      body: [],
+      body: ['', validatorService.postBody.getValidators()],
     });
   }
 

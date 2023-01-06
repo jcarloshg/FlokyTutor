@@ -3,3 +3,11 @@
 <div class="bg-white" id="InputBodyPost">
     <quill-editor [formControl]="formControl"></quill-editor>
 </div>
+
+<div
+    class="text-danger"
+    style="font-size: 14px"
+    *ngIf="showMessage()"
+>
+    {{ getErrorMessage() }}
+</div>

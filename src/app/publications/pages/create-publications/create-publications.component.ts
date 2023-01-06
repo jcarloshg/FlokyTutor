@@ -11,10 +11,9 @@ import { Router } from '@angular/router';
   templateUrl: './create-publications.component.html',
   styleUrls: ['./create-publications.component.css']
 })
-export class CreatePublicationsComponent implements OnInit {
+export class CreatePublicationsComponent {
 
   public inputCreatePost: InputCreatePost;
-  public posts = [];
 
   constructor(
     private router: Router,
@@ -28,11 +27,6 @@ export class CreatePublicationsComponent implements OnInit {
       isValidTitle: false,
       isValidBody: false
     };
-  }
-
-  async ngOnInit(): Promise<void> {
-    const searchPostsResponse = await this.publicationAWSService.searchPosts({ byTitle: '', byDate: '' });
-    this.posts = searchPostsResponse.data;
   }
 
   public async createPost(inputCreatePost: InputCreatePost) {

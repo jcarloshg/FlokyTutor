@@ -6,6 +6,7 @@ import { FullNameCustomValidator } from './validators/full-name.custom-validator
 import { CollegeEnrollmentCustomValidator } from './validators/college-enrollment.custom-validator';
 import { CodeVerificationCustomValidator } from './validators/code-verification.custom-validator';
 import { PostTitle } from './validators/postTitle.custom-validator';
+import { PostBody } from './validators/bodyPost.custom-validator';
 
 @Injectable({
   providedIn: 'root'
@@ -45,8 +46,8 @@ export class ValidatorService {
     return this._codeVerificationCustomValidator;
   }
 
-  public get postTitle(): PostTitle {
-    return new PostTitle()
-  }
+  public get postTitle(): PostTitle { return new PostTitle(); }
+
+  public get postBody(): PostBody { return new PostBody(); }
 
 }
