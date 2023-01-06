@@ -55,7 +55,7 @@ export class CreatePublicationsComponent implements OnInit {
       return;
     }
 
-    this.customToastService.launchToast({ typeToast: 'success', message: createPostResponse.message! });
+    this.customToastService.launchToast({ typeToast: 'success', message: createPostResponse.message!, seconds: 5 });
     this.router.navigate(['./incio/publicaciones/ver_publicaciones']);
 
   }

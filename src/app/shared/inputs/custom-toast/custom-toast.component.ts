@@ -29,6 +29,7 @@ export class CustomToastComponent implements OnChanges {
 
     const seconds = changes['customToast'].currentValue.seconds ?? this.SECONDS_DEFAULT;
     const waitSeconds = 1000 * seconds;
+
     setTimeout(
       () => { this.showToast = false; },
       waitSeconds
