@@ -7,12 +7,12 @@ export class CollegeNameCustomValidator extends CustomValidator {
         {
             name: "required",
             message: "El nombre del colegio es requerido.",
-            valiadator: Validators.required
+            validator: Validators.required
         },
         {
             name: "pattern",
             message: "El nombre del colegio no es valido.",
-            valiadator: Validators.pattern('^[a-zA-ZÀ-ÿ]{2,}( {1,2}[a-zA-ZÀ-ÿ]{2,}){2,}$'),
+            validator: Validators.pattern('^[a-zA-ZÀ-ÿ]{2,}( {1,2}[a-zA-ZÀ-ÿ]{2,}){2,}$'),
         }
     ];
 

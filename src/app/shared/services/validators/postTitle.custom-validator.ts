@@ -6,12 +6,12 @@ export class PostTitle extends CustomValidator {
         {
             name: "required",
             message: "El 'titulo' es requerido",
-            valiadator: Validators.required
+            validator: Validators.required
         },
         {
             name: "pattern",
             message: "El 'titulo' es invalido.",
-            valiadator: Validators.pattern('^[a-zA-ZÀ-ÿ ]{3,}$'),
+            validator: Validators.pattern('^[a-zA-ZÀ-ÿ ]{3,}$'),
         }
     ];
 

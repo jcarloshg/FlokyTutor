@@ -4,7 +4,7 @@ import { ValidatorFn } from '@angular/forms';
 export interface ValidatorItem {
     name: string,
     message: string,
-    valiadator: ValidatorFn;
+    validator: ValidatorFn;
 }
 
 export abstract class CustomValidator {
@@ -14,7 +14,7 @@ export abstract class CustomValidator {
     public getValidators(): ValidatorFn[] {
         const validators = this.validatorsItems.map(
             (validatorItem) => {
-                return validatorItem.valiadator;
+                return validatorItem.validator;
             }
         );
         return validators;

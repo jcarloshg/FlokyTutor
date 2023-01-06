@@ -7,12 +7,12 @@ export class CollegeEnrollmentCustomValidator extends CustomValidator {
         {
             name: 'required',
             message: "El registro escolar es necesario.",
-            valiadator: Validators.required,
+            validator: Validators.required,
         },
         {
             name: 'pattern',
             message: "El registro escolar no es valido",
-            valiadator: Validators.pattern('^[a-zA-Z0-9]{4,}$'),
+            validator: Validators.pattern('^[a-zA-Z0-9]{4,}$'),
         },
     ];
 
