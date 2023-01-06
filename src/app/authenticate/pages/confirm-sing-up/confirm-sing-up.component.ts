@@ -47,7 +47,7 @@ export class ConfirmSingUpComponent {
     });
 
     if (confirmSignUpResponse.isOk == false) {
-      this.customToastService.launchToast({ typeToast: 'error', message: confirmSignUpResponse.message ?? 'Ocurrio un error inesperado' });
+      this.customToastService.launchToast({ typeToast: 'error', message: confirmSignUpResponse.message ?? 'Ocurrió un error inesperado' });
       return;
     }
 

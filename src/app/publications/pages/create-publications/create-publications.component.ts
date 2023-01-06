@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InputCreatePost } from './models/publication';
 import { PublicationAWSService } from '../../service/publication-aws.service';
 import { AuthenticateAWSService } from 'src/app/authenticate/services/authenticate-aws.service';
+import { CustomToastService } from '../../../shared/services/custom-toast.service';
 import { Account } from 'src/models';
 
 @Component({
@@ -17,6 +18,7 @@ export class CreatePublicationsComponent implements OnInit {
   constructor(
     public publicationAWSService: PublicationAWSService,
     public authenticateAWSService: AuthenticateAWSService,
+    public customToastService: CustomToastService,
   ) {
     this.inputCreatePost = {
       title: '',
@@ -35,7 +37,10 @@ export class CreatePublicationsComponent implements OnInit {
 
     const isValidPost = inputCreatePost.isValidTitle && inputCreatePost.body;
     if (isValidPost == false) {
-      // todo - launch error
+      const messageError = inputCreatePost.isValidTitle == false
+        ? 'El "titulo" es invalido"'
+        : 'El "cuerpo de la publicación" es invalido"';
+      this.customToastService.launchToast({ typeToast: 'error', message: messageError });
       return;
     }
 

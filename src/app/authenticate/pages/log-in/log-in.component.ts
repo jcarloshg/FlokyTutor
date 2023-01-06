@@ -58,7 +58,7 @@ export class LogInComponent implements OnInit {
     });
 
     if (signInResponse.isOk == false) {
-      this.customToastService.launchToast({ typeToast: 'error', message: signInResponse.message ?? 'Ocurrio un error inesperado' });
+      this.customToastService.launchToast({ typeToast: 'error', message: signInResponse.message ?? 'Ocurrió un error inesperado' });
       return;
     }
 

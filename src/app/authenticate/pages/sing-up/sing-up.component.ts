@@ -74,7 +74,7 @@ export class SingUpComponent {
 
 
     if (singUpResponse.isOk == false) {
-      this.customToastService.launchToast({ typeToast: 'error', message: singUpResponse.message ?? 'Ocurrio un error inesperado' });
+      this.customToastService.launchToast({ typeToast: 'error', message: singUpResponse.message ?? 'Ocurrió un error inesperado' });
       return;
     }
 
