@@ -14,8 +14,6 @@ import { Account } from 'src/models';
 })
 export class CreatePublicationsComponent implements OnInit {
 
-  @ViewChild(ConfirmationDialogComponent, { static: true }) confirmationDialog!: ActionsDialogs<ConfirmationDialog>;
-  public isSeePreview: boolean = false;
   public inputCreatePost: InputCreatePost = { title: '', body: '' };
   public posts = [];
 
@@ -27,22 +25,6 @@ export class CreatePublicationsComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const searchPostsResponse = await this.publicationAWSService.searchPosts({ byTitle: '', byDate: '' });
     this.posts = searchPostsResponse.data;
-  }
-
-  public seePreview(inputCreatePost: InputCreatePost) {
-    this.inputCreatePost = inputCreatePost;
-    this.isSeePreview = true;
-  }
-
-  public seeEditPost() {
-    this.isSeePreview = false;
-  }
-
-  public async launchDialogConfirmation() {
-    this.confirmationDialog.launch({
-      title: 'Nueva publicación',
-      message: '¿Deseas crear una nueva publicación?'
-    });
   }
 
   public async createPost(eventResponse: boolean) {

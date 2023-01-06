@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { InputCreatePost } from '../../models/publication';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialog } from '../confirmation-dialog/ConfirmationDialog.interface';
+import { ActionsDialogs } from '../confirmation-dialog/ActionsDialogs.interface';
 
 @Component({
   selector: 'app-post-editor',
@@ -7,9 +11,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostEditorComponent implements OnInit {
 
+  @ViewChild(ConfirmationDialogComponent, { static: true }) confirmationDialog!: ActionsDialogs<ConfirmationDialog>;
+  @Input() inputCreatePost: InputCreatePost = { title: '', body: '' };
+  @Output() createPostEvent = new EventEmitter();
+  public isSeePreview: boolean = false;
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  public seePreview(inputCreatePost: InputCreatePost) {
+    this.inputCreatePost = inputCreatePost;
+    this.isSeePreview = true;
+  }
+
+  public seeEditPost() {
+    this.isSeePreview = false;
+  }
+
+  public async launchDialogConfirmation() {
+    this.confirmationDialog.launch({
+      title: 'Nueva publicación',
+      message: '¿Deseas crear una nueva publicación?'
+    });
+  }
+
+  createPost(eventResponse: boolean) {
+    this.createPostEvent.emit(eventResponse);
   }
 
 }

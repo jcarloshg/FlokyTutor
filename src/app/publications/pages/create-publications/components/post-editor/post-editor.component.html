@@ -1,1 +1,16 @@
-<p>post-editor works!</p>
+<ng-container *ngIf="isSeePreview; else elseTemplate">
+    <app-preview-publication
+        [inputCreatePost]="inputCreatePost"
+        (viewEditPublication)="seeEditPost()"
+        (createPublicationEvent)="launchDialogConfirmation()">
+    </app-preview-publication>
+</ng-container>
+
+<ng-template #elseTemplate>
+    <app-edit-publication
+        [inputCreatePost]="inputCreatePost"
+        (viewPreview)="seePreview($event)">
+    </app-edit-publication>
+</ng-template>
+
+<app-confirmation-dialog (launchResponseEvent)="createPost($event)"></app-confirmation-dialog>
