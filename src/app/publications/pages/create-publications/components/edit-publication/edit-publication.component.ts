@@ -38,8 +38,8 @@ export class EditPublicationComponent implements OnInit {
   public seePreview() {
 
     this.viewPreviewEvent.emit({
-      title: this.publicationForm.get('title')?.value,
-      body: this.publicationForm.get('body')?.value,
+      title: this.publicationForm.get('title')?.value ?? '',
+      body: this.publicationForm.get('body')?.value ?? '',
       isValidTitle: this.publicationForm.get('title')?.valid ?? false,
       isValidBody: this.publicationForm.get('body')?.valid ?? false,
     })
