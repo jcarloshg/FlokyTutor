@@ -40,14 +40,13 @@ export class PublicationAWSService extends Loading implements ManagePost {
 
   public async searchPosts(inputSearchPosts: InputSearchPosts): Promise<PostResponse> {
     try {
-      const posts = DataStore.query(
+      const posts = await DataStore.query(
         Post,
         Predicates.ALL,
         {
           sort: post => post.title("ASCENDING")
         });
-      const response: PostResponse = { isOk: true, data: posts };
-      return response;
+      return { isOk: true, data: posts };
     } catch (error) {
       return { isOk: false }
     }

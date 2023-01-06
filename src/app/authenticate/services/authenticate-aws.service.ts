@@ -178,8 +178,6 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
         const tutorID = currentUser.getAccessToken().payload['sub'].toString();
         const userTutorCurrent = await DataStore.query<Account>(Account, tutorID);
 
-        console.log({ currentUser, userTutorCurrent });
-
         this._userTutorCurrent = userTutorCurrent ?? null;
       }
       return {

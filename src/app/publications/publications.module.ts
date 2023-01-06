@@ -16,6 +16,8 @@ import { PreviewPublicationComponent } from './pages/create-publications/compone
 import { EditPublicationComponent } from './pages/create-publications/components/edit-publication/edit-publication.component';
 import { ConfirmationDialogComponent } from './pages/create-publications/components/confirmation-dialog/confirmation-dialog.component';
 import { PostEditorComponent } from './pages/create-publications/components/post-editor/post-editor.component';
+import { PostsViewerComponent } from './pages/view-publications/components/posts-viewer/posts-viewer.component';
+import { PublicationCardComponent } from './pages/view-publications/components/publication-card/publication-card.component';
 
 
 
@@ -30,6 +32,8 @@ import { PostEditorComponent } from './pages/create-publications/components/post
     EditPublicationComponent,
     ConfirmationDialogComponent,
     PostEditorComponent,
+    PostsViewerComponent,
+    PublicationCardComponent,
   ],
   imports: [
     CommonModule,
