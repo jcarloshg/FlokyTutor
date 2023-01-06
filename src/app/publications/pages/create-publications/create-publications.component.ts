@@ -1,9 +1,6 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InputCreatePost } from './models/publication';
 import { PublicationAWSService } from '../../service/publication-aws.service';
-import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
-import { ActionsDialogs } from './components/confirmation-dialog/ActionsDialogs.interface';
-import { ConfirmationDialog } from './components/confirmation-dialog/ConfirmationDialog.interface';
 import { AuthenticateAWSService } from 'src/app/authenticate/services/authenticate-aws.service';
 import { Account } from 'src/models';
 
