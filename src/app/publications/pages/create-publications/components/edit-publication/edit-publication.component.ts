@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { InputCreatePost } from '../../models/publication';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ValidatorService } from 'src/app/shared/services/validator.service';
 
 @Component({
   selector: 'app-edit-publication',
@@ -16,9 +17,10 @@ export class EditPublicationComponent {
 
   constructor(
     private formBuilder: FormBuilder,
+    private validatorService: ValidatorService
   ) {
     this.publicationForm = this.formBuilder.group({
-      title: [''],
+      title: ['', validatorService.postTitle.getValidators()],
       body: [''],
     });
 

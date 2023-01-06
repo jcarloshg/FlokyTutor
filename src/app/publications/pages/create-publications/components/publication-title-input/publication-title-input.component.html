@@ -1,17 +1,11 @@
-<!--
-<label for="ForEmailInput" class="form-label">
-    Correo electrónico
-</label>
--->
+<label for="InputPostTitle" class="form-label m-1">Título de la publicación</label>
 
 <div class="input-group input-group-lg">
-    <input
-    type="text"
-    class="form-control"
-    placeholder="Titulo de la publicacion"
-    [value]="value"
-    [(ngModel)]="value"
-    (ngModelChange)="onChange(value)"
-    (blur)="onTouched(true)"
-    >
+    <input id="InputPostTitle" type="text" class="form-control" placeholder="Título de la publicación" [value]="value"
+        [(ngModel)]="value" (ngModelChange)="onChange(value)" (blur)="onTouched(true)">
+</div>
+
+
+<div class="text-danger" style="font-size: 14px" *ngIf="showMessage()">
+    {{ getErrorMessage() }}
 </div>

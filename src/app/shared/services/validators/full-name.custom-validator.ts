@@ -1,5 +1,5 @@
-import { CustomValidator, ValidatorItem } from "./custom-validator";
 import { Validators } from '@angular/forms';
+import { CustomValidator, ValidatorItem } from "./custom-validator";
 
 export class FullNameCustomValidator extends CustomValidator {
 

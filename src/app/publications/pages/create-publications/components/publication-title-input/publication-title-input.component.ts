@@ -23,8 +23,9 @@ export class PublicationTitleInputComponent extends CustomInput {
   constructor(
     private validatorService: ValidatorService,
   ) {
-    const messageError: Map<string, string> = validatorService.fullNameCustomValidator.getMessageErrors();
+    const messageError: Map<string, string> = validatorService.postTitle.getMessageErrors();
     super(messageError);
+
     this.value = '';
   }
 
