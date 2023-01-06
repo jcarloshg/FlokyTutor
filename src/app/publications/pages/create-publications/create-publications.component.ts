@@ -40,8 +40,8 @@ export class CreatePublicationsComponent implements OnInit {
 
   public async launchDialogConfirmation() {
     this.confirmationDialog.launch({
-      title: 'Hello',
-      message: 'body'
+      title: 'Nueva publicación',
+      message: '¿Deseas crear una nueva publicación?'
     });
   }
 
