@@ -4,6 +4,7 @@ import { PublicationAWSService } from '../../service/publication-aws.service';
 import { AuthenticateAWSService } from 'src/app/authenticate/services/authenticate-aws.service';
 import { CustomToastService } from '../../../shared/services/custom-toast.service';
 import { Account } from 'src/models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-publications',
@@ -16,6 +17,7 @@ export class CreatePublicationsComponent implements OnInit {
   public posts = [];
 
   constructor(
+    private router: Router,
     public publicationAWSService: PublicationAWSService,
     public authenticateAWSService: AuthenticateAWSService,
     public customToastService: CustomToastService,
@@ -35,20 +37,11 @@ export class CreatePublicationsComponent implements OnInit {
 
   public async createPost(inputCreatePost: InputCreatePost) {
 
-    const isValidPost = inputCreatePost.isValidTitle && inputCreatePost.body;
-    if (isValidPost == false) {
-      const messageError = inputCreatePost.isValidTitle == false
-        ? 'El "titulo" es invalido"'
-        : 'El "cuerpo de la publicación" es invalido"';
-      this.customToastService.launchToast({ typeToast: 'error', message: messageError });
-      return;
-    }
-
     const getCurrentTutorResponse = await this.authenticateAWSService.getCurrentTutor();
     const currentTutor = getCurrentTutorResponse.data as Account;
 
-    const postTitle = this.inputCreatePost.title;
-    const postBody = this.inputCreatePost.body;
+    const postTitle = inputCreatePost.title;
+    const postBody = inputCreatePost.body;
     const tutorID = currentTutor.id;
 
     const createPostResponse = await this.publicationAWSService.createPost({
@@ -57,7 +50,14 @@ export class CreatePublicationsComponent implements OnInit {
       body: postBody,
     });
 
-    console.log({ createPostResponse });
+    if (createPostResponse.isOk == false) {
+      this.customToastService.launchToast({ typeToast: 'error', message: createPostResponse.message! });
+      return;
+    }
+
+    this.customToastService.launchToast({ typeToast: 'success', message: createPostResponse.message! });
+    this.router.navigate(['./incio/publicaciones/ver_publicaciones']);
+
   }
 
 }

@@ -36,7 +36,7 @@ export class PostEditorComponent implements OnInit {
     });
   }
 
-  public createPost(eventResponse: boolean) {
+  public createPost() {
     this.createPostEvent.emit(this.inputCreatePost);
   }
 

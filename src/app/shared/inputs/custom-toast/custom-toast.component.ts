@@ -8,13 +8,13 @@ import { CustomToast } from './custom-toast.inteferface';
 })
 export class CustomToastComponent implements OnChanges {
 
-  @Input() seconds: number = 3;
-  @Input() customToast!: CustomToast;
-  private typeToastStyle: Map<string, string>;
+  private readonly SECONDS_DEFAULT: number = 3;
+  private readonly TYPE_TOAST_STYLE: Map<string, string>;
   public showToast: boolean = false;
+  @Input() customToast!: CustomToast;
 
   constructor() {
-    this.typeToastStyle = new Map<string, string>()
+    this.TYPE_TOAST_STYLE = new Map<string, string>()
       .set('error', "toast show bg-danger bg-gradient text-white")
       .set('warning', "toast show bg-warning bg-gradient text-white")
       .set('success', "toast show bg-success bg-gradient text-white")
@@ -22,10 +22,13 @@ export class CustomToastComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
 
-    if (this.customToast.message == '') return;
+    const isValidNewToast = this.customToast.message.length != 0 && this.customToast.typeToast.length != 0
+    if (isValidNewToast == false) return;
 
     this.showToast = true;
-    const waitSeconds = 1000 * this.seconds;
+
+    const seconds = changes['customToast'].currentValue.seconds ?? this.SECONDS_DEFAULT;
+    const waitSeconds = 1000 * seconds;
     setTimeout(
       () => { this.showToast = false; },
       waitSeconds
@@ -33,7 +36,7 @@ export class CustomToastComponent implements OnChanges {
   }
 
   getStyle(typeToast: string): string {
-    return this.typeToastStyle.get(typeToast)!;
+    return this.TYPE_TOAST_STYLE.get(typeToast)!;
   }
 
   closeToast() {

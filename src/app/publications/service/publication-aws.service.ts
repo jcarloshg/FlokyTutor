@@ -14,16 +14,27 @@ export class PublicationAWSService extends Loading implements ManagePost {
   }
 
   public async createPost(inputCreatePost: InputCreatePost): Promise<PostResponse> {
+
     this.isLoading = true;
-    const postCreated = await DataStore.save(
-      new Post({
-        title: inputCreatePost.title,
-        body: inputCreatePost.body,
-        tutorAccountID: inputCreatePost.tutorAccountID,
-      })
-    );
-    this.isLoading = false;
-    return { isOk: true, data: postCreated };
+
+    try {
+      const postCreated = await DataStore.save(
+        new Post({
+          title: inputCreatePost.title,
+          body: inputCreatePost.body,
+          tutorAccountID: inputCreatePost.tutorAccountID,
+        })
+      );
+      this.isLoading = false;
+      return {
+        isOk: true,
+        data: postCreated,
+        message: `La publicación "${inputCreatePost.title}" se a creado con éxito!`
+      };
+    } catch (error) {
+      this.isLoading = true;
+      return { isOk: true, message: "Ocurrió un error. Inténtalo mas tarde." };
+    }
   }
 
 

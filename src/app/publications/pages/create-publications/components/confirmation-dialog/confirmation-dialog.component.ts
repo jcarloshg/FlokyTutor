@@ -11,7 +11,8 @@ export class ConfirmationDialogComponent implements ActionsDialogs<ConfirmationD
 
   public confirmationDialog: ConfirmationDialog = { title: '', message: '' };
   public showConfirmationDialog: boolean = false;
-  @Output() launchResponseEvent = new EventEmitter<boolean>();
+  @Output() responseAcceptEvent = new EventEmitter();
+  @Output() responseCancelEvent = new EventEmitter();
 
   constructor() { }
 
@@ -30,12 +31,12 @@ export class ConfirmationDialogComponent implements ActionsDialogs<ConfirmationD
   }
 
   public accept() {
-    this.launchResponseEvent.emit(true);
+    this.responseAcceptEvent.emit();
     this.toggleConfirmation();
   }
 
   public cancel() {
-    this.launchResponseEvent.emit(false);
+    this.responseCancelEvent.emit();
     this.toggleConfirmation();
   }
 
