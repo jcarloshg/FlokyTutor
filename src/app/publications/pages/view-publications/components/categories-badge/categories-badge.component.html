@@ -1,18 +1,5 @@
-<div style='
-    border-radius: 15px;
-    width: 90px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    ' appCategoriesBadge [typeCategory]="typeCategory">
-    <p style='
-        color: white;
-        font-size: 14px;
-        font-weight: 700;
-        text-align: center;
-        margin: 0px;
-        '>
+<div class="badgeBackground" appCategoriesBadge [typeCategory]="typeCategory">
+    <p class="badgeText">
         {{this.typeCategory}}
     </p>
 </div>
