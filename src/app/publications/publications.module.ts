@@ -19,23 +19,28 @@ import { PostEditorComponent } from './pages/create-publications/components/post
 import { PostsViewerComponent } from './pages/view-publications/components/posts-viewer/posts-viewer.component';
 import { PublicationCardComponent } from './pages/view-publications/components/publication-card/publication-card.component';
 import { CategoriesBadgeComponent } from './pages/view-publications/components/categories-badge/categories-badge.component';
+import { CategoriesBadgeDirective } from './pages/view-publications/components/categories-badge/categories-badge.directive';
 
 
 
 @NgModule({
   declarations: [
     HomePublicationsComponent,
+    //
     ViewPublicationsComponent,
+    PublicationCardComponent,
+    CategoriesBadgeComponent,
+    CategoriesBadgeDirective,
+    // create post
     CreatePublicationsComponent,
     ButtonCardToCreatePublicationComponent,
     PublicationTitleInputComponent,
     PreviewPublicationComponent,
+    // create
     EditPublicationComponent,
     ConfirmationDialogComponent,
     PostEditorComponent,
     PostsViewerComponent,
-    PublicationCardComponent,
-    CategoriesBadgeComponent,
   ],
   imports: [
     CommonModule,
