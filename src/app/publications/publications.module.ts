@@ -18,6 +18,7 @@ import { ConfirmationDialogComponent } from './pages/create-publications/compone
 import { PostEditorComponent } from './pages/create-publications/components/post-editor/post-editor.component';
 import { PostsViewerComponent } from './pages/view-publications/components/posts-viewer/posts-viewer.component';
 import { PublicationCardComponent } from './pages/view-publications/components/publication-card/publication-card.component';
+import { CategoriesBadgeComponent } from './pages/view-publications/components/categories-badge/categories-badge.component';
 
 
 
@@ -34,6 +35,7 @@ import { PublicationCardComponent } from './pages/view-publications/components/p
     PostEditorComponent,
     PostsViewerComponent,
     PublicationCardComponent,
+    CategoriesBadgeComponent,
   ],
   imports: [
     CommonModule,
