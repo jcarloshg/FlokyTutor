@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { DataStore, Predicates } from 'aws-amplify';
 import { InputCreatePost, InputSearchPosts, ManagePost, PostResponse } from 'src/domain/useCases/managePost.useCase.interface';
 import { Loading } from '../../shared/services/loading';
-import { Post } from 'src/models';
+import { EagerPost, Post } from 'src/models';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,11 @@ export class PublicationAWSService extends Loading implements ManagePost {
 
   constructor() {
     super();
+  }
+
+  async getPostByID(id: string): Promise<EagerPost> {
+    const post = await DataStore.query<Post>(Post, id);
+    return post as Post;
   }
 
   public async createPost(inputCreatePost: InputCreatePost): Promise<PostResponse> {

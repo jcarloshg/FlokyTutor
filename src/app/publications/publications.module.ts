@@ -20,17 +20,20 @@ import { PostsViewerComponent } from './pages/view-publications/components/posts
 import { PublicationCardComponent } from './pages/view-publications/components/publication-card/publication-card.component';
 import { CategoriesBadgeComponent } from './pages/view-publications/components/categories-badge/categories-badge.component';
 import { CategoriesBadgeDirective } from './pages/view-publications/components/categories-badge/categories-badge.directive';
+import { PublicationComponent } from './pages/publication/publication.component';
 
 
 
 @NgModule({
   declarations: [
     HomePublicationsComponent,
-    //
+    // View posts
     ViewPublicationsComponent,
     PublicationCardComponent,
     CategoriesBadgeComponent,
     CategoriesBadgeDirective,
+    PostsViewerComponent,
+    PublicationComponent,
     // create post
     CreatePublicationsComponent,
     ButtonCardToCreatePublicationComponent,
@@ -40,7 +43,6 @@ import { CategoriesBadgeDirective } from './pages/view-publications/components/c
     EditPublicationComponent,
     ConfirmationDialogComponent,
     PostEditorComponent,
-    PostsViewerComponent,
   ],
   imports: [
     CommonModule,

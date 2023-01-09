@@ -1,5 +1,8 @@
+import { Post } from "src/models";
+
 export interface ManagePost {
     createPost(inputCreatePost: InputCreatePost): Promise<PostResponse>;
+    getPostByID(id: string): Promise<Post>;
     searchPosts(inputSearchPosts: InputSearchPosts): Promise<PostResponse>;
 }
 

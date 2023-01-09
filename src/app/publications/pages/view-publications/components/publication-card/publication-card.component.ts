@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Post } from 'src/models';
 
 @Component({
@@ -10,8 +11,18 @@ export class PublicationCardComponent implements OnInit {
 
   @Input() post!: Post;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
+  goToPublication() {
+    this.router.navigate(['./incio/publicaciones/', this.post.id]);
+  }
+
+  _mouseenter() { }
+
+  _mouseleave() { }
 
 }

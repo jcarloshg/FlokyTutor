@@ -35,7 +35,7 @@ export class CardActivityComponent implements OnInit {
   }
 
   goToActivityByID(activityID: string) {
-    this.router.navigate(['./incio/actividades/', activityID])
+    this.router.navigate(['./incio/actividades/', activityID]);
   }
 
 }
