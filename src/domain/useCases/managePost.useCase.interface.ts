@@ -2,7 +2,7 @@ import { Post } from "src/models";
 
 export interface ManagePost {
     createPost(inputCreatePost: InputCreatePost): Promise<PostResponse>;
-    getPostByID(id: string): Promise<Post>;
+    getPostByID(id: string): Promise<Post | null>;
     searchPosts(inputSearchPosts: InputSearchPosts): Promise<PostResponse>;
 }
 

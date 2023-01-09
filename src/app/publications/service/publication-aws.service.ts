@@ -13,9 +13,9 @@ export class PublicationAWSService extends Loading implements ManagePost {
     super();
   }
 
-  async getPostByID(id: string): Promise<EagerPost> {
+  async getPostByID(id: string): Promise<EagerPost | null> {
     const post = await DataStore.query<Post>(Post, id);
-    return post as Post;
+    return post as Post || null;
   }
 
   public async createPost(inputCreatePost: InputCreatePost): Promise<PostResponse> {
