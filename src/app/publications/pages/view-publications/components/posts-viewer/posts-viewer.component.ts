@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/models';
+import { PublicationAWSService } from '../../../../service/publication-aws.service';
 
 @Component({
   selector: 'app-posts-viewer',
@@ -8,10 +9,15 @@ import { Post } from 'src/models';
 })
 export class PostsViewerComponent implements OnInit {
 
-  @Input() posts: Post[] = [];
+  public posts: Post[] = [];
 
-  constructor() { }
+  constructor(
+    public publicationAWSService: PublicationAWSService,
+  ) { }
 
-  ngOnInit(): void { }
+  async ngOnInit(): Promise<void> {
+    const searchPostsResponse = await this.publicationAWSService.searchPosts({ byDate: '', byTitle: '' });
+    this.posts = searchPostsResponse.data as Post[] ?? [];
+  }
 
 }

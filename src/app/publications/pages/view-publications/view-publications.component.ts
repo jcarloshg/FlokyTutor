@@ -1,23 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { PublicationAWSService } from '../../service/publication-aws.service';
-import { Post } from 'src/models';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-view-publications',
   templateUrl: './view-publications.component.html',
   styleUrls: ['./view-publications.component.css']
 })
-export class ViewPublicationsComponent implements OnInit {
+export class ViewPublicationsComponent {
 
-  public posts: Post[] = [];
 
-  constructor(
-    public publicationAWSService: PublicationAWSService,
-  ) { }
+  constructor() { }
 
-  async ngOnInit(): Promise<void> {
-    const searchPostsResponse = await this.publicationAWSService.searchPosts({ byDate: '', byTitle: '' });
-    this.posts = searchPostsResponse.data as Post[] ?? [];
-  }
 
 }
