@@ -16,7 +16,9 @@
 
         &nbsp;
 
-        <div [innerHTML]="this.post.body | sanitizeHtml"></div>
+        <div style='max-height: 200px; overflow: hidden;'>
+            <p class="text-black-50" [innerHTML]="this.post.body | sanitizeHtml"></p>
+        </div>
 
         &nbsp;
         <!--
