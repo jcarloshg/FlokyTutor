@@ -21,6 +21,7 @@ import { PublicationCardComponent } from './pages/view-publications/components/p
 import { CategoriesBadgeComponent } from './pages/view-publications/components/categories-badge/categories-badge.component';
 import { CategoriesBadgeDirective } from './pages/view-publications/components/categories-badge/categories-badge.directive';
 import { PublicationComponent } from './pages/publication/publication.component';
+import { PublicationHelpersComponent } from './pages/publication/components/publication-helpers/publication-helpers.component';
 
 
 
@@ -34,6 +35,7 @@ import { PublicationComponent } from './pages/publication/publication.component'
     CategoriesBadgeDirective,
     PostsViewerComponent,
     PublicationComponent,
+    PublicationHelpersComponent,
     // create post
     CreatePublicationsComponent,
     ButtonCardToCreatePublicationComponent,
