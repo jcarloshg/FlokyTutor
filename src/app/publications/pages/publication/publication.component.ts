@@ -23,7 +23,6 @@ export class PublicationComponent implements OnInit {
 
   private async _getPost() {
     const postIDToSearch = this.activatedRoute.snapshot.paramMap.get('id') || '';
-    console.log(postIDToSearch);
     if (postIDToSearch == '') return;
     const postResponse = await this.publicationAWSService.getPostByID(postIDToSearch);
     this.post = postResponse;

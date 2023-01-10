@@ -1,39 +1,64 @@
 <div *ngIf="post; else notPost" style='display: flex; flex-direction: row;'>
 
-    <div style='flex-grow: 6; background-color: royalblue;'>
-        <div class="d-flex flex-column px-lg-5 mx-lg-5">
-            <!-- title -->
-            <div style='display: flex; flex-direction: row;'>
-                <div style='flex-grow: 1;'>
-                    <p class="fs-2 font-weight-medium m-0">{{post.title}}</p>
-                    <small style='display: flex; flex-direction: row;'>
-                        <p class="fs-5 fw-lighter m-0">Jose Carlos Huerta Garcia</p>
-                    </small>
-                </div>
-                <app-categories-badge [typeCategory]="'Leer'"></app-categories-badge>
+    <div class="mx-lg-5" style='width: 80%;'>
+
+        <!-- title -->
+        <div style="display: flex; flex-direction: row;">
+            <div style='flex-grow: 1;'>
+                <p class="fs-2 font-weight-medium m-0">{{post.title}}</p>
+                <small style='display: flex; flex-direction: row;'>
+                    <p class="fs-5 fw-lighter m-0">Jose Carlos Huerta Garcia</p>
+                </small>
             </div>
-
-            &nbsp;
-            <!-- body -->
-            <div style="width: 100%;">
-                <p class="text-body" [innerHTML]="this.post.body | sanitizeHtml"></p>
-            </div>
-
-
-            &nbsp;
-            <!-- comments -->
-            <div style='border: 1px solid red; height: 200px;'></div>
+            <app-categories-badge [typeCategory]="'Leer'"></app-categories-badge>
         </div>
+
+
+        <!-- body -->
+        &nbsp;
+        <div>
+            <p class="text-body" [innerHTML]="this.post.body | sanitizeHtml"></p>
+        </div>
+
+
+        <!-- comments -->
+        &nbsp;
+        <div style='border: 1px solid red; height: 200px;'></div>
+
     </div>
 
-    <div style='flex-grow: 6; background-color: green;'>
+    <div style='width: 20%;'>
         <app-publication-helpers></app-publication-helpers>
     </div>
 
 </div>
 
-
-
 <ng-template #notPost>
     <p>No existe :(</p>
 </ng-template>
+
+
+<!-- title -->
+<!--
+<div style='display: flex; flex-direction: row; border: 1px solid red; '>
+    <div style='flex-grow: 1;'>
+        <p class="fs-2 font-weight-medium m-0">{{post.title}}</p>
+        <small style='display: flex; flex-direction: row;'>
+            <p class="fs-5 fw-lighter m-0">Jose Carlos Huerta Garcia</p>
+        </small>
+    </div>
+    <app-categories-badge [typeCategory]="'Leer'"></app-categories-badge>
+</div>
+-->
+
+<!-- body -->
+<!--
+<div style=" border: 1px solid red;">
+    <p class="text-body" [innerHTML]="this.post.body | sanitizeHtml"></p>
+</div>
+-->
+
+<!-- comments -->
+<!--
+<div style='border: 1px solid red; height: 200px; '></div>
+-->
