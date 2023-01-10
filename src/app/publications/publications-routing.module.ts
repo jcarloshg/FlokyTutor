@@ -11,16 +11,16 @@ const routes: Routes = [
     component: HomePublicationsComponent,
     children: [
       {
+        path: 'create_publicacion',
+        component: CreatePublicationsComponent,
+      },
+      {
         path: 'ver_publicaciones',
         component: ViewPublicationsComponent,
       },
       {
         path: ':id',
         component: PublicationComponent,
-      },
-      {
-        path: 'create_publicacion',
-        component: CreatePublicationsComponent,
       },
       {
         path: '**',

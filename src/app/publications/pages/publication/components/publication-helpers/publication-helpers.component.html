@@ -1,12 +1,22 @@
-<div class="text-black-50" style='display: flex; flex-direction: column; '>
+<div *ngIf="tutor" class="border-start px-3" style='display: flex; flex-direction: column; '>
+
+    <pre>{{tutor | json}}</pre>
+
+    <div>
+        <p>{{tutor.fullName}}</p>
+    </div>
+
+    <hr>
+
 
     <p>Esta publicación tiene:</p>
-
-    <div>
-        <small class="text-muted m-0">❤️ 10 Me gusta</small>
-    </div>
-    <div>
-        <small class="text-muted m-0">🗨️ 5 comentarios</small>
+    <div class="text-black-50 ">
+        <div>
+            <small class="text-muted m-0">❤️ 10 Me gusta</small>
+        </div>
+        <div>
+            <small class="text-muted m-0">🗨️ 5 comentarios</small>
+        </div>
     </div>
 
     <hr>
