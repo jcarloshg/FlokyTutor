@@ -1,16 +1,29 @@
 <div *ngIf="tutor" class="border-start px-3" style='display: flex; flex-direction: column; '>
 
-    <pre>{{tutor | json}}</pre>
+    <div class="card">
+        <div class="card-body">
 
-    <div>
-        <p>{{tutor.fullName}}</p>
+            <small class="fw-bolder mb-1">
+                Autor:
+            </small>
+
+            <div class="my-1">
+                <img class="rounded-circle" style="width: 35%;" src="./assets/src/header/not_photo.png">
+            </div>
+
+            <p class="m-0">{{tutor.fullName}}</p>
+
+            <small class="text-black-50">
+                <p>{{tutor.collegeName}}</p>
+            </small>
+
+        </div>
     </div>
 
-    <hr>
+    &nbsp;
 
-
-    <p>Esta publicación tiene:</p>
-    <div class="text-black-50 ">
+    <p class="m-0">Esta publicación tiene:</p>
+    <div class="text-black-50">
         <div>
             <small class="text-muted m-0">❤️ 10 Me gusta</small>
         </div>
@@ -19,6 +32,6 @@
         </div>
     </div>
 
-    <hr>
+    &nbsp;
 
 </div>

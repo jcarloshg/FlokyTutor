@@ -22,6 +22,8 @@ import { CategoriesBadgeComponent } from './pages/view-publications/components/c
 import { CategoriesBadgeDirective } from './pages/view-publications/components/categories-badge/categories-badge.directive';
 import { PublicationComponent } from './pages/publication/publication.component';
 import { PublicationHelpersComponent } from './pages/publication/components/publication-helpers/publication-helpers.component';
+import { PublicationViewerComponent } from './pages/publication/components/publication-viewer/publication-viewer.component';
+import { PublicationCommentsComponent } from './pages/publication/components/publication-comments/publication-comments.component';
 
 
 
@@ -45,6 +47,8 @@ import { PublicationHelpersComponent } from './pages/publication/components/publ
     EditPublicationComponent,
     ConfirmationDialogComponent,
     PostEditorComponent,
+    PublicationViewerComponent,
+    PublicationCommentsComponent,
   ],
   imports: [
     CommonModule,

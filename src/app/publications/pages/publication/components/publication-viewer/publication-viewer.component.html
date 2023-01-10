@@ -1,0 +1,20 @@
+<div class="mx-3">
+    <!-- title -->
+    <div style="display: flex; flex-direction: row;">
+        <div style='flex-grow: 1;'>
+            <p class="fs-2 font-weight-medium m-0">{{"How it works"}}</p>
+            <small style='display: flex; flex-direction: row;'>
+                <p class="fs-5 fw-lighter m-0">Jose Carlos Huerta Garcia</p>
+            </small>
+        </div>
+        <app-categories-badge [typeCategory]="'Leer'"></app-categories-badge>
+    </div>
+
+    &nbsp;
+
+    <!-- body -->
+    <div>
+        <p class="fs-6 text-body" [innerHTML]="this.post.body | sanitizeHtml"></p>
+    </div>
+
+</div>
