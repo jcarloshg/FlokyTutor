@@ -134,6 +134,15 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "category": {
+                    "name": "category",
+                    "isArray": false,
+                    "type": {
+                        "enum": "ActivityLevel"
+                    },
+                    "isRequired": true,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -557,5 +566,5 @@ export const schema = {
         }
     },
     "codegenVersion": "3.3.1",
-    "version": "99f5630039bf6d2e3c88c38e2eccc8fa"
+    "version": "2281b36799fc70caff6b30f6ac075226"
 };

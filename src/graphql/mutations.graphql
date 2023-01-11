@@ -1,0 +1,373 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateAccount(
+  $input: CreateAccountInput!
+  $condition: ModelAccountConditionInput
+) {
+  createAccount(input: $input, condition: $condition) {
+    id
+    fullName
+    email
+    collegeEnrollment
+    collegeName
+    role
+    posts {
+      items {
+        id
+        title
+        body
+        tutorAccountID
+        category
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateAccount(
+  $input: UpdateAccountInput!
+  $condition: ModelAccountConditionInput
+) {
+  updateAccount(input: $input, condition: $condition) {
+    id
+    fullName
+    email
+    collegeEnrollment
+    collegeName
+    role
+    posts {
+      items {
+        id
+        title
+        body
+        tutorAccountID
+        category
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteAccount(
+  $input: DeleteAccountInput!
+  $condition: ModelAccountConditionInput
+) {
+  deleteAccount(input: $input, condition: $condition) {
+    id
+    fullName
+    email
+    collegeEnrollment
+    collegeName
+    role
+    posts {
+      items {
+        id
+        title
+        body
+        tutorAccountID
+        category
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreatePost(
+  $input: CreatePostInput!
+  $condition: ModelPostConditionInput
+) {
+  createPost(input: $input, condition: $condition) {
+    id
+    title
+    body
+    tutorAccountID
+    category
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdatePost(
+  $input: UpdatePostInput!
+  $condition: ModelPostConditionInput
+) {
+  updatePost(input: $input, condition: $condition) {
+    id
+    title
+    body
+    tutorAccountID
+    category
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeletePost(
+  $input: DeletePostInput!
+  $condition: ModelPostConditionInput
+) {
+  deletePost(input: $input, condition: $condition) {
+    id
+    title
+    body
+    tutorAccountID
+    category
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateActivity(
+  $input: CreateActivityInput!
+  $condition: ModelActivityConditionInput
+) {
+  createActivity(input: $input, condition: $condition) {
+    id
+    name
+    activityLevel
+    activityType
+    question
+    questionBody
+    answers {
+      correct
+      incorrect_1
+      incorrect_2
+      incorrect_3
+    }
+    Topic {
+      id
+      name
+      conceptInformation
+      examples
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    activityTopicId
+  }
+}
+mutation UpdateActivity(
+  $input: UpdateActivityInput!
+  $condition: ModelActivityConditionInput
+) {
+  updateActivity(input: $input, condition: $condition) {
+    id
+    name
+    activityLevel
+    activityType
+    question
+    questionBody
+    answers {
+      correct
+      incorrect_1
+      incorrect_2
+      incorrect_3
+    }
+    Topic {
+      id
+      name
+      conceptInformation
+      examples
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    activityTopicId
+  }
+}
+mutation DeleteActivity(
+  $input: DeleteActivityInput!
+  $condition: ModelActivityConditionInput
+) {
+  deleteActivity(input: $input, condition: $condition) {
+    id
+    name
+    activityLevel
+    activityType
+    question
+    questionBody
+    answers {
+      correct
+      incorrect_1
+      incorrect_2
+      incorrect_3
+    }
+    Topic {
+      id
+      name
+      conceptInformation
+      examples
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    activityTopicId
+  }
+}
+mutation CreateActivitiesProgress(
+  $input: CreateActivitiesProgressInput!
+  $condition: ModelActivitiesProgressConditionInput
+) {
+  createActivitiesProgress(input: $input, condition: $condition) {
+    id
+    correctReading
+    wrongReading
+    correctWriting
+    wrongWriting
+    correctSpeaking
+    wrongSpeaking
+    correctListening
+    wrongListening
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateActivitiesProgress(
+  $input: UpdateActivitiesProgressInput!
+  $condition: ModelActivitiesProgressConditionInput
+) {
+  updateActivitiesProgress(input: $input, condition: $condition) {
+    id
+    correctReading
+    wrongReading
+    correctWriting
+    wrongWriting
+    correctSpeaking
+    wrongSpeaking
+    correctListening
+    wrongListening
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteActivitiesProgress(
+  $input: DeleteActivitiesProgressInput!
+  $condition: ModelActivitiesProgressConditionInput
+) {
+  deleteActivitiesProgress(input: $input, condition: $condition) {
+    id
+    correctReading
+    wrongReading
+    correctWriting
+    wrongWriting
+    correctSpeaking
+    wrongSpeaking
+    correctListening
+    wrongListening
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateTopic(
+  $input: CreateTopicInput!
+  $condition: ModelTopicConditionInput
+) {
+  createTopic(input: $input, condition: $condition) {
+    id
+    name
+    conceptInformation
+    examples
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateTopic(
+  $input: UpdateTopicInput!
+  $condition: ModelTopicConditionInput
+) {
+  updateTopic(input: $input, condition: $condition) {
+    id
+    name
+    conceptInformation
+    examples
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteTopic(
+  $input: DeleteTopicInput!
+  $condition: ModelTopicConditionInput
+) {
+  deleteTopic(input: $input, condition: $condition) {
+    id
+    name
+    conceptInformation
+    examples
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}

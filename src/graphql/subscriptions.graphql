@@ -1,0 +1,334 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateAccount($filter: ModelSubscriptionAccountFilterInput) {
+  onCreateAccount(filter: $filter) {
+    id
+    fullName
+    email
+    collegeEnrollment
+    collegeName
+    role
+    posts {
+      items {
+        id
+        title
+        body
+        tutorAccountID
+        category
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateAccount($filter: ModelSubscriptionAccountFilterInput) {
+  onUpdateAccount(filter: $filter) {
+    id
+    fullName
+    email
+    collegeEnrollment
+    collegeName
+    role
+    posts {
+      items {
+        id
+        title
+        body
+        tutorAccountID
+        category
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteAccount($filter: ModelSubscriptionAccountFilterInput) {
+  onDeleteAccount(filter: $filter) {
+    id
+    fullName
+    email
+    collegeEnrollment
+    collegeName
+    role
+    posts {
+      items {
+        id
+        title
+        body
+        tutorAccountID
+        category
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreatePost($filter: ModelSubscriptionPostFilterInput) {
+  onCreatePost(filter: $filter) {
+    id
+    title
+    body
+    tutorAccountID
+    category
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdatePost($filter: ModelSubscriptionPostFilterInput) {
+  onUpdatePost(filter: $filter) {
+    id
+    title
+    body
+    tutorAccountID
+    category
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeletePost($filter: ModelSubscriptionPostFilterInput) {
+  onDeletePost(filter: $filter) {
+    id
+    title
+    body
+    tutorAccountID
+    category
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateActivity($filter: ModelSubscriptionActivityFilterInput) {
+  onCreateActivity(filter: $filter) {
+    id
+    name
+    activityLevel
+    activityType
+    question
+    questionBody
+    answers {
+      correct
+      incorrect_1
+      incorrect_2
+      incorrect_3
+    }
+    Topic {
+      id
+      name
+      conceptInformation
+      examples
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    activityTopicId
+  }
+}
+subscription OnUpdateActivity($filter: ModelSubscriptionActivityFilterInput) {
+  onUpdateActivity(filter: $filter) {
+    id
+    name
+    activityLevel
+    activityType
+    question
+    questionBody
+    answers {
+      correct
+      incorrect_1
+      incorrect_2
+      incorrect_3
+    }
+    Topic {
+      id
+      name
+      conceptInformation
+      examples
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    activityTopicId
+  }
+}
+subscription OnDeleteActivity($filter: ModelSubscriptionActivityFilterInput) {
+  onDeleteActivity(filter: $filter) {
+    id
+    name
+    activityLevel
+    activityType
+    question
+    questionBody
+    answers {
+      correct
+      incorrect_1
+      incorrect_2
+      incorrect_3
+    }
+    Topic {
+      id
+      name
+      conceptInformation
+      examples
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    activityTopicId
+  }
+}
+subscription OnCreateActivitiesProgress(
+  $filter: ModelSubscriptionActivitiesProgressFilterInput
+) {
+  onCreateActivitiesProgress(filter: $filter) {
+    id
+    correctReading
+    wrongReading
+    correctWriting
+    wrongWriting
+    correctSpeaking
+    wrongSpeaking
+    correctListening
+    wrongListening
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateActivitiesProgress(
+  $filter: ModelSubscriptionActivitiesProgressFilterInput
+) {
+  onUpdateActivitiesProgress(filter: $filter) {
+    id
+    correctReading
+    wrongReading
+    correctWriting
+    wrongWriting
+    correctSpeaking
+    wrongSpeaking
+    correctListening
+    wrongListening
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteActivitiesProgress(
+  $filter: ModelSubscriptionActivitiesProgressFilterInput
+) {
+  onDeleteActivitiesProgress(filter: $filter) {
+    id
+    correctReading
+    wrongReading
+    correctWriting
+    wrongWriting
+    correctSpeaking
+    wrongSpeaking
+    correctListening
+    wrongListening
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateTopic($filter: ModelSubscriptionTopicFilterInput) {
+  onCreateTopic(filter: $filter) {
+    id
+    name
+    conceptInformation
+    examples
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateTopic($filter: ModelSubscriptionTopicFilterInput) {
+  onUpdateTopic(filter: $filter) {
+    id
+    name
+    conceptInformation
+    examples
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteTopic($filter: ModelSubscriptionTopicFilterInput) {
+  onDeleteTopic(filter: $filter) {
+    id
+    name
+    conceptInformation
+    examples
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}

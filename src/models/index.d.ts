@@ -98,6 +98,7 @@ type EagerPost = {
   readonly title: string;
   readonly body: string;
   readonly tutorAccountID: string;
+  readonly category: ActivityLevel | keyof typeof ActivityLevel;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -107,6 +108,7 @@ type LazyPost = {
   readonly title: string;
   readonly body: string;
   readonly tutorAccountID: string;
+  readonly category: ActivityLevel | keyof typeof ActivityLevel;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
