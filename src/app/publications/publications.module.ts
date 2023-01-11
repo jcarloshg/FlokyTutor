@@ -24,6 +24,7 @@ import { PublicationComponent } from './pages/publication/publication.component'
 import { PublicationHelpersComponent } from './pages/publication/components/publication-helpers/publication-helpers.component';
 import { PublicationViewerComponent } from './pages/publication/components/publication-viewer/publication-viewer.component';
 import { PublicationCommentsComponent } from './pages/publication/components/publication-comments/publication-comments.component';
+import { PublicationCategoryInputComponent } from './pages/create-publications/components/publication-category-input/publication-category-input.component';
 
 
 
@@ -49,6 +50,7 @@ import { PublicationCommentsComponent } from './pages/publication/components/pub
     PostEditorComponent,
     PublicationViewerComponent,
     PublicationCommentsComponent,
+    PublicationCategoryInputComponent,
   ],
   imports: [
     CommonModule,

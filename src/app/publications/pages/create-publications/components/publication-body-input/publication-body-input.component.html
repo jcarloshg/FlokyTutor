@@ -1,13 +1,11 @@
-<label for="InputBodyPost" class="form-label m-1">Cuerpo de la publicación.</label>
+<small>
+    <label for="InputBodyPost" class="form-label m-1">Cuerpo de la publicación.</label>
+</small>
 
 <div class="bg-white" id="InputBodyPost">
     <quill-editor [formControl]="formControl"></quill-editor>
 </div>
 
-<div
-    class="text-danger"
-    style="font-size: 14px"
-    *ngIf="showMessage()"
->
+<div class="text-danger" style="font-size: 14px" *ngIf="showMessage()">
     {{ getErrorMessage() }}
 </div>
