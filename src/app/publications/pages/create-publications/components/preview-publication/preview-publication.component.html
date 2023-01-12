@@ -1,8 +1,30 @@
 <div class="my-2 bg-greyEEEEEE px-5 py-4 h-auto rounded-3">
     <div class="col-12">
-        <p class="h2">{{this.inputCreatePost.title}}</p>
-        <div [innerHTML]="this.inputCreatePost.body | sanitizeHtml"></div>
+
+        <!-- title -->
+        <div style="display: flex; flex-direction: row;">
+
+            <div style="flex-grow: 1;">
+                <p class="h2">{{this.inputCreatePost.title}}</p>
+                <small style='display: flex; flex-direction: row;'>
+                    <p class="fs-5 fw-lighter m-0">Jose Carlos Huerta Garcia</p>
+                </small>
+            </div>
+
+            <app-categories-badge [category]="this.inputCreatePost.category"></app-categories-badge>
+
+        </div>
+
+
+        <!-- body -->
+        <div [innerHTML]="this.inputCreatePost.body | sanitizeHtml">
+        </div>
+
+
     </div>
+
+    &nbsp;
+
     <div class="col-12">
         <div class="d-flex flex-row-reverse g-4">
             <button type="button" class="btn btn-primary w-auto" (click)="createPublication()">
@@ -15,5 +37,3 @@
         </div>
     </div>
 </div>
-
-<pre>{{this.inputCreatePost | json}}</pre>

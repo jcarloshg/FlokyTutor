@@ -4,10 +4,10 @@
 <select class="form-select" id="ForNameInput" [value]="value" [(ngModel)]="value" (ngModelChange)="onChange(value)"
     (blur)="onTouched(true)">
     <option value="NOT_VALUE">Selecciona una categoría</option>
-    <option [value]="activityTypeOptions.LISTENING">Escuchar</option>
-    <option [value]="activityTypeOptions.READING">Leer</option>
-    <option [value]="activityTypeOptions.TALKING">Hablar</option>
-    <option [value]="activityTypeOptions.WRITING">Escribir</option>
+    <option value="LISTENING">Escuchar</option>
+    <option value="READING">Leer</option>
+    <option value="TALKING">Hablar</option>
+    <option value="WRITING">Escribir</option>
 </select>
 <div class="text-danger" style="font-size: 14px" *ngIf="showMessage()">
     {{ getErrorMessage() }}

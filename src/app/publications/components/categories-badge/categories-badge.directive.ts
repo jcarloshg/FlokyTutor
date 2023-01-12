@@ -1,4 +1,5 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { ActivityType } from 'src/models';
 
 @Directive({
   selector: '[appCategoriesBadge]'
@@ -7,11 +8,11 @@ export class CategoriesBadgeDirective implements OnInit {
 
   public categoriesBadgeHTMLElement: ElementRef<HTMLElement>;
 
-  @Input() set typeCategory(type: string) {
-    if (type == "Leer") this.setStyleReading();
-    if (type == "Oído") this.setStyleListen();
-    if (type == "Hablar") this.setStyleSpeaking();
-    if (type == "Escribir") this.setStyleWriting();
+  @Input() set typeCategory(type: "WRITING" | "READING" | "TALKING" | "LISTENING") {
+    if (type == ActivityType.READING) this.setStyleReading();
+    if (type == ActivityType.LISTENING) this.setStyleListen();
+    if (type == ActivityType.TALKING) this.setStyleSpeaking();
+    if (type == ActivityType.WRITING) this.setStyleWriting();
   }
 
   constructor(private elementRef: ElementRef<HTMLElement>) {

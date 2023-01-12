@@ -18,17 +18,14 @@ import { ActivityType } from 'src/models';
 })
 export class PublicationCategoryInputComponent extends CustomInput {
 
-  @Input() formControl!: FormControl<ActivityType | null>;
-  public value: ActivityType | null = null;
-  public activityTypeOptions = ActivityType;
+  @Input() formControl!: FormControl<"WRITING" | "READING" | "TALKING" | "LISTENING">;
+  public value: "WRITING" | "READING" | "TALKING" | "LISTENING" = "LISTENING";
 
   constructor(
     private validatorService: ValidatorService,
   ) {
     const messageError: Map<string, string> = validatorService.postTitle.getMessageErrors();
     super(messageError);
-
-    // this.value = ActivityType.LISTENING;
   }
 
 }
