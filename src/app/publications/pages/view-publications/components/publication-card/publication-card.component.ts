@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Post } from 'src/models';
+import { Account, Post } from 'src/models';
+import { AuthenticateAWSService } from '../../../../../authenticate/services/authenticate-aws.service';
 
 @Component({
   selector: 'app-publication-card',
@@ -10,12 +11,14 @@ import { Post } from 'src/models';
 export class PublicationCardComponent implements OnInit {
 
   @Input() post!: Post;
+  // public tutor: Account;
 
   constructor(
     private router: Router,
+    public authenticateAWSService: AuthenticateAWSService,
   ) { }
 
-  ngOnInit(): void { }
+  async ngOnInit(): Promise<void> { }
 
   goToPublication() {
     this.router.navigate(['./incio/publicaciones/', this.post.id]);
