@@ -23,7 +23,7 @@ const routes: Routes = [
       },
       {
         path: 'publicaciones',
-        loadChildren: () => import('../publications/publications.module').then(m => m.PublicationsModule),
+        loadChildren: () => import('../manage_posts/publications.module').then(m => m.PublicationsModule),
       },
       {
         path: '**',

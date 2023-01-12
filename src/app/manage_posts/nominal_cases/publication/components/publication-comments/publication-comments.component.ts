@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticateAWSService } from 'src/app/authenticate/services/authenticate-aws.service';
-import { PublicationAWSService } from 'src/app/publications/service/publication-aws.service';
+import { PublicationAWSService } from 'src/app/manage_posts/service/publication-aws.service';
 import { Account } from 'src/models';
 
 @Component({
