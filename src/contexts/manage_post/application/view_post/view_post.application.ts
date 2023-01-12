@@ -1,6 +1,6 @@
-import { ViewPostRepository } from "../../domain/view_post/view_post.repository";
-import { GetPostsRepository } from "../../domain/view_post/repository/GetPost.repository";
-import { GetPostByIDRepository } from "../../domain/view_post/repository/getPostByID.respository";
+import { ViewPostRepository } from "../../domain/view_post/repository/view_post.repository";
+import { GetPostsRepository } from "../../domain/view_post/repository/get-post.repository";
+import { GetPostByIDRepository } from "../../domain/view_post/repository/get-post-by-id.repository";
 import { Post } from "../../../shared/domain/models";
 
 
@@ -11,16 +11,17 @@ export class ViewPost implements ViewPostRepository {
         private getPostByIDRepository: GetPostByIDRepository,
     ) { }
 
+
     //============================================================
     // nominal tracking
     //============================================================
     public async getPosts(): Promise<Post[]> {
-        const posts: Post[] = await this.getPostsRepository.getPosts();
+        const posts: Post[] = await this.getPostsRepository.run();
         return posts;
     }
 
     public async getPostByID(ID: string): Promise<Post | null> {
-        const post: Post | null = await this.getPostByIDRepository.getPostByID(ID);
+        const post: Post | null = await this.getPostByIDRepository.run(ID);
         return post;
     }
 

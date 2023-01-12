@@ -1,4 +1,4 @@
-import { Post } from "../../../shared/domain/models";
+import { Post } from "../../../../shared/domain/models";
 
 export interface ViewPostRepository {
 
