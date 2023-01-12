@@ -138,7 +138,7 @@ export const schema = {
                     "name": "category",
                     "isArray": false,
                     "type": {
-                        "enum": "ActivityLevel"
+                        "enum": "ActivityType"
                     },
                     "isRequired": true,
                     "attributes": []
@@ -508,6 +508,15 @@ export const schema = {
                 "ADMIN"
             ]
         },
+        "ActivityType": {
+            "name": "ActivityType",
+            "values": [
+                "WRITING",
+                "READING",
+                "TALKING",
+                "LISTENING"
+            ]
+        },
         "ActivityLevel": {
             "name": "ActivityLevel",
             "values": [
@@ -518,15 +527,6 @@ export const schema = {
                 "C1",
                 "C2",
                 "PRUEBA_DROP_THIS"
-            ]
-        },
-        "ActivityType": {
-            "name": "ActivityType",
-            "values": [
-                "WRITING",
-                "READING",
-                "TALKING",
-                "LISTENING"
             ]
         }
     },
@@ -566,5 +566,5 @@ export const schema = {
         }
     },
     "codegenVersion": "3.3.1",
-    "version": "2281b36799fc70caff6b30f6ac075226"
+    "version": "324e500d01aff0a7a00d11a27072e210"
 };

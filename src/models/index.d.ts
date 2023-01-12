@@ -8,6 +8,13 @@ export enum Role {
   ADMIN = "ADMIN"
 }
 
+export enum ActivityType {
+  WRITING = "WRITING",
+  READING = "READING",
+  TALKING = "TALKING",
+  LISTENING = "LISTENING"
+}
+
 export enum ActivityLevel {
   A1 = "A1",
   A2 = "A2",
@@ -16,13 +23,6 @@ export enum ActivityLevel {
   C1 = "C1",
   C2 = "C2",
   PRUEBA_DROP_THIS = "PRUEBA_DROP_THIS"
-}
-
-export enum ActivityType {
-  WRITING = "WRITING",
-  READING = "READING",
-  TALKING = "TALKING",
-  LISTENING = "LISTENING"
 }
 
 type EagerAnswer = {
@@ -98,7 +98,7 @@ type EagerPost = {
   readonly title: string;
   readonly body: string;
   readonly tutorAccountID: string;
-  readonly category: ActivityLevel | keyof typeof ActivityLevel;
+  readonly category: ActivityType | keyof typeof ActivityType;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -108,7 +108,7 @@ type LazyPost = {
   readonly title: string;
   readonly body: string;
   readonly tutorAccountID: string;
-  readonly category: ActivityLevel | keyof typeof ActivityLevel;
+  readonly category: ActivityType | keyof typeof ActivityType;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

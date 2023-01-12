@@ -24,7 +24,9 @@ export class CreatePublicationsComponent {
     this.inputCreatePost = {
       title: '',
       body: '',
+      category: "LISTENING",
       isValidTitle: false,
+      isValidCategory: false,
       isValidBody: false
     };
   }

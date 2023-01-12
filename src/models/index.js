@@ -8,6 +8,13 @@ const Role = {
   "ADMIN": "ADMIN"
 };
 
+const ActivityType = {
+  "WRITING": "WRITING",
+  "READING": "READING",
+  "TALKING": "TALKING",
+  "LISTENING": "LISTENING"
+};
+
 const ActivityLevel = {
   "A1": "A1",
   "A2": "A2",
@@ -16,13 +23,6 @@ const ActivityLevel = {
   "C1": "C1",
   "C2": "C2",
   "PRUEBA_DROP_THIS": "PRUEBA_DROP_THIS"
-};
-
-const ActivityType = {
-  "WRITING": "WRITING",
-  "READING": "READING",
-  "TALKING": "TALKING",
-  "LISTENING": "LISTENING"
 };
 
 const { Account, Post, Activity, Topic, ActivitiesProgress, Answer } = initSchema(schema);
@@ -34,7 +34,7 @@ export {
   Topic,
   ActivitiesProgress,
   Role,
-  ActivityLevel,
   ActivityType,
+  ActivityLevel,
   Answer
 };

@@ -20,6 +20,7 @@ export class EditPublicationComponent implements OnInit {
   ) {
     this.publicationForm = this.formBuilder.group({
       title: ['', validatorService.postTitle.getValidators()],
+      category: ['', validatorService.postCategory.getValidators()],
       body: ['', validatorService.postBody.getValidators()],
     });
   }
@@ -27,6 +28,7 @@ export class EditPublicationComponent implements OnInit {
   ngOnInit(): void {
     this.publicationForm.reset({
       title: this.inputCreatePost.title,
+      category: this.inputCreatePost.category,
       body: this.inputCreatePost.body,
     });
   }
@@ -40,7 +42,9 @@ export class EditPublicationComponent implements OnInit {
     this.viewPreviewEvent.emit({
       title: this.publicationForm.get('title')?.value ?? '',
       body: this.publicationForm.get('body')?.value ?? '',
+      category: this.publicationForm.get('category')?.value ?? '',
       isValidTitle: this.publicationForm.get('title')?.valid ?? false,
+      isValidCategory: this.publicationForm.get('category')?.valid ?? false,
       isValidBody: this.publicationForm.get('body')?.valid ?? false,
     })
 

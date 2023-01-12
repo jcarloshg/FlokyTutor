@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { DataStore, Predicates } from 'aws-amplify';
 import { InputCreatePost, InputSearchPosts, ManagePost, PostResponse } from 'src/domain/useCases/managePost.useCase.interface';
 import { Loading } from '../../shared/services/loading';
-import { ActivityLevel, EagerPost, Post } from 'src/models';
+import { ActivityType, EagerPost, Post } from 'src/models';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,7 @@ export class PublicationAWSService extends Loading implements ManagePost {
         new Post({
           title: inputCreatePost.title,
           body: inputCreatePost.body,
-          category: ActivityLevel.A1,
+          category: ActivityType.READING,
           tutorAccountID: inputCreatePost.tutorAccountID,
         })
       );

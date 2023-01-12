@@ -23,12 +23,18 @@ export class PreviewPublicationComponent {
 
   public createPublication() {
 
-    const isValidPost = this.inputCreatePost.isValidTitle && this.inputCreatePost.body;
+    const isValidPost =
+      this.inputCreatePost.isValidTitle &&
+      this.inputCreatePost.isValidCategory &&
+      this.inputCreatePost.body;
 
     if (isValidPost == false) {
-      const messageError = this.inputCreatePost.isValidTitle == false
-        ? 'El "titulo" es invalido"'
-        : 'El "cuerpo de la publicación" es invalido"';
+
+      let messageError = '';
+      if (this.inputCreatePost.isValidBody == false) messageError = 'El "cuerpo de la publicación" es invalido';
+      if (this.inputCreatePost.isValidCategory == false) messageError = 'Selecciona una "categoría"';
+      if (this.inputCreatePost.isValidTitle == false) messageError = 'El "titulo de la publicación" es invalido';
+
       this.customToastService.launchToast({
         typeToast: 'error',
         message: messageError,

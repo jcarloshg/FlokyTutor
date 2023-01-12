@@ -1,11 +1,14 @@
 <small>
     <label for="ForNameInput" class="form-label">Nivel</label>
 </small>
-<select class="form-select" id="ForNameInput" aria-label="Default select example" formControlName="activityLevel">
-    <option value="A1">A1</option>
-    <option value="A2">A2</option>
-    <option value="B1">B1</option>
-    <option value="B2">B2</option>
-    <option value="C1">C1</option>
-    <option value="C2">C2</option>
+<select class="form-select" id="ForNameInput" [value]="value" [(ngModel)]="value" (ngModelChange)="onChange(value)"
+    (blur)="onTouched(true)">
+    <option value="NOT_VALUE">Selecciona una categoría</option>
+    <option [value]="activityTypeOptions.LISTENING">Escuchar</option>
+    <option [value]="activityTypeOptions.READING">Leer</option>
+    <option [value]="activityTypeOptions.TALKING">Hablar</option>
+    <option [value]="activityTypeOptions.WRITING">Escribir</option>
 </select>
+<div class="text-danger" style="font-size: 14px" *ngIf="showMessage()">
+    {{ getErrorMessage() }}
+</div>
