@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Account, Post } from 'src/models';
 import { AuthenticateAWSService } from '../../../../../authenticate/services/authenticate-aws.service';
+import { ViewPostService } from 'src/app/manage_posts/service/view-post.service';
 
 @Component({
   selector: 'app-publication-card',
@@ -11,26 +12,34 @@ import { AuthenticateAWSService } from '../../../../../authenticate/services/aut
 export class PublicationCardComponent implements OnInit {
 
   @Input() post!: Post;
-  // public tutor: Account;
+  public postAuthor: Account | null = null;
 
   constructor(
     private router: Router,
     public authenticateAWSService: AuthenticateAWSService,
+    public viewPostService: ViewPostService,
   ) { }
 
-  async ngOnInit(): Promise<void> { }
+  async ngOnInit(): Promise<void> {
+    await this.getPostAuthor(this.post.tutorAccountID);
+  }
 
   goToPublication() {
     this.router.navigate(['./incio/publicaciones/', this.post.id]);
   }
 
+
+  //============================================================
+  // auxiliary
+  //============================================================
   public get category(): string {
     return this.post.category as string;
   }
 
-  _mouseenter() {
+  public async getPostAuthor(authorID: string) {
+    const account: Account | null = await this.viewPostService.getPostAuthor(authorID);
+    this.postAuthor = account;
   }
 
-  _mouseleave() { }
-
 }
+

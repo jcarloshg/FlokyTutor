@@ -1,4 +1,4 @@
-import { Post } from "../../../../shared/domain/models";
+import { Post, Account } from "../../../../shared/domain/models";
 
 export interface ViewPostRepository {
 
@@ -9,8 +9,8 @@ export interface ViewPostRepository {
     // registerComment();
 
 
-    // // auxiliary methods
-    // getPostAuthor();
+    // auxiliary methods
+    getPostAuthor(ID: string): Promise<Account | null>;
 
 
     // // tracking alternative nominal

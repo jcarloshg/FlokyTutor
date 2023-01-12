@@ -1,14 +1,15 @@
 import { ViewPostRepository } from "../../domain/view_post/repository/view_post.repository";
 import { GetPostsRepository } from "../../domain/view_post/repository/get-post.repository";
 import { GetPostByIDRepository } from "../../domain/view_post/repository/get-post-by-id.repository";
-import { Post } from "../../../shared/domain/models";
-
+import { GetAccountByIDRepository } from "src/contexts/shared/domain/account/get-account-by-id.repository";
+import { Account, Post } from "../../../shared/domain/models";
 
 export class ViewPost implements ViewPostRepository {
 
     constructor(
         private getPostsRepository: GetPostsRepository,
         private getPostByIDRepository: GetPostByIDRepository,
+        private getAccountByIDRepository: GetAccountByIDRepository,
     ) { }
 
 
@@ -31,7 +32,10 @@ export class ViewPost implements ViewPostRepository {
     //============================================================
     // auxiliary methods
     //============================================================
-    // public getPostAuthor() { }
+    public async getPostAuthor(ID: string): Promise<Account | null> {
+        const account: Account | null = await this.getAccountByIDRepository.run(ID);
+        return account;
+    }
 
 
     //============================================================

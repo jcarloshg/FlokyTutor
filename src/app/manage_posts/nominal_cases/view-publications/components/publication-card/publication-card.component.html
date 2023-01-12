@@ -1,4 +1,4 @@
-<div class="card w-100" (click)="goToPublication()">
+<div *ngIf="postAuthor && post" class="card w-100" (click)="goToPublication()">
     <div class="card-body p-3">
 
         <div style='display: flex; flex-direction: row;'>
@@ -6,7 +6,9 @@
             <div style='flex-grow: 1;'>
                 <p class="fs-5 font-weight-medium m-0">{{post.title}}</p>
                 <small class="fw-lighter m-0">
-                    <small class="fw-light m-0"> Jose Carlos Huerta Garcia </small>
+                    <small class="fw-light m-0">
+                        {{this.postAuthor.fullName}}
+                    </small>
                     | {{this.post.createdAt | date: "fullDate":"GMT-6":"es-MX"}}
                 </small>
             </div>
