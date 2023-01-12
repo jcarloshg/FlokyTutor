@@ -1,9 +1,9 @@
 // import { GetPost } from "../../../domain/view_post/repository/GetPost.repository";
 import { DataStore, Predicates } from 'aws-amplify';
 import { GetPostsRepository } from '../../../domain/view_post/repository/GetPost.repository';
-import { EagerPost, Post } from '../../../../shared/domain/models/';
+import { EagerPost, Post } from '../../../../shared/domain/models';
 
-export class GetPostAWS implements GetPostsRepository {
+export class GetPosts_AWS implements GetPostsRepository {
 
     constructor() { }
 
