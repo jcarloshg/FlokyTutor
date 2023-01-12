@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PublicationAWSService } from '../../service/publication-aws.service';
+import { ViewPostService } from '../../service/view-post.service';
 import { Post } from 'src/models';
 
 @Component({
@@ -14,7 +14,7 @@ export class PublicationComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    public publicationAWSService: PublicationAWSService,
+    public viewPostService: ViewPostService,
   ) { }
 
   async ngOnInit() {
@@ -24,7 +24,7 @@ export class PublicationComponent implements OnInit {
   private async _getPost() {
     const postIDToSearch = this.activatedRoute.snapshot.paramMap.get('id') || '';
     if (postIDToSearch == '') return;
-    const postResponse = await this.publicationAWSService.getPostByID(postIDToSearch);
+    const postResponse = await this.viewPostService.getPostByID(postIDToSearch);
     this.post = postResponse;
   }
 

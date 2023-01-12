@@ -13,17 +13,11 @@ export class PostsViewerComponent implements OnInit {
   public posts: Post[] = [];
 
   constructor(
-    // public publicationAWSService: PublicationAWSService,
     public viewPostService: ViewPostService,
   ) { }
 
   async ngOnInit(): Promise<void> {
-
     this.posts = await this.viewPostService.getPosts();
-
-
-    // const searchPostsResponse = await this.publicationAWSService.searchPosts({ byDate: '', byTitle: '' });
-    // this.posts = searchPostsResponse.data as Post[] ?? [];
   }
 
 }
