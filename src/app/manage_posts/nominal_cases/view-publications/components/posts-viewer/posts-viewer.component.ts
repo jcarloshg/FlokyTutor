@@ -19,7 +19,7 @@ export class PostsViewerComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
 
-    // this.posts = await this.viewPostService.getPosts();
+    this.posts = await this.viewPostService.getPosts();
 
 
     // const searchPostsResponse = await this.publicationAWSService.searchPosts({ byDate: '', byTitle: '' });
