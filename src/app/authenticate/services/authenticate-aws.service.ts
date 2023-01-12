@@ -26,6 +26,7 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
     super();
     (
       async () => {
+        // await DataStore.clear();
         await DataStore.start();
       }
     )();

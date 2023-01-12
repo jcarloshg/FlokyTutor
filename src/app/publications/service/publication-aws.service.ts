@@ -22,15 +22,22 @@ export class PublicationAWSService extends Loading implements ManagePost {
 
     this.isLoading = true;
 
+    const getCategory = (category: "WRITING" | "READING" | "TALKING" | "LISTENING"): ActivityType => {
+      if (category == ActivityType.LISTENING) return ActivityType.LISTENING;
+      if (category == ActivityType.READING) return ActivityType.READING;
+      if (category == ActivityType.TALKING) return ActivityType.TALKING;
+      if (category == ActivityType.WRITING) return ActivityType.WRITING;
+      return ActivityType.LISTENING;
+    }
+
     try {
-      const postCreated = await DataStore.save(
-        new Post({
-          title: inputCreatePost.title,
-          body: inputCreatePost.body,
-          category: ActivityType.READING,
-          tutorAccountID: inputCreatePost.tutorAccountID,
-        })
-      );
+      const newPost = new Post({
+        title: inputCreatePost.title,
+        body: inputCreatePost.body,
+        category: getCategory(inputCreatePost.category),
+        tutorAccountID: inputCreatePost.tutorAccountID,
+      });
+      const postCreated = await DataStore.save(newPost);
       this.isLoading = false;
       return {
         isOk: true,

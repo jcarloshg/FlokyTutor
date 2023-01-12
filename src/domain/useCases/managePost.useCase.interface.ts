@@ -1,4 +1,4 @@
-import { Post } from "src/models";
+import { ActivityType, Post } from "src/models";
 
 export interface ManagePost {
     createPost(inputCreatePost: InputCreatePost): Promise<PostResponse>;
@@ -15,6 +15,7 @@ export interface PostResponse {
 export interface InputCreatePost {
     title: string;
     body: string;
+    category: "WRITING" | "READING" | "TALKING" | "LISTENING",
     tutorAccountID: string;
 }
 export interface InputSearchPosts {

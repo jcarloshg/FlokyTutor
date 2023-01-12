@@ -37,13 +37,15 @@ export class CreatePublicationsComponent {
     const currentTutor = getCurrentTutorResponse.data as Account;
 
     const postTitle = inputCreatePost.title;
+    const postCategory = inputCreatePost.category;
     const postBody = inputCreatePost.body;
     const tutorID = currentTutor.id;
 
     const createPostResponse = await this.publicationAWSService.createPost({
-      tutorAccountID: tutorID,
       title: postTitle,
+      category: postCategory,
       body: postBody,
+      tutorAccountID: tutorID,
     });
 
     if (createPostResponse.isOk == false) {

@@ -21,7 +21,12 @@ export class PublicationCardComponent implements OnInit {
     this.router.navigate(['./incio/publicaciones/', this.post.id]);
   }
 
-  _mouseenter() { }
+  public get category(): string {
+    return this.post.category as string;
+  }
+
+  _mouseenter() {
+  }
 
   _mouseleave() { }
 
