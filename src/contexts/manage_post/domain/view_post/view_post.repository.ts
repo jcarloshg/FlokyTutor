@@ -5,16 +5,16 @@ export interface ViewPostRepository {
 
     // nominal tracking
     getPosts(): Promise<Post[]>;
-    getPostByID();
-    registerComment();
+    getPostByID(ID: string): Promise<Post | null>;
+    // registerComment();
 
 
-    // auxiliary methods
-    getPostAuthor();
+    // // auxiliary methods
+    // getPostAuthor();
 
 
-    // tracking alternative nominal
-    filterPosts();
-    giveLikeToPost();
+    // // tracking alternative nominal
+    // filterPosts();
+    // giveLikeToPost();
 
 }

@@ -1,5 +1,6 @@
 import { ViewPostRepository } from "../../domain/view_post/view_post.repository";
 import { GetPostsRepository } from "../../domain/view_post/repository/GetPost.repository";
+import { GetPostByIDRepository } from "../../domain/view_post/repository/getPostByID.respository";
 import { Post } from "../../../shared/domain/models";
 
 
@@ -7,6 +8,7 @@ export class ViewPost implements ViewPostRepository {
 
     constructor(
         private getPostsRepository: GetPostsRepository,
+        private getPostByIDRepository: GetPostByIDRepository,
     ) { }
 
     //============================================================
@@ -17,17 +19,25 @@ export class ViewPost implements ViewPostRepository {
         return posts;
     }
 
-    public getPostByID() { }
-    public registerComment() { }
+    public async getPostByID(ID: string): Promise<Post | null> {
+        const post: Post | null = await this.getPostByIDRepository.getPostByID(ID);
+        return post;
+    }
+
+    // public registerComment() { }
 
 
+    //============================================================
     // auxiliary methods
-    public getPostAuthor() { }
+    //============================================================
+    // public getPostAuthor() { }
 
 
+    //============================================================
     // tracking alternative nominal
-    public filterPosts() { }
-    public giveLikeToPost() { }
+    //============================================================
+    // public filterPosts() { }
+    // public giveLikeToPost() { }
 
 
 }
