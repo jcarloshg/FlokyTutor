@@ -11,6 +11,7 @@ export interface ViewPostRepository {
 
     // auxiliary methods
     getPostAuthor(ID: string): Promise<Account | null>;
+    getCurrentTutorLogged(): Promise<Account | null>;
 
 
     // // tracking alternative nominal

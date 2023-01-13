@@ -2,7 +2,8 @@ import { ViewPostRepository } from "../../domain/view_post/repository/view_post.
 import { GetPostsRepository } from "../../domain/view_post/repository/get-post.repository";
 import { GetPostByIDRepository } from "../../domain/view_post/repository/get-post-by-id.repository";
 import { GetAccountByIDRepository } from "src/contexts/shared/domain/account/get-account-by-id.repository";
-import { Account, Post } from "../../../shared/domain/models";
+import { GetCurrentTutorLoggedRepository } from "src/contexts/authenticate/domain/repository/get-current-tutor-logged.repository";
+import { Account, EagerAccount, Post } from "../../../shared/domain/models";
 
 export class ViewPost implements ViewPostRepository {
 
@@ -10,6 +11,7 @@ export class ViewPost implements ViewPostRepository {
         private getPostsRepository: GetPostsRepository,
         private getPostByIDRepository: GetPostByIDRepository,
         private getAccountByIDRepository: GetAccountByIDRepository,
+        private getCurrentTutorLoggedRepository: GetCurrentTutorLoggedRepository,
     ) { }
 
 
@@ -33,7 +35,15 @@ export class ViewPost implements ViewPostRepository {
     // auxiliary methods
     //============================================================
     public async getPostAuthor(ID: string): Promise<Account | null> {
-        const account: Account | null = await this.getAccountByIDRepository.run(ID);
+        const account: Account | null =
+            await this.getAccountByIDRepository.run(ID);
+        return account;
+    }
+
+
+    public async getCurrentTutorLogged(): Promise<EagerAccount | null> {
+        const account: Account | null =
+            await this.getCurrentTutorLoggedRepository.run();
         return account;
     }
 
