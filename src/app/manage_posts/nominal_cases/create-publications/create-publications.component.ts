@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CreatePostService } from './service/view-post.service';
 import { InputCreatePost } from './models/publication';
-import { PublicationAWSService } from '../../service/publication-aws.service';
-import { AuthenticateAWSService } from 'src/app/authenticate/services/authenticate-aws.service';
 import { CustomToastService } from '../../../shared/services/custom-toast.service';
-import { Account } from 'src/models';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,8 +15,7 @@ export class CreatePublicationsComponent {
 
   constructor(
     private router: Router,
-    public publicationAWSService: PublicationAWSService,
-    public authenticateAWSService: AuthenticateAWSService,
+    private createPostService: CreatePostService,
     public customToastService: CustomToastService,
   ) {
     this.inputCreatePost = {
@@ -33,27 +30,33 @@ export class CreatePublicationsComponent {
 
   public async createPost(inputCreatePost: InputCreatePost) {
 
-    const getCurrentTutorResponse = await this.authenticateAWSService.getCurrentTutor();
-    const currentTutor = getCurrentTutorResponse.data as Account;
+    const currentTutorLogged = await this.createPostService.getCurrentTutorLogged();
+    if (!currentTutorLogged) {
+      this.customToastService.launchToast({ typeToast: 'error', message: 'Ocurrió un error inesperado. :(' });
+      return;
+    }
 
     const postTitle = inputCreatePost.title;
     const postCategory = inputCreatePost.category;
     const postBody = inputCreatePost.body;
-    const tutorID = currentTutor.id;
+    const tutorID = currentTutorLogged!.id;
 
-    const createPostResponse = await this.publicationAWSService.createPost({
+    const postCreated = await this.createPostService.createPost({
       title: postTitle,
       category: postCategory,
       body: postBody,
       tutorAccountID: tutorID,
     });
 
-    if (createPostResponse.isOk == false) {
-      this.customToastService.launchToast({ typeToast: 'error', message: createPostResponse.message! });
+    const wasCreatedPost = postCreated ? true : false;
+
+    if (wasCreatedPost == false) {
+      this.customToastService.launchToast({ typeToast: 'error', message: "Ocurrió un error. Inténtalo mas tarde." });
       return;
     }
 
-    this.customToastService.launchToast({ typeToast: 'success', message: createPostResponse.message!, seconds: 5 });
+
+    this.customToastService.launchToast({ typeToast: 'success', message: `La publicación "${inputCreatePost.title}" se a creado con éxito!`, seconds: 5 });
     this.router.navigate(['./incio/publicaciones/ver_publicaciones']);
 
   }

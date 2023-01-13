@@ -11,7 +11,7 @@ export class PostTitle extends CustomValidator {
         {
             name: "pattern",
             message: "El 'titulo' es invalido.",
-            validator: Validators.pattern('^[a-zA-ZÀ-ÿ ]{3,}$'),
+            validator: Validators.pattern(/^[a-zA-ZÀ-ÿ(\W)+ ]{4,}$/),
         }
     ];
 
