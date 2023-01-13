@@ -1,9 +1,11 @@
-import { ViewPostRepository } from "../../domain/view_post/repository/view_post.repository";
-import { GetPostsRepository } from "../../domain/view_post/repository/get-post.repository";
-import { GetPostByIDRepository } from "../../domain/view_post/repository/get-post-by-id.repository";
+
+import { GetPostByIDRepository } from "../domain/get-post-by-id.repository";
+import { GetPostsRepository } from "../domain/get-post.repository";
+import { ViewPostRepository } from "../domain/view_post.repository";
 import { GetAccountByIDRepository } from "src/contexts/shared/domain/account/get-account-by-id.repository";
 import { GetCurrentTutorLoggedRepository } from "src/contexts/authenticate/domain/repository/get-current-tutor-logged.repository";
-import { Account, EagerAccount, Post } from "../../../shared/domain/models";
+import { Post, EagerAccount, Account } from 'src/contexts/shared/domain/models';
+
 
 export class ViewPost implements ViewPostRepository {
 

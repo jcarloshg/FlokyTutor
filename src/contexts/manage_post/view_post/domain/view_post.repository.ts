@@ -1,4 +1,4 @@
-import { Post, Account } from "../../../../shared/domain/models";
+import { Account, Post } from "src/contexts/shared/domain/models";
 
 export interface ViewPostRepository {
 
