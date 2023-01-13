@@ -18,7 +18,12 @@ export class ViewPostService extends Loading {
 
   constructor() {
     super();
-    this.viewPost = new ViewPost(new GetPosts_AWS(), new GetPostByID_AWS(), new GetAccountByID_AWS(), new GetCurrentTutorLogged_AWS());
+    this.viewPost = new ViewPost(
+      new GetPosts_AWS(),
+      new GetPostByID_AWS(),
+      new GetAccountByID_AWS(),
+      new GetCurrentTutorLogged_AWS()
+    );
   }
 
 
