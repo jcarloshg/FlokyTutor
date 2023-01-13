@@ -1,4 +1,4 @@
-<div class="px-3" style='border: 1px solid red;'>
+<div class="px-3">
 
     <div class="container">
         <p class="fw-semibold fs-5 m-0">Comentarios</p>
@@ -10,7 +10,7 @@
 
     <div class="container">
 
-        <div class="mb-2" style="display: flex; flex-direction: row;">
+        <div style="display: flex; flex-direction: row;">
             <img class="rounded-circle" style="width: 5%; height: min-content;" src="./assets/src/header/not_photo.png">
             &nbsp;
             <div style='flex-grow: 1;'>
@@ -30,28 +30,34 @@
 
     <div *ngFor="let item of [1, 2, 3, 5, 6, 7, 8, 9, 0]" class="container">
 
-        <div class="mb-2" style="display: flex; flex-direction: row;">
+        <div style="display: flex; flex-direction: row;">
 
-            <!-- <img class="rounded-circle" src="./assets/src/header/not_photo.png"> -->
+            <img class="rounded-circle" style="width: 5%; height: min-content;" src="./assets/src/header/not_photo.png">
 
             &nbsp;
 
-            <div style='flex-grow: 1;' class="rounded-1 px-2 py-3">
-
-                <div style='
-                    border: 1px solid rgb(109, 137, 102);
-                    display: flex;
-                    flex-direction: row;'>
+            <div style='flex-grow: 1;'>
+                <div class="rounded p-3" style='border: 1px solid rgb(109, 137, 102); background-color: white;'>
 
                     <p class="text-black-50 m-0">
-                        El término Década Ominosa —es decir, abominable— fue acuñado por los liberales que sufrieron la
-                        represión y el exilio durante esos diez años. El escritor progresista Benito Pérez tituló uno
-                        de sus Episodios Nacionales
+                        El término Década Ominosa —es decir, abominable— fue acuñado por los liberales que la la la la
+                        sufrieron la la la la la la represión y el exilio durante esos diez años. El escritor
+                        progresista Benito Pérez tituló uno de sus Episodios Nacionales
                     </p>
+
+                    &nbsp;
+
+                    <!-- <div>
+                        <small class="fw-semibold text-black-50 m-0">❤️ me gusta</small>
+                    </div> -->
 
                 </div>
             </div>
 
         </div>
 
+        &nbsp;
+
     </div>
+
+</div>

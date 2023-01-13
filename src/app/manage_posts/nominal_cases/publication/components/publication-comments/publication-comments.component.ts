@@ -13,7 +13,7 @@ export class PublicationCommentsComponent implements OnInit {
   public tutor: Account | null = null;
 
   constructor(
-    private authenticateAWSService: AuthenticateAWSService
+    private authenticateAWSService: AuthenticateAWSService,
   ) { }
 
   async ngOnInit() {
