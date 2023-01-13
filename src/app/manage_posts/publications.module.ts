@@ -25,6 +25,7 @@ import { PublicationHelpersComponent } from './nominal_cases/publication/compone
 import { PublicationViewerComponent } from './nominal_cases/publication/components/publication-viewer/publication-viewer.component';
 import { PublicationCommentsComponent } from './nominal_cases/publication/components/publication-comments/publication-comments.component';
 import { PublicationCategoryInputComponent } from './nominal_cases/create-publications/components/publication-category-input/publication-category-input.component';
+import { CommentInputComponent } from './nominal_cases/publication/components/publication-comments/components/comment-input/comment-input.component';
 
 
 
@@ -51,6 +52,7 @@ import { PublicationCategoryInputComponent } from './nominal_cases/create-public
     PublicationViewerComponent,
     PublicationCommentsComponent,
     PublicationCategoryInputComponent,
+    CommentInputComponent,
   ],
   imports: [
     CommonModule,
