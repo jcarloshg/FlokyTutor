@@ -1,4 +1,4 @@
-<div class="mx-3">
+<div *ngIf="post && postAuthor" class="mx-3">
 
 
     <!-- title -->
@@ -7,7 +7,7 @@
         <div style='flex-grow: 1;'>
             <p class="fs-2 font-weight-medium m-0">{{this.post.title}}</p>
             <small class="fs-5 fw-light m-0">
-                Jose Carlos Huerta Garcia
+                {{this.postAuthor.fullName}}
                 <small class="fw-lighter m-0">
                     | {{this.post.createdAt | date: "fullDate":"GMT-6":"es-MX"}}
                 </small>

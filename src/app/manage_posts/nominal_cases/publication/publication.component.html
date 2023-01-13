@@ -1,6 +1,11 @@
 <div *ngIf="post; else notPost">
 
     <div class="container">
+
+        <app-publication-viewer [post]="post">
+        </app-publication-viewer>
+        &nbsp;
+
         <div class="row">
 
             <div class="col-lg-12">
@@ -11,19 +16,12 @@
                     &nbsp;
                 -->
 
-                <app-publication-viewer [post]="post">
-                </app-publication-viewer>
-                &nbsp;
+                <!-- <div class="col-lg-3">
+                    <app-publication-helpers>
+                    </app-publication-helpers>
+                </div> -->
 
-                <hr>
-
-                &nbsp;
             </div>
-
-            <!-- <div class="col-lg-3">
-                <app-publication-helpers>
-                </app-publication-helpers>
-            </div> -->
 
         </div>
     </div>

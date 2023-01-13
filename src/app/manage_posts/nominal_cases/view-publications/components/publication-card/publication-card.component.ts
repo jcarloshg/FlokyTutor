@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Account, Post } from 'src/models';
 import { AuthenticateAWSService } from '../../../../../authenticate/services/authenticate-aws.service';
 import { ViewPostService } from 'src/app/manage_posts/service/view-post.service';
+import { Account, Post } from 'src/models';
 
 @Component({
   selector: 'app-publication-card',
