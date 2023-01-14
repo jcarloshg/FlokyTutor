@@ -2,8 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePublicationsComponent } from './nominal_cases/home-publications/home-publications.component';
 import { ViewPublicationsComponent } from './nominal_cases/view-publications/view-publications.component';
-import { CreatePublicationsComponent } from './nominal_cases/create-publications/create-publications.component';
+
+import { CreatePublicationsComponent } from './nominal_cases/create-publications/pages/create-publications/create-publications.component';
 import { PublicationComponent } from './nominal_cases/publication/publication.component';
+
+// inicio/publicaciones/
 
 const routes: Routes = [
   {
@@ -11,7 +14,11 @@ const routes: Routes = [
     component: HomePublicationsComponent,
     children: [
       {
-        path: 'create_publicacion',
+        path: 'crear_publicacion',
+        loadChildren:
+          () =>
+            import('./nominal_cases/create-publications/create-publications.module')
+              .then(m => m.CreatePublicationsModule),
         component: CreatePublicationsComponent,
       },
       {

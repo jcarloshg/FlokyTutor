@@ -15,7 +15,7 @@ export class ButtonCardToCreatePublicationComponent implements OnInit {
   ngOnInit(): void { }
 
   public goToCreatePublication() {
-    this.router.navigate(['./incio/publicaciones/create_publicacion'])
+    this.router.navigate(['./incio/publicaciones/crear_publicacion'])
   }
 
 }

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { CreatePostService } from './service/view-post.service';
-import { InputCreatePost } from './models/publication';
-import { CustomToastService } from '../../../shared/services/custom-toast.service';
+import { CreatePostService } from '../../service/create-post.service';
+import { InputCreatePost } from '../../models/publication';
+import { CustomToastService } from 'src/app/shared/services/custom-toast.service';
+
 import { Router } from '@angular/router';
 
 @Component({
