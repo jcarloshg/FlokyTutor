@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ViewPostService } from '../../service/view-post.service';
+import { ViewPostService } from 'src/app/manage_posts/service/view-post.service';
 import { Post } from 'src/models';
 
 @Component({

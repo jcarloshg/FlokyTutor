@@ -26,5 +26,3 @@ export class PublicationCommentsComponent implements OnInit {
   }
 
 }
-
-//  ng generate component manage_posts/nominal_cases/publication/components/publication-comments/components/commentInput --skip-tests

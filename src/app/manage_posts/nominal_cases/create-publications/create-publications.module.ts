@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // routing && pages
 import { CreatePublicationsRoutingModule } from './create-publications-routing.module';
+import { CreatePublicationsComponent } from './pages/create-publications/create-publications.component';
 // components
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { EditPublicationComponent } from './components/edit-publication/edit-publication.component';
@@ -11,11 +12,10 @@ import { PreviewPublicationComponent } from './components/preview-publication/pr
 // inputs
 import { PublicationTitleInputComponent } from './components/publication-title-input/publication-title-input.component';
 import { PublicationBodyInputModule } from './components/publication-body-input/publication-body-input.module';
+import { PublicationCategoryInputComponent } from './components/publication-category-input/publication-category-input.component';
 // shared && others
 import { SharedModule } from 'src/app/shared/shared.module';
-import { PublicationsModule } from '../../publications.module';
-import { CreatePublicationsComponent } from './pages/create-publications/create-publications.component';
-import { PublicationCategoryInputComponent } from './components/publication-category-input/publication-category-input.component';
+import { ManagePostComponentsModule } from '../../components/manage_posts.components.module';
 
 
 
@@ -42,7 +42,7 @@ import { PublicationCategoryInputComponent } from './components/publication-cate
     PublicationBodyInputModule,
     // shared && others
     SharedModule,
-    PublicationsModule,
+    ManagePostComponentsModule,
   ]
 })
 export class CreatePublicationsModule { }
