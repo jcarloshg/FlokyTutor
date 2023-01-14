@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// routing
+// routing && pages
 import { CreatePublicationsRoutingModule } from './create-publications-routing.module';
 // components
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
