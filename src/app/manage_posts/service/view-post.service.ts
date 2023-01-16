@@ -54,7 +54,10 @@ export class ViewPostService extends Loading implements ViewPostRepository {
   }
 
   public async commentPost(inputCommentPost: InputCommentPost): Promise<Boolean> {
-    throw new Error('Method not implemented.');
+    this.isLoading = true;
+    const wasCreatedANewComment = await this.viewPost.commentPost(inputCommentPost);
+    this.isLoading = false;
+    return wasCreatedANewComment ? true : false;
   }
 
 

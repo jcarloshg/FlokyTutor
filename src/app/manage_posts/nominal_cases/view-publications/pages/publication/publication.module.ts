@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 // routing && pages
@@ -26,6 +27,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ],
     imports: [
         CommonModule,
+        FormsModule,
         // routing && pages
         // components
         // inputs

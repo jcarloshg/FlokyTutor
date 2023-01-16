@@ -5,8 +5,16 @@
 </small>
 
 <div class="input-group input-group-lg">
-    <input id="InputPostTitle" type="text" class="form-control" placeholder="Título de la publicación" [value]="value"
-        [(ngModel)]="value" (ngModelChange)="onChange(value)" (blur)="onTouched(true)">
+    <input
+        id="InputPostTitle"
+        type="text"
+        class="form-control"
+        placeholder="Título de la publicación"
+        [value]="value"
+        [(ngModel)]="value"
+        (ngModelChange)="onChange(value)"
+        (blur)="onTouched(true)"
+    >
 </div>
 
 <div class="text-danger" style="font-size: 14px" *ngIf="showMessage()">

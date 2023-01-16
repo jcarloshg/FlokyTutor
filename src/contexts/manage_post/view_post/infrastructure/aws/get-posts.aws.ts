@@ -12,7 +12,7 @@ export class GetPosts_AWS implements GetPostsRepository {
             Post,
             Predicates.ALL,
             {
-                sort: post => post.title("ASCENDING")
+                sort: post => post.createdAt("DESCENDING")
             }
         );
         return posts;
