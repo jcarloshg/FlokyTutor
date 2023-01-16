@@ -10,6 +10,9 @@ export interface SubscriptionResponse<T> {
 }
 
 export type __SubscriptionContainer = {
+  onCreateComment: OnCreateCommentSubscription;
+  onUpdateComment: OnUpdateCommentSubscription;
+  onDeleteComment: OnDeleteCommentSubscription;
   onCreateAccount: OnCreateAccountSubscription;
   onUpdateAccount: OnUpdateAccountSubscription;
   onDeleteAccount: OnDeleteAccountSubscription;
@@ -27,31 +30,21 @@ export type __SubscriptionContainer = {
   onDeleteTopic: OnDeleteTopicSubscription;
 };
 
-export type CreateAccountInput = {
+export type CreateCommentInput = {
   id?: string | null;
-  fullName: string;
-  email: string;
-  collegeEnrollment: string;
-  collegeName: string;
-  role: Role;
+  body: string;
+  postID: string;
   _version?: number | null;
+  commentAuthorId?: string | null;
 };
 
-export enum Role {
-  STUDENT = "STUDENT",
-  TEACHER = "TEACHER",
-  ADMIN = "ADMIN"
-}
-
-export type ModelAccountConditionInput = {
-  fullName?: ModelStringInput | null;
-  email?: ModelStringInput | null;
-  collegeEnrollment?: ModelStringInput | null;
-  collegeName?: ModelStringInput | null;
-  role?: ModelRoleInput | null;
-  and?: Array<ModelAccountConditionInput | null> | null;
-  or?: Array<ModelAccountConditionInput | null> | null;
-  not?: ModelAccountConditionInput | null;
+export type ModelCommentConditionInput = {
+  body?: ModelStringInput | null;
+  postID?: ModelIDInput | null;
+  and?: Array<ModelCommentConditionInput | null> | null;
+  or?: Array<ModelCommentConditionInput | null> | null;
+  not?: ModelCommentConditionInput | null;
+  commentAuthorId?: ModelIDInput | null;
 };
 
 export type ModelStringInput = {
@@ -93,9 +86,34 @@ export type ModelSizeInput = {
   between?: Array<number | null> | null;
 };
 
-export type ModelRoleInput = {
-  eq?: Role | null;
-  ne?: Role | null;
+export type ModelIDInput = {
+  ne?: string | null;
+  eq?: string | null;
+  le?: string | null;
+  lt?: string | null;
+  ge?: string | null;
+  gt?: string | null;
+  contains?: string | null;
+  notContains?: string | null;
+  between?: Array<string | null> | null;
+  beginsWith?: string | null;
+  attributeExists?: boolean | null;
+  attributeType?: ModelAttributeTypes | null;
+  size?: ModelSizeInput | null;
+};
+
+export type Comment = {
+  __typename: "Comment";
+  id: string;
+  body: string;
+  postID: string;
+  author?: Account | null;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+  commentAuthorId?: string | null;
 };
 
 export type Account = {
@@ -114,6 +132,12 @@ export type Account = {
   _lastChangedAt: number;
 };
 
+export enum Role {
+  STUDENT = "STUDENT",
+  TEACHER = "TEACHER",
+  ADMIN = "ADMIN"
+}
+
 export type ModelPostConnection = {
   __typename: "ModelPostConnection";
   items: Array<Post | null>;
@@ -128,6 +152,7 @@ export type Post = {
   body: string;
   tutorAccountID: string;
   category: ActivityType;
+  comments?: ModelCommentConnection | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -141,6 +166,52 @@ export enum ActivityType {
   TALKING = "TALKING",
   LISTENING = "LISTENING"
 }
+
+export type ModelCommentConnection = {
+  __typename: "ModelCommentConnection";
+  items: Array<Comment | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type UpdateCommentInput = {
+  id: string;
+  body?: string | null;
+  postID?: string | null;
+  _version?: number | null;
+  commentAuthorId?: string | null;
+};
+
+export type DeleteCommentInput = {
+  id: string;
+  _version?: number | null;
+};
+
+export type CreateAccountInput = {
+  id?: string | null;
+  fullName: string;
+  email: string;
+  collegeEnrollment: string;
+  collegeName: string;
+  role: Role;
+  _version?: number | null;
+};
+
+export type ModelAccountConditionInput = {
+  fullName?: ModelStringInput | null;
+  email?: ModelStringInput | null;
+  collegeEnrollment?: ModelStringInput | null;
+  collegeName?: ModelStringInput | null;
+  role?: ModelRoleInput | null;
+  and?: Array<ModelAccountConditionInput | null> | null;
+  or?: Array<ModelAccountConditionInput | null> | null;
+  not?: ModelAccountConditionInput | null;
+};
+
+export type ModelRoleInput = {
+  eq?: Role | null;
+  ne?: Role | null;
+};
 
 export type UpdateAccountInput = {
   id: string;
@@ -174,22 +245,6 @@ export type ModelPostConditionInput = {
   and?: Array<ModelPostConditionInput | null> | null;
   or?: Array<ModelPostConditionInput | null> | null;
   not?: ModelPostConditionInput | null;
-};
-
-export type ModelIDInput = {
-  ne?: string | null;
-  eq?: string | null;
-  le?: string | null;
-  lt?: string | null;
-  ge?: string | null;
-  gt?: string | null;
-  contains?: string | null;
-  notContains?: string | null;
-  between?: Array<string | null> | null;
-  beginsWith?: string | null;
-  attributeExists?: boolean | null;
-  attributeType?: ModelAttributeTypes | null;
-  size?: ModelSizeInput | null;
 };
 
 export type ModelActivityTypeInput = {
@@ -418,6 +473,16 @@ export type DeleteTopicInput = {
   _version?: number | null;
 };
 
+export type ModelCommentFilterInput = {
+  id?: ModelIDInput | null;
+  body?: ModelStringInput | null;
+  postID?: ModelIDInput | null;
+  and?: Array<ModelCommentFilterInput | null> | null;
+  or?: Array<ModelCommentFilterInput | null> | null;
+  not?: ModelCommentFilterInput | null;
+  commentAuthorId?: ModelIDInput | null;
+};
+
 export type ModelAccountFilterInput = {
   id?: ModelIDInput | null;
   fullName?: ModelStringInput | null;
@@ -507,15 +572,12 @@ export type ModelTopicConnection = {
   startedAt?: number | null;
 };
 
-export type ModelSubscriptionAccountFilterInput = {
+export type ModelSubscriptionCommentFilterInput = {
   id?: ModelSubscriptionIDInput | null;
-  fullName?: ModelSubscriptionStringInput | null;
-  email?: ModelSubscriptionStringInput | null;
-  collegeEnrollment?: ModelSubscriptionStringInput | null;
-  collegeName?: ModelSubscriptionStringInput | null;
-  role?: ModelSubscriptionStringInput | null;
-  and?: Array<ModelSubscriptionAccountFilterInput | null> | null;
-  or?: Array<ModelSubscriptionAccountFilterInput | null> | null;
+  body?: ModelSubscriptionStringInput | null;
+  postID?: ModelSubscriptionIDInput | null;
+  and?: Array<ModelSubscriptionCommentFilterInput | null> | null;
+  or?: Array<ModelSubscriptionCommentFilterInput | null> | null;
 };
 
 export type ModelSubscriptionIDInput = {
@@ -546,6 +608,17 @@ export type ModelSubscriptionStringInput = {
   beginsWith?: string | null;
   in?: Array<string | null> | null;
   notIn?: Array<string | null> | null;
+};
+
+export type ModelSubscriptionAccountFilterInput = {
+  id?: ModelSubscriptionIDInput | null;
+  fullName?: ModelSubscriptionStringInput | null;
+  email?: ModelSubscriptionStringInput | null;
+  collegeEnrollment?: ModelSubscriptionStringInput | null;
+  collegeName?: ModelSubscriptionStringInput | null;
+  role?: ModelSubscriptionStringInput | null;
+  and?: Array<ModelSubscriptionAccountFilterInput | null> | null;
+  or?: Array<ModelSubscriptionAccountFilterInput | null> | null;
 };
 
 export type ModelSubscriptionPostFilterInput = {
@@ -604,6 +677,141 @@ export type ModelSubscriptionTopicFilterInput = {
   or?: Array<ModelSubscriptionTopicFilterInput | null> | null;
 };
 
+export type CreateCommentMutation = {
+  __typename: "Comment";
+  id: string;
+  body: string;
+  postID: string;
+  author?: {
+    __typename: "Account";
+    id: string;
+    fullName: string;
+    email: string;
+    collegeEnrollment: string;
+    collegeName: string;
+    role: Role;
+    posts?: {
+      __typename: "ModelPostConnection";
+      items: Array<{
+        __typename: "Post";
+        id: string;
+        title: string;
+        body: string;
+        tutorAccountID: string;
+        category: ActivityType;
+        createdAt: string;
+        updatedAt: string;
+        _version: number;
+        _deleted?: boolean | null;
+        _lastChangedAt: number;
+      } | null>;
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+  commentAuthorId?: string | null;
+};
+
+export type UpdateCommentMutation = {
+  __typename: "Comment";
+  id: string;
+  body: string;
+  postID: string;
+  author?: {
+    __typename: "Account";
+    id: string;
+    fullName: string;
+    email: string;
+    collegeEnrollment: string;
+    collegeName: string;
+    role: Role;
+    posts?: {
+      __typename: "ModelPostConnection";
+      items: Array<{
+        __typename: "Post";
+        id: string;
+        title: string;
+        body: string;
+        tutorAccountID: string;
+        category: ActivityType;
+        createdAt: string;
+        updatedAt: string;
+        _version: number;
+        _deleted?: boolean | null;
+        _lastChangedAt: number;
+      } | null>;
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+  commentAuthorId?: string | null;
+};
+
+export type DeleteCommentMutation = {
+  __typename: "Comment";
+  id: string;
+  body: string;
+  postID: string;
+  author?: {
+    __typename: "Account";
+    id: string;
+    fullName: string;
+    email: string;
+    collegeEnrollment: string;
+    collegeName: string;
+    role: Role;
+    posts?: {
+      __typename: "ModelPostConnection";
+      items: Array<{
+        __typename: "Post";
+        id: string;
+        title: string;
+        body: string;
+        tutorAccountID: string;
+        category: ActivityType;
+        createdAt: string;
+        updatedAt: string;
+        _version: number;
+        _deleted?: boolean | null;
+        _lastChangedAt: number;
+      } | null>;
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+  commentAuthorId?: string | null;
+};
+
 export type CreateAccountMutation = {
   __typename: "Account";
   id: string;
@@ -621,6 +829,11 @@ export type CreateAccountMutation = {
       body: string;
       tutorAccountID: string;
       category: ActivityType;
+      comments?: {
+        __typename: "ModelCommentConnection";
+        nextToken?: string | null;
+        startedAt?: number | null;
+      } | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -654,6 +867,11 @@ export type UpdateAccountMutation = {
       body: string;
       tutorAccountID: string;
       category: ActivityType;
+      comments?: {
+        __typename: "ModelCommentConnection";
+        nextToken?: string | null;
+        startedAt?: number | null;
+      } | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -687,6 +905,11 @@ export type DeleteAccountMutation = {
       body: string;
       tutorAccountID: string;
       category: ActivityType;
+      comments?: {
+        __typename: "ModelCommentConnection";
+        nextToken?: string | null;
+        startedAt?: number | null;
+      } | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -710,6 +933,37 @@ export type CreatePostMutation = {
   body: string;
   tutorAccountID: string;
   category: ActivityType;
+  comments?: {
+    __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      body: string;
+      postID: string;
+      author?: {
+        __typename: "Account";
+        id: string;
+        fullName: string;
+        email: string;
+        collegeEnrollment: string;
+        collegeName: string;
+        role: Role;
+        createdAt: string;
+        updatedAt: string;
+        _version: number;
+        _deleted?: boolean | null;
+        _lastChangedAt: number;
+      } | null;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+      commentAuthorId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+    startedAt?: number | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -724,6 +978,37 @@ export type UpdatePostMutation = {
   body: string;
   tutorAccountID: string;
   category: ActivityType;
+  comments?: {
+    __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      body: string;
+      postID: string;
+      author?: {
+        __typename: "Account";
+        id: string;
+        fullName: string;
+        email: string;
+        collegeEnrollment: string;
+        collegeName: string;
+        role: Role;
+        createdAt: string;
+        updatedAt: string;
+        _version: number;
+        _deleted?: boolean | null;
+        _lastChangedAt: number;
+      } | null;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+      commentAuthorId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+    startedAt?: number | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -738,6 +1023,37 @@ export type DeletePostMutation = {
   body: string;
   tutorAccountID: string;
   category: ActivityType;
+  comments?: {
+    __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      body: string;
+      postID: string;
+      author?: {
+        __typename: "Account";
+        id: string;
+        fullName: string;
+        email: string;
+        collegeEnrollment: string;
+        collegeName: string;
+        role: Role;
+        createdAt: string;
+        updatedAt: string;
+        _version: number;
+        _deleted?: boolean | null;
+        _lastChangedAt: number;
+      } | null;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+      commentAuthorId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+    startedAt?: number | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -943,6 +1259,125 @@ export type DeleteTopicMutation = {
   _lastChangedAt: number;
 };
 
+export type GetCommentQuery = {
+  __typename: "Comment";
+  id: string;
+  body: string;
+  postID: string;
+  author?: {
+    __typename: "Account";
+    id: string;
+    fullName: string;
+    email: string;
+    collegeEnrollment: string;
+    collegeName: string;
+    role: Role;
+    posts?: {
+      __typename: "ModelPostConnection";
+      items: Array<{
+        __typename: "Post";
+        id: string;
+        title: string;
+        body: string;
+        tutorAccountID: string;
+        category: ActivityType;
+        createdAt: string;
+        updatedAt: string;
+        _version: number;
+        _deleted?: boolean | null;
+        _lastChangedAt: number;
+      } | null>;
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+  commentAuthorId?: string | null;
+};
+
+export type ListCommentsQuery = {
+  __typename: "ModelCommentConnection";
+  items: Array<{
+    __typename: "Comment";
+    id: string;
+    body: string;
+    postID: string;
+    author?: {
+      __typename: "Account";
+      id: string;
+      fullName: string;
+      email: string;
+      collegeEnrollment: string;
+      collegeName: string;
+      role: Role;
+      posts?: {
+        __typename: "ModelPostConnection";
+        nextToken?: string | null;
+        startedAt?: number | null;
+      } | null;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+    commentAuthorId?: string | null;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncCommentsQuery = {
+  __typename: "ModelCommentConnection";
+  items: Array<{
+    __typename: "Comment";
+    id: string;
+    body: string;
+    postID: string;
+    author?: {
+      __typename: "Account";
+      id: string;
+      fullName: string;
+      email: string;
+      collegeEnrollment: string;
+      collegeName: string;
+      role: Role;
+      posts?: {
+        __typename: "ModelPostConnection";
+        nextToken?: string | null;
+        startedAt?: number | null;
+      } | null;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+    commentAuthorId?: string | null;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
 export type GetAccountQuery = {
   __typename: "Account";
   id: string;
@@ -960,6 +1395,11 @@ export type GetAccountQuery = {
       body: string;
       tutorAccountID: string;
       category: ActivityType;
+      comments?: {
+        __typename: "ModelCommentConnection";
+        nextToken?: string | null;
+        startedAt?: number | null;
+      } | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -1059,6 +1499,37 @@ export type GetPostQuery = {
   body: string;
   tutorAccountID: string;
   category: ActivityType;
+  comments?: {
+    __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      body: string;
+      postID: string;
+      author?: {
+        __typename: "Account";
+        id: string;
+        fullName: string;
+        email: string;
+        collegeEnrollment: string;
+        collegeName: string;
+        role: Role;
+        createdAt: string;
+        updatedAt: string;
+        _version: number;
+        _deleted?: boolean | null;
+        _lastChangedAt: number;
+      } | null;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+      commentAuthorId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+    startedAt?: number | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -1075,6 +1546,23 @@ export type ListPostsQuery = {
     body: string;
     tutorAccountID: string;
     category: ActivityType;
+    comments?: {
+      __typename: "ModelCommentConnection";
+      items: Array<{
+        __typename: "Comment";
+        id: string;
+        body: string;
+        postID: string;
+        createdAt: string;
+        updatedAt: string;
+        _version: number;
+        _deleted?: boolean | null;
+        _lastChangedAt: number;
+        commentAuthorId?: string | null;
+      } | null>;
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -1094,6 +1582,23 @@ export type SyncPostsQuery = {
     body: string;
     tutorAccountID: string;
     category: ActivityType;
+    comments?: {
+      __typename: "ModelCommentConnection";
+      items: Array<{
+        __typename: "Comment";
+        id: string;
+        body: string;
+        postID: string;
+        createdAt: string;
+        updatedAt: string;
+        _version: number;
+        _deleted?: boolean | null;
+        _lastChangedAt: number;
+        commentAuthorId?: string | null;
+      } | null>;
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
     createdAt: string;
     updatedAt: string;
     _version: number;
@@ -1332,6 +1837,141 @@ export type SyncTopicsQuery = {
   startedAt?: number | null;
 };
 
+export type OnCreateCommentSubscription = {
+  __typename: "Comment";
+  id: string;
+  body: string;
+  postID: string;
+  author?: {
+    __typename: "Account";
+    id: string;
+    fullName: string;
+    email: string;
+    collegeEnrollment: string;
+    collegeName: string;
+    role: Role;
+    posts?: {
+      __typename: "ModelPostConnection";
+      items: Array<{
+        __typename: "Post";
+        id: string;
+        title: string;
+        body: string;
+        tutorAccountID: string;
+        category: ActivityType;
+        createdAt: string;
+        updatedAt: string;
+        _version: number;
+        _deleted?: boolean | null;
+        _lastChangedAt: number;
+      } | null>;
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+  commentAuthorId?: string | null;
+};
+
+export type OnUpdateCommentSubscription = {
+  __typename: "Comment";
+  id: string;
+  body: string;
+  postID: string;
+  author?: {
+    __typename: "Account";
+    id: string;
+    fullName: string;
+    email: string;
+    collegeEnrollment: string;
+    collegeName: string;
+    role: Role;
+    posts?: {
+      __typename: "ModelPostConnection";
+      items: Array<{
+        __typename: "Post";
+        id: string;
+        title: string;
+        body: string;
+        tutorAccountID: string;
+        category: ActivityType;
+        createdAt: string;
+        updatedAt: string;
+        _version: number;
+        _deleted?: boolean | null;
+        _lastChangedAt: number;
+      } | null>;
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+  commentAuthorId?: string | null;
+};
+
+export type OnDeleteCommentSubscription = {
+  __typename: "Comment";
+  id: string;
+  body: string;
+  postID: string;
+  author?: {
+    __typename: "Account";
+    id: string;
+    fullName: string;
+    email: string;
+    collegeEnrollment: string;
+    collegeName: string;
+    role: Role;
+    posts?: {
+      __typename: "ModelPostConnection";
+      items: Array<{
+        __typename: "Post";
+        id: string;
+        title: string;
+        body: string;
+        tutorAccountID: string;
+        category: ActivityType;
+        createdAt: string;
+        updatedAt: string;
+        _version: number;
+        _deleted?: boolean | null;
+        _lastChangedAt: number;
+      } | null>;
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+  commentAuthorId?: string | null;
+};
+
 export type OnCreateAccountSubscription = {
   __typename: "Account";
   id: string;
@@ -1349,6 +1989,11 @@ export type OnCreateAccountSubscription = {
       body: string;
       tutorAccountID: string;
       category: ActivityType;
+      comments?: {
+        __typename: "ModelCommentConnection";
+        nextToken?: string | null;
+        startedAt?: number | null;
+      } | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -1382,6 +2027,11 @@ export type OnUpdateAccountSubscription = {
       body: string;
       tutorAccountID: string;
       category: ActivityType;
+      comments?: {
+        __typename: "ModelCommentConnection";
+        nextToken?: string | null;
+        startedAt?: number | null;
+      } | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -1415,6 +2065,11 @@ export type OnDeleteAccountSubscription = {
       body: string;
       tutorAccountID: string;
       category: ActivityType;
+      comments?: {
+        __typename: "ModelCommentConnection";
+        nextToken?: string | null;
+        startedAt?: number | null;
+      } | null;
       createdAt: string;
       updatedAt: string;
       _version: number;
@@ -1438,6 +2093,37 @@ export type OnCreatePostSubscription = {
   body: string;
   tutorAccountID: string;
   category: ActivityType;
+  comments?: {
+    __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      body: string;
+      postID: string;
+      author?: {
+        __typename: "Account";
+        id: string;
+        fullName: string;
+        email: string;
+        collegeEnrollment: string;
+        collegeName: string;
+        role: Role;
+        createdAt: string;
+        updatedAt: string;
+        _version: number;
+        _deleted?: boolean | null;
+        _lastChangedAt: number;
+      } | null;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+      commentAuthorId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+    startedAt?: number | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -1452,6 +2138,37 @@ export type OnUpdatePostSubscription = {
   body: string;
   tutorAccountID: string;
   category: ActivityType;
+  comments?: {
+    __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      body: string;
+      postID: string;
+      author?: {
+        __typename: "Account";
+        id: string;
+        fullName: string;
+        email: string;
+        collegeEnrollment: string;
+        collegeName: string;
+        role: Role;
+        createdAt: string;
+        updatedAt: string;
+        _version: number;
+        _deleted?: boolean | null;
+        _lastChangedAt: number;
+      } | null;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+      commentAuthorId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+    startedAt?: number | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -1466,6 +2183,37 @@ export type OnDeletePostSubscription = {
   body: string;
   tutorAccountID: string;
   category: ActivityType;
+  comments?: {
+    __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      body: string;
+      postID: string;
+      author?: {
+        __typename: "Account";
+        id: string;
+        fullName: string;
+        email: string;
+        collegeEnrollment: string;
+        collegeName: string;
+        role: Role;
+        createdAt: string;
+        updatedAt: string;
+        _version: number;
+        _deleted?: boolean | null;
+        _lastChangedAt: number;
+      } | null;
+      createdAt: string;
+      updatedAt: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+      commentAuthorId?: string | null;
+    } | null>;
+    nextToken?: string | null;
+    startedAt?: number | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
   _version: number;
@@ -1675,6 +2423,189 @@ export type OnDeleteTopicSubscription = {
   providedIn: "root"
 })
 export class APIService {
+  async CreateComment(
+    input: CreateCommentInput,
+    condition?: ModelCommentConditionInput
+  ): Promise<CreateCommentMutation> {
+    const statement = `mutation CreateComment($input: CreateCommentInput!, $condition: ModelCommentConditionInput) {
+        createComment(input: $input, condition: $condition) {
+          __typename
+          id
+          body
+          postID
+          author {
+            __typename
+            id
+            fullName
+            email
+            collegeEnrollment
+            collegeName
+            role
+            posts {
+              __typename
+              items {
+                __typename
+                id
+                title
+                body
+                tutorAccountID
+                category
+                createdAt
+                updatedAt
+                _version
+                _deleted
+                _lastChangedAt
+              }
+              nextToken
+              startedAt
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          commentAuthorId
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateCommentMutation>response.data.createComment;
+  }
+  async UpdateComment(
+    input: UpdateCommentInput,
+    condition?: ModelCommentConditionInput
+  ): Promise<UpdateCommentMutation> {
+    const statement = `mutation UpdateComment($input: UpdateCommentInput!, $condition: ModelCommentConditionInput) {
+        updateComment(input: $input, condition: $condition) {
+          __typename
+          id
+          body
+          postID
+          author {
+            __typename
+            id
+            fullName
+            email
+            collegeEnrollment
+            collegeName
+            role
+            posts {
+              __typename
+              items {
+                __typename
+                id
+                title
+                body
+                tutorAccountID
+                category
+                createdAt
+                updatedAt
+                _version
+                _deleted
+                _lastChangedAt
+              }
+              nextToken
+              startedAt
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          commentAuthorId
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateCommentMutation>response.data.updateComment;
+  }
+  async DeleteComment(
+    input: DeleteCommentInput,
+    condition?: ModelCommentConditionInput
+  ): Promise<DeleteCommentMutation> {
+    const statement = `mutation DeleteComment($input: DeleteCommentInput!, $condition: ModelCommentConditionInput) {
+        deleteComment(input: $input, condition: $condition) {
+          __typename
+          id
+          body
+          postID
+          author {
+            __typename
+            id
+            fullName
+            email
+            collegeEnrollment
+            collegeName
+            role
+            posts {
+              __typename
+              items {
+                __typename
+                id
+                title
+                body
+                tutorAccountID
+                category
+                createdAt
+                updatedAt
+                _version
+                _deleted
+                _lastChangedAt
+              }
+              nextToken
+              startedAt
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          commentAuthorId
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteCommentMutation>response.data.deleteComment;
+  }
   async CreateAccount(
     input: CreateAccountInput,
     condition?: ModelAccountConditionInput
@@ -1697,6 +2628,11 @@ export class APIService {
               body
               tutorAccountID
               category
+              comments {
+                __typename
+                nextToken
+                startedAt
+              }
               createdAt
               updatedAt
               _version
@@ -1746,6 +2682,11 @@ export class APIService {
               body
               tutorAccountID
               category
+              comments {
+                __typename
+                nextToken
+                startedAt
+              }
               createdAt
               updatedAt
               _version
@@ -1795,6 +2736,11 @@ export class APIService {
               body
               tutorAccountID
               category
+              comments {
+                __typename
+                nextToken
+                startedAt
+              }
               createdAt
               updatedAt
               _version
@@ -1834,6 +2780,37 @@ export class APIService {
           body
           tutorAccountID
           category
+          comments {
+            __typename
+            items {
+              __typename
+              id
+              body
+              postID
+              author {
+                __typename
+                id
+                fullName
+                email
+                collegeEnrollment
+                collegeName
+                role
+                createdAt
+                updatedAt
+                _version
+                _deleted
+                _lastChangedAt
+              }
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+              commentAuthorId
+            }
+            nextToken
+            startedAt
+          }
           createdAt
           updatedAt
           _version
@@ -1864,6 +2841,37 @@ export class APIService {
           body
           tutorAccountID
           category
+          comments {
+            __typename
+            items {
+              __typename
+              id
+              body
+              postID
+              author {
+                __typename
+                id
+                fullName
+                email
+                collegeEnrollment
+                collegeName
+                role
+                createdAt
+                updatedAt
+                _version
+                _deleted
+                _lastChangedAt
+              }
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+              commentAuthorId
+            }
+            nextToken
+            startedAt
+          }
           createdAt
           updatedAt
           _version
@@ -1894,6 +2902,37 @@ export class APIService {
           body
           tutorAccountID
           category
+          comments {
+            __typename
+            items {
+              __typename
+              id
+              body
+              postID
+              author {
+                __typename
+                id
+                fullName
+                email
+                collegeEnrollment
+                collegeName
+                role
+                createdAt
+                updatedAt
+                _version
+                _deleted
+                _lastChangedAt
+              }
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+              commentAuthorId
+            }
+            nextToken
+            startedAt
+          }
           createdAt
           updatedAt
           _version
@@ -2260,6 +3299,181 @@ export class APIService {
     )) as any;
     return <DeleteTopicMutation>response.data.deleteTopic;
   }
+  async GetComment(id: string): Promise<GetCommentQuery> {
+    const statement = `query GetComment($id: ID!) {
+        getComment(id: $id) {
+          __typename
+          id
+          body
+          postID
+          author {
+            __typename
+            id
+            fullName
+            email
+            collegeEnrollment
+            collegeName
+            role
+            posts {
+              __typename
+              items {
+                __typename
+                id
+                title
+                body
+                tutorAccountID
+                category
+                createdAt
+                updatedAt
+                _version
+                _deleted
+                _lastChangedAt
+              }
+              nextToken
+              startedAt
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          commentAuthorId
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetCommentQuery>response.data.getComment;
+  }
+  async ListComments(
+    filter?: ModelCommentFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListCommentsQuery> {
+    const statement = `query ListComments($filter: ModelCommentFilterInput, $limit: Int, $nextToken: String) {
+        listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            body
+            postID
+            author {
+              __typename
+              id
+              fullName
+              email
+              collegeEnrollment
+              collegeName
+              role
+              posts {
+                __typename
+                nextToken
+                startedAt
+              }
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            commentAuthorId
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListCommentsQuery>response.data.listComments;
+  }
+  async SyncComments(
+    filter?: ModelCommentFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncCommentsQuery> {
+    const statement = `query SyncComments($filter: ModelCommentFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncComments(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            id
+            body
+            postID
+            author {
+              __typename
+              id
+              fullName
+              email
+              collegeEnrollment
+              collegeName
+              role
+              posts {
+                __typename
+                nextToken
+                startedAt
+              }
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            commentAuthorId
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncCommentsQuery>response.data.syncComments;
+  }
   async GetAccount(id: string): Promise<GetAccountQuery> {
     const statement = `query GetAccount($id: ID!) {
         getAccount(id: $id) {
@@ -2279,6 +3493,11 @@ export class APIService {
               body
               tutorAccountID
               category
+              comments {
+                __typename
+                nextToken
+                startedAt
+              }
               createdAt
               updatedAt
               _version
@@ -2434,6 +3653,37 @@ export class APIService {
           body
           tutorAccountID
           category
+          comments {
+            __typename
+            items {
+              __typename
+              id
+              body
+              postID
+              author {
+                __typename
+                id
+                fullName
+                email
+                collegeEnrollment
+                collegeName
+                role
+                createdAt
+                updatedAt
+                _version
+                _deleted
+                _lastChangedAt
+              }
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+              commentAuthorId
+            }
+            nextToken
+            startedAt
+          }
           createdAt
           updatedAt
           _version
@@ -2464,6 +3714,23 @@ export class APIService {
             body
             tutorAccountID
             category
+            comments {
+              __typename
+              items {
+                __typename
+                id
+                body
+                postID
+                createdAt
+                updatedAt
+                _version
+                _deleted
+                _lastChangedAt
+                commentAuthorId
+              }
+              nextToken
+              startedAt
+            }
             createdAt
             updatedAt
             _version
@@ -2505,6 +3772,23 @@ export class APIService {
             body
             tutorAccountID
             category
+            comments {
+              __typename
+              items {
+                __typename
+                id
+                body
+                postID
+                createdAt
+                updatedAt
+                _version
+                _deleted
+                _lastChangedAt
+                commentAuthorId
+              }
+              nextToken
+              startedAt
+            }
             createdAt
             updatedAt
             _version
@@ -2933,6 +4217,192 @@ export class APIService {
     )) as any;
     return <SyncTopicsQuery>response.data.syncTopics;
   }
+  OnCreateCommentListener(
+    filter?: ModelSubscriptionCommentFilterInput
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateComment">>
+  > {
+    const statement = `subscription OnCreateComment($filter: ModelSubscriptionCommentFilterInput) {
+        onCreateComment(filter: $filter) {
+          __typename
+          id
+          body
+          postID
+          author {
+            __typename
+            id
+            fullName
+            email
+            collegeEnrollment
+            collegeName
+            role
+            posts {
+              __typename
+              items {
+                __typename
+                id
+                title
+                body
+                tutorAccountID
+                category
+                createdAt
+                updatedAt
+                _version
+                _deleted
+                _lastChangedAt
+              }
+              nextToken
+              startedAt
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          commentAuthorId
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateComment">>
+    >;
+  }
+
+  OnUpdateCommentListener(
+    filter?: ModelSubscriptionCommentFilterInput
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateComment">>
+  > {
+    const statement = `subscription OnUpdateComment($filter: ModelSubscriptionCommentFilterInput) {
+        onUpdateComment(filter: $filter) {
+          __typename
+          id
+          body
+          postID
+          author {
+            __typename
+            id
+            fullName
+            email
+            collegeEnrollment
+            collegeName
+            role
+            posts {
+              __typename
+              items {
+                __typename
+                id
+                title
+                body
+                tutorAccountID
+                category
+                createdAt
+                updatedAt
+                _version
+                _deleted
+                _lastChangedAt
+              }
+              nextToken
+              startedAt
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          commentAuthorId
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateComment">>
+    >;
+  }
+
+  OnDeleteCommentListener(
+    filter?: ModelSubscriptionCommentFilterInput
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteComment">>
+  > {
+    const statement = `subscription OnDeleteComment($filter: ModelSubscriptionCommentFilterInput) {
+        onDeleteComment(filter: $filter) {
+          __typename
+          id
+          body
+          postID
+          author {
+            __typename
+            id
+            fullName
+            email
+            collegeEnrollment
+            collegeName
+            role
+            posts {
+              __typename
+              items {
+                __typename
+                id
+                title
+                body
+                tutorAccountID
+                category
+                createdAt
+                updatedAt
+                _version
+                _deleted
+                _lastChangedAt
+              }
+              nextToken
+              startedAt
+            }
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          commentAuthorId
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteComment">>
+    >;
+  }
+
   OnCreateAccountListener(
     filter?: ModelSubscriptionAccountFilterInput
   ): Observable<
@@ -2956,6 +4426,11 @@ export class APIService {
               body
               tutorAccountID
               category
+              comments {
+                __typename
+                nextToken
+                startedAt
+              }
               createdAt
               updatedAt
               _version
@@ -3006,6 +4481,11 @@ export class APIService {
               body
               tutorAccountID
               category
+              comments {
+                __typename
+                nextToken
+                startedAt
+              }
               createdAt
               updatedAt
               _version
@@ -3056,6 +4536,11 @@ export class APIService {
               body
               tutorAccountID
               category
+              comments {
+                __typename
+                nextToken
+                startedAt
+              }
               createdAt
               updatedAt
               _version
@@ -3096,6 +4581,37 @@ export class APIService {
           body
           tutorAccountID
           category
+          comments {
+            __typename
+            items {
+              __typename
+              id
+              body
+              postID
+              author {
+                __typename
+                id
+                fullName
+                email
+                collegeEnrollment
+                collegeName
+                role
+                createdAt
+                updatedAt
+                _version
+                _deleted
+                _lastChangedAt
+              }
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+              commentAuthorId
+            }
+            nextToken
+            startedAt
+          }
           createdAt
           updatedAt
           _version
@@ -3127,6 +4643,37 @@ export class APIService {
           body
           tutorAccountID
           category
+          comments {
+            __typename
+            items {
+              __typename
+              id
+              body
+              postID
+              author {
+                __typename
+                id
+                fullName
+                email
+                collegeEnrollment
+                collegeName
+                role
+                createdAt
+                updatedAt
+                _version
+                _deleted
+                _lastChangedAt
+              }
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+              commentAuthorId
+            }
+            nextToken
+            startedAt
+          }
           createdAt
           updatedAt
           _version
@@ -3158,6 +4705,37 @@ export class APIService {
           body
           tutorAccountID
           category
+          comments {
+            __typename
+            items {
+              __typename
+              id
+              body
+              postID
+              author {
+                __typename
+                id
+                fullName
+                email
+                collegeEnrollment
+                collegeName
+                role
+                createdAt
+                updatedAt
+                _version
+                _deleted
+                _lastChangedAt
+              }
+              createdAt
+              updatedAt
+              _version
+              _deleted
+              _lastChangedAt
+              commentAuthorId
+            }
+            nextToken
+            startedAt
+          }
           createdAt
           updatedAt
           _version

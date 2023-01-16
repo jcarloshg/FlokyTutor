@@ -1,4 +1,128 @@
 # this is an auto generated file. This will be overwritten
+query GetComment($id: ID!) {
+  getComment(id: $id) {
+    id
+    body
+    postID
+    author {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      posts {
+        items {
+          id
+          title
+          body
+          tutorAccountID
+          category
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    commentAuthorId
+  }
+}
+query ListComments(
+  $filter: ModelCommentFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      body
+      postID
+      author {
+        id
+        fullName
+        email
+        collegeEnrollment
+        collegeName
+        role
+        posts {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      commentAuthorId
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncComments(
+  $filter: ModelCommentFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncComments(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      body
+      postID
+      author {
+        id
+        fullName
+        email
+        collegeEnrollment
+        collegeName
+        role
+        posts {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      commentAuthorId
+    }
+    nextToken
+    startedAt
+  }
+}
 query GetAccount($id: ID!) {
   getAccount(id: $id) {
     id
@@ -14,6 +138,10 @@ query GetAccount($id: ID!) {
         body
         tutorAccountID
         category
+        comments {
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version
@@ -121,6 +249,34 @@ query GetPost($id: ID!) {
     body
     tutorAccountID
     category
+    comments {
+      items {
+        id
+        body
+        postID
+        author {
+          id
+          fullName
+          email
+          collegeEnrollment
+          collegeName
+          role
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        commentAuthorId
+      }
+      nextToken
+      startedAt
+    }
     createdAt
     updatedAt
     _version
@@ -140,6 +296,21 @@ query ListPosts(
       body
       tutorAccountID
       category
+      comments {
+        items {
+          id
+          body
+          postID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          commentAuthorId
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -168,6 +339,21 @@ query SyncPosts(
       body
       tutorAccountID
       category
+      comments {
+        items {
+          id
+          body
+          postID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          commentAuthorId
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version

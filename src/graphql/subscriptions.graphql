@@ -1,4 +1,130 @@
 # this is an auto generated file. This will be overwritten
+subscription OnCreateComment($filter: ModelSubscriptionCommentFilterInput) {
+  onCreateComment(filter: $filter) {
+    id
+    body
+    postID
+    author {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      posts {
+        items {
+          id
+          title
+          body
+          tutorAccountID
+          category
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    commentAuthorId
+  }
+}
+subscription OnUpdateComment($filter: ModelSubscriptionCommentFilterInput) {
+  onUpdateComment(filter: $filter) {
+    id
+    body
+    postID
+    author {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      posts {
+        items {
+          id
+          title
+          body
+          tutorAccountID
+          category
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    commentAuthorId
+  }
+}
+subscription OnDeleteComment($filter: ModelSubscriptionCommentFilterInput) {
+  onDeleteComment(filter: $filter) {
+    id
+    body
+    postID
+    author {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      posts {
+        items {
+          id
+          title
+          body
+          tutorAccountID
+          category
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    commentAuthorId
+  }
+}
 subscription OnCreateAccount($filter: ModelSubscriptionAccountFilterInput) {
   onCreateAccount(filter: $filter) {
     id
@@ -14,6 +140,10 @@ subscription OnCreateAccount($filter: ModelSubscriptionAccountFilterInput) {
         body
         tutorAccountID
         category
+        comments {
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version
@@ -45,6 +175,10 @@ subscription OnUpdateAccount($filter: ModelSubscriptionAccountFilterInput) {
         body
         tutorAccountID
         category
+        comments {
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version
@@ -76,6 +210,10 @@ subscription OnDeleteAccount($filter: ModelSubscriptionAccountFilterInput) {
         body
         tutorAccountID
         category
+        comments {
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version
@@ -99,6 +237,34 @@ subscription OnCreatePost($filter: ModelSubscriptionPostFilterInput) {
     body
     tutorAccountID
     category
+    comments {
+      items {
+        id
+        body
+        postID
+        author {
+          id
+          fullName
+          email
+          collegeEnrollment
+          collegeName
+          role
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        commentAuthorId
+      }
+      nextToken
+      startedAt
+    }
     createdAt
     updatedAt
     _version
@@ -113,6 +279,34 @@ subscription OnUpdatePost($filter: ModelSubscriptionPostFilterInput) {
     body
     tutorAccountID
     category
+    comments {
+      items {
+        id
+        body
+        postID
+        author {
+          id
+          fullName
+          email
+          collegeEnrollment
+          collegeName
+          role
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        commentAuthorId
+      }
+      nextToken
+      startedAt
+    }
     createdAt
     updatedAt
     _version
@@ -127,6 +321,34 @@ subscription OnDeletePost($filter: ModelSubscriptionPostFilterInput) {
     body
     tutorAccountID
     category
+    comments {
+      items {
+        id
+        body
+        postID
+        author {
+          id
+          fullName
+          email
+          collegeEnrollment
+          collegeName
+          role
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        commentAuthorId
+      }
+      nextToken
+      startedAt
+    }
     createdAt
     updatedAt
     _version

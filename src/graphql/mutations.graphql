@@ -1,4 +1,139 @@
 # this is an auto generated file. This will be overwritten
+mutation CreateComment(
+  $input: CreateCommentInput!
+  $condition: ModelCommentConditionInput
+) {
+  createComment(input: $input, condition: $condition) {
+    id
+    body
+    postID
+    author {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      posts {
+        items {
+          id
+          title
+          body
+          tutorAccountID
+          category
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    commentAuthorId
+  }
+}
+mutation UpdateComment(
+  $input: UpdateCommentInput!
+  $condition: ModelCommentConditionInput
+) {
+  updateComment(input: $input, condition: $condition) {
+    id
+    body
+    postID
+    author {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      posts {
+        items {
+          id
+          title
+          body
+          tutorAccountID
+          category
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    commentAuthorId
+  }
+}
+mutation DeleteComment(
+  $input: DeleteCommentInput!
+  $condition: ModelCommentConditionInput
+) {
+  deleteComment(input: $input, condition: $condition) {
+    id
+    body
+    postID
+    author {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      posts {
+        items {
+          id
+          title
+          body
+          tutorAccountID
+          category
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    commentAuthorId
+  }
+}
 mutation CreateAccount(
   $input: CreateAccountInput!
   $condition: ModelAccountConditionInput
@@ -17,6 +152,10 @@ mutation CreateAccount(
         body
         tutorAccountID
         category
+        comments {
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version
@@ -51,6 +190,10 @@ mutation UpdateAccount(
         body
         tutorAccountID
         category
+        comments {
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version
@@ -85,6 +228,10 @@ mutation DeleteAccount(
         body
         tutorAccountID
         category
+        comments {
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version
@@ -111,6 +258,34 @@ mutation CreatePost(
     body
     tutorAccountID
     category
+    comments {
+      items {
+        id
+        body
+        postID
+        author {
+          id
+          fullName
+          email
+          collegeEnrollment
+          collegeName
+          role
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        commentAuthorId
+      }
+      nextToken
+      startedAt
+    }
     createdAt
     updatedAt
     _version
@@ -128,6 +303,34 @@ mutation UpdatePost(
     body
     tutorAccountID
     category
+    comments {
+      items {
+        id
+        body
+        postID
+        author {
+          id
+          fullName
+          email
+          collegeEnrollment
+          collegeName
+          role
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        commentAuthorId
+      }
+      nextToken
+      startedAt
+    }
     createdAt
     updatedAt
     _version
@@ -145,6 +348,34 @@ mutation DeletePost(
     body
     tutorAccountID
     category
+    comments {
+      items {
+        id
+        body
+        postID
+        author {
+          id
+          fullName
+          email
+          collegeEnrollment
+          collegeName
+          role
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        commentAuthorId
+      }
+      nextToken
+      startedAt
+    }
     createdAt
     updatedAt
     _version

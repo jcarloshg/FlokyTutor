@@ -25,9 +25,10 @@ const ActivityLevel = {
   "PRUEBA_DROP_THIS": "PRUEBA_DROP_THIS"
 };
 
-const { Account, Post, Activity, Topic, ActivitiesProgress, Answer } = initSchema(schema);
+const { Comment, Account, Post, Activity, Topic, ActivitiesProgress, Answer } = initSchema(schema);
 
 export {
+  Comment,
   Account,
   Post,
   Activity,

@@ -1,6 +1,6 @@
 import { ModelInit, MutableModel } from "@aws-amplify/datastore";
 // @ts-ignore
-import { LazyLoading, LazyLoadingDisabled, AsyncCollection, AsyncItem } from "@aws-amplify/datastore";
+import { LazyLoading, LazyLoadingDisabled, AsyncItem, AsyncCollection } from "@aws-amplify/datastore";
 
 export enum Role {
   STUDENT = "STUDENT",
@@ -43,6 +43,10 @@ export declare type Answer = LazyLoading extends LazyLoadingDisabled ? EagerAnsw
 
 export declare const Answer: (new (init: ModelInit<Answer>) => Answer)
 
+type CommentMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type AccountMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -61,6 +65,32 @@ type TopicMetaData = {
 
 type ActivitiesProgressMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type EagerComment = {
+  readonly id: string;
+  readonly body: string;
+  readonly postID: string;
+  readonly author?: Account | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly commentAuthorId?: string | null;
+}
+
+type LazyComment = {
+  readonly id: string;
+  readonly body: string;
+  readonly postID: string;
+  readonly author: AsyncItem<Account | undefined>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly commentAuthorId?: string | null;
+}
+
+export declare type Comment = LazyLoading extends LazyLoadingDisabled ? EagerComment : LazyComment
+
+export declare const Comment: (new (init: ModelInit<Comment, CommentMetaData>) => Comment) & {
+  copyOf(source: Comment, mutator: (draft: MutableModel<Comment, CommentMetaData>) => MutableModel<Comment, CommentMetaData> | void): Comment;
 }
 
 type EagerAccount = {
@@ -99,6 +129,7 @@ type EagerPost = {
   readonly body: string;
   readonly tutorAccountID: string;
   readonly category: ActivityType | keyof typeof ActivityType;
+  readonly comments?: (Comment | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -109,6 +140,7 @@ type LazyPost = {
   readonly body: string;
   readonly tutorAccountID: string;
   readonly category: ActivityType | keyof typeof ActivityType;
+  readonly comments: AsyncCollection<Comment>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

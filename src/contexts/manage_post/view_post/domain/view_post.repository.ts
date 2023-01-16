@@ -1,4 +1,5 @@
 import { Account, Post } from "src/contexts/shared/domain/models";
+import { InputCommentPost } from "./comment-post.input";
 
 export interface ViewPostRepository {
 
@@ -7,7 +8,7 @@ export interface ViewPostRepository {
     getPosts(): Promise<Post[]>;
     getPostByID(ID: string): Promise<Post | null>;
     getCommentsFromPostByID(ID: string): Promise<[]>;
-    // registerComment();
+    commentPost(inputCommentPost: InputCommentPost): Promise<Boolean>;
 
 
     // auxiliary methods

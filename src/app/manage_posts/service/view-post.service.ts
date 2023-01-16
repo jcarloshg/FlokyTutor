@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
 // use case
 import { ViewPost } from 'src/contexts/manage_post/view_post/application/view_post.application';
+import { ViewPostRepository } from 'src/contexts/manage_post/view_post/domain/view_post.repository';
 // implements infrastructure
 import { GetPosts_AWS } from 'src/contexts/manage_post/view_post/infrastructure/aws/get-posts.aws'
 import { GetPostByID_AWS } from 'src/contexts/manage_post/view_post/infrastructure/aws/get-post-by-id.aws';
 import { GetAccountByID_AWS } from 'src/contexts/shared/infrastructure/aws/get-account-by-id.aws';
 import { GetCurrentTutorLogged_AWS } from 'src/contexts/authenticate/infrastructure/aws/get-current-tutor-logged.aws';
+import { CommentPost_AWS } from 'src/contexts/manage_post/view_post/infrastructure/aws/comment-post.aws';
+// models && inputs && others
 import { Post, Account } from 'src/contexts/shared/domain/models';
+import { InputCommentPost } from 'src/contexts/manage_post/view_post/domain/comment-post.input';
 import { Loading } from '../../shared/services/loading';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ViewPostService extends Loading {
+export class ViewPostService extends Loading implements ViewPostRepository {
 
   private viewPost: ViewPost
 
@@ -21,8 +25,9 @@ export class ViewPostService extends Loading {
     this.viewPost = new ViewPost(
       new GetPosts_AWS(),
       new GetPostByID_AWS(),
+      new CommentPost_AWS(),
       new GetAccountByID_AWS(),
-      new GetCurrentTutorLogged_AWS()
+      new GetCurrentTutorLogged_AWS(),
     );
   }
 
@@ -46,6 +51,10 @@ export class ViewPostService extends Loading {
 
   public async getCommentsFromPostByID(ID: string): Promise<[]> {
     return [];
+  }
+
+  public async commentPost(inputCommentPost: InputCommentPost): Promise<Boolean> {
+    throw new Error('Method not implemented.');
   }
 
 
