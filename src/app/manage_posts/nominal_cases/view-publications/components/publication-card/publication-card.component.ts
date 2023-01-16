@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticateAWSService } from '../../../../../authenticate/services/authenticate-aws.service';
 import { ViewPostService } from 'src/app/manage_posts/service/view-post.service';
 import { Account, Post } from 'src/models';
 
@@ -16,7 +15,6 @@ export class PublicationCardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public authenticateAWSService: AuthenticateAWSService,
     public viewPostService: ViewPostService,
   ) { }
 

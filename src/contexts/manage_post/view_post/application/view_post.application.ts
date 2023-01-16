@@ -30,6 +30,10 @@ export class ViewPost implements ViewPostRepository {
         return post;
     }
 
+    public async getCommentsFromPostByID(ID: string): Promise<[]> {
+        return [];
+    }
+
     // public registerComment() { }
 
 

@@ -19,7 +19,6 @@ export class PublicationComponent implements OnInit {
 
   async ngOnInit() {
     await this._getPost();
-    console.log('hOLA');
   }
 
   private async _getPost() {

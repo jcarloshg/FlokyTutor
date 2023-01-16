@@ -1,35 +1,14 @@
-<div class="px-3">
+<div class="px-3" *ngIf="postID">
 
     <div class="container">
-        <p class="fw-semibold fs-4 m-0">Comentarios</p>
+        <p class="fw-semibold fs-4 m-0">Comentarios {{postID}}</p>
         <small class="fw-semibold text-black-50 m-0">5 comentario</small>
     </div>
 
-
     &nbsp;
 
-    <div class="container">
-        <app-comment-input>
-        </app-comment-input>
-    </div>
-
-    <div class="container">
-
-        <div class="mb-2" style="display: flex; flex-direction: row;">
-            <img class="rounded-circle" style="width: 5%; height: min-content;" src="./assets/src/header/not_photo.png">
-            &nbsp;
-            <div style='flex-grow: 1;'>
-                <textarea class="form-control" rows="3"></textarea>
-            </div>
-        </div>
-
-        <div class="d-flex justify-content-end">
-            <button type="button" class="btn btn-primary">
-                Comentar
-            </button>
-        </div>
-
-    </div>
+    <app-comment-input [postIdToComment]="postID">
+    </app-comment-input>
 
     &nbsp;
 

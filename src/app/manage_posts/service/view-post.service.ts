@@ -44,6 +44,10 @@ export class ViewPostService extends Loading {
     return post;
   }
 
+  public async getCommentsFromPostByID(ID: string): Promise<[]> {
+    return [];
+  }
+
 
   //============================================================
   // tracking alternative nominal

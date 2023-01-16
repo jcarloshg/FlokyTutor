@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthenticateAWSService } from 'src/app/authenticate/services/authenticate-aws.service';
-import { PublicationAWSService } from 'src/app/manage_posts/service/publication-aws.service';
-import { Account } from 'src/models';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-publication-comments',
@@ -10,19 +7,16 @@ import { Account } from 'src/models';
 })
 export class PublicationCommentsComponent implements OnInit {
 
-  public tutor: Account | null = null;
+  @Input() postID!: string;
 
-  constructor(
-    private authenticateAWSService: AuthenticateAWSService,
-  ) { }
+  constructor() { }
 
   async ngOnInit() {
-    await this.getCurrentTutor();
+    await this.getComments();
   }
 
-  async getCurrentTutor() {
-    const getCurrentTutorResponse = await this.authenticateAWSService.getCurrentTutor();
-    this.tutor = getCurrentTutorResponse.data as Account;
+  async getComments() {
+    console.log('[getComments]');
   }
 
 }

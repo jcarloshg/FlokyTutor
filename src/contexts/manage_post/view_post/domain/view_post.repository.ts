@@ -6,6 +6,7 @@ export interface ViewPostRepository {
     // nominal tracking
     getPosts(): Promise<Post[]>;
     getPostByID(ID: string): Promise<Post | null>;
+    getCommentsFromPostByID(ID: string): Promise<[]>;
     // registerComment();
 
 
