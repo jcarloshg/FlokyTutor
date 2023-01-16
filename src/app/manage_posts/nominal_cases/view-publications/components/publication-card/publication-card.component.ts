@@ -25,7 +25,7 @@ export class PublicationCardComponent implements OnInit {
   }
 
   goToPublication() {
-    this.router.navigate(['./incio/publicaciones/', this.post.id]);
+    this.router.navigate(['./incio/publicaciones/ver_publicaciones/', this.post.id]);
   }
 
 

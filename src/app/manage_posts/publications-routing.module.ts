@@ -17,12 +17,10 @@ const routes: Routes = [
       {
         path: 'crear_publicacion',
         loadChildren: () => import('./nominal_cases/create-publications/create-publications.module').then(m => m.CreatePublicationsModule),
-        component: CreatePublicationsComponent,
       },
       {
         path: 'ver_publicaciones',
         loadChildren: () => import('./nominal_cases/view-publications/view-publications.module').then(m => m.ViewPublicationsModule),
-        component: ViewPublicationsComponent,
       },
       {
         path: '**',

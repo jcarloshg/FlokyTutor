@@ -4,7 +4,7 @@ import { ViewPublicationsComponent } from './pages/view-publications/view-public
 import { PublicationComponent } from './pages/publication/pages/publication/publication.component';
 
 
-// inicio/publicaciones/
+// inicio/publicaciones/ver_publicaciones/
 
 const routes: Routes = [
   {
