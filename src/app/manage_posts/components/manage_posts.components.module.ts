@@ -10,7 +10,9 @@ import { CategoriesBadgeDirective } from './categories-badge/categories-badge.di
         CategoriesBadgeComponent,
         CategoriesBadgeDirective,
     ],
-    imports: [CommonModule],
+    imports: [
+        CommonModule
+    ],
     exports: [
         CategoriesBadgeComponent,
     ],

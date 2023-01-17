@@ -12,7 +12,9 @@
 
     &nbsp;
 
-    <div *ngFor="let item of [1, 2, 3, 5, 6, 7, 8, 9, 0]" class="container">
+    <!-- <pre>{{comments|json}}</pre> -->
+
+    <div *ngFor="let item of comments" class="container">
 
         <div style="display: flex; flex-direction: row;">
 
@@ -23,13 +25,16 @@
             <div style='flex-grow: 1;'>
                 <div class="rounded p-3" style='border: 1px solid rgb(109, 137, 102); background-color: white;'>
 
-                    <p class="text-black-50 m-0">
-                        El término Década Ominosa —es decir, abominable— fue acuñado por los liberales que la la la la
-                        sufrieron la la la la la la represión y el exilio durante esos diez años. El escritor
-                        progresista Benito Pérez tituló uno de sus Episodios Nacionales
-                    </p>
-
+                    <p class="m-0">{{item.author?.fullName}}</p>
                     &nbsp;
+
+                    <p class="text-black-50 m-0">{{item.body}}</p>
+                    &nbsp;
+                    &nbsp;
+
+                    <small>
+                        <p class="text-black-50 m-0">{{item.createdAt}}</p>
+                    </small>
 
                     <!--
                         <div>

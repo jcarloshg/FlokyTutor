@@ -2,13 +2,14 @@ import { ViewPostRepository } from "../domain/view_post.repository";
 // nominal tracking
 import { GetPostByIDRepository } from "../domain/get-post-by-id.repository";
 import { GetPostsRepository } from "../domain/get-post.repository";
+import { GetCommentsFromPostByIDRepository } from '../domain/get-comments-from-post-by-iD.repository';
 import { CommentPostRepository } from "../domain/comment-post.repository";
 // tracking alternative nominal
 //auxiliary methods
 import { GetAccountByIDRepository } from "src/contexts/shared/domain/account/get-account-by-id.repository";
 import { GetCurrentTutorLoggedRepository } from "src/contexts/authenticate/domain/repository/get-current-tutor-logged.repository";
 // models && inputs
-import { Post, EagerAccount, Account } from 'src/contexts/shared/domain/models';
+import { Post, EagerAccount, Account, Comment } from 'src/contexts/shared/domain/models';
 import { InputCommentPost } from "../domain/comment-post.input";
 
 
@@ -18,6 +19,7 @@ export class ViewPost implements ViewPostRepository {
         // nominal tracking
         private getPostsRepository: GetPostsRepository,
         private getPostByIDRepository: GetPostByIDRepository,
+        private getCommentsFromPostByIDRepository: GetCommentsFromPostByIDRepository,
         private commentPostRepository: CommentPostRepository,
         // tracking alternative nominal
         //auxiliary methods
@@ -39,8 +41,9 @@ export class ViewPost implements ViewPostRepository {
         return post;
     }
 
-    public async getCommentsFromPostByID(ID: string): Promise<[]> {
-        return [];
+    public async getCommentsFromPostByID(ID: string): Promise<Comment[]> {
+        const comments: Comment[] = await this.getCommentsFromPostByIDRepository.run(ID);
+        return comments;
     }
 
     public async commentPost(inputCommentPost: InputCommentPost): Promise<Boolean> {

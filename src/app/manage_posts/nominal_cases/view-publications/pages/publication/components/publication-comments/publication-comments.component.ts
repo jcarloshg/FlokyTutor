@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ViewPostService } from 'src/app/manage_posts/service/view-post.service';
+import { Comment } from 'src/contexts/shared/domain/models';
 
 @Component({
   selector: 'app-publication-comments',
@@ -8,15 +10,18 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PublicationCommentsComponent implements OnInit {
 
   @Input() postID!: string;
+  public comments: Comment[] = [];
 
-  constructor() { }
+  constructor(
+    private viewPostService: ViewPostService,
+  ) { }
 
   async ngOnInit() {
     await this.getComments();
   }
 
   async getComments() {
-    console.log('[getComments]');
+    this.comments = await this.viewPostService.getCommentsFromPostByID(this.postID);
   }
 
 }
