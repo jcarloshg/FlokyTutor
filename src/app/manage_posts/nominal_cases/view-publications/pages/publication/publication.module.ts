@@ -10,6 +10,7 @@ import { PublicationViewerComponent } from './components/publication-viewer/publ
 import { CommentInputComponent } from './components/comment-input/comment-input.component';
 import { ManagePostComponentsModule } from 'src/app/manage_posts/components/manage_posts.components.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { CommentCardComponent } from './components/comment-card/comment-card.component';
 // inputs
 // shared && others
 
@@ -23,6 +24,7 @@ registerLocaleData(localES_MX);
         PublicationCommentsComponent,
         PublicationViewerComponent,
         CommentInputComponent,
+        CommentCardComponent,
         // inputs
         // shared && others
     ],

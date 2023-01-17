@@ -1,8 +1,8 @@
 <div class="px-3" *ngIf="postID">
 
     <div class="container">
-        <p class="fw-semibold fs-4 m-0">Comentarios {{postID}}</p>
-        <small class="fw-semibold text-black-50 m-0">5 comentario</small>
+        <p class="fw-semibold fs-4 m-0">Comentarios</p>
+        <small class="fw-semibold text-black-50 m-0">{{comments.length}} comentario</small>
     </div>
 
     &nbsp;
@@ -12,43 +12,7 @@
 
     &nbsp;
 
-    <!-- <pre>{{comments|json}}</pre> -->
-
-    <div *ngFor="let item of comments" class="container">
-
-        <div style="display: flex; flex-direction: row;">
-
-            <img class="rounded-circle" style="width: 5%; height: min-content;" src="./assets/src/header/not_photo.png">
-
-            &nbsp;
-
-            <div style='flex-grow: 1;'>
-                <div class="rounded p-3" style='border: 1px solid rgb(109, 137, 102); background-color: white;'>
-
-                    <p class="m-0">{{item.author?.fullName}}</p>
-                    <small>
-                        <p class="text-black-50 m-0">{{item.createdAt | date: "fullDate":"GMT-6":"es-MX"}}</p>
-                    </small>
-                    &nbsp;
-
-                    <p class="text-black-50 m-0">{{item.body}}</p>
-                    &nbsp;
-                    &nbsp;
-
-
-                    <!--
-                        <div>
-                            <small class="fw-semibold text-black-50 m-0">❤️ me gusta</small>
-                        </div>
-                    -->
-
-                </div>
-            </div>
-
-        </div>
-
-        &nbsp;
-
-    </div>
+    <app-comment-card *ngFor="let comment of comments" [comment]="comment">
+    </app-comment-card>
 
 </div>
