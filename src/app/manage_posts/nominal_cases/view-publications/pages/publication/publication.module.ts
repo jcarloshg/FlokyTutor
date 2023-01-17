@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import localES_MX from "@angular/common/locales/es-MX";
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-
 // routing && pages
 import { PublicationComponent } from './pages/publication/publication.component';
 // components
@@ -13,6 +12,8 @@ import { ManagePostComponentsModule } from 'src/app/manage_posts/components/mana
 import { SharedModule } from 'src/app/shared/shared.module';
 // inputs
 // shared && others
+
+registerLocaleData(localES_MX);
 
 @NgModule({
     declarations: [
@@ -36,6 +37,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
         ManagePostComponentsModule,
     ],
     exports: [],
-    providers: [],
+    providers: [{
+        provide: LOCALE_ID,
+        useValue: 'es-HN'
+    }],
 })
 export class PublicationModule { }
