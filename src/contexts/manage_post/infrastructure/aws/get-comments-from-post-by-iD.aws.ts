@@ -1,5 +1,5 @@
-import { DataStore, Predicates } from 'aws-amplify';
-import { GetCommentsFromPostByIDRepository } from "../../domain/get-comments-from-post-by-iD.repository";
+import { DataStore } from 'aws-amplify';
+import { GetCommentsFromPostByIDRepository } from '../../domain/domain_view_post/get-comments-from-post-by-iD.repository';
 import { Comment } from "src/contexts/shared/domain/models";
 
 export class GetCommentsFromPostByID_AWS implements GetCommentsFromPostByIDRepository {

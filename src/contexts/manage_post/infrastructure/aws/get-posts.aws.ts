@@ -1,7 +1,7 @@
 // import { GetPost } from "../../../domain/view_post/repository/GetPost.repository";
 import { DataStore, Predicates } from 'aws-amplify';
-import { GetPostsRepository } from '../../domain/get-post.repository';
 import { Post } from 'src/contexts/shared/domain/models';
+import { GetPostsRepository } from '../../domain/domain_view_post/get-post.repository';
 
 export class GetPosts_AWS implements GetPostsRepository {
 

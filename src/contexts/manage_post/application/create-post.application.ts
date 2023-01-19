@@ -1,5 +1,10 @@
-import { CreatePostRepository, InputCreatePost } from "../domain/create-post.repository";
-import { MethodCreateAPostRepository } from '../domain/method-create-a-post.repository';
+// import { CreatePostRepository, InputCreatePost } from "../domain/create-post.repository";
+// import { MethodCreateAPostRepository } from '../domain/method-create-a-post.repository';
+// import { GetCurrentTutorLoggedRepository } from "src/contexts/authenticate/domain/repository/get-current-tutor-logged.repository";
+// import { Account, EagerAccount, EagerPost, Post } from "src/contexts/shared/domain/models";
+
+import { CreatePostRepository, InputCreatePost } from '../domain/domain_create_post/create-post.repository';
+import { MethodCreateAPostRepository } from "../domain/domain_create_post/method-create-a-post.repository";
 import { GetCurrentTutorLoggedRepository } from "src/contexts/authenticate/domain/repository/get-current-tutor-logged.repository";
 import { Account, EagerAccount, EagerPost, Post } from "src/contexts/shared/domain/models";
 

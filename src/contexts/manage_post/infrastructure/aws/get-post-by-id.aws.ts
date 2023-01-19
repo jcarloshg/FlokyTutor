@@ -1,5 +1,5 @@
 import { DataStore } from "aws-amplify";
-import { GetPostByIDRepository } from "../../domain/get-post-by-id.repository";
+import { GetPostByIDRepository } from "../../domain/domain_view_post/get-post-by-id.repository";
 import { Post } from "src/contexts/shared/domain/models";
 
 export class GetPostByID_AWS implements GetPostByIDRepository {

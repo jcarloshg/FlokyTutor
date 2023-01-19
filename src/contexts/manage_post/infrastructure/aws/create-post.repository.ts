@@ -1,7 +1,7 @@
 import { DataStore } from 'aws-amplify';
-import { MethodCreateAPostRepository } from '../../domain/method-create-a-post.repository';
-import { InputCreatePost } from '../../domain/create-post.repository';
 import { ActivityType, Post } from 'src/contexts/shared/domain/models';
+import { MethodCreateAPostRepository } from '../../domain/domain_create_post/method-create-a-post.repository';
+import { InputCreatePost } from '../../domain/domain_create_post/create-post.repository';
 
 export class CreatePost_AWS implements MethodCreateAPostRepository {
 
@@ -15,12 +15,14 @@ export class CreatePost_AWS implements MethodCreateAPostRepository {
             return ActivityType.LISTENING;
         }
         try {
-            const newPost = new Post({
-                title: inputCreatePost.title,
-                body: inputCreatePost.body,
-                category: getCategory(inputCreatePost.category),
-                tutorAccountID: inputCreatePost.tutorAccountID,
-            });
+            const newPost = new Post(
+                {
+                    title: inputCreatePost.title,
+                    body: inputCreatePost.body,
+                    category: getCategory(inputCreatePost.category),
+                    tutorAccountID: inputCreatePost.tutorAccountID,
+                }
+            );
             const postCreated: Post = await DataStore.save(newPost);
             return postCreated ?? null;
         } catch (error) {
