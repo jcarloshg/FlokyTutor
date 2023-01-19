@@ -1,10 +1,9 @@
 
 import { DomainEvent } from "src/contexts/shared/domain/domain-event";
-import { Post as PostAWS } from 'src/contexts/shared/domain/models';
 
-export class CreatePostDomainEvent extends DomainEvent {
+export class NotCreatedPostDomainEvent extends DomainEvent {
 
-    static override readonly EVENT_NAME: string = 'post.created';
+    static override readonly EVENT_NAME: string = 'post.not_created';
 
     constructor(
         params
@@ -16,7 +15,7 @@ export class CreatePostDomainEvent extends DomainEvent {
     ) {
         super(
             {
-                eventName: CreatePostDomainEvent.EVENT_NAME,
+                eventName: NotCreatedPostDomainEvent.EVENT_NAME,
                 eventId: params.eventId,
                 occurredOn: params.occurredOn,
                 attributes: params.attributes,

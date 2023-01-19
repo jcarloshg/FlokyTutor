@@ -7,7 +7,7 @@ import { CreatePostRepository, InputCreatePost } from '../domain/domain_create_p
 import { MethodCreateAPostRepository } from "../domain/domain_create_post/method-create-a-post.repository";
 import { GetCurrentTutorLoggedRepository } from "src/contexts/authenticate/domain/repository/get-current-tutor-logged.repository";
 import { Post as PostDomain } from "../domain/Post";
-import { Account, EagerAccount, EagerPost, Post } from "src/contexts/shared/domain/models";
+import { Account, EagerAccount, Post } from "src/contexts/shared/domain/models";
 
 export class CreatePost implements CreatePostRepository {
 
@@ -18,7 +18,9 @@ export class CreatePost implements CreatePostRepository {
 
     public async createPost(inputCreatePost: InputCreatePost): Promise<Post | null> {
         const postCreated: Post | null = await this.methodCreateAPostRepository.run(inputCreatePost);
-        const pepe = PostDomain.createPost(postCreated);
+        const postDomain: PostDomain = postCreated
+            ? PostDomain.createPost(postCreated)
+            : PostDomain.errorToCreatePost(inputCreatePost);
         return postCreated;
     }
 

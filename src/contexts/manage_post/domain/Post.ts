@@ -1,9 +1,11 @@
-import { InputCreatePost } from '../domain/domain_create_post/create-post.repository';
 // events
 import { AggregateRoot } from 'src/contexts/shared/domain/aggregate-root';
+// events
 import { CreatePostDomainEvent } from './domain_create_post/create-post.domain-event';
+import { NotCreatedPostDomainEvent } from './domain_create_post/not-created-post.domain-event';
 // models
 import { Post as PostAWS } from 'src/contexts/shared/domain/models';
+import { InputCreatePost } from '../domain/domain_create_post/create-post.repository';
 
 export class Post extends AggregateRoot {
 
@@ -11,17 +13,16 @@ export class Post extends AggregateRoot {
         super();
     }
 
-    static createPost(postCreatedAWS: PostAWS | null): Post {
-
+    static createPost(postCreatedAWS: PostAWS): Post {
         const postCreated = new Post();
-
-        const wasCreatePost = postCreatedAWS !== null;
-
-        wasCreatePost
-            ? postCreated.record(new CreatePostDomainEvent({}))
-            : null;
-
+        postCreated.record(new CreatePostDomainEvent({ attributes: postCreatedAWS }));
         return postCreated;
+    };
+
+    static errorToCreatePost(inputCreatePost: InputCreatePost): Post {
+        const errorToCreatePost = new Post();
+        errorToCreatePost.record(new NotCreatedPostDomainEvent({ attributes: inputCreatePost }))
+        return errorToCreatePost;
     };
 
 
