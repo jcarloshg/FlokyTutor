@@ -1,26 +1,36 @@
-// import { CreatePostRepository, InputCreatePost } from "../domain/create-post.repository";
-// import { MethodCreateAPostRepository } from '../domain/method-create-a-post.repository';
-// import { GetCurrentTutorLoggedRepository } from "src/contexts/authenticate/domain/repository/get-current-tutor-logged.repository";
-// import { Account, EagerAccount, EagerPost, Post } from "src/contexts/shared/domain/models";
-
 import { CreatePostRepository, InputCreatePost } from '../domain/domain_create_post/create-post.repository';
 import { MethodCreateAPostRepository } from "../domain/domain_create_post/method-create-a-post.repository";
 import { GetCurrentTutorLoggedRepository } from "src/contexts/authenticate/domain/repository/get-current-tutor-logged.repository";
 import { Post as PostDomain } from "../domain/Post";
 import { Account, EagerAccount, Post } from "src/contexts/shared/domain/models";
+import { EventBus } from 'src/contexts/shared/domain/event-bus';
 
 export class CreatePost implements CreatePostRepository {
 
-    constructor(
-        private methodCreateAPostRepository: MethodCreateAPostRepository,
-        private getCurrentTutorLoggedRepository: GetCurrentTutorLoggedRepository,
-    ) { }
+    private methodCreateAPostRepository: MethodCreateAPostRepository;
+    private getCurrentTutorLoggedRepository: GetCurrentTutorLoggedRepository;
+    private eventBus: EventBus;
+
+    constructor(params: {
+        methodCreateAPostRepository: MethodCreateAPostRepository,
+        getCurrentTutorLoggedRepository: GetCurrentTutorLoggedRepository,
+        eventBus: EventBus;
+    }) {
+        this.methodCreateAPostRepository = params.methodCreateAPostRepository;
+        this.getCurrentTutorLoggedRepository = params.getCurrentTutorLoggedRepository;
+        this.eventBus = params.eventBus;
+    }
 
     public async createPost(inputCreatePost: InputCreatePost): Promise<Post | null> {
+
         const postCreated: Post | null = await this.methodCreateAPostRepository.run(inputCreatePost);
+
         const postDomain: PostDomain = postCreated
             ? PostDomain.createPost(postCreated)
             : PostDomain.errorToCreatePost(inputCreatePost);
+
+        await this.eventBus.publish(postDomain.pullDomainEvents());
+
         return postCreated;
     }
 
