@@ -34,7 +34,8 @@ export class CreatePostService extends Loading {
     const inMemoryAsyncEventBus = new InMemoryAsyncEventBus();
     inMemoryAsyncEventBus.addSubscribers(
       [
-        new NotifyOnCreatePost(new PrintConsole())
+        new NotifyOnCreatePost(new PrintConsole()),
+        
       ]
     );
 

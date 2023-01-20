@@ -16,6 +16,7 @@ export class Post extends AggregateRoot {
     static createPost(postCreatedAWS: PostAWS): Post {
         const postCreated = new Post();
         postCreated.record(new CreatePostDomainEvent({ attributes: postCreatedAWS }));
+        postCreated.record(new CreatePostDomainEvent({ attributes: postCreatedAWS }));
         return postCreated;
     };
 
