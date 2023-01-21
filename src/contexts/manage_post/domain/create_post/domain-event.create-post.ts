@@ -11,7 +11,7 @@ export class CreatePostDomainEvent extends DomainEvent {
             : {
                 eventId?: string,
                 occurredOn?: Date,
-                attributes?: any,
+                attributes?: PostAWS,
             }
     ) {
         super(

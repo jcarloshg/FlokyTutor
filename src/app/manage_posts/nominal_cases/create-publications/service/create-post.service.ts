@@ -19,7 +19,7 @@ export class CreatePostService extends Loading implements CreatePostRepository {
   private createPostNominalCase: CreatePost;
 
   constructor(
-    private managePostsEventBusService: ManagePostsEventBusService,
+    managePostsEventBusService: ManagePostsEventBusService,
   ) {
 
     super();
