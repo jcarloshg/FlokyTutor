@@ -1,7 +1,7 @@
 import { DataStore } from 'aws-amplify';
 import { ActivityType, Post } from 'src/contexts/shared/domain/models';
-import { MethodCreateAPostRepository } from '../../domain/domain_create_post/method-create-a-post.repository';
-import { InputCreatePost } from '../../domain/domain_create_post/create-post.repository';
+import { MethodCreateAPostRepository } from '../../domain/create_post/repository.method-create-a-post';
+import { InputCreatePost } from '../../domain/create_post/create-post.repository';
 
 export class CreatePost_AWS implements MethodCreateAPostRepository {
 

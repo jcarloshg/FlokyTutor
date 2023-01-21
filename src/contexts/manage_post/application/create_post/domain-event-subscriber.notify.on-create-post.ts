@@ -1,5 +1,5 @@
 import { DomainEventSubscriber } from "src/contexts/shared/domain/event-bus";
-import { CreatePostDomainEvent } from "../../domain/domain_create_post/create-post.domain-event";
+import { CreatePostDomainEvent } from "../../domain/create_post/domain-event.create-post";
 import { DomainEventClass } from "src/contexts/shared/domain/domain-event";
 
 export interface Notify {

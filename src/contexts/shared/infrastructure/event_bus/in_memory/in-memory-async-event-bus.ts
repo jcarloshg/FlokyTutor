@@ -6,7 +6,7 @@ export class InMemoryAsyncEventBus extends EventEmitter implements EventBus {
 
     async publish(events: DomainEvent[]): Promise<void> {
         events.map((event) => {
-            console.log('...publish...', event.eventName);
+            console.log('...emit...', event.eventName);
             this.emit(event.eventName, event);
         });
     }
