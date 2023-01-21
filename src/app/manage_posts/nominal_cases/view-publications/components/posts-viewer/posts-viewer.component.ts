@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/models';
-import { PublicationAWSService } from '../../../../service/publication-aws.service';
 import { ViewPostService } from 'src/app/manage_posts/service/view-post.service';
+import { GetPostsService } from '../../service/get-posts-service.service';
 
 @Component({
   selector: 'app-posts-viewer',
@@ -13,11 +13,21 @@ export class PostsViewerComponent implements OnInit {
   public posts: Post[] = [];
 
   constructor(
-    public viewPostService: ViewPostService,
-  ) { }
+    viewPostService: ViewPostService,
+    private getPostsService: GetPostsService,
+  ) {
+    this.getPostsService
+      .observablePosts
+      .subscribe(posts => this.posts = posts);
+  }
 
   async ngOnInit(): Promise<void> {
-    this.posts = await this.viewPostService.getPosts();
+    await this.getPostsService.run();
+    // this.posts = await this.viewPostService.getPosts();
+  }
+
+  async run() {
+    await this.getPostsService.run();
   }
 
 }

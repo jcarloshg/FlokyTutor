@@ -15,6 +15,7 @@ export class CreatePost_AWS implements MethodCreateAPostRepository {
             return ActivityType.LISTENING;
         }
         try {
+
             const newPost = new Post(
                 {
                     title: inputCreatePost.title,
@@ -23,8 +24,16 @@ export class CreatePost_AWS implements MethodCreateAPostRepository {
                     tutorAccountID: inputCreatePost.tutorAccountID,
                 }
             );
+
             const postCreated: Post = await DataStore.save(newPost);
-            return postCreated ?? null;
+            let postCreatedWhitAllData = postCreated;
+
+            while (postCreatedWhitAllData.createdAt == undefined) {
+                postCreatedWhitAllData = await DataStore.query(Post, postCreated.id) ?? postCreated;
+            }
+
+            return postCreatedWhitAllData ?? null;
+
         } catch (error) {
             return null;
         }

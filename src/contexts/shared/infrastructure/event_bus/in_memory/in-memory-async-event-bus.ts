@@ -5,10 +5,11 @@ import { DomainEvent } from '../../../domain/domain-event';
 export class InMemoryAsyncEventBus extends EventEmitter implements EventBus {
 
     async publish(events: DomainEvent[]): Promise<void> {
-        events.map((event) => {
-            console.log('...emit...', event.eventName);
-            this.emit(event.eventName, event);
-        });
+        await events.map(
+            async (event) => {
+                await this.emit(event.eventName, event);
+            }
+        );
     }
 
     addSubscribers(subscribers: DomainEventSubscriber<any>[]) {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Subject, of } from 'rxjs';
 // context application
 // context domain
 import { GetPostsRepository } from 'src/contexts/manage_post/domain/domain_view_post/get-post.repository';
@@ -14,17 +14,19 @@ import { Post } from 'src/contexts/shared/domain/models';
 })
 export class GetPostsService implements GetPostsRepository {
 
-  private posts: Post[] = [];
-  private _observerPosts = of<Post[]>(this.posts);
+  private _posts: Post[] = [];
+  private _observablePosts = new Subject<Post[]>();
 
   constructor() { }
 
-  public get observerPosts() { return this._observerPosts; }
+  public get posts() { return this._posts; }
+  public get observablePosts() { return this._observablePosts.asObservable(); }
 
   async run(): Promise<Post[]> {
-    const postsResponse: Post[] = await new GetPosts_AWS().run();
-    this.posts = postsResponse;
-    return this.posts;
+    const getPostsResponse: Post[] = await new GetPosts_AWS().run();
+    this._posts = getPostsResponse;
+    this._observablePosts.next(this._posts);
+    return getPostsResponse;
   }
 
 }
