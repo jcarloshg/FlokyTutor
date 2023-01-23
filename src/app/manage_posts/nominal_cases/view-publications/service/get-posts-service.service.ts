@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, of } from 'rxjs';
+import { Subject } from 'rxjs';
 // context application
 // context domain
 import { GetPostsRepository } from 'src/contexts/manage_post/domain/domain_view_post/get-post.repository';
