@@ -15,7 +15,8 @@ export class RecallGetCommentsSubscriber implements DomainEventSubscriber<Create
 
     async on(domainEvent: CreatePostDomainEvent): Promise<void> {
         const commentCreated = domainEvent.attributes as Comment;
-        await this.getCommentsFromPostByIDRepository.run(commentCreated.id);
+        const postID = commentCreated.postID;
+        await this.getCommentsFromPostByIDRepository.run(postID);
     }
 
 }

@@ -14,6 +14,7 @@ export class GetCommentsFromPostByID_AWS implements GetCommentsFromPostByIDRepos
                 sort: comment => comment.createdAt("DESCENDING"),
             }
         );
+
         return commentsResponse;
     }
 }

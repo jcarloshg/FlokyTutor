@@ -13,7 +13,8 @@ import { GetCommentsFromPostByIDService } from '../nominal_cases/view-publicatio
 })
 export class ManagePostsEventBusService {
 
-    public inMemoryAsyncEventBus = new InMemoryAsyncEventBus();
+    private _inMemoryAsyncEventBus = new InMemoryAsyncEventBus();
+    public get inMemoryAsyncEventBus() { return this._inMemoryAsyncEventBus; }
 
     constructor(
         getPostsService: GetPostsService,
@@ -23,9 +24,10 @@ export class ManagePostsEventBusService {
 
         this.inMemoryAsyncEventBus.addSubscribers(
             [
-                // new NotifyOnCreatePost(new PrintConsole()),
+                // create publication
                 new LaunchToastToSuccessCreatedPost(customToastService),
                 new RecallGetPostsSubscriber(getPostsService),
+                // view publication
                 new RecallGetCommentsSubscriber(getCommentsFromPostByIDService),
             ]
         );

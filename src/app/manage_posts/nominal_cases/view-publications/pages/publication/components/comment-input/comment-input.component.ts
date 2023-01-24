@@ -33,11 +33,13 @@ export class CommentInputComponent {
         return;
       }
 
-      const commentPostResponse = await this.viewPostService.commentPost({
-        body: this.commentBody,
-        postID: this.postIdToComment,
-        author: tutorAuthor,
-      });
+      const commentPostResponse = await this.viewPostService.commentPost(
+        {
+          body: this.commentBody,
+          postID: this.postIdToComment,
+          author: tutorAuthor,
+        }
+      );
 
       const wasCreatedNewComment = commentPostResponse !== null;
 

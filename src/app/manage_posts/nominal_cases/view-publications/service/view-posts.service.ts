@@ -12,6 +12,7 @@ import { GetCurrentTutorLoggedService } from './get-current-tutor-logged.service
 // models
 import { InputCommentPost } from 'src/contexts/manage_post/domain/domain_view_post/comment-post.input';
 import { Post, Comment, Account, EagerComment } from 'src/contexts/shared/domain/models';
+import { ManagePostsEventBusService } from 'src/app/manage_posts/service/manage_posts.service';
 
 @Injectable({
     providedIn: 'root'
@@ -41,6 +42,7 @@ export class ViewPostsService implements ViewPostRepository {
         commentPostRepositoryService: CommentPostRepositoryService,
         getAccountByIDService: GetAccountByIDService,
         getCurrentTutorLoggedService: GetCurrentTutorLoggedService,
+        managePostsEventBusService: ManagePostsEventBusService,
     ) {
         this._getPostsService = getPostsService
         this._getPostByIDService = getPostByIDService;
@@ -50,12 +52,15 @@ export class ViewPostsService implements ViewPostRepository {
         this._getCurrentTutorLoggedService = getCurrentTutorLoggedService;
 
         this.viewPost = new ViewPost(
-            this._getPostsService,
-            this._getPostByIDService,
-            this._getCommentsFromPostByIDService,
-            this._commentPostRepositoryService,
-            this._getAccountByIDService,
-            this._getCurrentTutorLoggedService,
+            {
+                getPostsRepository: this._getPostsService,
+                getPostByIDRepository: this._getPostByIDService,
+                getCommentsFromPostByIDRepository: this._getCommentsFromPostByIDService,
+                commentPostRepository: this._commentPostRepositoryService,
+                getAccountByIDRepository: this._getAccountByIDService,
+                getCurrentTutorLoggedRepository: this._getCurrentTutorLoggedService,
+                eventBus: managePostsEventBusService.inMemoryAsyncEventBus,
+            }
         );
 
     }

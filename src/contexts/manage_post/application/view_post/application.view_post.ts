@@ -12,22 +12,45 @@ import { GetCurrentTutorLoggedRepository } from "src/contexts/authenticate/domai
 // models && inputs
 import { Post, EagerAccount, Account, Comment as Comment_AWS } from 'src/contexts/shared/domain/models';
 import { InputCommentPost } from "../../domain/domain_view_post/comment-post.input";
+import { EventBus } from 'src/contexts/shared/domain/event-bus';
 import { Comment as CommentDomain } from '../../domain/Comment';
 
 
 export class ViewPost implements ViewPostRepository {
 
+    // nominal tracking
+    private getPostsRepository: GetPostsRepository;
+    private getPostByIDRepository: GetPostByIDRepository;
+    private getCommentsFromPostByIDRepository: GetCommentsFromPostByIDRepository;
+    private commentPostRepository: CommentPostRepository;
+    // tracking alternative nominal
+    //auxiliary methods
+    private getAccountByIDRepository: GetAccountByIDRepository;
+    private getCurrentTutorLoggedRepository: GetCurrentTutorLoggedRepository;
+    private eventBus: EventBus;
+
     constructor(
-        // nominal tracking
-        private getPostsRepository: GetPostsRepository,
-        private getPostByIDRepository: GetPostByIDRepository,
-        private getCommentsFromPostByIDRepository: GetCommentsFromPostByIDRepository,
-        private commentPostRepository: CommentPostRepository,
-        // tracking alternative nominal
-        //auxiliary methods
-        private getAccountByIDRepository: GetAccountByIDRepository,
-        private getCurrentTutorLoggedRepository: GetCurrentTutorLoggedRepository,
-    ) { }
+        params: {
+            // nominal tracking
+            getPostsRepository: GetPostsRepository;
+            getPostByIDRepository: GetPostByIDRepository;
+            getCommentsFromPostByIDRepository: GetCommentsFromPostByIDRepository;
+            commentPostRepository: CommentPostRepository;
+            // tracking alternative nominal
+            //auxiliary methods
+            getAccountByIDRepository: GetAccountByIDRepository;
+            getCurrentTutorLoggedRepository: GetCurrentTutorLoggedRepository;
+            eventBus: EventBus;
+        }
+    ) {
+        this.getPostsRepository = params.getPostsRepository;
+        this.getPostByIDRepository = params.getPostByIDRepository;
+        this.getCommentsFromPostByIDRepository = params.getCommentsFromPostByIDRepository;
+        this.commentPostRepository = params.commentPostRepository;
+        this.getAccountByIDRepository = params.getAccountByIDRepository;
+        this.getCurrentTutorLoggedRepository = params.getCurrentTutorLoggedRepository;
+        this.eventBus = params.eventBus;
+    }
 
 
     //============================================================
@@ -49,8 +72,15 @@ export class ViewPost implements ViewPostRepository {
     }
 
     public async commentPost(inputCommentPost: InputCommentPost): Promise<Comment_AWS | null> {
-        const createdComment = await this.commentPostRepository.run(inputCommentPost);
-        const commentDomain: CommentDomain = CommentDomain.commentRegistered(createdComment!);
+
+        const createdComment: Comment_AWS | null = await this.commentPostRepository.run(inputCommentPost);
+
+        const commentDomain = createdComment !== null
+            ? CommentDomain.commentRegistered(createdComment)
+            : CommentDomain.commentNotRegistered(inputCommentPost);
+
+        await this.eventBus.publish(commentDomain.pullDomainEvents());
+
         return createdComment;
     }
 

@@ -20,7 +20,13 @@ export class CommentPost_AWS implements CommentPostRepository {
             );
 
             const commentCreated = await DataStore.save(newComment);
-            return commentCreated;
+            let commentCreatedWhitAllData = commentCreated;
+
+            while (commentCreatedWhitAllData.createdAt == undefined) {
+                commentCreatedWhitAllData = await DataStore.query(Comment, commentCreated.id) ?? commentCreated;
+            }
+
+            return commentCreatedWhitAllData;
 
         } catch (error) {
             return null;
