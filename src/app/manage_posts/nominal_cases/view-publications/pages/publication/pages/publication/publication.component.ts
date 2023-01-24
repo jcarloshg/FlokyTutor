@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ViewPostService } from 'src/app/manage_posts/service/view-post.service';
+import { ViewPostsService } from '../../../../service/view-posts.service';
 import { Post } from 'src/models';
 
 @Component({
@@ -14,7 +14,7 @@ export class PublicationComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    public viewPostService: ViewPostService,
+    public viewPostService: ViewPostsService,
   ) { }
 
   async ngOnInit() {

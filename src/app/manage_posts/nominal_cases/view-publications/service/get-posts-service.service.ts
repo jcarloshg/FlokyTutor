@@ -23,6 +23,7 @@ export class GetPostsService implements GetPostsRepository {
   public get observablePosts() { return this._observablePosts.asObservable(); }
 
   async run(): Promise<Post[]> {
+    console.log('[GetPostsService]-[run]');
     const getPostsResponse: Post[] = await new GetPosts_AWS().run();
     this._posts = getPostsResponse;
     this._observablePosts.next(this._posts);

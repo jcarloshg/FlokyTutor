@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ViewPostService } from 'src/app/manage_posts/service/view-post.service';
+// import { ViewPostService } from 'src/app/manage_posts/service/view-post.service';
 import { Comment } from 'src/contexts/shared/domain/models';
+import { ViewPostsService } from '../../../../service/view-posts.service';
 
 @Component({
   selector: 'app-publication-comments',
@@ -13,7 +14,7 @@ export class PublicationCommentsComponent implements OnInit {
   public comments: Comment[] = [];
 
   constructor(
-    private viewPostService: ViewPostService,
+    private viewPostService: ViewPostsService,
   ) { }
 
   async ngOnInit() {

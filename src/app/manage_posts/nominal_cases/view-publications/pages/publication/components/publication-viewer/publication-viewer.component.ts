@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ViewPostService } from 'src/app/manage_posts/service/view-post.service';
+import { ViewPostsService } from '../../../../service/view-posts.service';
 import { Account, Post } from 'src/models';
 
 @Component({
@@ -13,7 +13,7 @@ export class PublicationViewerComponent implements OnInit {
   public postAuthor: Account | null = null;
 
   constructor(
-    public viewPostService: ViewPostService,
+    public viewPostService: ViewPostsService,
   ) { }
 
   async ngOnInit(): Promise<void> {

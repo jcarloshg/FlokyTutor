@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CustomToastService } from 'src/app/shared/services/custom-toast.service';
-import { ViewPostService } from "src/app/manage_posts/service/view-post.service";
+import { ViewPostsService } from '../../../../service/view-posts.service';
+
 @Component({
   selector: 'app-comment-input',
   templateUrl: './comment-input.component.html',
@@ -13,10 +14,12 @@ export class CommentInputComponent {
 
   constructor(
     private customToastService: CustomToastService,
-    private viewPostService: ViewPostService,
+    private viewPostService: ViewPostsService,
   ) { }
 
   public async commentPost() {
+
+    // TODO - FIX !!!!!!
 
     const isEmptyComment = this.commentBody == '';
     if (isEmptyComment == true) {

@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ViewPostsService } from '../../service/view-posts.service';
 import { Post } from 'src/models';
-import { ViewPostService } from 'src/app/manage_posts/service/view-post.service';
-import { GetPostsService } from '../../service/get-posts-service.service';
-import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-posts-viewer',
@@ -15,25 +14,20 @@ export class PostsViewerComponent implements OnInit, OnDestroy {
   private posts$: Subscription;
 
   constructor(
-    viewPostService: ViewPostService,
-    private getPostsService: GetPostsService,
+    private viewPostService: ViewPostsService,
   ) {
-
-    this.posts$ = this.getPostsService
+    const getPostsService = this.viewPostService.getPostsService;
+    this.posts$ = getPostsService
       .observablePosts
       .subscribe(posts => this.posts = posts);
   }
 
   async ngOnInit(): Promise<void> {
-    await this.getPostsService.run();
+    await this.viewPostService.getPostsService.run();
   }
 
   ngOnDestroy(): void {
     this.posts$.unsubscribe();
-  }
-
-  async run() {
-    await this.getPostsService.run();
   }
 
 }

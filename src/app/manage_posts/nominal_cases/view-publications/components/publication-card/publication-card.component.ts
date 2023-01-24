@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewPostService } from 'src/app/manage_posts/service/view-post.service';
+import { ViewPostsService } from '../../service/view-posts.service';
 import { Account, Post } from 'src/models';
 
 @Component({
@@ -15,7 +15,7 @@ export class PublicationCardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public viewPostService: ViewPostService,
+    public viewPostService: ViewPostsService,
   ) { }
 
   async ngOnInit(): Promise<void> {
