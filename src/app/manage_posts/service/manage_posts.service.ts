@@ -7,6 +7,7 @@ import { CustomToastService } from 'src/app/shared/services/custom-toast.service
 import { LaunchToastToSuccessCreatedPost } from '../../../contexts/manage_post/application/create_post/domain-event-subscriber.notify.on-create-post';
 import { RecallGetCommentsSubscriber } from '../../../contexts/manage_post/application/view_post/domain-event-subscriber.comment-registered';
 import { GetCommentsFromPostByIDService } from '../nominal_cases/view-publications/service/get-comments-from-post-by-ID.service';
+import { NotifyCommentRegisteredSubscriber } from 'src/contexts/manage_post/application/view_post/domain-event-subscriber.notify-comment-registered';
 
 @Injectable({
     providedIn: 'root'
@@ -29,6 +30,7 @@ export class ManagePostsEventBusService {
                 new RecallGetPostsSubscriber(getPostsService),
                 // view publication
                 new RecallGetCommentsSubscriber(getCommentsFromPostByIDService),
+                new NotifyCommentRegisteredSubscriber(customToastService),
             ]
         );
 

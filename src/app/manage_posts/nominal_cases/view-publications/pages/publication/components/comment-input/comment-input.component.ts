@@ -19,43 +19,23 @@ export class CommentInputComponent {
 
   public async commentPost() {
 
-    const isEmptyComment = this.commentBody == '';
-    if (isEmptyComment == true) {
-      this.customToastService.launchToast({ typeToast: 'error', message: 'El "campo del comentario" esta vació' })
-      return;
-    }
-
     try {
 
-      const tutorAuthor = await this.viewPostService.getCurrentTutorLogged();
-      if (tutorAuthor == null) {
-        this.customToastService.launchToast({ typeToast: 'error', message: 'Ocurrió un error inesperado.' })
-        return;
-      }
+      if (this.commentBody == '') return;
 
+      const tutorAuthor = await this.viewPostService.getCurrentTutorLogged();
       const commentPostResponse = await this.viewPostService.commentPost(
         {
           body: this.commentBody,
           postID: this.postIdToComment,
-          author: tutorAuthor,
+          author: tutorAuthor!,
         }
       );
-
       const wasCreatedNewComment = commentPostResponse !== null;
-
-      if (wasCreatedNewComment == true) {
-        this.customToastService.launchToast({ typeToast: 'success', message: "Comentario registrado. :)" });
-        this.commentBody = '';
-        return;
-      }
-
-      this.customToastService.launchToast({ typeToast: 'error', message: "Ocurrió un error. Inténtalo mas tarde. :(" })
+      if (wasCreatedNewComment == true) this.commentBody = '';
 
     } catch (error) {
-
-      console.log(error);
-
-      // this.customToastService.launchToast({ typeToast: 'error', message: "Ocurrió un error. Inténtalo mas tarde. :(" })
+      this.customToastService.launchToast({ typeToast: 'error', message: "Ocurrió un error. Inténtalo mas tarde. :(" })
     }
 
   }
