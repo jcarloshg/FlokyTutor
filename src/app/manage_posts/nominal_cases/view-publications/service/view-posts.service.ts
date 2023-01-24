@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 // domain
 import { ViewPostRepository } from '../../../../../contexts/manage_post/domain/domain_view_post/view_post.repository';
-import { ViewPost } from 'src/contexts/manage_post/application/view_post.application';
+import { ViewPost } from 'src/contexts/manage_post/application/view_post/application.view_post';
 // infrastructure
 import { GetPostsService } from './get-posts-service.service';
 import { GetPostByIDService } from './get-post-by-ID.service';
@@ -11,7 +11,7 @@ import { GetAccountByIDService } from './get-account-by-ID.service';
 import { GetCurrentTutorLoggedService } from './get-current-tutor-logged.service';
 // models
 import { InputCommentPost } from 'src/contexts/manage_post/domain/domain_view_post/comment-post.input';
-import { Post, Comment, Account } from 'src/contexts/shared/domain/models';
+import { Post, Comment, Account, EagerComment } from 'src/contexts/shared/domain/models';
 
 @Injectable({
     providedIn: 'root'
@@ -81,11 +81,17 @@ export class ViewPostsService implements ViewPostRepository {
         return comments;
     }
 
-    public async commentPost(inputCommentPost: InputCommentPost): Promise<Boolean> {
-        // todo return comment model
+
+    public async commentPost(inputCommentPost: InputCommentPost): Promise<Comment | null> {
         const wasCreatedANewComment = await this.viewPost.commentPost(inputCommentPost);
-        return wasCreatedANewComment ? true : false;
+        return wasCreatedANewComment;
     }
+
+    // public async commentPost(inputCommentPost: InputCommentPost): Promise<Boolean> {
+    //     // todo return comment model
+    //     const wasCreatedANewComment = await this.viewPost.commentPost(inputCommentPost);
+    //     return wasCreatedANewComment ? true : false;
+    // }
 
 
 

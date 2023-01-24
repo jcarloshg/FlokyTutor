@@ -19,8 +19,6 @@ export class CommentInputComponent {
 
   public async commentPost() {
 
-    // TODO - FIX !!!!!!
-
     const isEmptyComment = this.commentBody == '';
     if (isEmptyComment == true) {
       this.customToastService.launchToast({ typeToast: 'error', message: 'El "campo del comentario" esta vació' })
@@ -41,7 +39,7 @@ export class CommentInputComponent {
         author: tutorAuthor,
       });
 
-      const wasCreatedNewComment = commentPostResponse == true;
+      const wasCreatedNewComment = commentPostResponse !== null;
 
       if (wasCreatedNewComment == true) {
         this.customToastService.launchToast({ typeToast: 'success', message: "Comentario registrado. :)" });
@@ -53,7 +51,9 @@ export class CommentInputComponent {
 
     } catch (error) {
 
-      this.customToastService.launchToast({ typeToast: 'error', message: "Ocurrió un error. Inténtalo mas tarde. :(" })
+      console.log(error);
+
+      // this.customToastService.launchToast({ typeToast: 'error', message: "Ocurrió un error. Inténtalo mas tarde. :(" })
     }
 
   }

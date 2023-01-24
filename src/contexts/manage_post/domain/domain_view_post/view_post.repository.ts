@@ -8,7 +8,7 @@ export interface ViewPostRepository {
     getPosts(): Promise<Post[]>;
     getPostByID(ID: string): Promise<Post | null>;
     getCommentsFromPostByID(ID: string): Promise<Comment[]>;
-    commentPost(inputCommentPost: InputCommentPost): Promise<Boolean>;
+    commentPost(inputCommentPost: InputCommentPost): Promise<Comment | null>;
 
 
     // auxiliary methods

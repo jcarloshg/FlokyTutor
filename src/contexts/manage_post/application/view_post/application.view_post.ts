@@ -1,30 +1,18 @@
-// import { ViewPostRepository } from "../domain/view_post.repository";
-// // nominal tracking
-// import { GetPostByIDRepository } from "../domain/get-post-by-id.repository";
-// import { GetPostsRepository } from "../domain/get-post.repository";
-// import { GetCommentsFromPostByIDRepository } from '../domain/get-comments-from-post-by-iD.repository';
-// import { CommentPostRepository } from "../domain/comment-post.repository";
-// // tracking alternative nominal
-// //auxiliary methods
-// import { GetAccountByIDRepository } from "src/contexts/shared/domain/account/get-account-by-id.repository";
-// import { GetCurrentTutorLoggedRepository } from "src/contexts/authenticate/domain/repository/get-current-tutor-logged.repository";
-// // models && inputs
-// import { Post, EagerAccount, Account, Comment } from 'src/contexts/shared/domain/models';
-// import { InputCommentPost } from "../domain/comment-post.input";
 
-import { ViewPostRepository } from '../domain/domain_view_post/view_post.repository';
+import { ViewPostRepository } from '../../domain/domain_view_post/view_post.repository';
 //  nominal tracking
-import { GetPostsRepository } from '../domain/domain_view_post/get-post.repository';
-import { GetPostByIDRepository } from '../domain/domain_view_post/get-post-by-id.repository';
-import { GetCommentsFromPostByIDRepository } from '../domain/domain_view_post/get-comments-from-post-by-iD.repository';
-import { CommentPostRepository } from '../domain/domain_view_post/comment-post.repository';
+import { GetPostsRepository } from '../../domain/domain_view_post/get-post.repository';
+import { GetPostByIDRepository } from '../../domain/domain_view_post/get-post-by-id.repository';
+import { GetCommentsFromPostByIDRepository } from '../../domain/domain_view_post/get-comments-from-post-by-iD.repository';
+import { CommentPostRepository } from '../../domain/domain_view_post/comment-post.repository';
 //  tracking alternative nominal
 //  auxiliary methods
 import { GetAccountByIDRepository } from "src/contexts/shared/domain/account/get-account-by-id.repository";
 import { GetCurrentTutorLoggedRepository } from "src/contexts/authenticate/domain/repository/get-current-tutor-logged.repository";
 // models && inputs
-import { Post, EagerAccount, Account, Comment } from 'src/contexts/shared/domain/models';
-import { InputCommentPost } from "../domain/domain_view_post/comment-post.input";
+import { Post, EagerAccount, Account, Comment as Comment_AWS } from 'src/contexts/shared/domain/models';
+import { InputCommentPost } from "../../domain/domain_view_post/comment-post.input";
+import { Comment as CommentDomain } from '../../domain/Comment';
 
 
 export class ViewPost implements ViewPostRepository {
@@ -55,14 +43,15 @@ export class ViewPost implements ViewPostRepository {
         return post;
     }
 
-    public async getCommentsFromPostByID(ID: string): Promise<Comment[]> {
-        const comments: Comment[] = await this.getCommentsFromPostByIDRepository.run(ID);
+    public async getCommentsFromPostByID(ID: string): Promise<Comment_AWS[]> {
+        const comments: Comment_AWS[] = await this.getCommentsFromPostByIDRepository.run(ID);
         return comments;
     }
 
-    public async commentPost(inputCommentPost: InputCommentPost): Promise<Boolean> {
-        const wasCreatedANewComment = await this.commentPostRepository.run(inputCommentPost);
-        return wasCreatedANewComment;
+    public async commentPost(inputCommentPost: InputCommentPost): Promise<Comment_AWS | null> {
+        const createdComment = await this.commentPostRepository.run(inputCommentPost);
+        const commentDomain: CommentDomain = CommentDomain.commentRegistered(createdComment!);
+        return createdComment;
     }
 
 

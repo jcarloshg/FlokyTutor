@@ -7,7 +7,7 @@ export class CommentPost_AWS implements CommentPostRepository {
 
     constructor() { }
 
-    public async run(inputCommentPost: InputCommentPost): Promise<Boolean> {
+    public async run(inputCommentPost: InputCommentPost): Promise<Comment | null> {
 
         try {
 
@@ -20,10 +20,10 @@ export class CommentPost_AWS implements CommentPostRepository {
             );
 
             const commentCreated = await DataStore.save(newComment);
-            return commentCreated ? true : false;
+            return commentCreated;
 
         } catch (error) {
-            return false;
+            return null;
         }
     }
 
