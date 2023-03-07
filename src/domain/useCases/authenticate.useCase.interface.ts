@@ -1,4 +1,4 @@
-import { Role } from "src/models";
+import { Role } from "src/contexts/shared/domain/models";
 
 export interface Authenticate {
 

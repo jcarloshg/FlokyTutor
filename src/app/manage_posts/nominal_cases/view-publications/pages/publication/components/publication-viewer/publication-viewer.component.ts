@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ViewPostsService } from '../../../../service/view-posts.service';
-import { Account, Post } from 'src/models';
+import { Account, Post } from 'src/contexts/shared/domain/models';
 
 @Component({
   selector: 'app-publication-viewer',
@@ -17,7 +17,7 @@ export class PublicationViewerComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    await this.getPostAuthor(this.post.tutorAccountID);
+    // TODO await this.getPostAuthor(this.post.tutorAccountID);
   }
 
   async getPostAuthor(authorID: string) {

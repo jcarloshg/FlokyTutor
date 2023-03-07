@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Activity } from 'src/models';
+import { Activity } from 'src/contexts/shared/domain/models';
 import { AssignTasksAWSService } from '../../services/assign-tasks-aws.service';
 
 @Component({

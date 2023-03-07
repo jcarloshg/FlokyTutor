@@ -21,8 +21,7 @@ export enum ActivityLevel {
   B1 = "B1",
   B2 = "B2",
   C1 = "C1",
-  C2 = "C2",
-  PRUEBA_DROP_THIS = "PRUEBA_DROP_THIS"
+  C2 = "C2"
 }
 
 type EagerAnswer = {
@@ -43,15 +42,19 @@ export declare type Answer = LazyLoading extends LazyLoadingDisabled ? EagerAnsw
 
 export declare const Answer: (new (init: ModelInit<Answer>) => Answer)
 
-type CommentMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
 type AccountMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
+type ActivitiesProgressMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type PostMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type CommentMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
@@ -63,36 +66,6 @@ type TopicMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-type ActivitiesProgressMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
-type EagerComment = {
-  readonly id: string;
-  readonly body: string;
-  readonly postID: string;
-  readonly author?: Account | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  readonly commentAuthorId?: string | null;
-}
-
-type LazyComment = {
-  readonly id: string;
-  readonly body: string;
-  readonly postID: string;
-  readonly author: AsyncItem<Account | undefined>;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  readonly commentAuthorId?: string | null;
-}
-
-export declare type Comment = LazyLoading extends LazyLoadingDisabled ? EagerComment : LazyComment
-
-export declare const Comment: (new (init: ModelInit<Comment, CommentMetaData>) => Comment) & {
-  copyOf(source: Comment, mutator: (draft: MutableModel<Comment, CommentMetaData>) => MutableModel<Comment, CommentMetaData> | void): Comment;
-}
-
 type EagerAccount = {
   readonly id: string;
   readonly fullName: string;
@@ -100,9 +73,10 @@ type EagerAccount = {
   readonly collegeEnrollment: string;
   readonly collegeName: string;
   readonly role: Role | keyof typeof Role;
-  readonly posts?: (Post | null)[] | null;
+  readonly activitiesProgress?: ActivitiesProgress | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
+  readonly accountActivitiesProgressId?: string | null;
 }
 
 type LazyAccount = {
@@ -112,101 +86,16 @@ type LazyAccount = {
   readonly collegeEnrollment: string;
   readonly collegeName: string;
   readonly role: Role | keyof typeof Role;
-  readonly posts: AsyncCollection<Post>;
+  readonly activitiesProgress: AsyncItem<ActivitiesProgress | undefined>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
+  readonly accountActivitiesProgressId?: string | null;
 }
 
 export declare type Account = LazyLoading extends LazyLoadingDisabled ? EagerAccount : LazyAccount
 
 export declare const Account: (new (init: ModelInit<Account, AccountMetaData>) => Account) & {
   copyOf(source: Account, mutator: (draft: MutableModel<Account, AccountMetaData>) => MutableModel<Account, AccountMetaData> | void): Account;
-}
-
-type EagerPost = {
-  readonly id: string;
-  readonly title: string;
-  readonly body: string;
-  readonly tutorAccountID: string;
-  readonly category: ActivityType | keyof typeof ActivityType;
-  readonly comments?: (Comment | null)[] | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-type LazyPost = {
-  readonly id: string;
-  readonly title: string;
-  readonly body: string;
-  readonly tutorAccountID: string;
-  readonly category: ActivityType | keyof typeof ActivityType;
-  readonly comments: AsyncCollection<Comment>;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-export declare type Post = LazyLoading extends LazyLoadingDisabled ? EagerPost : LazyPost
-
-export declare const Post: (new (init: ModelInit<Post, PostMetaData>) => Post) & {
-  copyOf(source: Post, mutator: (draft: MutableModel<Post, PostMetaData>) => MutableModel<Post, PostMetaData> | void): Post;
-}
-
-type EagerActivity = {
-  readonly id: string;
-  readonly name: string;
-  readonly activityLevel: ActivityLevel | keyof typeof ActivityLevel;
-  readonly activityType?: ActivityType | keyof typeof ActivityType | null;
-  readonly question: string;
-  readonly questionBody: string;
-  readonly answers?: Answer | null;
-  readonly Topic?: Topic | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  readonly activityTopicId?: string | null;
-}
-
-type LazyActivity = {
-  readonly id: string;
-  readonly name: string;
-  readonly activityLevel: ActivityLevel | keyof typeof ActivityLevel;
-  readonly activityType?: ActivityType | keyof typeof ActivityType | null;
-  readonly question: string;
-  readonly questionBody: string;
-  readonly answers?: Answer | null;
-  readonly Topic: AsyncItem<Topic | undefined>;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  readonly activityTopicId?: string | null;
-}
-
-export declare type Activity = LazyLoading extends LazyLoadingDisabled ? EagerActivity : LazyActivity
-
-export declare const Activity: (new (init: ModelInit<Activity, ActivityMetaData>) => Activity) & {
-  copyOf(source: Activity, mutator: (draft: MutableModel<Activity, ActivityMetaData>) => MutableModel<Activity, ActivityMetaData> | void): Activity;
-}
-
-type EagerTopic = {
-  readonly id: string;
-  readonly name: string;
-  readonly conceptInformation?: (string | null)[] | null;
-  readonly examples?: string[] | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-type LazyTopic = {
-  readonly id: string;
-  readonly name: string;
-  readonly conceptInformation?: (string | null)[] | null;
-  readonly examples?: string[] | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-export declare type Topic = LazyLoading extends LazyLoadingDisabled ? EagerTopic : LazyTopic
-
-export declare const Topic: (new (init: ModelInit<Topic, TopicMetaData>) => Topic) & {
-  copyOf(source: Topic, mutator: (draft: MutableModel<Topic, TopicMetaData>) => MutableModel<Topic, TopicMetaData> | void): Topic;
 }
 
 type EagerActivitiesProgress = {
@@ -241,4 +130,118 @@ export declare type ActivitiesProgress = LazyLoading extends LazyLoadingDisabled
 
 export declare const ActivitiesProgress: (new (init: ModelInit<ActivitiesProgress, ActivitiesProgressMetaData>) => ActivitiesProgress) & {
   copyOf(source: ActivitiesProgress, mutator: (draft: MutableModel<ActivitiesProgress, ActivitiesProgressMetaData>) => MutableModel<ActivitiesProgress, ActivitiesProgressMetaData> | void): ActivitiesProgress;
+}
+
+type EagerPost = {
+  readonly id: string;
+  readonly title: string;
+  readonly body: string;
+  readonly category: ActivityType | keyof typeof ActivityType;
+  readonly comments?: (Comment | null)[] | null;
+  readonly author: Account;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly postAuthorId: string;
+}
+
+type LazyPost = {
+  readonly id: string;
+  readonly title: string;
+  readonly body: string;
+  readonly category: ActivityType | keyof typeof ActivityType;
+  readonly comments: AsyncCollection<Comment>;
+  readonly author: AsyncItem<Account>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly postAuthorId: string;
+}
+
+export declare type Post = LazyLoading extends LazyLoadingDisabled ? EagerPost : LazyPost
+
+export declare const Post: (new (init: ModelInit<Post, PostMetaData>) => Post) & {
+  copyOf(source: Post, mutator: (draft: MutableModel<Post, PostMetaData>) => MutableModel<Post, PostMetaData> | void): Post;
+}
+
+type EagerComment = {
+  readonly id: string;
+  readonly body: string;
+  readonly postID: string;
+  readonly author: Account;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly commentAuthorId: string;
+}
+
+type LazyComment = {
+  readonly id: string;
+  readonly body: string;
+  readonly postID: string;
+  readonly author: AsyncItem<Account>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly commentAuthorId: string;
+}
+
+export declare type Comment = LazyLoading extends LazyLoadingDisabled ? EagerComment : LazyComment
+
+export declare const Comment: (new (init: ModelInit<Comment, CommentMetaData>) => Comment) & {
+  copyOf(source: Comment, mutator: (draft: MutableModel<Comment, CommentMetaData>) => MutableModel<Comment, CommentMetaData> | void): Comment;
+}
+
+type EagerActivity = {
+  readonly id: string;
+  readonly name: string;
+  readonly activityLevel: ActivityLevel | keyof typeof ActivityLevel;
+  readonly activityType: ActivityType | keyof typeof ActivityType;
+  readonly question: string;
+  readonly questionBody: string;
+  readonly answers: Answer;
+  readonly topic: Topic;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly activityTopicId: string;
+}
+
+type LazyActivity = {
+  readonly id: string;
+  readonly name: string;
+  readonly activityLevel: ActivityLevel | keyof typeof ActivityLevel;
+  readonly activityType: ActivityType | keyof typeof ActivityType;
+  readonly question: string;
+  readonly questionBody: string;
+  readonly answers: Answer;
+  readonly topic: AsyncItem<Topic>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly activityTopicId: string;
+}
+
+export declare type Activity = LazyLoading extends LazyLoadingDisabled ? EagerActivity : LazyActivity
+
+export declare const Activity: (new (init: ModelInit<Activity, ActivityMetaData>) => Activity) & {
+  copyOf(source: Activity, mutator: (draft: MutableModel<Activity, ActivityMetaData>) => MutableModel<Activity, ActivityMetaData> | void): Activity;
+}
+
+type EagerTopic = {
+  readonly id: string;
+  readonly name: string;
+  readonly conceptInformation?: (string | null)[] | null;
+  readonly examples?: string[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyTopic = {
+  readonly id: string;
+  readonly name: string;
+  readonly conceptInformation?: (string | null)[] | null;
+  readonly examples?: string[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Topic = LazyLoading extends LazyLoadingDisabled ? EagerTopic : LazyTopic
+
+export declare const Topic: (new (init: ModelInit<Topic, TopicMetaData>) => Topic) & {
+  copyOf(source: Topic, mutator: (draft: MutableModel<Topic, TopicMetaData>) => MutableModel<Topic, TopicMetaData> | void): Topic;
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators, FormControl, ValidationErrors, AbstractControl } from '@angular/forms';
-import { Topic } from 'src/models';
-import { ValidatorsService } from '../../../shared/inputs/service/validators.service';
+import { Topic } from 'src/contexts/shared/domain/models';
+// import { ValidatorsService } from '../../../shared/inputs/service/validators.service';
 import { ActivitiesAWS } from '../../services/activities.service';
 
 @Component({
@@ -44,7 +44,7 @@ export class CreateActivitieComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    public validatorsService: ValidatorsService,
+    // public validatorsService: ValidatorsService,
     private activitiesAWS: ActivitiesAWS,
   ) { }
 

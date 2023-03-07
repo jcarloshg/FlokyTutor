@@ -1,8 +1,7 @@
-type Comment @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  body: String!
-  postID: ID! @index(name: "byPost")
-  author: Account @hasOne
+enum Role {
+  STUDENT
+  TEACHER
+  ADMIN
 }
 
 type Account @model @auth(rules: [{allow: public}]) {
@@ -12,44 +11,7 @@ type Account @model @auth(rules: [{allow: public}]) {
   collegeEnrollment: String!
   collegeName: String!
   role: Role!
-  posts: [Post] @hasMany(indexName: "byAccount", fields: ["id"])
-}
-
-type Post @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  title: String!
-  body: String!
-  tutorAccountID: ID! @index(name: "byAccount")
-  category: ActivityType!
-  comments: [Comment] @hasMany(indexName: "byPost", fields: ["id"])
-}
-
-type Answer {
-  correct: String!
-  incorrect_1: String
-  incorrect_2: String
-  incorrect_3: String
-}
-
-enum ActivityLevel {
-  A1
-  A2
-  B1
-  B2
-  C1
-  C2
-  PRUEBA_DROP_THIS
-}
-
-type Activity @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  name: String!
-  activityLevel: ActivityLevel!
-  activityType: ActivityType
-  question: String!
-  questionBody: String!
-  answers: Answer
-  Topic: Topic @hasOne
+  activitiesProgress: ActivitiesProgress @hasOne
 }
 
 type ActivitiesProgress @model @auth(rules: [{allow: public}]) {
@@ -64,10 +26,45 @@ type ActivitiesProgress @model @auth(rules: [{allow: public}]) {
   wrongListening: Int
 }
 
-enum Role {
-  STUDENT
-  TEACHER
-  ADMIN
+type Post @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String!
+  body: String!
+  category: ActivityType!
+  comments: [Comment] @hasMany(indexName: "byPost", fields: ["id"])
+  author: Account! @hasOne
+}
+
+type Comment @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  body: String!
+  postID: ID! @index(name: "byPost")
+  author: Account! @hasOne
+}
+
+type Activity @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  activityLevel: ActivityLevel!
+  activityType: ActivityType!
+  question: String!
+  questionBody: String!
+  answers: Answer!
+  topic: Topic! @hasOne
+}
+
+type Answer {
+  correct: String!
+  incorrect_1: String
+  incorrect_2: String
+  incorrect_3: String
+}
+
+type Topic @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  conceptInformation: [String]
+  examples: [String!]
 }
 
 enum ActivityType {
@@ -77,10 +74,12 @@ enum ActivityType {
   LISTENING
 }
 
-type Topic @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  name: String!
-  conceptInformation: [String]
-  examples: [String!]
+enum ActivityLevel {
+  A1
+  A2
+  B1
+  B2
+  C1
+  C2
 }
  

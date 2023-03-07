@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivityType } from 'src/models';
+import { ActivityType } from 'src/contexts/shared/domain/models';
 
 @Component({
   selector: 'app-categories-badge',

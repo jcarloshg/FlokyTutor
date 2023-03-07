@@ -1,128 +1,4 @@
 # this is an auto generated file. This will be overwritten
-query GetComment($id: ID!) {
-  getComment(id: $id) {
-    id
-    body
-    postID
-    author {
-      id
-      fullName
-      email
-      collegeEnrollment
-      collegeName
-      role
-      posts {
-        items {
-          id
-          title
-          body
-          tutorAccountID
-          category
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    commentAuthorId
-  }
-}
-query ListComments(
-  $filter: ModelCommentFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      body
-      postID
-      author {
-        id
-        fullName
-        email
-        collegeEnrollment
-        collegeName
-        role
-        posts {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      commentAuthorId
-    }
-    nextToken
-    startedAt
-  }
-}
-query SyncComments(
-  $filter: ModelCommentFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncComments(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      body
-      postID
-      author {
-        id
-        fullName
-        email
-        collegeEnrollment
-        collegeName
-        role
-        posts {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      commentAuthorId
-    }
-    nextToken
-    startedAt
-  }
-}
 query GetAccount($id: ID!) {
   getAccount(id: $id) {
     id
@@ -131,31 +7,28 @@ query GetAccount($id: ID!) {
     collegeEnrollment
     collegeName
     role
-    posts {
-      items {
-        id
-        title
-        body
-        tutorAccountID
-        category
-        comments {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
+    activitiesProgress {
+      id
+      correctReading
+      wrongReading
+      correctWriting
+      wrongWriting
+      correctSpeaking
+      wrongSpeaking
+      correctListening
+      wrongListening
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
+    accountActivitiesProgressId
   }
 }
 query ListAccounts(
@@ -171,27 +44,28 @@ query ListAccounts(
       collegeEnrollment
       collegeName
       role
-      posts {
-        items {
-          id
-          title
-          body
-          tutorAccountID
-          category
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
+      activitiesProgress {
+        id
+        correctReading
+        wrongReading
+        correctWriting
+        wrongWriting
+        correctSpeaking
+        wrongSpeaking
+        correctListening
+        wrongListening
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      accountActivitiesProgressId
     }
     nextToken
     startedAt
@@ -216,211 +90,16 @@ query SyncAccounts(
       collegeEnrollment
       collegeName
       role
-      posts {
-        items {
-          id
-          title
-          body
-          tutorAccountID
-          category
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    nextToken
-    startedAt
-  }
-}
-query GetPost($id: ID!) {
-  getPost(id: $id) {
-    id
-    title
-    body
-    tutorAccountID
-    category
-    comments {
-      items {
+      activitiesProgress {
         id
-        body
-        postID
-        author {
-          id
-          fullName
-          email
-          collegeEnrollment
-          collegeName
-          role
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        commentAuthorId
-      }
-      nextToken
-      startedAt
-    }
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-  }
-}
-query ListPosts(
-  $filter: ModelPostFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      title
-      body
-      tutorAccountID
-      category
-      comments {
-        items {
-          id
-          body
-          postID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          commentAuthorId
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    nextToken
-    startedAt
-  }
-}
-query SyncPosts(
-  $filter: ModelPostFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncPosts(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      title
-      body
-      tutorAccountID
-      category
-      comments {
-        items {
-          id
-          body
-          postID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          commentAuthorId
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    nextToken
-    startedAt
-  }
-}
-query GetActivity($id: ID!) {
-  getActivity(id: $id) {
-    id
-    name
-    activityLevel
-    activityType
-    question
-    questionBody
-    answers {
-      correct
-      incorrect_1
-      incorrect_2
-      incorrect_3
-    }
-    Topic {
-      id
-      name
-      conceptInformation
-      examples
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    activityTopicId
-  }
-}
-query ListActivities(
-  $filter: ModelActivityFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listActivities(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      name
-      activityLevel
-      activityType
-      question
-      questionBody
-      answers {
-        correct
-        incorrect_1
-        incorrect_2
-        incorrect_3
-      }
-      Topic {
-        id
-        name
-        conceptInformation
-        examples
+        correctReading
+        wrongReading
+        correctWriting
+        wrongWriting
+        correctSpeaking
+        wrongSpeaking
+        correctListening
+        wrongListening
         createdAt
         updatedAt
         _version
@@ -432,54 +111,7 @@ query ListActivities(
       _version
       _deleted
       _lastChangedAt
-      activityTopicId
-    }
-    nextToken
-    startedAt
-  }
-}
-query SyncActivities(
-  $filter: ModelActivityFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncActivities(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      name
-      activityLevel
-      activityType
-      question
-      questionBody
-      answers {
-        correct
-        incorrect_1
-        incorrect_2
-        incorrect_3
-      }
-      Topic {
-        id
-        name
-        conceptInformation
-        examples
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      activityTopicId
+      accountActivitiesProgressId
     }
     nextToken
     startedAt
@@ -560,6 +192,491 @@ query SyncActivitiesProgresses(
       _version
       _deleted
       _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetPost($id: ID!) {
+  getPost(id: $id) {
+    id
+    title
+    body
+    category
+    comments {
+      items {
+        id
+        body
+        postID
+        author {
+          id
+          fullName
+          email
+          collegeEnrollment
+          collegeName
+          role
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          accountActivitiesProgressId
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        commentAuthorId
+      }
+      nextToken
+      startedAt
+    }
+    author {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      activitiesProgress {
+        id
+        correctReading
+        wrongReading
+        correctWriting
+        wrongWriting
+        correctSpeaking
+        wrongSpeaking
+        correctListening
+        wrongListening
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      accountActivitiesProgressId
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    postAuthorId
+  }
+}
+query ListPosts(
+  $filter: ModelPostFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      title
+      body
+      category
+      comments {
+        items {
+          id
+          body
+          postID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          commentAuthorId
+        }
+        nextToken
+        startedAt
+      }
+      author {
+        id
+        fullName
+        email
+        collegeEnrollment
+        collegeName
+        role
+        activitiesProgress {
+          id
+          correctReading
+          wrongReading
+          correctWriting
+          wrongWriting
+          correctSpeaking
+          wrongSpeaking
+          correctListening
+          wrongListening
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        accountActivitiesProgressId
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      postAuthorId
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncPosts(
+  $filter: ModelPostFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncPosts(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      title
+      body
+      category
+      comments {
+        items {
+          id
+          body
+          postID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          commentAuthorId
+        }
+        nextToken
+        startedAt
+      }
+      author {
+        id
+        fullName
+        email
+        collegeEnrollment
+        collegeName
+        role
+        activitiesProgress {
+          id
+          correctReading
+          wrongReading
+          correctWriting
+          wrongWriting
+          correctSpeaking
+          wrongSpeaking
+          correctListening
+          wrongListening
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        accountActivitiesProgressId
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      postAuthorId
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetComment($id: ID!) {
+  getComment(id: $id) {
+    id
+    body
+    postID
+    author {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      activitiesProgress {
+        id
+        correctReading
+        wrongReading
+        correctWriting
+        wrongWriting
+        correctSpeaking
+        wrongSpeaking
+        correctListening
+        wrongListening
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      accountActivitiesProgressId
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    commentAuthorId
+  }
+}
+query ListComments(
+  $filter: ModelCommentFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      body
+      postID
+      author {
+        id
+        fullName
+        email
+        collegeEnrollment
+        collegeName
+        role
+        activitiesProgress {
+          id
+          correctReading
+          wrongReading
+          correctWriting
+          wrongWriting
+          correctSpeaking
+          wrongSpeaking
+          correctListening
+          wrongListening
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        accountActivitiesProgressId
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      commentAuthorId
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncComments(
+  $filter: ModelCommentFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncComments(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      body
+      postID
+      author {
+        id
+        fullName
+        email
+        collegeEnrollment
+        collegeName
+        role
+        activitiesProgress {
+          id
+          correctReading
+          wrongReading
+          correctWriting
+          wrongWriting
+          correctSpeaking
+          wrongSpeaking
+          correctListening
+          wrongListening
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        accountActivitiesProgressId
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      commentAuthorId
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetActivity($id: ID!) {
+  getActivity(id: $id) {
+    id
+    name
+    activityLevel
+    activityType
+    question
+    questionBody
+    answers {
+      correct
+      incorrect_1
+      incorrect_2
+      incorrect_3
+    }
+    topic {
+      id
+      name
+      conceptInformation
+      examples
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    activityTopicId
+  }
+}
+query ListActivities(
+  $filter: ModelActivityFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listActivities(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      activityLevel
+      activityType
+      question
+      questionBody
+      answers {
+        correct
+        incorrect_1
+        incorrect_2
+        incorrect_3
+      }
+      topic {
+        id
+        name
+        conceptInformation
+        examples
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      activityTopicId
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncActivities(
+  $filter: ModelActivityFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncActivities(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      name
+      activityLevel
+      activityType
+      question
+      questionBody
+      answers {
+        correct
+        incorrect_1
+        incorrect_2
+        incorrect_3
+      }
+      topic {
+        id
+        name
+        conceptInformation
+        examples
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      activityTopicId
     }
     nextToken
     startedAt

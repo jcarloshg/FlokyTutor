@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ViewPostsService } from '../../service/view-posts.service';
-import { Account, Post } from 'src/models';
+import { Account, Post } from 'src/contexts/shared/domain/models';
 
 @Component({
   selector: 'app-publication-card',
@@ -19,7 +19,7 @@ export class PublicationCardComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    await this.getPostAuthor(this.post.tutorAccountID);
+    // TODO await this.getPostAuthor(this.post.tutorAccountID);
   }
 
   goToPublication() {

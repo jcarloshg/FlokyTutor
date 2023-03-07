@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Activity } from 'src/models';
+import { Activity } from 'src/contexts/shared/domain/models';
 
 @Component({
   selector: 'app-activity-body-listening',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ViewPostsService } from '../../../../service/view-posts.service';
-import { Post } from 'src/models';
+import { Post } from 'src/contexts/shared/domain/models';
 
 @Component({
   selector: 'app-publication',

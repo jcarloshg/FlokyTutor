@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AssignTasksAWSService } from '../../services/assign-tasks-aws.service';
-import { Activity, Topic } from 'src/models/index';
+import { Activity, Topic } from 'src/contexts/shared/domain/models/index';
 
 @Component({
   selector: 'app-view-activities',

@@ -1,4 +1,4 @@
-import { ActivityType, Post } from "src/models";
+import { ActivityType, Post } from "src/contexts/shared/domain/models";
 
 export interface ManagePost {
     createPost(inputCreatePost: InputCreatePost): Promise<PostResponse>;

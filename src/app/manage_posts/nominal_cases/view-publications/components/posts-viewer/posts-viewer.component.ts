@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ViewPostsService } from '../../service/view-posts.service';
-import { Post } from 'src/models';
+import { Post } from 'src/contexts/shared/domain/models';
 
 @Component({
   selector: 'app-posts-viewer',

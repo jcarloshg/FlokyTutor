@@ -21,19 +21,18 @@ const ActivityLevel = {
   "B1": "B1",
   "B2": "B2",
   "C1": "C1",
-  "C2": "C2",
-  "PRUEBA_DROP_THIS": "PRUEBA_DROP_THIS"
+  "C2": "C2"
 };
 
-const { Comment, Account, Post, Activity, Topic, ActivitiesProgress, Answer } = initSchema(schema);
+const { Account, ActivitiesProgress, Post, Comment, Activity, Topic, Answer } = initSchema(schema);
 
 export {
-  Comment,
   Account,
+  ActivitiesProgress,
   Post,
+  Comment,
   Activity,
   Topic,
-  ActivitiesProgress,
   Role,
   ActivityType,
   ActivityLevel,

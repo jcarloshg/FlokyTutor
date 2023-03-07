@@ -14,26 +14,28 @@ export const createAccount = /* GraphQL */ `
       collegeEnrollment
       collegeName
       role
-      posts {
-        items {
-          id
-          title
-          body
-          tutorAccountID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
+      activitiesProgress {
+        id
+        correctReading
+        wrongReading
+        correctWriting
+        wrongWriting
+        correctSpeaking
+        wrongSpeaking
+        correctListening
+        wrongListening
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      accountActivitiesProgressId
     }
   }
 `;
@@ -49,26 +51,28 @@ export const updateAccount = /* GraphQL */ `
       collegeEnrollment
       collegeName
       role
-      posts {
-        items {
-          id
-          title
-          body
-          tutorAccountID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
+      activitiesProgress {
+        id
+        correctReading
+        wrongReading
+        correctWriting
+        wrongWriting
+        correctSpeaking
+        wrongSpeaking
+        correctListening
+        wrongListening
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      accountActivitiesProgressId
     }
   }
 `;
@@ -84,106 +88,16 @@ export const deleteAccount = /* GraphQL */ `
       collegeEnrollment
       collegeName
       role
-      posts {
-        items {
-          id
-          title
-          body
-          tutorAccountID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const createPost = /* GraphQL */ `
-  mutation CreatePost(
-    $input: CreatePostInput!
-    $condition: ModelPostConditionInput
-  ) {
-    createPost(input: $input, condition: $condition) {
-      id
-      title
-      body
-      tutorAccountID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const updatePost = /* GraphQL */ `
-  mutation UpdatePost(
-    $input: UpdatePostInput!
-    $condition: ModelPostConditionInput
-  ) {
-    updatePost(input: $input, condition: $condition) {
-      id
-      title
-      body
-      tutorAccountID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const deletePost = /* GraphQL */ `
-  mutation DeletePost(
-    $input: DeletePostInput!
-    $condition: ModelPostConditionInput
-  ) {
-    deletePost(input: $input, condition: $condition) {
-      id
-      title
-      body
-      tutorAccountID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const createActivity = /* GraphQL */ `
-  mutation CreateActivity(
-    $input: CreateActivityInput!
-    $condition: ModelActivityConditionInput
-  ) {
-    createActivity(input: $input, condition: $condition) {
-      id
-      name
-      activityLevel
-      activityType
-      question
-      questionBody
-      answers {
-        correct
-        incorrect_1
-        incorrect_2
-        incorrect_3
-      }
-      Topic {
+      activitiesProgress {
         id
-        name
-        conceptInformation
-        examples
+        correctReading
+        wrongReading
+        correctWriting
+        wrongWriting
+        correctSpeaking
+        wrongSpeaking
+        correctListening
+        wrongListening
         createdAt
         updatedAt
         _version
@@ -195,83 +109,7 @@ export const createActivity = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      activityTopicId
-    }
-  }
-`;
-export const updateActivity = /* GraphQL */ `
-  mutation UpdateActivity(
-    $input: UpdateActivityInput!
-    $condition: ModelActivityConditionInput
-  ) {
-    updateActivity(input: $input, condition: $condition) {
-      id
-      name
-      activityLevel
-      activityType
-      question
-      questionBody
-      answers {
-        correct
-        incorrect_1
-        incorrect_2
-        incorrect_3
-      }
-      Topic {
-        id
-        name
-        conceptInformation
-        examples
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      activityTopicId
-    }
-  }
-`;
-export const deleteActivity = /* GraphQL */ `
-  mutation DeleteActivity(
-    $input: DeleteActivityInput!
-    $condition: ModelActivityConditionInput
-  ) {
-    deleteActivity(input: $input, condition: $condition) {
-      id
-      name
-      activityLevel
-      activityType
-      question
-      questionBody
-      answers {
-        correct
-        incorrect_1
-        incorrect_2
-        incorrect_3
-      }
-      Topic {
-        id
-        name
-        conceptInformation
-        examples
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      activityTopicId
+      accountActivitiesProgressId
     }
   }
 `;
@@ -341,6 +179,498 @@ export const deleteActivitiesProgress = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+    }
+  }
+`;
+export const createPost = /* GraphQL */ `
+  mutation CreatePost(
+    $input: CreatePostInput!
+    $condition: ModelPostConditionInput
+  ) {
+    createPost(input: $input, condition: $condition) {
+      id
+      title
+      body
+      category
+      comments {
+        items {
+          id
+          body
+          postID
+          author {
+            id
+            fullName
+            email
+            collegeEnrollment
+            collegeName
+            role
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            accountActivitiesProgressId
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          commentAuthorId
+        }
+        nextToken
+        startedAt
+      }
+      author {
+        id
+        fullName
+        email
+        collegeEnrollment
+        collegeName
+        role
+        activitiesProgress {
+          id
+          correctReading
+          wrongReading
+          correctWriting
+          wrongWriting
+          correctSpeaking
+          wrongSpeaking
+          correctListening
+          wrongListening
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        accountActivitiesProgressId
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      postAuthorId
+    }
+  }
+`;
+export const updatePost = /* GraphQL */ `
+  mutation UpdatePost(
+    $input: UpdatePostInput!
+    $condition: ModelPostConditionInput
+  ) {
+    updatePost(input: $input, condition: $condition) {
+      id
+      title
+      body
+      category
+      comments {
+        items {
+          id
+          body
+          postID
+          author {
+            id
+            fullName
+            email
+            collegeEnrollment
+            collegeName
+            role
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            accountActivitiesProgressId
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          commentAuthorId
+        }
+        nextToken
+        startedAt
+      }
+      author {
+        id
+        fullName
+        email
+        collegeEnrollment
+        collegeName
+        role
+        activitiesProgress {
+          id
+          correctReading
+          wrongReading
+          correctWriting
+          wrongWriting
+          correctSpeaking
+          wrongSpeaking
+          correctListening
+          wrongListening
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        accountActivitiesProgressId
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      postAuthorId
+    }
+  }
+`;
+export const deletePost = /* GraphQL */ `
+  mutation DeletePost(
+    $input: DeletePostInput!
+    $condition: ModelPostConditionInput
+  ) {
+    deletePost(input: $input, condition: $condition) {
+      id
+      title
+      body
+      category
+      comments {
+        items {
+          id
+          body
+          postID
+          author {
+            id
+            fullName
+            email
+            collegeEnrollment
+            collegeName
+            role
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            accountActivitiesProgressId
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          commentAuthorId
+        }
+        nextToken
+        startedAt
+      }
+      author {
+        id
+        fullName
+        email
+        collegeEnrollment
+        collegeName
+        role
+        activitiesProgress {
+          id
+          correctReading
+          wrongReading
+          correctWriting
+          wrongWriting
+          correctSpeaking
+          wrongSpeaking
+          correctListening
+          wrongListening
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        accountActivitiesProgressId
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      postAuthorId
+    }
+  }
+`;
+export const createComment = /* GraphQL */ `
+  mutation CreateComment(
+    $input: CreateCommentInput!
+    $condition: ModelCommentConditionInput
+  ) {
+    createComment(input: $input, condition: $condition) {
+      id
+      body
+      postID
+      author {
+        id
+        fullName
+        email
+        collegeEnrollment
+        collegeName
+        role
+        activitiesProgress {
+          id
+          correctReading
+          wrongReading
+          correctWriting
+          wrongWriting
+          correctSpeaking
+          wrongSpeaking
+          correctListening
+          wrongListening
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        accountActivitiesProgressId
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      commentAuthorId
+    }
+  }
+`;
+export const updateComment = /* GraphQL */ `
+  mutation UpdateComment(
+    $input: UpdateCommentInput!
+    $condition: ModelCommentConditionInput
+  ) {
+    updateComment(input: $input, condition: $condition) {
+      id
+      body
+      postID
+      author {
+        id
+        fullName
+        email
+        collegeEnrollment
+        collegeName
+        role
+        activitiesProgress {
+          id
+          correctReading
+          wrongReading
+          correctWriting
+          wrongWriting
+          correctSpeaking
+          wrongSpeaking
+          correctListening
+          wrongListening
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        accountActivitiesProgressId
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      commentAuthorId
+    }
+  }
+`;
+export const deleteComment = /* GraphQL */ `
+  mutation DeleteComment(
+    $input: DeleteCommentInput!
+    $condition: ModelCommentConditionInput
+  ) {
+    deleteComment(input: $input, condition: $condition) {
+      id
+      body
+      postID
+      author {
+        id
+        fullName
+        email
+        collegeEnrollment
+        collegeName
+        role
+        activitiesProgress {
+          id
+          correctReading
+          wrongReading
+          correctWriting
+          wrongWriting
+          correctSpeaking
+          wrongSpeaking
+          correctListening
+          wrongListening
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        accountActivitiesProgressId
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      commentAuthorId
+    }
+  }
+`;
+export const createActivity = /* GraphQL */ `
+  mutation CreateActivity(
+    $input: CreateActivityInput!
+    $condition: ModelActivityConditionInput
+  ) {
+    createActivity(input: $input, condition: $condition) {
+      id
+      name
+      activityLevel
+      activityType
+      question
+      questionBody
+      answers {
+        correct
+        incorrect_1
+        incorrect_2
+        incorrect_3
+      }
+      topic {
+        id
+        name
+        conceptInformation
+        examples
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      activityTopicId
+    }
+  }
+`;
+export const updateActivity = /* GraphQL */ `
+  mutation UpdateActivity(
+    $input: UpdateActivityInput!
+    $condition: ModelActivityConditionInput
+  ) {
+    updateActivity(input: $input, condition: $condition) {
+      id
+      name
+      activityLevel
+      activityType
+      question
+      questionBody
+      answers {
+        correct
+        incorrect_1
+        incorrect_2
+        incorrect_3
+      }
+      topic {
+        id
+        name
+        conceptInformation
+        examples
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      activityTopicId
+    }
+  }
+`;
+export const deleteActivity = /* GraphQL */ `
+  mutation DeleteActivity(
+    $input: DeleteActivityInput!
+    $condition: ModelActivityConditionInput
+  ) {
+    deleteActivity(input: $input, condition: $condition) {
+      id
+      name
+      activityLevel
+      activityType
+      question
+      questionBody
+      answers {
+        correct
+        incorrect_1
+        incorrect_2
+        incorrect_3
+      }
+      topic {
+        id
+        name
+        conceptInformation
+        examples
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      activityTopicId
     }
   }
 `;

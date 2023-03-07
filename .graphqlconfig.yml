@@ -2,12 +2,12 @@ projects:
   Floky:
     schemaPath: amplify/backend/api/Floky/build/schema.graphql
     includes:
-      - src/graphql/**/*.graphql
+      - src/graphql/**/*.ts
     excludes:
       - ./amplify/**
     extensions:
       amplify:
-        codeGenTarget: angular
+        codeGenTarget: typescript
         generatedFileName: src/API.service.ts
         docsFilePath: src/graphql
         region: us-west-1

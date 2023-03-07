@@ -9,7 +9,7 @@ import {
   LoginParams,
   SignUpParams,
 } from '../../../domain/useCases/authenticate.useCase.interface';
-import { Account } from 'src/models';
+import { Account } from 'src/contexts/shared/domain/models';
 import { createAccount } from 'src/graphql/mutations';
 
 @Injectable({

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanLoad, Route, UrlSegment, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthenticateAWSService } from '../services/authenticate-aws.service';
-import { Account, Role } from 'src/models';
+import { Account, Role } from 'src/contexts/shared/domain/models';
 
 @Injectable({
   providedIn: 'root'

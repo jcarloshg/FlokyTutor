@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-import { ActivityType } from 'src/models';
+import { ActivityType } from 'src/contexts/shared/domain/models';
 
 @Directive({
   selector: '[appCategoriesBadge]'

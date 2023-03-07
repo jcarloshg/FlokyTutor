@@ -1,130 +1,4 @@
 # this is an auto generated file. This will be overwritten
-subscription OnCreateComment($filter: ModelSubscriptionCommentFilterInput) {
-  onCreateComment(filter: $filter) {
-    id
-    body
-    postID
-    author {
-      id
-      fullName
-      email
-      collegeEnrollment
-      collegeName
-      role
-      posts {
-        items {
-          id
-          title
-          body
-          tutorAccountID
-          category
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    commentAuthorId
-  }
-}
-subscription OnUpdateComment($filter: ModelSubscriptionCommentFilterInput) {
-  onUpdateComment(filter: $filter) {
-    id
-    body
-    postID
-    author {
-      id
-      fullName
-      email
-      collegeEnrollment
-      collegeName
-      role
-      posts {
-        items {
-          id
-          title
-          body
-          tutorAccountID
-          category
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    commentAuthorId
-  }
-}
-subscription OnDeleteComment($filter: ModelSubscriptionCommentFilterInput) {
-  onDeleteComment(filter: $filter) {
-    id
-    body
-    postID
-    author {
-      id
-      fullName
-      email
-      collegeEnrollment
-      collegeName
-      role
-      posts {
-        items {
-          id
-          title
-          body
-          tutorAccountID
-          category
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    commentAuthorId
-  }
-}
 subscription OnCreateAccount($filter: ModelSubscriptionAccountFilterInput) {
   onCreateAccount(filter: $filter) {
     id
@@ -133,31 +7,28 @@ subscription OnCreateAccount($filter: ModelSubscriptionAccountFilterInput) {
     collegeEnrollment
     collegeName
     role
-    posts {
-      items {
-        id
-        title
-        body
-        tutorAccountID
-        category
-        comments {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
+    activitiesProgress {
+      id
+      correctReading
+      wrongReading
+      correctWriting
+      wrongWriting
+      correctSpeaking
+      wrongSpeaking
+      correctListening
+      wrongListening
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
+    accountActivitiesProgressId
   }
 }
 subscription OnUpdateAccount($filter: ModelSubscriptionAccountFilterInput) {
@@ -168,31 +39,28 @@ subscription OnUpdateAccount($filter: ModelSubscriptionAccountFilterInput) {
     collegeEnrollment
     collegeName
     role
-    posts {
-      items {
-        id
-        title
-        body
-        tutorAccountID
-        category
-        comments {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
+    activitiesProgress {
+      id
+      correctReading
+      wrongReading
+      correctWriting
+      wrongWriting
+      correctSpeaking
+      wrongSpeaking
+      correctListening
+      wrongListening
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
     _version
     _deleted
     _lastChangedAt
+    accountActivitiesProgressId
   }
 }
 subscription OnDeleteAccount($filter: ModelSubscriptionAccountFilterInput) {
@@ -203,178 +71,16 @@ subscription OnDeleteAccount($filter: ModelSubscriptionAccountFilterInput) {
     collegeEnrollment
     collegeName
     role
-    posts {
-      items {
-        id
-        title
-        body
-        tutorAccountID
-        category
-        comments {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-  }
-}
-subscription OnCreatePost($filter: ModelSubscriptionPostFilterInput) {
-  onCreatePost(filter: $filter) {
-    id
-    title
-    body
-    tutorAccountID
-    category
-    comments {
-      items {
-        id
-        body
-        postID
-        author {
-          id
-          fullName
-          email
-          collegeEnrollment
-          collegeName
-          role
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        commentAuthorId
-      }
-      nextToken
-      startedAt
-    }
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-  }
-}
-subscription OnUpdatePost($filter: ModelSubscriptionPostFilterInput) {
-  onUpdatePost(filter: $filter) {
-    id
-    title
-    body
-    tutorAccountID
-    category
-    comments {
-      items {
-        id
-        body
-        postID
-        author {
-          id
-          fullName
-          email
-          collegeEnrollment
-          collegeName
-          role
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        commentAuthorId
-      }
-      nextToken
-      startedAt
-    }
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-  }
-}
-subscription OnDeletePost($filter: ModelSubscriptionPostFilterInput) {
-  onDeletePost(filter: $filter) {
-    id
-    title
-    body
-    tutorAccountID
-    category
-    comments {
-      items {
-        id
-        body
-        postID
-        author {
-          id
-          fullName
-          email
-          collegeEnrollment
-          collegeName
-          role
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        commentAuthorId
-      }
-      nextToken
-      startedAt
-    }
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-  }
-}
-subscription OnCreateActivity($filter: ModelSubscriptionActivityFilterInput) {
-  onCreateActivity(filter: $filter) {
-    id
-    name
-    activityLevel
-    activityType
-    question
-    questionBody
-    answers {
-      correct
-      incorrect_1
-      incorrect_2
-      incorrect_3
-    }
-    Topic {
+    activitiesProgress {
       id
-      name
-      conceptInformation
-      examples
+      correctReading
+      wrongReading
+      correctWriting
+      wrongWriting
+      correctSpeaking
+      wrongSpeaking
+      correctListening
+      wrongListening
       createdAt
       updatedAt
       _version
@@ -386,73 +92,7 @@ subscription OnCreateActivity($filter: ModelSubscriptionActivityFilterInput) {
     _version
     _deleted
     _lastChangedAt
-    activityTopicId
-  }
-}
-subscription OnUpdateActivity($filter: ModelSubscriptionActivityFilterInput) {
-  onUpdateActivity(filter: $filter) {
-    id
-    name
-    activityLevel
-    activityType
-    question
-    questionBody
-    answers {
-      correct
-      incorrect_1
-      incorrect_2
-      incorrect_3
-    }
-    Topic {
-      id
-      name
-      conceptInformation
-      examples
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    activityTopicId
-  }
-}
-subscription OnDeleteActivity($filter: ModelSubscriptionActivityFilterInput) {
-  onDeleteActivity(filter: $filter) {
-    id
-    name
-    activityLevel
-    activityType
-    question
-    questionBody
-    answers {
-      correct
-      incorrect_1
-      incorrect_2
-      incorrect_3
-    }
-    Topic {
-      id
-      name
-      conceptInformation
-      examples
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    createdAt
-    updatedAt
-    _version
-    _deleted
-    _lastChangedAt
-    activityTopicId
+    accountActivitiesProgressId
   }
 }
 subscription OnCreateActivitiesProgress(
@@ -513,6 +153,453 @@ subscription OnDeleteActivitiesProgress(
     _version
     _deleted
     _lastChangedAt
+  }
+}
+subscription OnCreatePost($filter: ModelSubscriptionPostFilterInput) {
+  onCreatePost(filter: $filter) {
+    id
+    title
+    body
+    category
+    comments {
+      items {
+        id
+        body
+        postID
+        author {
+          id
+          fullName
+          email
+          collegeEnrollment
+          collegeName
+          role
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          accountActivitiesProgressId
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        commentAuthorId
+      }
+      nextToken
+      startedAt
+    }
+    author {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      activitiesProgress {
+        id
+        correctReading
+        wrongReading
+        correctWriting
+        wrongWriting
+        correctSpeaking
+        wrongSpeaking
+        correctListening
+        wrongListening
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      accountActivitiesProgressId
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    postAuthorId
+  }
+}
+subscription OnUpdatePost($filter: ModelSubscriptionPostFilterInput) {
+  onUpdatePost(filter: $filter) {
+    id
+    title
+    body
+    category
+    comments {
+      items {
+        id
+        body
+        postID
+        author {
+          id
+          fullName
+          email
+          collegeEnrollment
+          collegeName
+          role
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          accountActivitiesProgressId
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        commentAuthorId
+      }
+      nextToken
+      startedAt
+    }
+    author {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      activitiesProgress {
+        id
+        correctReading
+        wrongReading
+        correctWriting
+        wrongWriting
+        correctSpeaking
+        wrongSpeaking
+        correctListening
+        wrongListening
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      accountActivitiesProgressId
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    postAuthorId
+  }
+}
+subscription OnDeletePost($filter: ModelSubscriptionPostFilterInput) {
+  onDeletePost(filter: $filter) {
+    id
+    title
+    body
+    category
+    comments {
+      items {
+        id
+        body
+        postID
+        author {
+          id
+          fullName
+          email
+          collegeEnrollment
+          collegeName
+          role
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          accountActivitiesProgressId
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        commentAuthorId
+      }
+      nextToken
+      startedAt
+    }
+    author {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      activitiesProgress {
+        id
+        correctReading
+        wrongReading
+        correctWriting
+        wrongWriting
+        correctSpeaking
+        wrongSpeaking
+        correctListening
+        wrongListening
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      accountActivitiesProgressId
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    postAuthorId
+  }
+}
+subscription OnCreateComment($filter: ModelSubscriptionCommentFilterInput) {
+  onCreateComment(filter: $filter) {
+    id
+    body
+    postID
+    author {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      activitiesProgress {
+        id
+        correctReading
+        wrongReading
+        correctWriting
+        wrongWriting
+        correctSpeaking
+        wrongSpeaking
+        correctListening
+        wrongListening
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      accountActivitiesProgressId
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    commentAuthorId
+  }
+}
+subscription OnUpdateComment($filter: ModelSubscriptionCommentFilterInput) {
+  onUpdateComment(filter: $filter) {
+    id
+    body
+    postID
+    author {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      activitiesProgress {
+        id
+        correctReading
+        wrongReading
+        correctWriting
+        wrongWriting
+        correctSpeaking
+        wrongSpeaking
+        correctListening
+        wrongListening
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      accountActivitiesProgressId
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    commentAuthorId
+  }
+}
+subscription OnDeleteComment($filter: ModelSubscriptionCommentFilterInput) {
+  onDeleteComment(filter: $filter) {
+    id
+    body
+    postID
+    author {
+      id
+      fullName
+      email
+      collegeEnrollment
+      collegeName
+      role
+      activitiesProgress {
+        id
+        correctReading
+        wrongReading
+        correctWriting
+        wrongWriting
+        correctSpeaking
+        wrongSpeaking
+        correctListening
+        wrongListening
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      accountActivitiesProgressId
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    commentAuthorId
+  }
+}
+subscription OnCreateActivity($filter: ModelSubscriptionActivityFilterInput) {
+  onCreateActivity(filter: $filter) {
+    id
+    name
+    activityLevel
+    activityType
+    question
+    questionBody
+    answers {
+      correct
+      incorrect_1
+      incorrect_2
+      incorrect_3
+    }
+    topic {
+      id
+      name
+      conceptInformation
+      examples
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    activityTopicId
+  }
+}
+subscription OnUpdateActivity($filter: ModelSubscriptionActivityFilterInput) {
+  onUpdateActivity(filter: $filter) {
+    id
+    name
+    activityLevel
+    activityType
+    question
+    questionBody
+    answers {
+      correct
+      incorrect_1
+      incorrect_2
+      incorrect_3
+    }
+    topic {
+      id
+      name
+      conceptInformation
+      examples
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    activityTopicId
+  }
+}
+subscription OnDeleteActivity($filter: ModelSubscriptionActivityFilterInput) {
+  onDeleteActivity(filter: $filter) {
+    id
+    name
+    activityLevel
+    activityType
+    question
+    questionBody
+    answers {
+      correct
+      incorrect_1
+      incorrect_2
+      incorrect_3
+    }
+    topic {
+      id
+      name
+      conceptInformation
+      examples
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    activityTopicId
   }
 }
 subscription OnCreateTopic($filter: ModelSubscriptionTopicFilterInput) {

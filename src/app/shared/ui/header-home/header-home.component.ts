@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticateAWSService } from 'src/app/authenticate/services/authenticate-aws.service';
-import { Account } from 'src/models';
+import { Account } from 'src/contexts/shared/domain/models';
 
 @Component({
   selector: 'app-header-home',

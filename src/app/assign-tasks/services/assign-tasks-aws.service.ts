@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivitiesResponse, AssignTasks } from '../../../domain/useCases/assign-tasks.useCase.interface';
 import { DataStore, SortDirection } from '@aws-amplify/datastore';
-import { Topic, Activity } from 'src/models';
+import { Topic, Activity } from 'src/contexts/shared/domain/models';
 import { Predicates } from 'aws-amplify';
 
 @Injectable({

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, ValidationErrors } from '@angular/forms';
 import { AuthenticateAWSService } from '../../services/authenticate-aws.service';
-import { Role } from 'src/models';
+import { Role } from 'src/contexts/shared/domain/models';
 import { ValidatorService } from '../../../shared/services/validator.service';
 import { Router } from '@angular/router';
 import { CustomToastService } from 'src/app/shared/services/custom-toast.service';
