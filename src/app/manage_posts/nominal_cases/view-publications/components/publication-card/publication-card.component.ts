@@ -19,7 +19,7 @@ export class PublicationCardComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    // TODO await this.getPostAuthor(this.post.tutorAccountID);
+    await this.getPostAuthor(this.post.postAuthorId);
   }
 
   goToPublication() {
@@ -27,8 +27,7 @@ export class PublicationCardComponent implements OnInit {
   }
 
 
-  //============================================================
-  // auxiliary
+  //================================================c
   //============================================================
   public get category(): string {
     return this.post.category as string;

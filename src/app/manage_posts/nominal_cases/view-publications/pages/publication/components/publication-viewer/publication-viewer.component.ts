@@ -17,7 +17,7 @@ export class PublicationViewerComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    // TODO await this.getPostAuthor(this.post.tutorAccountID);
+    await this.getPostAuthor(this.post.postAuthorId);
   }
 
   async getPostAuthor(authorID: string) {
