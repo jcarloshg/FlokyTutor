@@ -41,12 +41,14 @@ export class CreatePublicationsComponent {
     const postCategory = inputCreatePost.category;
     const postBody = inputCreatePost.body;
     const tutorID = currentTutorLogged!.id;
+    const author = currentTutorLogged;
 
     const postCreated = await this.createPostService.createPost({
       title: postTitle,
       category: postCategory,
       body: postBody,
       tutorAccountID: tutorID,
+      author: author,
     });
 
     const wasCreatedPost = postCreated ? true : false;

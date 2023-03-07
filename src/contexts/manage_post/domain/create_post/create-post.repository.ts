@@ -21,4 +21,5 @@ export interface InputCreatePost {
     body: string;
     category: "WRITING" | "READING" | "TALKING" | "LISTENING",
     tutorAccountID: string;
+    author: Account,
 }

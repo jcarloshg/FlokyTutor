@@ -15,34 +15,26 @@ export class CreatePost_AWS implements MethodCreateAPostRepository {
 
     public async run(inputCreatePost: InputCreatePost): Promise<Post | null> {
 
-        // const newPost = new Post(
-        //     {
-        //         title: inputCreatePost.title,
-        //         body: inputCreatePost.body,
-        //         category: this.getCategory(inputCreatePost.category),
-        //         postAuthorId: inputCreatePost.tutorAccountID,
-        //         author: null,
-        //     }
-        // );
 
         try {
 
-            return null;
+            const newPost = new Post(
+                {
+                    title: inputCreatePost.title,
+                    body: inputCreatePost.body,
+                    category: this.getCategory(inputCreatePost.category),
+                    postAuthorId: inputCreatePost.tutorAccountID,
+                    author: inputCreatePost.author,
+                }
+            );
+            const postCreated: Post = await DataStore.save(newPost);
 
-            // const newPost = new Post(
-            //     {
-            //         title: inputCreatePost.title,
-            //         body: inputCreatePost.body,
-            //         category: getCategory(inputCreatePost.category),
-            //         tutorAccountID: inputCreatePost.tutorAccountID,
-            //     }
-            // );
-            // const postCreated: Post = await DataStore.save(newPost);
-            // let postCreatedWhitAllData = postCreated;
-            // while (postCreatedWhitAllData.createdAt == undefined) {
-            //     postCreatedWhitAllData = await DataStore.query(Post, postCreated.id) ?? postCreated;
-            // }
-            // return postCreatedWhitAllData ?? null;
+            let postCreatedWhitAllData = postCreated;
+            while (postCreatedWhitAllData.createdAt == undefined) {
+                postCreatedWhitAllData = await DataStore.query(Post, postCreated.id) ?? postCreated;
+            }
+
+            return postCreatedWhitAllData ?? null;
 
         } catch (error) {
             return null;
