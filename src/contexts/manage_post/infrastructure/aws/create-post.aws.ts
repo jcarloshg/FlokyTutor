@@ -34,8 +34,6 @@ export class CreatePost_AWS implements MethodCreateAPostRepository {
                 postCreatedWhitAllData = await DataStore.query(Post, postCreated.id) ?? postCreated;
             }
 
-            console.log({ postCreatedWhitAllData });
-
             return postCreatedWhitAllData ?? null;
 
         } catch (error) {
