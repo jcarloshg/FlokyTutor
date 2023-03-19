@@ -54,15 +54,15 @@ export class CreatePublicationsComponent {
     const wasCreatedPost = postCreated ? true : false;
 
     if (wasCreatedPost == false) {
-      // this.customToastService.launchToast({ typeToast: 'error', message: "Ocurrió un error. Inténtalo mas tarde." });
+      this.customToastService.launchToast({ typeToast: 'error', message: "Ocurrió un error. Inténtalo mas tarde." });
       return;
-    } else {
-      this.router.navigate(['./incio/publicaciones/ver_publicaciones']);
-
     }
+    // else {
+    //   this.router.navigate(['./incio/publicaciones/ver_publicaciones']);
+    // }
 
-    // this.customToastService.launchToast({ typeToast: 'success', message: `La publicación "${inputCreatePost.title}" se a creado con éxito!`, seconds: 5 });
-    // this.router.navigate(['./incio/publicaciones/ver_publicaciones']);
+    this.customToastService.launchToast({ typeToast: 'success', message: `La publicación "${inputCreatePost.title}" se a creado con éxito!`, seconds: 5 });
+    this.router.navigate(['./incio/publicaciones/ver_publicaciones']);
 
   }
 
