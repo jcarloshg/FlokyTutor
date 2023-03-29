@@ -11,21 +11,29 @@ export class CommentPost_AWS implements CommentPostRepository {
 
         try {
 
-            return null;
 
-            // const newComment: Comment = new Comment(
-            //     {
-            //         body: inputCommentPost.body,
-            //         postID: inputCommentPost.postID,
-            //         author: inputCommentPost.author,
-            //     }
-            // );
-            // const commentCreated = await DataStore.save(newComment);
-            // let commentCreatedWhitAllData = commentCreated;
-            // while (commentCreatedWhitAllData.createdAt == undefined) {
-            //     commentCreatedWhitAllData = await DataStore.query(Comment, commentCreated.id) ?? commentCreated;
-            // }
-            // return commentCreatedWhitAllData;
+            const newComment: Comment = new Comment(
+                {
+                    author: inputCommentPost.author,
+                    commentAuthorId: inputCommentPost.author.id,
+                    body: inputCommentPost.body,
+                    postID: inputCommentPost.postID,
+                }
+                // {
+                //     body: inputCommentPost.body,
+                //     postID: inputCommentPost.postID,
+                //     author: inputCommentPost.author,
+                // }
+            );
+
+            const commentCreated = await DataStore.save(newComment);
+
+            let commentCreatedWhitAllData = commentCreated;
+            while (commentCreatedWhitAllData.createdAt == undefined) {
+                commentCreatedWhitAllData = await DataStore.query(Comment, commentCreated.id) ?? commentCreated;
+            }
+
+            return commentCreatedWhitAllData;
 
         } catch (error) {
             return null;
