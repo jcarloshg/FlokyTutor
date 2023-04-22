@@ -682,10 +682,17 @@ export const schema = {
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
+                },
+                "pronunciation": {
+                    "name": "pronunciation",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
                 }
             }
         }
     },
-    "codegenVersion": "3.3.1",
-    "version": "88452b6569ee8c00b51ca21424f715dc"
+    "codegenVersion": "3.3.6",
+    "version": "32ad6bdbfb7992ae4aaf97ad76abd37c"
 };

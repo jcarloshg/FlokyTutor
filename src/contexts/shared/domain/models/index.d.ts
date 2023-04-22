@@ -29,6 +29,7 @@ type EagerAnswer = {
   readonly incorrect_1?: string | null;
   readonly incorrect_2?: string | null;
   readonly incorrect_3?: string | null;
+  readonly pronunciation: string;
 }
 
 type LazyAnswer = {
@@ -36,6 +37,7 @@ type LazyAnswer = {
   readonly incorrect_1?: string | null;
   readonly incorrect_2?: string | null;
   readonly incorrect_3?: string | null;
+  readonly pronunciation: string;
 }
 
 export declare type Answer = LazyLoading extends LazyLoadingDisabled ? EagerAnswer : LazyAnswer
