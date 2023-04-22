@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { ValidatorService } from '../../../shared/services/validator.service';
 import { AuthenticateAWSService } from '../../services/authenticate-aws.service';
 import { CustomToastService } from '../../../shared/services/custom-toast.service';
+import { createTopics, getAllTopics } from 'activities';
 
 @Component({
   selector: 'app-log-in',
@@ -45,6 +46,10 @@ export class LogInComponent implements OnInit {
   ngOnInit(): void { }
 
   public async login() {
+
+    await getAllTopics();
+
+    return;
 
     if (this.loginForm.valid == false) {
       this.loginForm.markAllAsTouched();
