@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AssignTasksAWSService } from '../../services/assign-tasks-aws.service';
-import { Activity, Topic } from 'src/contexts/shared/domain/models/index';
+import { Activity, ActivityType, Topic } from 'src/contexts/shared/domain/models/index';
 
 @Component({
   selector: 'app-view-activities',
@@ -13,6 +13,11 @@ export class ViewActivitiesComponent implements OnInit {
   public activitiesSearched: Activity[] = [];
   public newActivities: Activity[] = [];
   public activitiesToAssignAgain: Activity[] = [];
+  public activitiesToReading: Activity[] = [];
+  public activitiesToWriting: Activity[] = [];
+  public activitiesToListening: Activity[] = [];
+  public activitiesToTalking: Activity[] = [];
+
   public topics: Topic[] = [];
 
   constructor(
@@ -22,7 +27,15 @@ export class ViewActivitiesComponent implements OnInit {
   async ngOnInit(): Promise<void> {
 
     const newActivitiesResponse = await this.assignTasksAWSService.getNewActivities();
-    this.newActivities = newActivitiesResponse.data;
+    const activities = newActivitiesResponse.data as Activity[];
+
+    this.newActivities = activities;
+    this.activitiesToReading = activities.filter((activity) => activity.activityType == ActivityType.READING);
+    this.activitiesToListening = activities.filter((activity) => activity.activityType == ActivityType.LISTENING);
+    this.activitiesToTalking = activities.filter((activity) => activity.activityType == ActivityType.TALKING);
+    this.activitiesToWriting = activities.filter((activity) => activity.activityType == ActivityType.WRITING);
+
+
     // this.activitiesToAssignAgain = newActivitiesResponse.data.reverse();
 
     const getAllTopicResponse = await this.assignTasksAWSService.getAllTopic();

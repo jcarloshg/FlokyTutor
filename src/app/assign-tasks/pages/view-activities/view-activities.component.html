@@ -53,10 +53,38 @@
     </div>
 </div> -->
 
+
 <div class="pt-5">
     <p class="h5">Actividades de lectura</p>
     <div class="d-flex flex-row justify-content-start mt-2 pb-2 overflow-auto">
-        <app-card-activity *ngFor="let activitie of activitiesToAssignAgain" [activitie]="activitie" [spaceLeft]="true">
+        <app-card-activity *ngFor="let activitie of activitiesToReading" [activitie]="activitie" [spaceLeft]="true">
+        </app-card-activity>
+    </div>
+</div>
+
+
+<div class="pt-5">
+    <p class="h5">Actividades de escritura</p>
+    <div class="d-flex flex-row justify-content-start mt-2 pb-2 overflow-auto">
+        <app-card-activity *ngFor="let activitie of activitiesToWriting" [activitie]="activitie" [spaceLeft]="true">
+        </app-card-activity>
+    </div>
+</div>
+
+
+<div class="pt-5">
+    <p class="h5">Actividades para escuchar</p>
+    <div class="d-flex flex-row justify-content-start mt-2 pb-2 overflow-auto">
+        <app-card-activity *ngFor="let activitie of activitiesToListening" [activitie]="activitie" [spaceLeft]="true">
+        </app-card-activity>
+    </div>
+</div>
+
+
+<div class="pt-5">
+    <p class="h5">Actividades para hablar</p>
+    <div class="d-flex flex-row justify-content-start mt-2 pb-2 overflow-auto">
+        <app-card-activity *ngFor="let activitie of activitiesToTalking" [activitie]="activitie" [spaceLeft]="true">
         </app-card-activity>
     </div>
 </div>
