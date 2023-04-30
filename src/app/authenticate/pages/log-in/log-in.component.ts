@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { ValidatorService } from '../../../shared/services/validator.service';
 import { AuthenticateAWSService } from '../../services/authenticate-aws.service';
 import { CustomToastService } from '../../../shared/services/custom-toast.service';
-import { createTopics, getAllTopics } from 'activities';
+import { createActivities, createTopics, getAllTopics } from 'scripts/root';
 
 @Component({
   selector: 'app-log-in',
@@ -34,7 +34,7 @@ export class LogInComponent implements OnInit {
     );
 
     this.loginForm.reset({
-      email: 'carlosj12336@gmail.com',
+      email: 'jcarloshg9898@gmail.com',
       pass: 'Qazwsx123',
     })
   }
@@ -47,9 +47,11 @@ export class LogInComponent implements OnInit {
 
   public async login() {
 
-    await getAllTopics();
+    // await createTopics();     // 1
+    // await getAllTopics();     // 2
+    // await createActivities(); // 3
+    // return;
 
-    return;
 
     if (this.loginForm.valid == false) {
       this.loginForm.markAllAsTouched();

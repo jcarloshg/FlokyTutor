@@ -40,7 +40,7 @@ export class SingUpComponent {
       fullName: 'Jose Carlos Huerta Garcia',
       collegeName: 'Benemérita Universiada Autonoma de Puebla',
       collegeEnrollment: '201738087',
-      email: 'carlosj12336@gmail.com',
+      email: 'jcarloshg9898@gmail.com',
       password: 'Qazwsx123',
       confirmationPassword: 'Qazwsx123',
     });
