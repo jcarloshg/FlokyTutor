@@ -1,4 +1,5 @@
-<div *ngIf="activity" class="d-flex flex-column justify-content-between px-lg-5 mx-lg-5" style='height: 80%;'>
+<div *ngIf="activity && activity.topic.conceptInformation && activity.topic.examples"
+    class="d-flex flex-column justify-content-between px-lg-5 mx-lg-5" style='height: 80%;'>
 
     <!-- title -->
     <div class="d-flex justify-content-between">
@@ -7,7 +8,7 @@
             <p class="h3">{{activity.name}}</p>
             <div class="d-flex align-items-center">
                 <p class="fw-bold m-0 me-2">{{activity.activityLevel}}</p>
-                <!-- TODO <p class="text-secondary m-0">{{activity.Topic?.name}}</p> -->
+                <p class="text-secondary m-0">{{activity.topic.name}}</p>
             </div>
         </div>
 
@@ -36,11 +37,11 @@
     <!-- footer -->
     <div class="row">
         <div class="col-lg-12">
-            <!-- TODO <app-concept-information-viewer [conceptInformation]="activity.Topic!.conceptInformation!">
-            </app-concept-information-viewer> -->
+            <app-concept-information-viewer [conceptInformation]="activity.topic.conceptInformation">
+            </app-concept-information-viewer>
         </div>
         <div class="col-lg-12">
-            <!-- TODO <app-examples-viewer [examples]="activity.Topic!.examples!"></app-examples-viewer> -->
+            <app-examples-viewer [examples]="activity.topic.examples!"></app-examples-viewer>
             <!-- <pre>{{activity.Topic?.examples | json}}</pre> -->
         </div>
     </div>
