@@ -9,7 +9,7 @@
     </button>
 </div>
 
-<div class="my-2">
+<!-- <div class="my-2">
     <p>Filtrar por:</p>
     <div class="row container-lg pe-lg-5 g-2">
         <div class="col-lg-2">
@@ -25,7 +25,7 @@
             <app-button-listening></app-button-listening>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="pt-5" *ngIf="activitiesSearched.length !== 0">
     <p class="h5">Actividades encontradas por: <small>{{searchByActivityName}}</small> </p>
@@ -45,10 +45,18 @@
     </div>
 </div>
 
-<div class="pt-5">
-    <p class="h5">Asigna estas actividades nuevamente a tus alumnos. 🔁</p>
+<!-- <div class="pt-5">
+    <p class="h5">Asigna nuevamente. 🔁</p>
     <div class="d-flex flex-row justify-content-start mt-2 pb-2 overflow-auto">
-        <app-card-activity *ngFor="let activitie of newActivities" [activitie]="activitie" [spaceLeft]="true">
+        <app-card-activity *ngFor="let activitie of activitiesToAssignAgain" [activitie]="activitie" [spaceLeft]="true">
+        </app-card-activity>
+    </div>
+</div> -->
+
+<div class="pt-5">
+    <p class="h5">Actividades de lectura</p>
+    <div class="d-flex flex-row justify-content-start mt-2 pb-2 overflow-auto">
+        <app-card-activity *ngFor="let activitie of activitiesToAssignAgain" [activitie]="activitie" [spaceLeft]="true">
         </app-card-activity>
     </div>
 </div>

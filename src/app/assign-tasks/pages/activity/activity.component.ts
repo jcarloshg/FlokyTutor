@@ -21,9 +21,6 @@ export class ActivityComponent implements OnInit {
     const activityIDtoSearch = this.activatedRoute.snapshot.paramMap.get('id');
     const getActivityByIDResponse = await this.assignTasksAWSService.getActivityByID(activityIDtoSearch!);
     this.activity = getActivityByIDResponse.data;
-    console.log('====================================');
-    console.log(this.activity.topic);
-    console.log('====================================');
   }
 
 }

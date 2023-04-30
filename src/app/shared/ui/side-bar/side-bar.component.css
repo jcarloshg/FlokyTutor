@@ -3,3 +3,7 @@ li.active {
     border-radius: 15px;
     color: #000;
 }
+
+li {
+    cursor: pointer;
+}

@@ -12,6 +12,7 @@ export class ViewActivitiesComponent implements OnInit {
   public searchByActivityName: string = '';
   public activitiesSearched: Activity[] = [];
   public newActivities: Activity[] = [];
+  public activitiesToAssignAgain: Activity[] = [];
   public topics: Topic[] = [];
 
   constructor(
@@ -22,6 +23,7 @@ export class ViewActivitiesComponent implements OnInit {
 
     const newActivitiesResponse = await this.assignTasksAWSService.getNewActivities();
     this.newActivities = newActivitiesResponse.data;
+    // this.activitiesToAssignAgain = newActivitiesResponse.data.reverse();
 
     const getAllTopicResponse = await this.assignTasksAWSService.getAllTopic();
     this.topics = getAllTopicResponse.data;
@@ -35,7 +37,6 @@ export class ViewActivitiesComponent implements OnInit {
   public async createActivity() {
     const createActivitieResponse = await this.assignTasksAWSService.createActivitie();
     console.log(createActivitieResponse);
-
   }
 
 }
