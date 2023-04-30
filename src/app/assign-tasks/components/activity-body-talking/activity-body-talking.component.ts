@@ -11,7 +11,7 @@ export class ActivityBodyTalkingComponent implements OnInit {
   @Input() public activity!: Activity;
 
   constructor() { }
-
+  
   ngOnInit(): void { }
 
 }
