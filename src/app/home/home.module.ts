@@ -10,6 +10,7 @@ import { PersonInfoRowComponent } from './pages/my-profile/components/person-inf
 
 // date local de la app
 import localES_MX from "@angular/common/locales/es-MX";
+import { ViewPublicationsModule } from '../manage_posts/nominal_cases/view-publications/view-publications.module';
 registerLocaleData(localES_MX);
 
 @NgModule({
@@ -23,6 +24,8 @@ registerLocaleData(localES_MX);
     CommonModule,
     HomeRoutingModule,
     SharedModule,
+
+    ViewPublicationsModule,
   ],
   providers: [{
     provide: LOCALE_ID,

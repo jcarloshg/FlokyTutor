@@ -33,6 +33,9 @@ import { ManagePostComponentsModule } from '../../components/manage_posts.compon
     // shared && others
     SharedModule,
     ManagePostComponentsModule,
+  ],
+  exports: [
+    PostsViewerComponent,
   ]
 })
 export class ViewPublicationsModule { }
