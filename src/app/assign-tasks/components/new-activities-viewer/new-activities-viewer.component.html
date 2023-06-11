@@ -1,0 +1,9 @@
+<p>new-activities-viewer works!</p>
+
+<div class="pt-5">
+  <p class="h5">Nuevas actividades 🆕</p>
+  <div class="d-flex flex-row justify-content-start mt-2 pb-2 overflow-auto">
+      <app-card-activity *ngFor="let activitie of newActivities" [activitie]="activitie" [spaceLeft]="true">
+      </app-card-activity>
+  </div>
+</div>
