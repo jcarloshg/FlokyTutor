@@ -16,4 +16,4 @@ import { Amplify } from 'aws-amplify';
 import aws_exports from './aws-exports';
 Amplify.configure(aws_exports);
 // DataStore.configure(aws_exports);
-// (async () => { await DataStore.start(); })();
+// (async () => { await DataStore.start(); 
