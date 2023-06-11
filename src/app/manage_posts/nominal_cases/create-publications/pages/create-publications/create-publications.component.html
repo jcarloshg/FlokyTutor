@@ -1,8 +1,15 @@
 <p class="h2">Crea una publicación<small>📰</small> </p>
 <p class="text-secondary">Rellena todos los campos.</p>
 
-<app-post-editor
-    [inputCreatePost]="inputCreatePost"
-    (createPostEvent)="createPost($event)"
->
+<div class="p-4 m-5 bg-greyEEEEEE rounded-4 border border-border" >
+    <p class="h5 p-3">Nota para crear publicaciones 🤯: </p>
+    <ul>
+        <li class="p-1">Tus <b>publicaciones</b> deberán ser cortas. 😉</li>
+        <li class="p-1">Tus <b>publicaciones</b> deberán contener solo <b>información importante</b>. 🫡</li>
+        <li class="p-1">Agrega <b>images</b> para los ejemplos. 📸</li>
+        <li class="p-1">Promueve la <b>comunicación</b> en el espacio de comentarios 💁‍♀️💁‍♂️</li>
+    </ul>
+</div>
+
+<app-post-editor [inputCreatePost]="inputCreatePost" (createPostEvent)="createPost($event)">
 </app-post-editor>
