@@ -8,6 +8,9 @@ import { Activity, ActivityType, Topic } from 'src/contexts/shared/domain/models
   styleUrls: ['./view-activities.component.css']
 })
 export class ViewActivitiesComponent implements OnInit {
+  hola(value: any) {
+    console.log(value);
+  }
 
   public searchByActivityName: string = '';
   public activitiesSearched: Activity[] = [];
@@ -42,8 +45,9 @@ export class ViewActivitiesComponent implements OnInit {
     this.topics = getAllTopicResponse.data;
   }
 
-  public async searchActivities() {
-    const searchActivitiesByNameResponse = await this.assignTasksAWSService.searchActivitiesByName(this.searchByActivityName);
+  public async searchActivities(keyword: string) {
+    this.searchByActivityName = keyword;
+    const searchActivitiesByNameResponse = await this.assignTasksAWSService.searchActivitiesByName(keyword);
     this.activitiesSearched = searchActivitiesByNameResponse.data;
   }
 

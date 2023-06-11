@@ -2,51 +2,45 @@
 <p class="text-secondary">Descubre actividades nuevas</p>
 
 <div class="input-group mt-4">
-    <input type="text" class="form-control" [(ngModel)]="searchByActivityName"
-        placeholder="Busca por nombre de actividades" />
-    <button class="btn btn-outline-primary" type="button" (click)="searchActivities()">
+    <input #input type="text" class="form-control" placeholder="Busca por nombre de actividades" (keyup.enter)="searchActivities(input.value)" />
+    <button class="btn btn-outline-primary" type="button" (click)="searchActivities(searchByActivityName)">
         Buscar
     </button>
 </div>
 
-<!-- <div class="my-2">
-    <p>Filtrar por:</p>
-    <div class="row container-lg pe-lg-5 g-2">
-        <div class="col-lg-2">
-            <app-button-reading></app-button-reading>
+<div class="pt-5" *ngIf="searchByActivityName !== ''">
+
+    <p class="h5">Actividades encontradas por: <small>{{searchByActivityName}}</small> </p>
+
+    <div class="pt-5" *ngIf="activitiesSearched.length !== 0; else activitiesSearchedEmpty">
+        <div class="row g-3">
+            <div class="col-lg-3 col-md-6" *ngFor="let activitie of activitiesSearched">
+                <app-card-activity [activitie]="activitie"></app-card-activity>
+            </div>
         </div>
-        <div class="col-lg-2">
-            <app-button-writing></app-button-writing>
-        </div>
-        <div class="col-lg-2">
-            <app-button-speaking></app-button-speaking>
-        </div>
-        <div class="col-lg-2">
-            <app-button-listening></app-button-listening>
+    </div>
+
+    <ng-template #activitiesSearchedEmpty>
+        <p class="h5"><small>No se encontraron coincidencias</small></p>
+    </ng-template>
+
+</div>
+
+
+
+<!-- <div *ngIf="searchByActivityName !== ''">
+    <div class="pt-5" *ngIf="activitiesSearched.length !== 0">
+        <p class="h5">Actividades encontradas por: <small>{{searchByActivityName}}</small> </p>
+        <div class="row g-3">
+            <div class="col-lg-3 col-md-6" *ngFor="let activitie of activitiesSearched">
+                <app-card-activity [activitie]="activitie"></app-card-activity>
+            </div>
         </div>
     </div>
 </div> -->
-
-<div class="pt-5" *ngIf="activitiesSearched.length !== 0">
-    <p class="h5">Actividades encontradas por: <small>{{searchByActivityName}}</small> </p>
-    <div class="row g-3">
-        <div class="col-lg-3 col-md-6" *ngFor="let activitie of activitiesSearched">
-            <app-card-activity [activitie]="activitie"></app-card-activity>
-        </div>
-
-    </div>
-</div>
 
 <app-new-activities-viewer>
 </app-new-activities-viewer>
-
-<!-- <div class="pt-5">
-    <p class="h5">Asigna nuevamente. 🔁</p>
-    <div class="d-flex flex-row justify-content-start mt-2 pb-2 overflow-auto">
-        <app-card-activity *ngFor="let activitie of activitiesToAssignAgain" [activitie]="activitie" [spaceLeft]="true">
-        </app-card-activity>
-    </div>
-</div> -->
 
 
 <div class="pt-5">
