@@ -14,6 +14,7 @@ import { ActivityBodyTalkingComponent } from './components/activity-body-talking
 import { ActivityBodyListeningComponent } from './components/activity-body-listening/activity-body-listening.component';
 import { ExamplesViewerComponent } from './components/examples-viewer/examples-viewer.component';
 import { ConceptInformationViewerComponent } from './components/concept-information-viewer/concept-information-viewer.component';
+import { NewActivitiesViewerComponent } from './components/new-activities-viewer/new-activities-viewer.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { ConceptInformationViewerComponent } from './components/concept-informat
     ActivityBodyListeningComponent,
     ExamplesViewerComponent,
     ConceptInformationViewerComponent,
+    NewActivitiesViewerComponent,
   ],
   imports: [
     CommonModule,
@@ -35,6 +37,9 @@ import { ConceptInformationViewerComponent } from './components/concept-informat
     // mine
     AssignTasksRoutingModule,
     SharedModule,
+  ],
+  exports: [
+    NewActivitiesViewerComponent
   ]
 })
 export class AssignTasksModule { }

@@ -174,6 +174,7 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
   public async getCurrentTutor(): Promise<AuthResponse> {
     try {
       const existAnInstanceFromTutor = !(this._userTutorCurrent === null)
+
       if (existAnInstanceFromTutor == false) {
         const currentUser = await Auth.currentSession();
         const tutorID = currentUser.getAccessToken().payload['sub'].toString();
@@ -181,6 +182,7 @@ export class AuthenticateAWSService extends Loading implements Authenticate {
 
         this._userTutorCurrent = userTutorCurrent ?? null;
       }
+
       return {
         isOk: this._userTutorCurrent ? true : false,
         data: this._userTutorCurrent,
